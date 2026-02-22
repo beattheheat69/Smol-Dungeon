@@ -10,14 +10,15 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        //Grabs references to playerinput and Move input action
         playerInput = GetComponent<PlayerInput>();
         moveInput = playerInput.actions["Move"];
     }
 
     void Update()
     {
+        //Reads Move input value and affects it to object transform
         moveDir = moveInput.ReadValue<Vector2>();
-
         transform.Translate(moveDir * speed * Time.deltaTime);
     }
 }
