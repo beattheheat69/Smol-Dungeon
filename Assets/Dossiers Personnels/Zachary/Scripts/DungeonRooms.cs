@@ -1,22 +1,19 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DungeonRooms : MonoBehaviour
 {
     [SerializeField] public Vector2 dungeonSize = new Vector2(8, 8);
-    public Room[][] rooms;
+    public List<GameObject> rooms = new List<GameObject>();
+    public GameObject roomPrefab;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        for (int x = 0; x < dungeonSize.x; x++)
-        {
-            for (int y = 0; y < dungeonSize.y; y++)
-            {
-                rooms[x][y] = new Room();
-            }
-        }
+        
     }
 
     // Update is called once per frame
@@ -25,17 +22,14 @@ public class DungeonRooms : MonoBehaviour
         
     }
 
-    void PlaceTrap(string entityName, Room room)
+    void PlaceEntity()
+    {
+        
+    }
+
+    void GenerateDungeon()
     {
 
     }
 
-}
-
-public class Room
-{
-    public int id;
-    public bool active;
-    public string[] enemies;
-    public string[] traps;
 }

@@ -1,10 +1,9 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class Cursor : MonoBehaviour
+public class EntityManager : MonoBehaviour
 {
-    public float offsetX = 10;
-    public float offsetY = 10;
+    public int points;
+    public string currentlySelected;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -15,6 +14,6 @@ public class Cursor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Mouse.current.position.ReadValue() + new Vector2(offsetX, offsetY);
+        
     }
 }

@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
 
     public Button continueButton;
+    [SerializeField] string newGameSceneString = "ConstructionMenu";
     [SerializeField] bool isContinueAvailable;
 
 
@@ -17,6 +19,7 @@ public class MainMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //FOR DEBUG PURPOSES (check if Continue button is greyed out)
         if (!isContinueAvailable)
         {
             continueButton.interactable = false;
@@ -27,9 +30,15 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    public void LoadGame()
+    public void LoadNewGame()
     {
-        //MAGIC WORDS TO LOAD A NEW GAME OR CONTINUE FROM A PREVIOUS ONE
+        //Load the scene with the Dungeon Shaping Screen
+        SceneManager.LoadScene(newGameSceneString);
+    }
+
+    public void LoadResumedGame()
+    {
+        //We'll get there when we get there
     }
 
     public void PopUpWindow(GameObject window)
