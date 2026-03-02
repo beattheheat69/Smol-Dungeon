@@ -14,7 +14,7 @@ public class PlayerPossession : MonoBehaviour
 	public string trapTag;
 	public float scanRadius = 1;
 	GameObject closestEntity;
-	List<GameObject> entitiesNearMe = new List<GameObject>();
+	public List<GameObject> entitiesNearMe = new List<GameObject>();
 
 	void Start()
     {
@@ -77,6 +77,13 @@ public class PlayerPossession : MonoBehaviour
 		closestEntity.GetComponent<EntityAction>().enabled = true;
 		if (closestEntity.CompareTag(monsterTag))
 			closestEntity.GetComponent<PlayerMovement>().enabled = true;
+		else if (closestEntity.CompareTag(trapTag))
+		{
+			for (int i = 0; i < closestEntity.transform.childCount; i++)
+			{
+				closestEntity.transform.GetChild(i).gameObject.SetActive(true);
+			}
+		}
 		//***Deactivate AI script here***
 		gameObject.SetActive(false);
 	}

@@ -7,14 +7,13 @@ public class PlayerMovement : MonoBehaviour
     InputAction moveInput;
     Vector2 moveDir;
     public float speed = 5f;
-    GameManager manager;
+    bool lastMoveLeft;
 
     void Start()
     {
         //Grabs references to playerinput and Move input action
         playerInput = GetComponent<PlayerInput>();
         moveInput = playerInput.actions["Move"];
-        manager = GameObject.FindWithTag("GameController").GetComponent<GameManager>();
 	}
 
 	void Update()
@@ -22,5 +21,10 @@ public class PlayerMovement : MonoBehaviour
         //Reads Move input value and affects it to object transform
         moveDir = moveInput.ReadValue<Vector2>();
         transform.Translate(moveDir * speed * Time.deltaTime);
+        //Flip sprite when moving left (need to remember last move dir to stay flipped if needed
+        if (moveDir.x < 0 || lastMoveLeft)
+            GetComponent<SpriteRenderer>().flipX = true;
+        else
+            GetComponent<SpriteRenderer>().flipX = false;
     }
 }
