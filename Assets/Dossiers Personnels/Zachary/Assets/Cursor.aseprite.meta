@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e21eacc03e377714ebbd8e7a6cb0bb95
+guid: 1daf8978ba1a44b4393f287790c0c966
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -127,30 +127,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Frame_0
+  - name: Cursor
     originalName: 
-    pivot: {x: 0.4666667, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 27
-      width: 15
-      height: 13
-    spriteID: eb9b19e2cde0de040b710455ccab072f
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 27}
-  - name: Frame_1
-    originalName: 
-    pivot: {x: 0.4666667, y: 0}
+    pivot: {x: 0.8, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -158,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 15
-      height: 15
-    spriteID: 45c81306b9c02c949abb660d007dbed3
+      width: 10
+      height: 16
+    spriteID: 4a766009bf1750647b0eb6ef844b02a5
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -169,99 +148,30 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Frame_2
-    originalName: 
-    pivot: {x: 0.4666667, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 27
-      y: 4
-      width: 15
-      height: 13
-    spriteID: b79d08e6ddd31c346a1f4cc7fb68597f
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 27, y: 4}
-  - name: Frame_3
-    originalName: 
-    pivot: {x: 0.4666667, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 27
-      y: 25
-      width: 15
-      height: 13
-    spriteID: f5e022e4b1bf784438360825b6b395b3
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 27, y: 25}
   spriteSheetImportData: []
   tileSetImportData: []
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 1034896117
+      value0: 2941503696
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Crossbow 1
+    name: Cursor
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Frame_0
+    - name: Cursor
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 1
+        x: 0
         y: 0
-        width: 15
-        height: 13
-      spriteId: eb9b19e2cde0de040b710455ccab072f
-    - name: Frame_1
-      frameIndex: 1
-      additiveSortOrder: 0
-      cellRect:
-        x: 1
-        y: 0
-        width: 15
-        height: 15
-      spriteId: 45c81306b9c02c949abb660d007dbed3
-    - name: Frame_2
-      frameIndex: 2
-      additiveSortOrder: 0
-      cellRect:
-        x: 1
-        y: 0
-        width: 15
-        height: 13
-      spriteId: b79d08e6ddd31c346a1f4cc7fb68597f
-    - name: Frame_3
-      frameIndex: 3
-      additiveSortOrder: 0
-      cellRect:
-        x: 1
-        y: 0
-        width: 15
-        height: 13
-      spriteId: f5e022e4b1bf784438360825b6b395b3
+        width: 10
+        height: 16
+      spriteId: 4a766009bf1750647b0eb6ef844b02a5
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -272,4 +182,4 @@ ScriptedImporter:
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 16, y: 16}
-  previousTextureSize: {x: 64, y: 64}
+  previousTextureSize: {x: 32, y: 32}
