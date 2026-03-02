@@ -5,11 +5,18 @@ public class EntityAction : MonoBehaviour
 {
 	PlayerInput playerInput;
 	InputAction basicActionInput;
+	public TrapAim trapAim;
+	bool trap;
 
 	private void Start()
 	{
 		playerInput = GetComponent<PlayerInput>();
 		basicActionInput = playerInput.actions["BasicAction"];
+		if (this.CompareTag("Trap"))
+		{
+			trap = true;
+			trapAim = GetComponentInChildren<TrapAim>();
+		}
 	}
 
 	private void Update()
@@ -17,6 +24,8 @@ public class EntityAction : MonoBehaviour
 		if (basicActionInput.WasPressedThisFrame())
 		{
 			Debug.Log(this.gameObject.name + " attacks!");
+			if (trap)
+				Debug.DrawLine(transform.position, trapAim.cursorPos);
 		}
 	}
 }
