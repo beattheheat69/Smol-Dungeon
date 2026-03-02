@@ -10,7 +10,8 @@ public class PlayerPossession : MonoBehaviour
 	InputAction possessInput;
 	int entityNearby = 0;
 	public LayerMask entityLayer;
-	public string triggerTag;
+	public string monsterTag;
+	public string trapTag;
 	public float scanRadius = 1;
 	GameObject closestEntity;
 	List<GameObject> entitiesNearMe = new List<GameObject>();
@@ -46,13 +47,12 @@ public class PlayerPossession : MonoBehaviour
 			}
 			closestEntity.GetComponent<SpriteRenderer>().color = Color.green;
 		}
-		
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
 		//Adds to entity counter and to entity list
-		if (other.CompareTag(triggerTag))
+		if (other.CompareTag(monsterTag) || other.CompareTag(trapTag))
         {
 			entityNearby++;
 			entitiesNearMe.Add(other.gameObject);
@@ -62,7 +62,7 @@ public class PlayerPossession : MonoBehaviour
 	private void OnTriggerExit2D(Collider2D other)
 	{
 		//Removes from entity counter and entity list
-		if (other.CompareTag(triggerTag))
+		if (other.CompareTag(monsterTag) || other.CompareTag(trapTag))
 		{
 			entityNearby--;
 			other.GetComponent<SpriteRenderer>().color = Color.white;	//Removes highlight before removing from list
@@ -74,7 +74,9 @@ public class PlayerPossession : MonoBehaviour
 	{
 		closestEntity.GetComponent<EntityPossessed>().enabled = true;
 		closestEntity.GetComponent<EntityPossessed>().smol = this.gameObject;
-		closestEntity.GetComponent<PlayerMovement>().enabled = true;
+		closestEntity.GetComponent<EntityAction>().enabled = true;
+		if (closestEntity.CompareTag(monsterTag))
+			closestEntity.GetComponent<PlayerMovement>().enabled = true;
 		//***Deactivate AI script here***
 		gameObject.SetActive(false);
 	}

@@ -11,14 +11,17 @@ public class EntityPossessed : MonoBehaviour
 	public GameObject smol;
 	PlayerMovement playerMovement;
 	EntityPossessed entityPossessed;
+	EntityAction entityAction;
 
 	void Start()
 	{
 		//Grabs references to playerinput and scripts
 		playerInput = GetComponent<PlayerInput>();
 		possessInput = playerInput.actions["Possess"];
-		playerMovement = GetComponent<PlayerMovement>();
 		entityPossessed = GetComponent<EntityPossessed>();
+		entityAction = GetComponent<EntityAction>();
+		if (this.gameObject.CompareTag("Monster"))
+			playerMovement = GetComponent<PlayerMovement>();
 	}
 
 	void Update()
@@ -33,7 +36,9 @@ public class EntityPossessed : MonoBehaviour
 		//Activates Smol game object at entity position and disables scripts from this entity
 		smol.SetActive(true);
 		smol.transform.position = transform.position;
-		playerMovement.enabled = false;
 		entityPossessed.enabled = false;
+		entityAction.enabled = false;
+		if (this.gameObject.CompareTag("Monster"))
+			playerMovement.enabled = false;
 	}
 }

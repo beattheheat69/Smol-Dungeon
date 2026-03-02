@@ -11,13 +11,14 @@ GameObject:
   - component: {fileID: 337737462560331934}
   - component: {fileID: 7690966081941423871}
   - component: {fileID: 9066454197927771865}
+  - component: {fileID: 3133087485195896181}
   - component: {fileID: 8363819885077017387}
   - component: {fileID: 6252740359265299853}
   - component: {fileID: 1493795070538263396}
   - component: {fileID: 7291962622510481161}
   m_Layer: 6
   m_Name: Entity
-  m_TagString: Entity
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,6 +64,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityPossessed
   smol: {fileID: 0}
+--- !u!114 &3133087485195896181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7055708888233048317}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 813ded4a99e70004cb864fe963c58024, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EntityAction
 --- !u!212 &8363819885077017387
 SpriteRenderer:
   serializedVersion: 2
