@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="Workspace" id="{4fc0a08f-1523-40c7-866a-e4d87c7ff055}">
+		<property name="builtBanksOutputDirectory">
+			<value>../../../../../Documents/Unity Projects/Smol-Dungeon/FMOD</value>
+		</property>
+		<relationship name="masterEventFolder">
+			<destination>{27053242-1796-46ce-ace3-4455c3149d03}</destination>
+		</relationship>
+		<relationship name="masterTagFolder">
+			<destination>{df624c0f-f2f7-4551-b3a2-76d72f4ae30d}</destination>
+		</relationship>
+		<relationship name="masterEffectPresetFolder">
+			<destination>{219dd95d-0fd8-4a5a-86ec-e7e9c7495193}</destination>
+		</relationship>
+		<relationship name="masterParameterPresetFolder">
+			<destination>{e7f2d009-a72d-4f3d-bdc7-7866db9c1a5b}</destination>
+		</relationship>
+		<relationship name="masterBankFolder">
+			<destination>{18892357-c908-42ac-b854-da62ea14ac88}</destination>
+		</relationship>
+		<relationship name="masterSandboxFolder">
+			<destination>{d0c53c75-d93e-4c4f-a8c3-f07f19b064e5}</destination>
+		</relationship>
+		<relationship name="masterAssetFolder">
+			<destination>{2a1339a7-a903-46a7-ae9c-c49bb521c1b7}</destination>
+		</relationship>
+		<relationship name="mixer">
+			<destination>{da1a434f-55fe-40c2-8b54-0dc8fc3b1196}</destination>
+		</relationship>
+		<relationship name="profilerSessionFolder">
+			<destination>{91d31357-1b67-437a-95bb-f5b8db9e13f9}</destination>
+		</relationship>
+		<relationship name="platforms">
+			<destination>{6e51b10f-b810-45bc-9c81-1b591014a6a6}</destination>
+		</relationship>
+	</object>
+</objects>
