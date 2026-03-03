@@ -10,10 +10,11 @@ public class PlayerPossession : MonoBehaviour
 	InputAction possessInput;
 	int entityNearby = 0;
 	public LayerMask entityLayer;
-	public string triggerTag;
+	public string monsterTag;
+	public string trapTag;
 	public float scanRadius = 1;
 	GameObject closestEntity;
-	List<GameObject> entitiesNearMe = new List<GameObject>();
+	public List<GameObject> entitiesNearMe = new List<GameObject>();
 
 	void Start()
     {
@@ -26,7 +27,7 @@ public class PlayerPossession : MonoBehaviour
     {
 		//Calls Possessing when pressing the Possess input while nearby entities
         if (possessInput.WasPressedThisFrame() && entityNearby > 0)
-			Possessing();
+			Possess();
     }
 
 	private void FixedUpdate()
@@ -46,13 +47,12 @@ public class PlayerPossession : MonoBehaviour
 			}
 			closestEntity.GetComponent<SpriteRenderer>().color = Color.green;
 		}
-		
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
 		//Adds to entity counter and to entity list
-		if (other.CompareTag(triggerTag))
+		if (other.CompareTag(monsterTag) || other.CompareTag(trapTag))
         {
 			entityNearby++;
 			entitiesNearMe.Add(other.gameObject);
@@ -62,7 +62,7 @@ public class PlayerPossession : MonoBehaviour
 	private void OnTriggerExit2D(Collider2D other)
 	{
 		//Removes from entity counter and entity list
-		if (other.CompareTag(triggerTag))
+		if (other.CompareTag(monsterTag) || other.CompareTag(trapTag))
 		{
 			entityNearby--;
 			other.GetComponent<SpriteRenderer>().color = Color.white;	//Removes highlight before removing from list
@@ -70,12 +70,22 @@ public class PlayerPossession : MonoBehaviour
 		}
 	}
 
-	void Possessing()	//Grabs closestEntity to enable control scripts then disable this script
+	void Possess()	//Grabs closestEntity to enable control scripts then disable this script
 	{
-		closestEntity.GetComponent<EntityPossessed>().enabled = true;
-		closestEntity.GetComponent<EntityPossessed>().smol = this.gameObject;
-		closestEntity.GetComponent<PlayerMovement>().enabled = true;
-		//***Deactivate AI script here***
-		gameObject.SetActive(false);
+		//closestEntity.GetComponent<EntityPossessed>().enabled = true;
+		//closestEntity.GetComponent<EntityPossessed>().smol = this.gameObject;
+		//closestEntity.GetComponent<EntityAction>().enabled = true;
+		//if (closestEntity.CompareTag(monsterTag))
+		//	closestEntity.GetComponent<PlayerMovement>().enabled = true;
+		//else if (closestEntity.CompareTag(trapTag))
+		//{
+		//	for (int i = 0; i < closestEntity.transform.childCount; i++)
+		//	{
+		//		closestEntity.transform.GetChild(i).gameObject.SetActive(true);
+		//	}
+		//}
+		////***Deactivate AI script here***
+		//gameObject.SetActive(false);
+		closestEntity.GetComponent<EntityPossessed>().Possessing(this.gameObject);
 	}
 }
