@@ -549,6 +549,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Entity
       objectReference: {fileID: 0}
+    - target: {fileID: 8363819885077017387, guid: bff5ebd5b1e182e4d87db51a6d66373a, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363819885077017387, guid: bff5ebd5b1e182e4d87db51a6d66373a, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363819885077017387, guid: bff5ebd5b1e182e4d87db51a6d66373a, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363819885077017387, guid: bff5ebd5b1e182e4d87db51a6d66373a, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -569,6 +585,7 @@ GameObject:
   - component: {fileID: 777909481}
   - component: {fileID: 777909479}
   - component: {fileID: 777909483}
+  - component: {fileID: 777909484}
   m_Layer: 0
   m_Name: Smol
   m_TagString: Player
@@ -770,6 +787,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!320 &777909484
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777909476}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: c3a14f3b8340253478182eb9ede1a9a3, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings: []
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &923569730
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,7 +877,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: df70fa95-8a34-4494-b137-73ab6b9c7d37
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1 &1292515822
@@ -1368,6 +1402,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trap
       objectReference: {fileID: 0}
+    - target: {fileID: 9024129947159847524, guid: faa507454af0e1349ba001927df98f28, type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 6655597044890654371, guid: 7d508c6c7f9a54847a385ca71b6b98c4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

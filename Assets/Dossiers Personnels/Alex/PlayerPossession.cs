@@ -27,7 +27,7 @@ public class PlayerPossession : MonoBehaviour
     {
 		//Calls Possessing when pressing the Possess input while nearby entities
         if (possessInput.WasPressedThisFrame() && entityNearby > 0)
-			Possessing();
+			Possess();
     }
 
 	private void FixedUpdate()
@@ -70,21 +70,22 @@ public class PlayerPossession : MonoBehaviour
 		}
 	}
 
-	void Possessing()	//Grabs closestEntity to enable control scripts then disable this script
+	void Possess()	//Grabs closestEntity to enable control scripts then disable this script
 	{
-		closestEntity.GetComponent<EntityPossessed>().enabled = true;
-		closestEntity.GetComponent<EntityPossessed>().smol = this.gameObject;
-		closestEntity.GetComponent<EntityAction>().enabled = true;
-		if (closestEntity.CompareTag(monsterTag))
-			closestEntity.GetComponent<PlayerMovement>().enabled = true;
-		else if (closestEntity.CompareTag(trapTag))
-		{
-			for (int i = 0; i < closestEntity.transform.childCount; i++)
-			{
-				closestEntity.transform.GetChild(i).gameObject.SetActive(true);
-			}
-		}
-		//***Deactivate AI script here***
-		gameObject.SetActive(false);
+		//closestEntity.GetComponent<EntityPossessed>().enabled = true;
+		//closestEntity.GetComponent<EntityPossessed>().smol = this.gameObject;
+		//closestEntity.GetComponent<EntityAction>().enabled = true;
+		//if (closestEntity.CompareTag(monsterTag))
+		//	closestEntity.GetComponent<PlayerMovement>().enabled = true;
+		//else if (closestEntity.CompareTag(trapTag))
+		//{
+		//	for (int i = 0; i < closestEntity.transform.childCount; i++)
+		//	{
+		//		closestEntity.transform.GetChild(i).gameObject.SetActive(true);
+		//	}
+		//}
+		////***Deactivate AI script here***
+		//gameObject.SetActive(false);
+		closestEntity.GetComponent<EntityPossessed>().Possessing(this.gameObject);
 	}
 }

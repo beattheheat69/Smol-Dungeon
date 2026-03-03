@@ -25,7 +25,10 @@ public class EntityAction : MonoBehaviour
 		{
 			Debug.Log(this.gameObject.name + " attacks!");
 			if (trap)
-				Debug.DrawLine(transform.position, trapAim.cursorPos);
+			{
+				//Call TrapAim to pass cursorPos
+				trapAim.Shoot();
+			}
 		}
 	}
 }

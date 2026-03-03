@@ -12,6 +12,7 @@ public class EntityPossessed : MonoBehaviour
 	PlayerMovement playerMovement;
 	EntityPossessed entityPossessed;
 	EntityAction entityAction;
+	bool isPossessed;
 
 	void Start()
 	{
@@ -27,25 +28,38 @@ public class EntityPossessed : MonoBehaviour
 	void Update()
 	{
 		//Calls DePossessing when pressing the Possess input
-		if (possessInput.WasPressedThisFrame())
+		if (possessInput.WasPressedThisFrame() && isPossessed)
 			DePossessing();
 	}
 
 	void DePossessing()
 	{
 		//Activates Smol game object at entity position and disables scripts from this entity
+		isPossessed = false;
 		smol.SetActive(true);
 		smol.transform.position = transform.position;
-		entityPossessed.enabled = false;
+		//entityPossessed.enabled = false;
 		entityAction.enabled = false;
+		for (int i = 0; i < transform.childCount; i++)
+			transform.GetChild(i).gameObject.SetActive(false);
 		if (this.gameObject.CompareTag("Monster"))
 			playerMovement.enabled = false;
-		else if (this.gameObject.CompareTag("Trap"))
-		{
-			for (int i = 0; i < transform.childCount; i++)
-			{
-				transform.GetChild(i).gameObject.SetActive(false);
-			}
-		}
+
+		//Activate AI script
+	}
+
+	public void Possessing(GameObject playerSmol)
+	{
+		//Activates Smol game object at entity position and disables scripts from this entity
+		isPossessed = true;
+		smol = playerSmol;
+		//entityPossessed.enabled = true;
+		entityAction.enabled = true;
+		for (int i = 0; i < transform.childCount; i++)
+			transform.GetChild(i).gameObject.SetActive(true);
+		if (this.gameObject.CompareTag("Monster"))
+			playerMovement.enabled = true;
+		smol.SetActive(false);
+		//Deactivate AI script
 	}
 }
