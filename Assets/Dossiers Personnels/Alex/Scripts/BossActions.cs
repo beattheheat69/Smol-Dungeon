@@ -1,0 +1,80 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class BossActions : MonoBehaviour
+{
+	//Controls boss' actions
+
+	//Player inputs
+    PlayerInput playerInput;
+    InputAction basicAttack;
+    InputAction specialAttackLeft;
+    InputAction specialAttackRight;
+	InputAction moveInput;
+
+	//Facing direction for movement and action direction
+	Vector2 moveDir;
+	Vector2 lastDir;
+
+	//Reference to action game object for instantiate
+	public GameObject shockwaveAnim;
+
+	private void Start()
+	{
+		//Gets all player inputs
+		playerInput = GetComponent<PlayerInput>();
+		basicAttack = playerInput.actions["BasicAction"];
+		specialAttackLeft = playerInput.actions["SpecialLeft"];
+		specialAttackRight = playerInput.actions["SpecialRight"];
+		moveInput = playerInput.actions["Move"];
+	}
+
+	private void Update()
+	{
+		//Reads movement input as Vector2
+		moveDir = moveInput.ReadValue<Vector2>();
+
+		//Stores last direction moved to keep facing direction
+		if (moveDir != Vector2.zero)
+			lastDir = moveDir;
+
+		//Basic attack input & function call
+		if (basicAttack.WasPressedThisFrame())
+		{
+			Debug.Log("Basic Attack");
+			BasicAttack();
+		}
+
+		//Special attack 1 input & function call
+		if (specialAttackLeft.WasPressedThisFrame())
+		{
+			Debug.Log("Special Attack Left");
+			SpecialAttackLeft(lastDir);
+		}
+
+		//Special attack 2 input & function call
+		if (specialAttackRight.WasPressedThisFrame())
+		{
+			Debug.Log("Special Attack Right");
+			SpecialAttackRight(lastDir);
+		}
+	}
+
+	void BasicAttack()
+	{
+
+	}
+
+	void SpecialAttackLeft(Vector2 dir)
+	{
+		//Spawns VFX in front of last direction
+		GameObject inst = Instantiate(shockwaveAnim);
+		inst.transform.position = new Vector2(transform.position.x + dir.x, transform.position.y + dir.y);
+		Destroy(inst, 2f);
+	}
+
+	void SpecialAttackRight(Vector2 dir)
+	{
+
+	}
+}
