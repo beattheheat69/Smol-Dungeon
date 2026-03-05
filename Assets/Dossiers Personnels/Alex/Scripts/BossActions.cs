@@ -1,3 +1,4 @@
+using Mono.Cecil.Cil;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,6 +19,12 @@ public class BossActions : MonoBehaviour
 
 	//Reference to action game object for instantiate
 	public GameObject shockwaveAnim;
+
+	//Attacks stuff
+	RaycastHit2D[] hits;
+	public LayerMask masksToHit;
+	public float attackRadius = 1f;
+	Vector2 attackTransform;
 
 	private void Start()
 	{
@@ -70,11 +77,28 @@ public class BossActions : MonoBehaviour
 		//Spawns VFX in front of last direction
 		GameObject inst = Instantiate(shockwaveAnim);
 		inst.transform.position = new Vector2(transform.position.x + dir.x, transform.position.y + dir.y);
+		attackTransform = inst.transform.position;
 		Destroy(inst, 2f);
+
+		//Ray cast maybe in coroutine to do trigger collider
+		hits = Physics2D.CircleCastAll(attackTransform, attackRadius, Vector2.zero, masksToHit); //Vector2.zero necessary to not impact attackRadius or circle
+
+		foreach (RaycastHit2D hit in hits)
+		{
+			Debug.Log(hit.transform.name + " hit!");
+			HeroPlaceholderTest heroPlaceholderTest = hit.transform.GetComponent<HeroPlaceholderTest>();
+			if (heroPlaceholderTest != null)
+				heroPlaceholderTest.TakeDamage(1);
+		}
 	}
 
 	void SpecialAttackRight(Vector2 dir)
 	{
 
+	}
+
+	private void OnDrawGizmos() //Draws a circle gizmo to display attack shape and radius (only works when Gizmos is enabled in play mode)
+	{
+		Gizmos.DrawWireSphere(attackTransform, attackRadius);
 	}
 }
