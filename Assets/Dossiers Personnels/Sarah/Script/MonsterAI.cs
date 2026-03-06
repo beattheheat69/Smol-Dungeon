@@ -35,7 +35,7 @@ public class MonsterAI : Character, IDamageable
         {
             DoAttack();
 
-            //Check if can attack
+            //If target dead, find new one
             if (!CheckTargetAlive())
             {
                 FindTarget();

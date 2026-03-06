@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - Hero
   - Room
+  - Group
   layers:
   - Default
   - TransparentFX
