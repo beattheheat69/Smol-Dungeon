@@ -9,7 +9,7 @@ public class Hero : Character
     {
         float randVal = Random.Range(1, 100);
         //Check if hero dodge attack
-        if(randVal > baseStats.dodgeChange)
+        if(randVal < baseStats.dodgeChange)
         {
             // deduct health
             health -= damage;
@@ -21,6 +21,4 @@ public class Hero : Character
             base.Die();
         }
     }
-
-
 }

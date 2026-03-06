@@ -4,7 +4,9 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     [SerializeField]
-    GameObject enemyGroup; //Parent of all enemies
+    GameObject enemyGroup; //Parent of all enemies in room
+    [SerializeField]
+    GameObject trapGroup; // Parent of all traps in room
     private List<GameObject> monsterList = new List<GameObject>(); // List of all monster in room
 
 
@@ -23,12 +25,13 @@ public class Room : MonoBehaviour
         //Check if object entering is a hero
         if (collision.CompareTag("Hero"))
         {
-            if (monsterList.Count > 0)
-            {
-                enemyGroup.SetActive(true);
+            foreach (Transform child in transform)
+            {   
+                if(child.CompareTag("Group"))
+                {
+                    child.gameObject.SetActive(true);
+                }             
             }
-
-            //if trap activate
         }
     }
 
@@ -38,7 +41,17 @@ public class Room : MonoBehaviour
         //Check if object entering is a hero
         if (collision.CompareTag("Hero"))
         {
-            //if trap deactivate
+            //Check if object entering is a hero
+            if (collision.CompareTag("Hero"))
+            {
+                foreach (Transform child in transform)
+                {
+                    if (child.CompareTag("Group"))
+                    {
+                        child.gameObject.SetActive(false);
+                    }
+                }
+            }
         }
     }
 

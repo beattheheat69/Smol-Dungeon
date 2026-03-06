@@ -30,7 +30,7 @@ public class HeroParty : MonoBehaviour
         roomFinished = false;
 
         //First Room of dungeon
-        currentRoom = GameObject.Find("Room1").GetComponent<Room>();
+        currentRoom = GameObject.Find("Room").GetComponent<Room>();
     }
 
     // Gives list of heros
