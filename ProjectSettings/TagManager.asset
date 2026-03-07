@@ -7,6 +7,10 @@ TagManager:
   - Entity
   - Monster
   - Trap
+  - Enemy
+  - Hero
+  - Room
+  - Group
   layers:
   - Default
   - TransparentFX
@@ -15,7 +19,7 @@ TagManager:
   - Water
   - UI
   - Entity
-  - 
+  - Monster
   - 
   - 
   - 
