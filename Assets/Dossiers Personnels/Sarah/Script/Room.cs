@@ -25,6 +25,8 @@ public class Room : MonoBehaviour
         //Check if object entering is a hero
         if (collision.CompareTag("Hero"))
         {
+            CameraManagement cameraManager = Camera.main.GetComponent<CameraManagement>();
+            cameraManager.MoveToNewRoom(this.transform.Find("CameraPoint").transform.position);
             foreach (Transform child in transform)
             {   
                 if(child.CompareTag("Group"))

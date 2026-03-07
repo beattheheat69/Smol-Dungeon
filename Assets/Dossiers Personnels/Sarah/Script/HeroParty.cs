@@ -87,9 +87,9 @@ public class HeroParty : MonoBehaviour
             if (allAtDoor)
             {
                 GameObject door2 = GameObject.Find("Door2"); // current room door  // toNextRoom[1]
-                if (Vector2.Distance(transform.position, door2.transform.position + new Vector3(1f, 0f, 0f)) > 0.15f)
+                if (Vector2.Distance(transform.position, door2.transform.position + new Vector3(0.4f, 0f, 0f)) > 0.15f)
                 {
-                    transform.position = Vector2.MoveTowards(transform.position, door2.transform.position + new Vector3(1f, 0f, 0f), 1f * Time.deltaTime);
+                    transform.position = Vector2.MoveTowards(transform.position, door2.transform.position + new Vector3(0.4f, 0f, 0f), 1f * Time.deltaTime);
                 }
                 else
                 {

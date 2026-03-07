@@ -10,6 +10,7 @@ public class HeroAI : Hero, IDamageable
 
     GameObject target = null; // Target enemy will charge
     Rigidbody2D rb;  //Object rigidbody
+    CameraManagement camera;
     float timeCooldown; //Time that passes before next attack
     bool attacking = false; // hero in attack mode
     Vector2 lastMoveDirection; // Direction the hero is looking for the attack
@@ -21,46 +22,49 @@ public class HeroAI : Hero, IDamageable
         rb = GetComponent<Rigidbody2D>();
         health = baseStats.health;
         power = baseStats.power;
+        camera = Camera.main.GetComponent<CameraManagement>();
     }
 
     //Check for target, attack if possible
     private void FixedUpdate()
     {
-        if (!HeroParty.Instance.GetRoomFinised())
-        {
-            //If no target check for one
-            if (target == null)
+        //If camera is moving do nothing
+        if (camera.GetTransitionning()) return;
+            if (!HeroParty.Instance.GetRoomFinised())
             {
-                FindTarget();
-                // If still no target room is finished, jump to next update
+                //If no target check for one
                 if (target == null)
                 {
-                    HeroParty.Instance.SetRoomFinised(true);
-                    return;
-                }
-            }
-
-            //Move to target
-            MoveEnemy();
-
-            //Check if can attack
-            if (attacking && timeCooldown <= 0)
-            {
-                DoAttack();
-
-                //If target dead, find new one
-                if (!CheckTargetAlive())
-                {
                     FindTarget();
+                    // If still no target room is finished, jump to next update
+                    if (target == null)
+                    {
+                        HeroParty.Instance.SetRoomFinised(true);
+                        return;
+                    }
+                }
+
+                //Move to target
+                MoveEnemy();
+
+                //Check if can attack
+                if (attacking && timeCooldown <= 0)
+                {
+                    DoAttack();
+
+                    //If target dead, find new one
+                    if (!CheckTargetAlive())
+                    {
+                        FindTarget();
+                    }
+                }
+
+                //attack cooldown
+                if (timeCooldown > 0)
+                {
+                    timeCooldown -= Time.deltaTime;
                 }
             }
-
-            //attack cooldown
-            if (timeCooldown > 0)
-            {
-                timeCooldown -= Time.deltaTime;
-            }
-        }
     }
 
     //Enter in attack mode when colliding with target
