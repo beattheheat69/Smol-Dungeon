@@ -19,12 +19,14 @@ public class BossActions : MonoBehaviour
 
 	//Reference to action game object for instantiate
 	public GameObject shockwaveAnim;
+	public GameObject fistAttack;
 
 	//Attacks stuff
 	RaycastHit2D[] hits;
 	public LayerMask masksToHit;
 	public float attackRadius = 1f;
 	Vector2 attackTransform;
+	public float fistSpeed = 1f;
 
 	private void Start()
 	{
@@ -49,7 +51,7 @@ public class BossActions : MonoBehaviour
 		if (basicAttack.WasPressedThisFrame())
 		{
 			Debug.Log("Basic Attack");
-			BasicAttack();
+			BasicAttack(lastDir);
 		}
 
 		//Special attack 1 input & function call
@@ -67,22 +69,13 @@ public class BossActions : MonoBehaviour
 		}
 	}
 
-	void BasicAttack()
+	void BasicAttack(Vector2 dir) //Basic punch in front of boss
 	{
-
-	}
-
-	void SpecialAttackLeft(Vector2 dir)
-	{
-		//Spawns VFX in front of last direction
-		GameObject inst = Instantiate(shockwaveAnim);
-		inst.transform.position = new Vector2(transform.position.x + dir.x, transform.position.y + dir.y);
-		attackTransform = inst.transform.position;
-		Destroy(inst, 2f);
-
-		//Ray cast maybe in coroutine to do trigger collider
+		//Adds current pos to last direction faced to get attack pos
+		attackTransform = new Vector2(transform.position.x + dir.x, transform.position.y + dir.y);
 		hits = Physics2D.CircleCastAll(attackTransform, attackRadius, Vector2.zero, masksToHit); //Vector2.zero necessary to not impact attackRadius or circle
 
+		//Checks all colliders hit for hero
 		foreach (RaycastHit2D hit in hits)
 		{
 			Debug.Log(hit.transform.name + " hit!");
@@ -92,12 +85,25 @@ public class BossActions : MonoBehaviour
 		}
 	}
 
-	void SpecialAttackRight(Vector2 dir)
+	void SpecialAttackLeft(Vector2 dir) //Shockwave AoE for 1 second
 	{
-
+		//Spawns VFX in front of last direction
+		GameObject inst = Instantiate(shockwaveAnim);
+		inst.transform.position = new Vector2(transform.position.x + dir.x, transform.position.y + dir.y);
+		Destroy(inst, 2f);
 	}
 
-	private void OnDrawGizmos() //Draws a circle gizmo to display attack shape and radius (only works when Gizmos is enabled in play mode)
+	void SpecialAttackRight(Vector2 dir) //Throw fist across room
+	{
+		GameObject inst = Instantiate(fistAttack);
+		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+		inst.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+		inst.transform.position = new Vector2(transform.position.x + dir.x, transform.position.y + dir.y);
+		inst.GetComponent<Rigidbody2D>().linearVelocity = dir.normalized * fistSpeed;
+		Destroy(inst, 2f);
+	}
+
+	private void OnDrawGizmos() //Draws a circle gizmo to display basic attack shape and radius (only works when Gizmos is enabled in play mode)
 	{
 		Gizmos.DrawWireSphere(attackTransform, attackRadius);
 	}
