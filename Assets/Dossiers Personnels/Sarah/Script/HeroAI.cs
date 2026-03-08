@@ -10,7 +10,7 @@ public class HeroAI : Hero, IDamageable
 
     GameObject target = null; // Target enemy will charge
     Rigidbody2D rb;  //Object rigidbody
-    CameraManagement camera;
+    CameraManagement cameraStat; // check the stat of the camera
     float timeCooldown; //Time that passes before next attack
     bool attacking = false; // hero in attack mode
     Vector2 lastMoveDirection; // Direction the hero is looking for the attack
@@ -22,15 +22,15 @@ public class HeroAI : Hero, IDamageable
         rb = GetComponent<Rigidbody2D>();
         health = baseStats.health;
         power = baseStats.power;
-        camera = Camera.main.GetComponent<CameraManagement>();
+        cameraStat = Camera.main.GetComponent<CameraManagement>();
     }
 
     //Check for target, attack if possible
     private void FixedUpdate()
     {
         //If camera is moving do nothing
-        if (camera.GetTransitionning()) return;
-            if (!HeroParty.Instance.GetRoomFinised())
+        if (cameraStat.GetTransitionning()) return;
+        if (!HeroParty.Instance.GetRoomFinised())
             {
                 //If no target check for one
                 if (target == null)
