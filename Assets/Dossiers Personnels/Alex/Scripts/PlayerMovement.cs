@@ -40,5 +40,10 @@ public class PlayerMovement : MonoBehaviour
             GetComponent<SpriteRenderer>().flipX = true;
         else if (lastDir.x > 0)
             GetComponent<SpriteRenderer>().flipX = false;
+
+        if (Camera.main.GetComponent<CameraManagement>() != null && Camera.main.GetComponent<CameraManagement>().GetTransitionning())
+        {
+            transform.position = new Vector2(Camera.main.transform.position.x, Camera.main.transform.position.y);
+        }
     }
 }

@@ -14,9 +14,9 @@ public class CameraManagement : MonoBehaviour
     void Start()
     {
         roomCenter = GameObject.Find("Room").transform.Find("CameraPoint").transform.position;
-        float roomheight = GameObject.Find("Room").GetComponent<Renderer>().bounds.size.y;
-        GetComponent<Camera>().orthographicSize = roomheight / 1.6f;
-        GetComponent<Camera>().aspect = 1.0f;
+        //float roomheight = GameObject.Find("Room").GetComponent<Renderer>().bounds.size.y;
+        //GetComponent<Camera>().orthographicSize = roomheight / 1.6f;
+        //GetComponent<Camera>().aspect = 1.0f;
         isTransitionning = true;
     }
 

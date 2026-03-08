@@ -7,6 +7,7 @@ public class Hero : Character
 
     public new void takeDamage(int damage)
     {
+        Debug.Log("Hero hit?");
         float randVal = Random.Range(1, 100);
         //Check if hero dodge attack
         if(randVal < baseStats.dodgeChange)
