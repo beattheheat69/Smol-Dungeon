@@ -5,21 +5,21 @@ public class CrossbowAI : MonoBehaviour
     [SerializeField]
     CrossbowStats_SO baseStat; // Base stats of slimes
     [SerializeField]
-    GameObject arrowPrefab;
-    CameraManagement camera;
+    GameObject arrowPrefab; //Prefab for shot arrow
+    CameraManagement cameraStat; // check the stat of the camera
     GameObject target = null; // current hero target
     float timeCooldown; //Time that passes before next attack;
 
     private void Start()
     {
-        camera = Camera.main.GetComponent<CameraManagement>();
+        cameraStat = Camera.main.GetComponent<CameraManagement>();
     }
 
     //Check for target, attack if possible
     private void FixedUpdate()
     {
         //If camera is moving do nothing
-        if (camera.GetTransitionning()) return;
+        if (cameraStat.GetTransitionning()) return;
             //If no target check for one
             if (target == null)
             {
