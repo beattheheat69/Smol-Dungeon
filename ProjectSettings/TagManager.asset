@@ -20,9 +20,9 @@ TagManager:
   - UI
   - Entity
   - Monster
-  - 
-  - 
-  - 
+  - Player
+  - Hero
+  - Tiles
   - 
   - 
   - 
@@ -47,6 +47,18 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Tiles
+    uniqueID: 578144971
+    locked: 0
+  - name: Entity
+    uniqueID: 2749853275
+    locked: 0
+  - name: Heroes
+    uniqueID: 2421894445
+    locked: 0
+  - name: Player
+    uniqueID: 1710232561
     locked: 0
   - name: UI
     uniqueID: 2461701497

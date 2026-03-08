@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 337737462560331934}
+  - component: {fileID: 1011625617905934588}
   - component: {fileID: 7690966081941423871}
   - component: {fileID: 8390803972775889440}
   - component: {fileID: 9066454197927771865}
@@ -39,6 +40,19 @@ Transform:
   - {fileID: 2051083264799343614}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1011625617905934588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7055708888233048317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 961acdd40c7e91746ba1101eac605bca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MonsterAI
+  baseStat: {fileID: 11400000, guid: 4a3fd8e14f41d6f4abd234816b251c47, type: 2}
 --- !u!114 &7690966081941423871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52,6 +66,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   speed: 10
+  lastDir: {x: 0, y: 0}
 --- !u!114 &8390803972775889440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,6 +79,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 813ded4a99e70004cb864fe963c58024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MonsterAction
+  masksToHit:
+    serializedVersion: 2
+    m_Bits: 512
+  attackRadius: 0.5
 --- !u!114 &9066454197927771865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,11 +155,11 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1545114021
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: -761815229008314332, guid: 534dda4c331da70438fc2c4aade538ca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -320,9 +339,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1545114021
+  m_SortingLayer: 2
+  m_SortingOrder: -1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.3304112, g: 0.9339623, b: 0.7874185, a: 0.7529412}

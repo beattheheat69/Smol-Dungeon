@@ -16,6 +16,8 @@ public class EntityPossessed : MonoBehaviour
 	PlayerMovement playerMovement;
 	MonsterAction monsterAction;
 	TrapAim trapAim;
+	CrossbowAI crossbowAI;
+	MonsterAI monsterAI;
 
 	//FMOD events
 	public EventReference possessingSFX;
@@ -31,9 +33,13 @@ public class EntityPossessed : MonoBehaviour
 		{
 			playerMovement = GetComponent<PlayerMovement>();
 			monsterAction = GetComponent<MonsterAction>();
+			monsterAI = GetComponent<MonsterAI>();
 		}
 		else if (this.gameObject.CompareTag("Trap"))
+		{
 			trapAim = GetComponent<TrapAim>();
+			crossbowAI = GetComponent<CrossbowAI>();
+		}
 	}
 
 	void Update()
@@ -58,9 +64,13 @@ public class EntityPossessed : MonoBehaviour
 		{
 			playerMovement.enabled = true;
 			monsterAction.enabled = true;
+			monsterAI.enabled = false;
 		}
 		else if (this.gameObject.CompareTag("Trap"))
+		{
 			trapAim.enabled = true;
+			crossbowAI.enabled = false;
+		}
 
 		smol.SetActive(false);
 
@@ -86,9 +96,13 @@ public class EntityPossessed : MonoBehaviour
 		{
 			playerMovement.enabled = false;
 			monsterAction.enabled = false;
+			monsterAI.enabled = true;
 		}
 		else if (this.gameObject.CompareTag("Trap"))
+		{
 			trapAim.enabled = false;
+			crossbowAI.enabled = true;
+		}
 
 		//Activate AI script
 
