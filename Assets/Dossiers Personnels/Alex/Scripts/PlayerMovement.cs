@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Facing direction for movement and actions
     Vector2 moveDir;
-    Vector2 lastDir;
+    public Vector2 lastDir;
 
     void Start()
     {

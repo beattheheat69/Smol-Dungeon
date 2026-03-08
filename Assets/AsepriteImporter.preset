@@ -302,7 +302,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_PreviousAsepriteImporterSettings.m_LayerImportMode
-    value: 1
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_PreviousAsepriteImporterSettings.m_DefaultPivotSpace
@@ -310,7 +310,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_PreviousAsepriteImporterSettings.m_DefaultPivotAlignment
-    value: 7
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_PreviousAsepriteImporterSettings.m_CustomPivotPosition.x
@@ -354,7 +354,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AsepriteImporterSettings.m_FileImportMode
-    value: 0
+    value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AsepriteImporterSettings.m_ImportHiddenLayers
@@ -370,7 +370,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AsepriteImporterSettings.m_DefaultPivotAlignment
-    value: 7
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AsepriteImporterSettings.m_CustomPivotPosition.x
@@ -418,7 +418,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_PlatformSettingsDirtyTick
-    value: 639067890250469826
+    value: 639085190281464077
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_TextureAssetName
@@ -530,7 +530,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[0].m_Name
-    value: Frame_0
+    value: Layer 1_Frame_0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[0].m_OriginalName
@@ -538,11 +538,11 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[0].m_Pivot.x
-    value: 0.4615385
+    value: 0.5
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[0].m_Pivot.y
-    value: 0
+    value: 0.5
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[0].m_Alignment
@@ -578,15 +578,15 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[0].m_Rect.width
-    value: 26
+    value: 28
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[0].m_Rect.height
-    value: 32
+    value: 28
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[0].m_SpriteID
-    value: 09e26883d4f137e40b37e1957b2a17d5
+    value: a9b2c76364a2ec843918076adfe64c2b
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[0].spriteBone.Array.size
@@ -626,7 +626,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[1].m_Name
-    value: Frame_1
+    value: Layer 1_Frame_1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[1].m_OriginalName
@@ -634,11 +634,11 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[1].m_Pivot.x
-    value: 0.53846157
+    value: 0.5
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[1].m_Pivot.y
-    value: 0
+    value: 0.5
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[1].m_Alignment
@@ -670,19 +670,19 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[1].m_Rect.y
-    value: 44
+    value: 40
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[1].m_Rect.width
-    value: 26
+    value: 28
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[1].m_Rect.height
-    value: 32
+    value: 28
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[1].m_SpriteID
-    value: df1030c110991884b9ef66775ced1ddf
+    value: ab0ff0c23d27d2f41b58a1d444f1e36a
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[1].spriteBone.Array.size
@@ -718,11 +718,11 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[1].uvTransform.y
-    value: 44
+    value: 40
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[2].m_Name
-    value: Frame_2
+    value: Layer 1_Frame_2
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[2].m_OriginalName
@@ -730,11 +730,11 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[2].m_Pivot.x
-    value: 1.1538461
+    value: 0.5
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[2].m_Pivot.y
-    value: 0
+    value: 0.5
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[2].m_Alignment
@@ -762,23 +762,23 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[2].m_Rect.x
-    value: 38
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: m_AnimatedSpriteImportData.Array.data[2].m_Rect.y
     value: 4
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: m_AnimatedSpriteImportData.Array.data[2].m_Rect.y
+    value: 76
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[2].m_Rect.width
-    value: 13
+    value: 28
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[2].m_Rect.height
-    value: 16
+    value: 28
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[2].m_SpriteID
-    value: 53feff9eca1d9e64cb8f31c8a6e2efa0
+    value: 0231dc3dad67b7d4a8f86e2e1e588c91
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[2].spriteBone.Array.size
@@ -810,11 +810,11 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[2].uvTransform.x
-    value: 38
+    value: 4
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AnimatedSpriteImportData.Array.data[2].uvTransform.y
-    value: 4
+    value: 76
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_SpriteSheetImportData.Array.size
@@ -834,7 +834,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AsepriteLayers.Array.data[0].m_Uuid.m_Value0
-    value: 2370684320
+    value: 4287466680
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AsepriteLayers.Array.data[0].m_Uuid.m_Value1
@@ -854,11 +854,11 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AsepriteLayers.Array.data[0].m_Name
-    value: SmolGhost
+    value: Layer 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AsepriteLayers.Array.data[0].m_LayerFlags
-    value: 0
+    value: 3
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AsepriteLayers.Array.data[0].m_LayerType
@@ -874,7 +874,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AsepriteLayers.Array.data[0].m_Cells.Array.data[0].m_Name
-    value: Frame_0
+    value: Layer 1_Frame_0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AsepriteLayers.Array.data[0].m_Cells.Array.data[0].m_FrameIndex
@@ -886,27 +886,27 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AsepriteLayers.Array.data[0].m_Cells.Array.data[0].m_CellRect.x
-    value: 4
+    value: 2
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AsepriteLayers.Array.data[0].m_Cells.Array.data[0].m_CellRect.y
-    value: 0
+    value: 2
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AsepriteLayers.Array.data[0].m_Cells.Array.data[0].m_CellRect.width
-    value: 26
+    value: 28
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AsepriteLayers.Array.data[0].m_Cells.Array.data[0].m_CellRect.height
-    value: 32
+    value: 28
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AsepriteLayers.Array.data[0].m_Cells.Array.data[0].m_SpriteId
-    value: 09e26883d4f137e40b37e1957b2a17d5
+    value: a9b2c76364a2ec843918076adfe64c2b
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AsepriteLayers.Array.data[0].m_Cells.Array.data[1].m_Name
-    value: Frame_1
+    value: Layer 1_Frame_1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AsepriteLayers.Array.data[0].m_Cells.Array.data[1].m_FrameIndex
@@ -922,23 +922,23 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AsepriteLayers.Array.data[0].m_Cells.Array.data[1].m_CellRect.y
-    value: 0
+    value: 2
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AsepriteLayers.Array.data[0].m_Cells.Array.data[1].m_CellRect.width
-    value: 26
+    value: 28
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AsepriteLayers.Array.data[0].m_Cells.Array.data[1].m_CellRect.height
-    value: 32
+    value: 28
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AsepriteLayers.Array.data[0].m_Cells.Array.data[1].m_SpriteId
-    value: df1030c110991884b9ef66775ced1ddf
+    value: ab0ff0c23d27d2f41b58a1d444f1e36a
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AsepriteLayers.Array.data[0].m_Cells.Array.data[2].m_Name
-    value: Frame_2
+    value: Layer 1_Frame_2
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AsepriteLayers.Array.data[0].m_Cells.Array.data[2].m_FrameIndex
@@ -950,23 +950,23 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AsepriteLayers.Array.data[0].m_Cells.Array.data[2].m_CellRect.x
-    value: 1
+    value: 2
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AsepriteLayers.Array.data[0].m_Cells.Array.data[2].m_CellRect.y
-    value: 0
+    value: 2
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AsepriteLayers.Array.data[0].m_Cells.Array.data[2].m_CellRect.width
-    value: 13
+    value: 28
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AsepriteLayers.Array.data[0].m_Cells.Array.data[2].m_CellRect.height
-    value: 16
+    value: 28
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AsepriteLayers.Array.data[0].m_Cells.Array.data[2].m_SpriteId
-    value: 53feff9eca1d9e64cb8f31c8a6e2efa0
+    value: 0231dc3dad67b7d4a8f86e2e1e588c91
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_AsepriteLayers.Array.data[0].m_LinkedCells.Array.size

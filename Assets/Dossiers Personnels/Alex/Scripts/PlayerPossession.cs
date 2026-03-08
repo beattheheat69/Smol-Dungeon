@@ -30,7 +30,7 @@ public class PlayerPossession : MonoBehaviour
     void Update()
     {
 		//Calls Possessing when pressing the Possess input while nearby entities
-        if (possessInput.WasPressedThisFrame() && entitiesNearMe.Count > 0)
+        if (possessInput.WasReleasedThisFrame() && entitiesNearMe.Count > 0) //Released input so it won't overlap with possessed input
 			Possess();
     }
 

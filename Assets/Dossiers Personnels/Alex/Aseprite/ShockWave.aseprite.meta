@@ -74,9 +74,9 @@ ScriptedImporter:
   previousAsepriteImporterSettings:
     fileImportMode: 1
     importHiddenLayers: 0
-    layerImportMode: 1
+    layerImportMode: 0
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
     spritePadding: 0
@@ -89,9 +89,9 @@ ScriptedImporter:
   asepriteImporterSettings:
     fileImportMode: 1
     importHiddenLayers: 0
-    layerImportMode: 1
+    layerImportMode: 0
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
     spritePadding: 0
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639081496559186109
+  platformSettingsDirtyTick: 639085161084124108
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -127,10 +127,10 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Frame_0
+  - name: Layer 1_Frame_0
     originalName: 
     pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -139,7 +139,7 @@ ScriptedImporter:
       y: 4
       width: 28
       height: 28
-    spriteID: 09e26883d4f137e40b37e1957b2a17d5
+    spriteID: a9b2c76364a2ec843918076adfe64c2b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -148,10 +148,10 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Frame_1
+  - name: Layer 1_Frame_1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -160,7 +160,7 @@ ScriptedImporter:
       y: 40
       width: 28
       height: 28
-    spriteID: df1030c110991884b9ef66775ced1ddf
+    spriteID: ab0ff0c23d27d2f41b58a1d444f1e36a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -169,10 +169,10 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 40}
-  - name: Frame_2
+  - name: Layer 1_Frame_2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -181,7 +181,7 @@ ScriptedImporter:
       y: 76
       width: 28
       height: 28
-    spriteID: 53feff9eca1d9e64cb8f31c8a6e2efa0
+    spriteID: 0231dc3dad67b7d4a8f86e2e1e588c91
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -195,17 +195,17 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 2370684320
+      value0: 4287466680
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: SmolGhost
-    layerFlags: 0
+    name: Layer 1
+    layerFlags: 3
     layerType: 0
     blendMode: 0
     cells:
-    - name: Frame_0
+    - name: Layer 1_Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -213,8 +213,8 @@ ScriptedImporter:
         y: 2
         width: 28
         height: 28
-      spriteId: 09e26883d4f137e40b37e1957b2a17d5
-    - name: Frame_1
+      spriteId: a9b2c76364a2ec843918076adfe64c2b
+    - name: Layer 1_Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
@@ -222,8 +222,8 @@ ScriptedImporter:
         y: 2
         width: 28
         height: 28
-      spriteId: df1030c110991884b9ef66775ced1ddf
-    - name: Frame_2
+      spriteId: ab0ff0c23d27d2f41b58a1d444f1e36a
+    - name: Layer 1_Frame_2
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
@@ -231,7 +231,7 @@ ScriptedImporter:
         y: 2
         width: 28
         height: 28
-      spriteId: 53feff9eca1d9e64cb8f31c8a6e2efa0
+      spriteId: 0231dc3dad67b7d4a8f86e2e1e588c91
     linkedCells: []
     tileCells: []
     tileSetIndex: 0

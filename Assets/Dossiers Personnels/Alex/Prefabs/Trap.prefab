@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 544553393986746680}
+  - component: {fileID: 815239193117413195}
   - component: {fileID: 4037266920822449901}
   - component: {fileID: 7691709988344294560}
   - component: {fileID: 1113393098407831506}
@@ -38,6 +39,20 @@ Transform:
   - {fileID: 7687544504073579736}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &815239193117413195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959689986000236469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 284505a520d14ca4182849fd167c5658, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CrossbowAI
+  baseStat: {fileID: 11400000, guid: 74d4f6cad9ded7341b86f7c3d736032e, type: 2}
+  arrowPrefab: {fileID: 6655597044890654371, guid: 7d508c6c7f9a54847a385ca71b6b98c4, type: 3}
 --- !u!114 &4037266920822449901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,11 +140,11 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1545114021
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Sprite: {fileID: 8686656266880190172, guid: d65339c3afaea6a4f8b136c585e06b15, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -173,8 +188,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.1}
-  m_Radius: 0.6
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.55
 --- !u!50 &1852614733753871707
 Rigidbody2D:
   serializedVersion: 5
@@ -309,8 +324,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1545114021
+  m_SortingLayer: 2
   m_SortingOrder: -1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}

@@ -27,6 +27,8 @@ public class BossActions : MonoBehaviour
 	public float attackRadius = 1f;
 	Vector2 attackTransform;
 	public float fistSpeed = 1f;
+	public float cooldown = 0.25f;
+	float timeForNextAttack = 0f;
 
 	private void Start()
 	{
@@ -47,25 +49,32 @@ public class BossActions : MonoBehaviour
 		if (moveDir != Vector2.zero)
 			lastDir = moveDir;
 
+		//Cooldown timer
+		if (timeForNextAttack < cooldown) //Maybe individual cooldowns for each attack?
+			timeForNextAttack += Time.deltaTime;
+
 		//Basic attack input & function call
-		if (basicAttack.WasPressedThisFrame())
+		if (basicAttack.WasPressedThisFrame() && cooldown <= timeForNextAttack)
 		{
 			Debug.Log("Basic Attack");
 			BasicAttack(lastDir);
+			timeForNextAttack = 0;
 		}
 
 		//Special attack 1 input & function call
-		if (specialAttackLeft.WasPressedThisFrame())
+		if (specialAttackLeft.WasPressedThisFrame() && cooldown <= timeForNextAttack)
 		{
 			Debug.Log("Special Attack Left");
 			SpecialAttackLeft(lastDir);
+			timeForNextAttack = 0;
 		}
 
 		//Special attack 2 input & function call
-		if (specialAttackRight.WasPressedThisFrame())
+		if (specialAttackRight.WasPressedThisFrame() && cooldown <= timeForNextAttack)
 		{
 			Debug.Log("Special Attack Right");
 			SpecialAttackRight(lastDir);
+			timeForNextAttack = 0;
 		}
 	}
 

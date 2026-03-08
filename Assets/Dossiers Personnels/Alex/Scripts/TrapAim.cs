@@ -12,6 +12,8 @@ public class TrapAim : MonoBehaviour
 	public Vector2 cursorPos;
 	public GameObject bullet;
 	public float bulletVelocity = 5;
+	public float cooldown = 0.5f;
+	float timeForNextAttack = 0f;
 
 	private void Start()
 	{
@@ -22,8 +24,15 @@ public class TrapAim : MonoBehaviour
 
 	private void Update()
 	{
-		if (basicActionInput.WasPressedThisFrame())
+		//Cooldown timer
+		if (timeForNextAttack < cooldown) //Maybe individual cooldowns for each attack?
+			timeForNextAttack += Time.deltaTime;
+
+		if (basicActionInput.WasPressedThisFrame() && cooldown <= timeForNextAttack)
+		{
 			Shoot();
+			timeForNextAttack = 0;
+		}
 	}
 
 	private void FixedUpdate()
