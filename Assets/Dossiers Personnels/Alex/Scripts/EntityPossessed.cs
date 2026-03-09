@@ -47,6 +47,9 @@ public class EntityPossessed : MonoBehaviour
 		//Calls DePossessing when pressing the Possess input
 		if (possessInput.WasPressedThisFrame() && isPossessed)
 			DePossessing();
+
+		if (Camera.main.GetComponent<CameraManagement>().GetTransitionning())
+			DePossessing();
 	}
 
 	public void Possessing(GameObject playerSmol)
@@ -80,12 +83,17 @@ public class EntityPossessed : MonoBehaviour
 		RuntimeManager.PlayOneShot(possessingSFX);
 	}
 
-	void DePossessing()
+	public void DePossessing()
 	{
 		//Activates Smol game object at entity position and disables scripts from this entity
 		isPossessed = false;
-		smol.SetActive(true);
-		smol.transform.position = transform.position;
+
+		if (smol != null)
+		{
+			smol.SetActive(true);
+			smol.transform.position = transform.position;
+			RuntimeManager.PlayOneShot(depossessingSFX);
+		}
 
 		//Deactivate all child game objects
 		for (int i = 0; i < transform.childCount; i++)
@@ -104,9 +112,15 @@ public class EntityPossessed : MonoBehaviour
 			crossbowAI.enabled = true;
 		}
 
+		smol = null;
+
 		//Activate AI script
 
 		//Call DePossessing FMOD SFX
-		RuntimeManager.PlayOneShot(depossessingSFX);
+	}
+
+	private void OnDisable()
+	{
+		DePossessing();
 	}
 }

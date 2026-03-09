@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ff8d0b757af86c479968a12f02a526c, type: 3}
   m_Name: SlimeStats_SO
   m_EditorClassIdentifier: Assembly-CSharp::SlimeStats_SO
-  <chargeSpeed>k__BackingField: 0.3
+  <chargeSpeed>k__BackingField: 1
   <health>k__BackingField: 3
   <power>k__BackingField: 1
   <attackCooldown>k__BackingField: 0.5
