@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class HeroParty : MonoBehaviour
 {
     public static HeroParty Instance { get; private set; }
-    private Room currentRoom; // Room the party is currently in
+    private RoomInstance currentRoom; // RoomInstance the party is currently in
     List<GameObject> heroList = new List<GameObject>();
     private bool roomFinished; //If room party is in has monsters or not
     private bool allAtDoor; //If all heros are at the door
@@ -25,7 +25,7 @@ public class HeroParty : MonoBehaviour
             Instance = this;
         }
 
-        currentRoom = GameObject.Find("Room").GetComponent<Room>();
+        currentRoom = GameObject.Find("Room").GetComponent<RoomInstance>();
     }
 
     // Gives list of heros
@@ -42,7 +42,7 @@ public class HeroParty : MonoBehaviour
     }
 
     //Gives current room
-    public Room GetRoom()
+    public RoomInstance GetRoom()
     {
         return currentRoom;
     }
@@ -99,7 +99,7 @@ public class HeroParty : MonoBehaviour
                     {
                         roomFinished = false;
                         atDoor = false;
-                        currentRoom = GameObject.Find("Room2").GetComponent<Room>();  // toNextRoom[1].GetParent()
+                        currentRoom = GameObject.Find("Room2").GetComponent<RoomInstance>();  // toNextRoom[1].GetParent()
                     }
                 }
             }
