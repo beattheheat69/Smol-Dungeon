@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.03.00">
 	<object class="Workspace" id="{4fc0a08f-1523-40c7-866a-e4d87c7ff055}">
-		<property name="builtBanksOutputDirectory">
-			<value>../../../../../Documents/Unity Projects/Smol-Dungeon/FMOD</value>
+		<property name="builtBanksOutputDirectory" />
+		<property name="builtBanksSeparateAssets">
+			<value>true</value>
 		</property>
 		<relationship name="masterEventFolder">
 			<destination>{27053242-1796-46ce-ace3-4455c3149d03}</destination>

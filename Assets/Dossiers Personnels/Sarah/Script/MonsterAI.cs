@@ -5,7 +5,7 @@ public class MonsterAI : Character, IDamageable
 {
     [SerializeField]
     SlimeStats_SO baseStat; // Base stats of slimes
-
+    CameraManagement cameraStat; // check the stat of the camera
     GameObject target = null; // current hero target
     Rigidbody2D rb;  //Object rigidbody
     float timeCooldown; //Time that passes before next attack
@@ -16,11 +16,14 @@ public class MonsterAI : Character, IDamageable
         rb = GetComponent<Rigidbody2D>();
         health = baseStat.health;
         power = baseStat.power;
+        cameraStat = Camera.main.GetComponent<CameraManagement>();
     }
 
     //Check for target, attack if possible
     private void FixedUpdate()
     {
+        //If camera is moving do nothing
+        if (cameraStat.GetTransitionning()) return;
         //If no target check for one
         if (target == null)
         {

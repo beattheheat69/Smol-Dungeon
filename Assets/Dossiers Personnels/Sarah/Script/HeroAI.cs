@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class HeroAI : Hero, IDamageable
 {
@@ -10,6 +11,7 @@ public class HeroAI : Hero, IDamageable
 
     GameObject target = null; // Target enemy will charge
     Rigidbody2D rb;  //Object rigidbody
+    CameraManagement cameraStat; // check the stat of the camera
     float timeCooldown; //Time that passes before next attack
     bool attacking = false; // hero in attack mode
     Vector2 lastMoveDirection; // Direction the hero is looking for the attack
@@ -21,46 +23,53 @@ public class HeroAI : Hero, IDamageable
         rb = GetComponent<Rigidbody2D>();
         health = baseStats.health;
         power = baseStats.power;
+        cameraStat = Camera.main.GetComponent<CameraManagement>();
+        if (HeroParty.Instance != null)
+        {
+            HeroParty.Instance.RegisterHeroAI(this.gameObject);
+        }
     }
 
     //Check for target, attack if possible
     private void FixedUpdate()
     {
+        //If camera is moving do nothing
+        if (cameraStat.GetTransitionning()) return;
         if (!HeroParty.Instance.GetRoomFinised())
-        {
-            //If no target check for one
-            if (target == null)
             {
-                FindTarget();
-                // If still no target room is finished, jump to next update
+                //If no target check for one
                 if (target == null)
                 {
-                    HeroParty.Instance.SetRoomFinised(true);
-                    return;
-                }
-            }
-
-            //Move to target
-            MoveEnemy();
-
-            //Check if can attack
-            if (attacking && timeCooldown <= 0)
-            {
-                DoAttack();
-
-                //If target dead, find new one
-                if (!CheckTargetAlive())
-                {
                     FindTarget();
+                    // If still no target room is finished, jump to next update
+                    if (target == null)
+                    {
+                        HeroParty.Instance.SetRoomFinised(true);
+                        return;
+                    }
+                }
+
+                //Move to target
+                MoveEnemy();
+
+                //Check if can attack
+                if (attacking && timeCooldown <= 0)
+                {
+                    DoAttack();
+
+                    //If target dead, find new one
+                    if (!CheckTargetAlive())
+                    {
+                        FindTarget();
+                    }
+                }
+
+                //attack cooldown
+                if (timeCooldown > 0)
+                {
+                    timeCooldown -= Time.deltaTime;
                 }
             }
-
-            //attack cooldown
-            if (timeCooldown > 0)
-            {
-                timeCooldown -= Time.deltaTime;
-            }
-        }
     }
 
     //Enter in attack mode when colliding with target
@@ -190,10 +199,8 @@ public class HeroAI : Hero, IDamageable
     //Move hero toward the exit door to go to next room
     public bool MoveToDoor(Vector3 position)
     {
-
         Vector2 direction = (position - transform.position).normalized;
         rb.MovePosition(rb.position + direction * baseStats.chargeSpeed * Time.fixedDeltaTime);
-
         //Check if hero still needs to move
         if (Vector2.Distance(transform.position, position) > 0.05f)
         {

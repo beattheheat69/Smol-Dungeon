@@ -78,4 +78,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CrossbowAI
   baseStat: {fileID: 11400000, guid: 74d4f6cad9ded7341b86f7c3d736032e, type: 2}
-  arrowPrefab: {fileID: 289595377542297532, guid: e9a173728baefd54eac8abc2589caa2b, type: 3}
+  arrowPrefab: {fileID: 8861040633127125949, guid: ab9a87c63fd34eb439f08e354bcf4d73, type: 3}

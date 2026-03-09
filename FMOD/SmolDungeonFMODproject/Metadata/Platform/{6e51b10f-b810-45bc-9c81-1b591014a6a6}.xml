@@ -8,7 +8,7 @@
 			<value>Desktop</value>
 		</property>
 		<property name="subDirectory">
-			<value>Desktop</value>
+			<value>D:/Unity Projects/Smol Dungeon/FMOD/SmolDungeonFMODproject/Build/Desktop</value>
 		</property>
 		<property name="speakerFormat">
 			<value>5</value>

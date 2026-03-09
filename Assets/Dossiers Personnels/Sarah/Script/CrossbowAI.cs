@@ -5,45 +5,52 @@ public class CrossbowAI : MonoBehaviour
     [SerializeField]
     CrossbowStats_SO baseStat; // Base stats of slimes
     [SerializeField]
-    GameObject arrowPrefab;
+    GameObject arrowPrefab; //Prefab for shot arrow
+    CameraManagement cameraStat; // check the stat of the camera
     GameObject target = null; // current hero target
     float timeCooldown; //Time that passes before next attack;
+
+    private void Start()
+    {
+        cameraStat = Camera.main.GetComponent<CameraManagement>();
+    }
 
     //Check for target, attack if possible
     private void FixedUpdate()
     {
-        //If no target check for one
-        if (target == null)
-        {
-            FindTarget();
-        }
-
-        if (target != null)
-        {
-            //Check if can attack
-            if (timeCooldown <= 0)
+        //If camera is moving do nothing
+        if (cameraStat.GetTransitionning()) return;
+            //If no target check for one
+            if (target == null)
             {
-                DoAttack();
+                FindTarget();
+            }
 
-                //If target dead, find new one
-                if (!CheckTargetAlive())
+            if (target != null)
+            {
+                //Check if can attack
+                if (timeCooldown <= 0)
                 {
-                    FindTarget();
-                    if (target == null)
+                    DoAttack();
+
+                    //If target dead, find new one
+                    if (!CheckTargetAlive())
                     {
-                        transform.parent.gameObject.SetActive(false);
+                        FindTarget();
+                        if (target == null)
+                        {
+                            transform.parent.gameObject.SetActive(false);
+                        }
                     }
                 }
             }
-        }
 
-        //attack cooldown
-        if (timeCooldown > 0)
-        {
-            timeCooldown -= Time.deltaTime;
-        }
+            //attack cooldown
+            if (timeCooldown > 0)
+            {
+                timeCooldown -= Time.deltaTime;
+            }
     }
-
 
     //Check if target still alive
     bool CheckTargetAlive()
@@ -51,13 +58,17 @@ public class CrossbowAI : MonoBehaviour
         return target.activeSelf;
     }
 
-    //Does an attack with a range infront of him, according to his direction of movement
+    //Shoot an arrow towards target
     private void DoAttack()
     {
+        //Instantiate an arrow arrow 
         GameObject arrow = Instantiate(arrowPrefab, transform.position, transform.rotation);
+        //Direction the arrow musr go
         Vector2 direction = (target.transform.position - transform.position).normalized;
+        //Turn point of arrow towards target
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         arrow.transform.rotation = Quaternion.Euler(0, 0, angle - 90);
+        //Shoots arrow
         arrow.GetComponent<Rigidbody2D>().linearVelocity = direction * baseStat.arrowSpeed;
         //Start cooldown
         timeCooldown = baseStat.attackCooldown;
