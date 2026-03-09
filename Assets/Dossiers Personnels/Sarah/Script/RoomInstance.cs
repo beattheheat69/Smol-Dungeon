@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Room : MonoBehaviour
+public class RoomInstance : MonoBehaviour
 {
     [SerializeField]
     GameObject enemyGroup; //Parent of all enemies in room
