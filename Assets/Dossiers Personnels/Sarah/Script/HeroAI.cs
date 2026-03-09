@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class HeroAI : Hero, IDamageable
 {
@@ -23,6 +24,10 @@ public class HeroAI : Hero, IDamageable
         health = baseStats.health;
         power = baseStats.power;
         cameraStat = Camera.main.GetComponent<CameraManagement>();
+        if (HeroParty.Instance != null)
+        {
+            HeroParty.Instance.RegisterHeroAI(this.gameObject);
+        }
     }
 
     //Check for target, attack if possible
@@ -194,10 +199,8 @@ public class HeroAI : Hero, IDamageable
     //Move hero toward the exit door to go to next room
     public bool MoveToDoor(Vector3 position)
     {
-
         Vector2 direction = (position - transform.position).normalized;
         rb.MovePosition(rb.position + direction * baseStats.chargeSpeed * Time.fixedDeltaTime);
-
         //Check if hero still needs to move
         if (Vector2.Distance(transform.position, position) > 0.05f)
         {
