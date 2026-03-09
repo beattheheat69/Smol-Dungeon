@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
+using System;
 
 public class EntityButton : MonoBehaviour
 {
@@ -8,13 +9,18 @@ public class EntityButton : MonoBehaviour
     public int entityLevel = 0;
     public int entityPointCost = 1;
 
-    public TextMeshProUGUI textElement;
+    public GameObject cursorTextBox;
+
+    [HideInInspector]
+    public TextMeshProUGUI cursorTextElement;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        textElement.text = entityName + "<br>LV:" + entityLevel + " EP:" + entityPointCost;
-        
+        //cursorTextBox = GameObject.Find("CursorTextBox");
+        //Note: I'd eventually like for the button to find the CursorTextBox automatically to be compatible with the Prefab
+        cursorTextElement = cursorTextBox.GetComponentInChildren<TextMeshProUGUI>();
+        cursorTextBox.SetActive(false);
     }
 
     // Update is called once per frame
@@ -25,6 +31,12 @@ public class EntityButton : MonoBehaviour
 
     public void ChangeText()
     {
-        textElement.text = entityName + "<br>LV:" + entityLevel + " EP:" + entityPointCost;
+        //Set the text of the text box to display the stats of the current entity
+        cursorTextElement.SetText(entityName + "<br>LV:" + entityLevel + " EP:" + entityPointCost);
+    }
+
+    public void ToggleTextBox(Boolean state)
+    {
+        cursorTextBox.SetActive(state);
     }
 }

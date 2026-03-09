@@ -3,7 +3,7 @@ using UnityEngine;
 public class EntityManager : MonoBehaviour
 {
     public int points;
-    public string currentlySelected;
+    public string selectedEntity;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -15,5 +15,10 @@ public class EntityManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void SelectEntity(string entity)
+    {
+        selectedEntity = entity;
     }
 }
