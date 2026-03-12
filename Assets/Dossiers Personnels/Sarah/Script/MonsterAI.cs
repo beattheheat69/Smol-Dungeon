@@ -4,7 +4,9 @@ using UnityEngine;
 public class MonsterAI : Character, IDamageable
 {
     [SerializeField]
-    SlimeStats_SO baseStat; // Base stats of slimes
+    SlimeStats_SO baseStats; // Base stats of slimes
+    [SerializeField]
+    LayerMask colliderLayer;
     CameraManagement cameraStat; // check the stat of the camera
     GameObject target = null; // current hero target
     Rigidbody2D rb;  //Object rigidbody
@@ -14,8 +16,8 @@ public class MonsterAI : Character, IDamageable
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        health = baseStat.health;
-        power = baseStat.power;
+        health = baseStats.health;
+        power = baseStats.power;
         cameraStat = Camera.main.GetComponent<CameraManagement>();
     }
 
@@ -87,27 +89,48 @@ public class MonsterAI : Character, IDamageable
         float randVal = Random.Range(1, 100);
 
         //Check is attack succeded
-        if (randVal <= baseStat.attackChance)
+        if (randVal <= baseStats.attackChance)
         {
             IDamageable hitTarget = target.GetComponent<IDamageable>();
             hitTarget.takeDamage(power);
         }
         //Start cooldown
-        timeCooldown = baseStat.attackCooldown;
+        timeCooldown = baseStats.attackCooldown;
     }
 
     //Move monster towards target
     private void MoveEnemy()
     {
-        //caculate distance between monster and target with consistent speed
+        //caculate distance between hero and target with consistent speed
         Vector2 direction = (target.transform.position - transform.position).normalized;
-        // Move monster toward target
-        rb.MovePosition(rb.position + direction * baseStat.chargeSpeed * Time.fixedDeltaTime);
-        if (Vector2.Distance(transform.position, target.transform.position) < 0.13f)
+        // Move hero toward target
+        rb.MovePosition(rb.position + direction * baseStats.chargeSpeed * Time.fixedDeltaTime);
+        if (Vector2.Distance(transform.position, target.transform.position) < 0.7f)
         {
-            //Push back enemy if overlapping with hero
-            transform.position = Vector2.MoveTowards(transform.position, target.transform.position, -baseStat.chargeSpeed * Time.deltaTime);
+            Vector2 pushDirect = ((Vector2)transform.position - (Vector2)target.transform.position).normalized;
+            transform.position += (Vector3)pushDirect * baseStats.chargeSpeed * Time.deltaTime;
         }
+        Correctoverlap();
+    }
+
+    private void Correctoverlap()
+    {
+        Collider2D[] touchingColliders = Physics2D.OverlapCircleAll(transform.position, 0.5f, colliderLayer);
+        foreach (Collider2D collidObject in touchingColliders)
+        {
+            if (collidObject.gameObject != this.gameObject)
+            {
+                Vector2 pushDirect = ((Vector2)transform.position - (Vector2)collidObject.transform.position).normalized;
+                transform.position += (Vector3)pushDirect * baseStats.chargeSpeed * Time.deltaTime;
+            }
+        }
+    }
+
+    //Show hero collision sphere for overlap
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, 0.5f);
     }
 
     //Find which hero is the closest
