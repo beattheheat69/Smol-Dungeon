@@ -32,13 +32,16 @@ public class HeroAI : Hero, IDamageable
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        health = baseStats.health;
-        power = baseStats.power;
         cameraStat = Camera.main.GetComponent<CameraManagement>();
         //Add hero to the party if party existes
         if (HeroParty.Instance != null)
         {
             HeroParty.Instance.RegisterHeroAI(this.gameObject);
+        }
+        if (HeroDataManager.Instance != null)
+        {
+            base.index = HeroDataManager.Instance.party.Count;
+            HeroDataManager.Instance.party.Add(new HeroData { currentHealt = baseStats.health });       
         }
     }
 
@@ -120,8 +123,11 @@ public class HeroAI : Hero, IDamageable
             Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(CheckLastDirection(), lastAngle, monsterLayer);
             foreach (Collider2D enemy in hitEnemies)
             {
-                IDamageable hitTarget = target.GetComponent<IDamageable>();
-                hitTarget.takeDamage(power);
+
+                if (enemy.TryGetComponent(out IDamageable hitTarget))
+                {
+                    hitTarget.takeDamage(baseStats.power);  // add buff or debuff
+                }
             }
         }
         //Start cooldown
@@ -212,7 +218,6 @@ public class HeroAI : Hero, IDamageable
         RaycastHit2D hit = Physics2D.CircleCast(transform.position, 0.5f, moveDirection, castDistance, obsticleLayer);
         if (hit.collider != null)
         {
-            Debug.Log(hit.collider.name);
             Vector2 left = Vector2.Perpendicular(moveDirection).normalized;
             Vector2 right = -left;
             bool leftClear = !Physics2D.CircleCast(transform.position, 0.5f, left, 0.4f, obsticleLayer);

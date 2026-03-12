@@ -280,7 +280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 815239193117413195, guid: faa507454af0e1349ba001927df98f28, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 815239193117413195, guid: faa507454af0e1349ba001927df98f28, type: 3}
       propertyPath: arrowPrefab
@@ -296,7 +296,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4037266920822449901, guid: faa507454af0e1349ba001927df98f28, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3225,11 +3225,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3179776518944460967, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.08
+      value: -7.01
       objectReference: {fileID: 0}
     - target: {fileID: 3179776518944460967, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.15
+      value: -0.44
       objectReference: {fileID: 0}
     - target: {fileID: 3179776518944460967, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3373,11 +3373,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 337737462560331934, guid: bff5ebd5b1e182e4d87db51a6d66373a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.44
+      value: 6.08
       objectReference: {fileID: 0}
     - target: {fileID: 337737462560331934, guid: bff5ebd5b1e182e4d87db51a6d66373a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.99
+      value: -2.71
       objectReference: {fileID: 0}
     - target: {fileID: 337737462560331934, guid: bff5ebd5b1e182e4d87db51a6d66373a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4716,11 +4716,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 337737462560331934, guid: bff5ebd5b1e182e4d87db51a6d66373a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.46
+      value: 4.23
       objectReference: {fileID: 0}
     - target: {fileID: 337737462560331934, guid: bff5ebd5b1e182e4d87db51a6d66373a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.22
+      value: 2.58
       objectReference: {fileID: 0}
     - target: {fileID: 337737462560331934, guid: bff5ebd5b1e182e4d87db51a6d66373a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5246,6 +5246,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 544553393986746680, guid: faa507454af0e1349ba001927df98f28, type: 3}
   m_PrefabInstance: {fileID: 765286545}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2071373722
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2071373723}
+  - component: {fileID: 2071373724}
+  m_Layer: 0
+  m_Name: HeroStatsManagement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2071373723
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071373722}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.98706, y: -0.09331, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2071373724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071373722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bf336a6f8822f64e85b9a0278807aad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HeroDataManager
 --- !u!1001 &529247452228329800
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5272,11 +5316,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4726966138574128695, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.08
+      value: -2.53
       objectReference: {fileID: 0}
     - target: {fileID: 4726966138574128695, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.21
+      value: -2.37
       objectReference: {fileID: 0}
     - target: {fileID: 4852757133940975809, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5342,6 +5386,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1.74
       objectReference: {fileID: 0}
+    - target: {fileID: 9083877110151141858, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -5367,3 +5415,4 @@ SceneRoots:
   - {fileID: 1371487031}
   - {fileID: 1207770789}
   - {fileID: 1917745737}
+  - {fileID: 2071373723}

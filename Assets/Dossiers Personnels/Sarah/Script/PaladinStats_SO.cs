@@ -6,7 +6,7 @@ public class PaladinStats_SO : ScriptableObject
     [field: SerializeField]
     public float chargeSpeed { get; private set; }
     [field: SerializeField]
-    public float health { get; private set; }
+    public int health { get; private set; }
     [field: SerializeField]
     public int power { get; private set; }
     [field: SerializeField]
@@ -16,5 +16,7 @@ public class PaladinStats_SO : ScriptableObject
     [field: SerializeField]
     public float dodgeChange { get; private set; }
     [field: SerializeField]
-    public float Nbpotion { get; private set; }
+    public int Nbpotion { get; private set; }
+
+    //permanent buffs (and debuffs)
 }

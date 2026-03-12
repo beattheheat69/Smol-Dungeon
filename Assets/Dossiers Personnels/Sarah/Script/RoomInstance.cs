@@ -12,7 +12,7 @@ public class RoomInstance : MonoBehaviour
 
     private void Awake()
     {
-        if (this.transform.Find("CameraPoint") != null)
+        if (transform.Find("CameraPoint") != null)
         {
             //Fill list of all monsters in room
             foreach (Transform child in enemyGroup.transform)

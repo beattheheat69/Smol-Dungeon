@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    protected float health; //enemy current health
+    protected int health; //enemy current health
     protected int power; //enemy urrent power
 
     //Take dammage when hit

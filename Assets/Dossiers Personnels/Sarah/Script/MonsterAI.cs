@@ -91,8 +91,11 @@ public class MonsterAI : Character, IDamageable
         //Check is attack succeded
         if (randVal <= baseStats.attackChance)
         {
-            IDamageable hitTarget = target.GetComponent<IDamageable>();
-            hitTarget.takeDamage(power);
+            if (target.TryGetComponent(out IDamageable hitTarget))
+            {
+                hitTarget.takeDamage(power);
+            }
+            
         }
         //Start cooldown
         timeCooldown = baseStats.attackCooldown;

@@ -5,26 +5,25 @@ using UnityEngine.SceneManagement;
 public class HeroParty : MonoBehaviour
 {
     public static HeroParty Instance { get; private set; }
-    private RoomInstance currentRoom; // RoomInstance the party is currently in
+    
     List<GameObject> heroList = new List<GameObject>();
+    private RoomInstance currentRoom; // RoomInstance the party is currently in
+    //To temporarily move party to next rooms
     private bool roomFinished; //If room party is in has monsters or not
     private bool allAtDoor; //If all heros are at the door
     private bool allAtDoor2; //If all heros are at the door
     private bool allAtDoor3; //If all heros are at the door
-    private bool atDoor; //If party at the door
 
     void Awake()
     {
         //singleton behaviour
         if (Instance != null && Instance != this)
         {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            Instance = this;
+            Destroy(gameObject);
+            return;
         }
 
+        Instance = this;
         currentRoom = GameObject.Find("Room").GetComponent<RoomInstance>();
     }
 
@@ -98,7 +97,6 @@ public class HeroParty : MonoBehaviour
                     if (allAtDoor2)
                     {
                         roomFinished = false;
-                        atDoor = false;
                         currentRoom = GameObject.Find("Room2").GetComponent<RoomInstance>();  // toNextRoom[1].GetParent()
                     }
                 }
