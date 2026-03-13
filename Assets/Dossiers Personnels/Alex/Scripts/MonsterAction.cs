@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.GraphicsBuffer;
 
 public class MonsterAction : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class MonsterAction : MonoBehaviour
 	Vector2 attackTransform;
 	public float cooldown = 0.5f;
 	float timeForNextAttack = 0f;
+
+	[SerializeField] SlimeStats_SO baseStats;
 
 	private void Start()
 	{
@@ -48,9 +51,9 @@ public class MonsterAction : MonoBehaviour
 		foreach (RaycastHit2D hit in hits)
 		{
 			Debug.Log(hit.transform.name + " hit!");
-			HeroPlaceholderTest heroPlaceholderTest = hit.transform.GetComponent<HeroPlaceholderTest>();
-			if (heroPlaceholderTest != null)
-				heroPlaceholderTest.TakeDamage(1);
+			HeroAI heroAI = hit.transform.GetComponent<HeroAI>();
+			if (heroAI.TryGetComponent(out IDamageable hitTarget))
+				hitTarget.takeDamage(baseStats.power);
 		}
 	}
 

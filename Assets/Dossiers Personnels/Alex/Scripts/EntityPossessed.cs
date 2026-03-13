@@ -23,6 +23,8 @@ public class EntityPossessed : MonoBehaviour
 	public EventReference possessingSFX;
 	public EventReference depossessingSFX;
 
+	[SerializeField] int monsterHealth;
+
 
 	void Start()
 	{
@@ -117,6 +119,7 @@ public class EntityPossessed : MonoBehaviour
 		//Activate AI script
 
 		//Call DePossessing FMOD SFX
+		RuntimeManager.PlayOneShot(depossessingSFX);
 	}
 
 	private void OnDisable()

@@ -2,7 +2,7 @@ using Mono.Cecil.Cil;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class BossActions : MonoBehaviour
+public class BossActions : MonoBehaviour, IDamageable
 {
 	//Controls boss' actions
 
@@ -30,6 +30,9 @@ public class BossActions : MonoBehaviour
 	public float cooldown = 0.25f;
 	float timeForNextAttack = 0f;
 
+	[SerializeField] SlimeStats_SO stats;
+	[SerializeField] int health;
+
 	private void Start()
 	{
 		//Gets all player inputs
@@ -38,6 +41,7 @@ public class BossActions : MonoBehaviour
 		specialAttackLeft = playerInput.actions["SpecialLeft"];
 		specialAttackRight = playerInput.actions["SpecialRight"];
 		moveInput = playerInput.actions["Move"];
+		health = stats.health;
 	}
 
 	private void Update()
@@ -88,9 +92,9 @@ public class BossActions : MonoBehaviour
 		foreach (RaycastHit2D hit in hits)
 		{
 			Debug.Log(hit.transform.name + " hit!");
-			HeroPlaceholderTest heroPlaceholderTest = hit.transform.GetComponent<HeroPlaceholderTest>();
-			if (heroPlaceholderTest != null)
-				heroPlaceholderTest.TakeDamage(1);
+			HeroBossAI heroBossAI = hit.transform.GetComponent<HeroBossAI>();
+			if (heroBossAI.TryGetComponent(out IDamageable hitTarget))
+				hitTarget.takeDamage(stats.power);
 		}
 	}
 
@@ -115,5 +119,12 @@ public class BossActions : MonoBehaviour
 	private void OnDrawGizmos() //Draws a circle gizmo to display basic attack shape and radius (only works when Gizmos is enabled in play mode)
 	{
 		Gizmos.DrawWireSphere(attackTransform, attackRadius);
+	}
+
+	public void takeDamage(int amount)
+	{
+		health -= amount;
+		if (health <= 0)
+			Destroy(gameObject);
 	}
 }
