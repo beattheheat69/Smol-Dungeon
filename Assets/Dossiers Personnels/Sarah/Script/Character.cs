@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public class Character : MonoBehaviour, IDamageable
 {
-    protected float health; //enemy current health
+    protected int health; //enemy current health
     protected int power; //enemy urrent power
 
     //Take dammage when hit

@@ -52,7 +52,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 961acdd40c7e91746ba1101eac605bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MonsterAI
-  baseStat: {fileID: 11400000, guid: 4a3fd8e14f41d6f4abd234816b251c47, type: 2}
+  baseStats: {fileID: 11400000, guid: 4a3fd8e14f41d6f4abd234816b251c47, type: 2}
+  colliderLayer:
+    serializedVersion: 2
+    m_Bits: 320
 --- !u!114 &7690966081941423871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,6 +86,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   attackRadius: 0.5
+  cooldown: 0.5
 --- !u!114 &9066454197927771865
 MonoBehaviour:
   m_ObjectHideFlags: 0
