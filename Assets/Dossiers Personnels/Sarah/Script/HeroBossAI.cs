@@ -13,10 +13,8 @@ public class HeroBossAI : Hero
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Debug.Log("hero hp :" + HeroDataManager.Instance.GetHealt(index));
         rb = GetComponent<Rigidbody2D>();
         FindTarget();
-
     }
 
     // Update is called once per frame

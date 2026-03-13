@@ -1,7 +1,7 @@
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
-public class MonsterAI : Character, IDamageable
+public class MonsterAI : Character
 {
     [SerializeField]
     SlimeStats_SO baseStats; // Base stats of slimes
