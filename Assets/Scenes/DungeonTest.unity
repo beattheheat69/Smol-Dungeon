@@ -141,6 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04a64f3274f52f743bcd013b7fb1b8bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HeroAI
+  health: 0
   baseStats: {fileID: 11400000, guid: bcb7b7bbcc34c8849ad7212ff4de7e8c, type: 2}
   monsterLayer:
     serializedVersion: 2
@@ -3267,7 +3268,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8732874261007639630, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -5302,6 +5304,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 777042858928787020, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
+      propertyPath: baseStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 4a3fd8e14f41d6f4abd234816b251c47, type: 2}
     - target: {fileID: 1530907702276524436, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
       propertyPath: m_IsActive
       value: 0

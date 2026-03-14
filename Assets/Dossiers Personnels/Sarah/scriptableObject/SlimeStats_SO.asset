@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SlimeStats_SO
   m_EditorClassIdentifier: Assembly-CSharp::SlimeStats_SO
   <chargeSpeed>k__BackingField: 1
-  <health>k__BackingField: 3
+  <health>k__BackingField: 9
   <power>k__BackingField: 1
   <attackCooldown>k__BackingField: 0.5
   <attackChance>k__BackingField: 30
