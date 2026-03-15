@@ -1,3 +1,5 @@
+using Unity.VisualScripting;
+using UnityEditor.PackageManager.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -5,17 +7,19 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
-
+    [Header("DEBUG - Continue")]
     public Button continueButton;
     [SerializeField] bool isContinueAvailable;
 
-    [SerializeField] GameObject pauseWindowPrefab;
+    [Header("Pause Menu")]
+    [SerializeField] Canvas pauseWindowPrefab;
+    [HideInInspector] public bool isGamePaused = false;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        DontDestroyOnLoad(this);
     }
 
     // Update is called once per frame
@@ -33,16 +37,17 @@ public class MenuManager : MonoBehaviour
 
         //FOR DEBUG PURPOSES (Test Pause Menu)
 
+        //If the Pause button is pressed
         if (UnityEngine.InputSystem.Keyboard.current.escapeKey.wasPressedThisFrame)
         {
-            PopUpWindow(pauseWindowPrefab);
+            //Pause the game
+            PauseGame();
         }
     }
 
     public void LoadNewGame()
     {
         //Load the scene with the Dungeon Shaping Screen
-        //SceneManager.LoadScene("Dungeon Shape Screen");
         SceneManager.LoadSceneAsync("DungeonTest");
     }
 
@@ -56,14 +61,29 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    public void PopUpWindow(GameObject window)
+    public void PopUpWindow(Canvas window)
     {
-        //Put the window in the center of the screen
-        window.transform.localPosition = Vector3.zero;
-
         //Make the window appear
-        window.SetActive(true);
+        window.gameObject.SetActive(true);
     }
+
+    public void PauseGame()
+    {
+
+        if (isGamePaused) { 
+            Time.timeScale = 1.0f; //Unfreeze the action
+            pauseWindowPrefab.gameObject.SetActive(false); //Remove the pause menu window
+            isGamePaused = false; //Set the boolean value to signal the game is unpaused
+        }
+
+        else
+        {
+            Time.timeScale = 0.0f; //Freeze the action
+            pauseWindowPrefab.gameObject.SetActive(true); //Spawn the pause menu window
+            isGamePaused = true; //Set the boolean value to signal the game is paused
+        }
+    }
+
 
     public void SetFullScreen (bool fullscreen)
     {

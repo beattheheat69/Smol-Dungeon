@@ -11,6 +11,7 @@ TagManager:
   - Hero
   - Room
   - Group
+  - FlavorTextBox
   layers:
   - Default
   - TransparentFX

@@ -3,24 +3,33 @@ using TMPro;
 using UnityEngine.EventSystems;
 using System;
 
-public class EntityButton : MonoBehaviour
+public class EntityButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public string entityName = "Entity";
+
+    [Header("Entity Data")]
+    public string entityName = "Entity Name";
     public int entityLevel = 0;
-    public int entityPointCost = 1;
+    public int entityCost = 1;
+    public string flavorText = "Entity Flavor Text";
 
-    public GameObject cursorTextBox;
+    [Header("Inheritances")]
+    [SerializeField] public TextMeshProUGUI nameTMP;
+    [SerializeField] public TextMeshProUGUI costTMP;
 
-    [HideInInspector]
-    public TextMeshProUGUI cursorTextElement;
+    [SerializeField] GameObject flavorTextBox;
+    [HideInInspector] TextMeshProUGUI flavorTextElement;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //cursorTextBox = GameObject.Find("CursorTextBox");
-        //Note: I'd eventually like for the button to find the CursorTextBox automatically to be compatible with the Prefab
-        cursorTextElement = cursorTextBox.GetComponentInChildren<TextMeshProUGUI>();
-        cursorTextBox.SetActive(false);
+        //Set the text elements of the button
+        nameTMP.SetText(entityName);
+        costTMP.SetText(entityCost.ToString());
+
+        //Set up the text box cursor
+        //flavorTextBox = GameObject.FindWithTag("FlavorTextBox"); 
+        flavorTextElement = flavorTextBox.GetComponentInChildren<TextMeshProUGUI>();
+        flavorTextBox.SetActive(false);
     }
 
     // Update is called once per frame
@@ -29,14 +38,21 @@ public class EntityButton : MonoBehaviour
         
     }
 
-    public void ChangeText()
+    public void ToggleTextBox(bool state)
     {
-        //Set the text of the text box to display the stats of the current entity
-        cursorTextElement.SetText(entityName + "<br>LV:" + entityLevel + " EP:" + entityPointCost);
+        flavorTextElement.SetText(flavorText);
+        flavorTextBox.SetActive(state);
     }
 
-    public void ToggleTextBox(Boolean state)
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        cursorTextBox.SetActive(state);
+        ToggleTextBox(true);
+        Debug.Log("Entered a button");
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        ToggleTextBox(false);
+        Debug.Log("Exited a button");
     }
 }
