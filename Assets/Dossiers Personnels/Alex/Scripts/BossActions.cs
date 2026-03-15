@@ -109,7 +109,7 @@ public class BossActions : MonoBehaviour, IDamageable
 	void SpecialAttackRight(Vector2 dir) //Throw fist across room
 	{
 		GameObject inst = Instantiate(fistAttack);
-		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90;
 		inst.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 		inst.transform.position = new Vector2(transform.position.x + dir.x, transform.position.y + dir.y);
 		inst.GetComponent<Rigidbody2D>().linearVelocity = dir.normalized * fistSpeed;
