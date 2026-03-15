@@ -6,9 +6,10 @@ public class ShockWaveAttack : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.CompareTag("Hero") && other.GetComponent<HeroPlaceholderTest>() != null)
-			other.GetComponent<HeroPlaceholderTest>().TakeDamage(damage);
-
-		Debug.Log(other.transform.name + " hit!");
+		if (other.CompareTag("Hero") && other.GetComponent<HeroBossAI>() != null)
+		{
+			other.GetComponent<HeroBossAI>().takeDamage(damage);
+			Debug.Log(other.transform.name + " hit by shockwave!");
+		}
 	}
 }

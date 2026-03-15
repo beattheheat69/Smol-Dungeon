@@ -20,7 +20,13 @@ public class BossAnim : MonoBehaviour
 
 	void AnimateBoss(Vector2 direction)
 	{
+		anim.SetBool("isWalking", true);
 		anim.SetFloat("DirX", direction.x);
 		anim.SetFloat("DirY", direction.y);
+	}
+
+	public void BossAttacks()
+	{
+		anim.SetTrigger("Attack");
 	}
 }

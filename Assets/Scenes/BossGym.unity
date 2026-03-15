@@ -925,6 +925,20 @@ MonoBehaviour:
   colliderLayer:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &310569699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310569692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd54ae265bce687499f872d4c8e85eb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DebugHealth
+  baseStats: {fileID: 0}
+  hp: 0
 --- !u!1 &1175195410
 GameObject:
   m_ObjectHideFlags: 0
@@ -2527,8 +2541,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2017977348}
   - component: {fileID: 2017977347}
-  - component: {fileID: 2017977346}
   - component: {fileID: 2017977349}
+  - component: {fileID: 2017977350}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2536,14 +2550,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &2017977346
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2017977345}
-  m_Enabled: 1
 --- !u!20 &2017977347
 Camera:
   m_ObjectHideFlags: 0
@@ -2654,6 +2660,20 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &2017977350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017977345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioListener
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 0}
 --- !u!1 &2108187200
 GameObject:
   m_ObjectHideFlags: 0
@@ -2816,7 +2836,7 @@ MonoBehaviour:
   attackRadius: 1
   fistSpeed: 5
   cooldown: 0.5
-  stats: {fileID: 11400000, guid: 4a3fd8e14f41d6f4abd234816b251c47, type: 2}
+  stats: {fileID: 11400000, guid: 2f45607a02687d844b774feacde5040b, type: 2}
   health: 0
 --- !u!70 &2108187206
 CapsuleCollider2D:
@@ -2881,7 +2901,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &2108187208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2894,8 +2914,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44014593b7cd0154695760bac49f0e37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossAnim
-  dirX: 0
-  dirY: 0
 --- !u!95 &2108187209
 Animator:
   serializedVersion: 7
@@ -2928,7 +2946,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 598055207838164354, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
       propertyPath: m_Name
-      value: HeroPlaceholder
+      value: Hero
       objectReference: {fileID: 0}
     - target: {fileID: 598055207838164354, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
       propertyPath: m_IsActive
@@ -2974,13 +2992,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8732874261007639630, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 598055207838164354, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
-      insertIndex: -1
+      insertIndex: 1
       addedObject: {fileID: 310569693}
+    - targetCorrespondingSourceObject: {fileID: 598055207838164354, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 310569699}
   m_SourcePrefab: {fileID: 100100000, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
