@@ -135,8 +135,8 @@ public class BossActions : MonoBehaviour, IDamageable
 		if (health <= 0)
 		{
 			//Defeat
-			SceneManager.LoadSceneAsync("MainMenu");
-			Destroy(gameObject);
+			GameObject.Find("Manager").GetComponent<RunStatus>().CallRestart(false);
+			gameObject.SetActive(false);
 		}
 	}
 }

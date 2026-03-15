@@ -45,15 +45,16 @@ public class MonsterAction : MonoBehaviour
 	{
 		//Adds current pos to last direction faced to get attack pos
 		attackTransform = new Vector2(transform.position.x + dir.x, transform.position.y + dir.y);
-		hits = Physics2D.CircleCastAll(attackTransform, attackRadius, Vector2.zero, masksToHit); //Vector2.zero necessary to not impact attackRadius or circle
+		hits = Physics2D.CircleCastAll(attackTransform, attackRadius, Vector2.zero, 0, masksToHit); //Vector2.zero necessary to not impact attackRadius or circle
 
 		//Checks all colliders hit for hero
 		foreach (RaycastHit2D hit in hits)
 		{
 			Debug.Log(hit.transform.name + " hit!");
+			//if (heroAI.TryGetComponent(out IDamageable hitTarget)) //BUG: One shots hero
+			//	hitTarget.takeDamage(baseStats.power);
 			HeroAI heroAI = hit.transform.GetComponent<HeroAI>();
-			if (heroAI.TryGetComponent(out IDamageable hitTarget))
-				hitTarget.takeDamage(baseStats.power);
+			heroAI.takeDamage(baseStats.power);
 		}
 	}
 
