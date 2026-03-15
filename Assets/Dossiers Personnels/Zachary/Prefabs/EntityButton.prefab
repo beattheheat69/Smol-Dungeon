@@ -217,6 +217,7 @@ MonoBehaviour:
   flavorText: Entity Flavor Text
   nameTMP: {fileID: 3658791084411811562}
   costTMP: {fileID: 3385800541577329209}
+  flavorTextBox: {fileID: 0}
 --- !u!1 &5213382362457853655
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,8 +285,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 00
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: eab63d957b2713340bf076c8770479b6, type: 2}
-  m_sharedMaterial: {fileID: 5358075261980127260, guid: eab63d957b2713340bf076c8770479b6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
+  m_sharedMaterial: {fileID: -6602767322224921027, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -421,8 +422,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: ENTITY NAME
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: eab63d957b2713340bf076c8770479b6, type: 2}
-  m_sharedMaterial: {fileID: 5358075261980127260, guid: eab63d957b2713340bf076c8770479b6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
+  m_sharedMaterial: {fileID: -6602767322224921027, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

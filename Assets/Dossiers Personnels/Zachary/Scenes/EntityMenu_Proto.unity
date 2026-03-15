@@ -295,8 +295,8 @@ MonoBehaviour:
   m_text: Some neat flavor text coming here soon. Like, pretty soon... Honestly just
     testing how the text looks like. Neat, eh?
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: eab63d957b2713340bf076c8770479b6, type: 2}
-  m_sharedMaterial: {fileID: 5358075261980127260, guid: eab63d957b2713340bf076c8770479b6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
+  m_sharedMaterial: {fileID: -6602767322224921027, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1609,8 +1609,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: MONSTERS
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 77517ea6b05cf6643868554b922ee3b8, type: 2}
-  m_sharedMaterial: {fileID: 6218853185846210574, guid: 77517ea6b05cf6643868554b922ee3b8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
+  m_sharedMaterial: {fileID: -6602767322224921027, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1784,8 +1784,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: TRAPS
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 77517ea6b05cf6643868554b922ee3b8, type: 2}
-  m_sharedMaterial: {fileID: 6218853185846210574, guid: 77517ea6b05cf6643868554b922ee3b8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
+  m_sharedMaterial: {fileID: -6602767322224921027, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
