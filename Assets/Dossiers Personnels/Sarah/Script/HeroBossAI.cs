@@ -92,7 +92,6 @@ public class HeroBossAI : Hero
         {
             IDamageable hitTarget = target.GetComponent<IDamageable>();
             hitTarget.takeDamage(baseStats.power);  // add buff or debuff
-            Debug.Log("Hero attacks!");
         }
         //Start cooldown
         timeCooldown = baseStats.attackCooldown;

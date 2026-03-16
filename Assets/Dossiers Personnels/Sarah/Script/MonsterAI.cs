@@ -12,6 +12,7 @@ public class MonsterAI : Character
     Rigidbody2D rb;  //Object rigidbody
     float timeCooldown; //Time that passes before next attack
     bool attacking = false; // monster in attack mode
+    bool atTarget = false;
 
     private void Start()
     {
@@ -32,8 +33,12 @@ public class MonsterAI : Character
             FindTarget();
         }
 
-        //Move to target
-        MoveEnemy();
+        if (!atTarget)
+        {
+            //Move to target
+            MoveEnemy();
+        }
+
 
         //Check if can attack
         if (attacking && timeCooldown <= 0)
@@ -91,12 +96,12 @@ public class MonsterAI : Character
         //Check is attack succeded
         if (randVal <= baseStats.attackChance)
         {
-            //if (target.TryGetComponent(out IDamageable hitTarget)) //BUG: One shots hero
-            //{
-            //    hitTarget.takeDamage(power);
-            //}
-			HeroAI heroAI = target.transform.GetComponent<HeroAI>();
-			heroAI.takeDamage(power);
+            if (target.TryGetComponent(out IDamageable hitTarget)) //BUG: One shots hero
+            {
+                hitTarget.takeDamage(power);
+            }
+			/*HeroAI heroAI = target.transform.GetComponent<HeroAI>();
+			heroAI.takeDamage(power);*/
 
 		}
         //Start cooldown

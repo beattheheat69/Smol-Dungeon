@@ -183,8 +183,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Boss Wins!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: eab63d957b2713340bf076c8770479b6, type: 2}
-  m_sharedMaterial: {fileID: 5358075261980127260, guid: eab63d957b2713340bf076c8770479b6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -320,8 +320,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Hero Wins!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: eab63d957b2713340bf076c8770479b6, type: 2}
-  m_sharedMaterial: {fileID: 5358075261980127260, guid: eab63d957b2713340bf076c8770479b6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3834,6 +3834,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 7055708888233048317, guid: bff5ebd5b1e182e4d87db51a6d66373a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8484805831247913643, guid: bff5ebd5b1e182e4d87db51a6d66373a, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -5180,6 +5184,10 @@ PrefabInstance:
     - target: {fileID: 7055708888233048317, guid: bff5ebd5b1e182e4d87db51a6d66373a, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7055708888233048317, guid: bff5ebd5b1e182e4d87db51a6d66373a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8484805831247913643, guid: bff5ebd5b1e182e4d87db51a6d66373a, type: 3}
       propertyPath: m_Layer

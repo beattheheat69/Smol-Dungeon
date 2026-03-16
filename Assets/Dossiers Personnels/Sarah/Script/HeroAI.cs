@@ -4,6 +4,7 @@ using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
+using static UnityEngine.GraphicsBuffer;
 /* AI for the base Hero: 
  * when enters a room, hero finds target and attack it
  * Attack has a hit box zone
@@ -27,6 +28,7 @@ public class HeroAI : Hero, IDamageable
     Vector2 lastMoveDirection; // Direction the hero is looking for the attack
     Vector2 lastAngle; // Angle for the attack hitbox
     float castDistance = 0.5f; //Distance of sphere cast goes
+    bool atTarget = false;
 
 
     private void Start()
@@ -64,8 +66,12 @@ public class HeroAI : Hero, IDamageable
                 }
             }
 
-            //Move to target
-            MoveHero();
+            if (!atTarget)
+            {
+                //Move to target
+                MoveHero();
+            }
+  
 
             //Check if can attack
             if (attacking && timeCooldown <= 0)
@@ -120,15 +126,15 @@ public class HeroAI : Hero, IDamageable
         if (randVal <= baseStats.attackChance)
         {
             //Hit all monster in range
-            Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(CheckLastDirection(), lastAngle, monsterLayer); //Check arguments, layer in place of angle
+            Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(CheckLastDirection(), lastAngle, 0f ,monsterLayer); //Check arguments, layer in place of angle
             foreach (Collider2D enemy in hitEnemies)
             {
-                //if (enemy.TryGetComponent(out IDamageable hitTarget)) //BUG: One shots monster
-                //{
-                //    hitTarget.takeDamage(baseStats.power);  // add buff or debuff
-                //}
-                MonsterAI monsterAI = target.transform.GetComponent<MonsterAI>();
-                monsterAI.takeDamage(power);
+                if (enemy.TryGetComponent(out IDamageable hitTarget)) //BUG: One shots monster
+                {
+                    hitTarget.takeDamage(baseStats.power);  // add buff or debuff
+                }
+                /*MonsterAI monsterAI = target.transform.GetComponent<MonsterAI>();
+                monsterAI.takeDamage(power);*/
             }
         }
         //Start cooldown
@@ -167,7 +173,7 @@ public class HeroAI : Hero, IDamageable
     void OnDrawGizmosSelected()
     {
         //Show hero hitbox depending og his moving direction
-        //Gizmos.DrawWireCube(CheckLastDirection(), lastAngle);
+        Gizmos.DrawWireCube(CheckLastDirection(), lastAngle);
         //Show hero collision sphere for overlap
         /*Gizmos.color = UnityEngine.Color.red;
         Gizmos.DrawWireSphere(transform.position, 0.5f);*/
@@ -195,8 +201,10 @@ public class HeroAI : Hero, IDamageable
         rb.MovePosition(rb.position + lastMoveDirection * baseStats.chargeSpeed * Time.fixedDeltaTime);
         if (Vector2.Distance(transform.position, target.transform.position) < 0.7f)
         {
+
             Vector2 pushDirect = ((Vector2)transform.position - (Vector2)target.transform.position).normalized;
             transform.position += (Vector3)pushDirect * baseStats.chargeSpeed * Time.deltaTime;
+            atTarget = true;
         }
         Correctoverlap();
     }
@@ -259,6 +267,7 @@ public class HeroAI : Hero, IDamageable
             }
         }
         //Set the monster that is closest hero
+        atTarget = false;
         target = nearTarget;
     }
 

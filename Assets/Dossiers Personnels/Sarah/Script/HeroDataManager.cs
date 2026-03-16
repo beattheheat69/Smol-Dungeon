@@ -32,6 +32,10 @@ public class HeroDataManager : MonoBehaviour
     {
         return party[hero].currentHealt;
     }
+    public float GetDodgheChance(int hero)
+    {
+        return party[hero].dodgeChance;
+    }
 
 }
 
@@ -39,6 +43,7 @@ public class HeroDataManager : MonoBehaviour
 public class HeroData
 {
     public int currentHealt;
+    public float dodgeChance;
     //public int currentNbPotion;
     //buffs and debuffs
 }
