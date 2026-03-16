@@ -1,6 +1,7 @@
 using Mono.Cecil.Cil;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class BossActions : MonoBehaviour, IDamageable
 {
@@ -84,22 +85,27 @@ public class BossActions : MonoBehaviour, IDamageable
 
 	void BasicAttack(Vector2 dir) //Basic punch in front of boss
 	{
+		GetComponent<BossAnim>().BossAttacks();
+
 		//Adds current pos to last direction faced to get attack pos
 		attackTransform = new Vector2(transform.position.x + dir.x, transform.position.y + dir.y);
-		hits = Physics2D.CircleCastAll(attackTransform, attackRadius, Vector2.zero, masksToHit); //Vector2.zero necessary to not impact attackRadius or circle
+		hits = Physics2D.CircleCastAll(attackTransform, attackRadius, Vector2.zero, 0, masksToHit); //Vector2.zero necessary to not impact attackRadius or circle
 
 		//Checks all colliders hit for hero
 		foreach (RaycastHit2D hit in hits)
 		{
 			Debug.Log(hit.transform.name + " hit!");
 			HeroBossAI heroBossAI = hit.transform.GetComponent<HeroBossAI>();
-			if (heroBossAI.TryGetComponent(out IDamageable hitTarget))
-				hitTarget.takeDamage(stats.power);
+			heroBossAI.takeDamage(stats.power);
+			//if (heroBossAI.TryGetComponent(out IDamageable hitTarget)) //BUG: one shots the hero
+			//	hitTarget.takeDamage(stats.power);
 		}
 	}
 
 	void SpecialAttackLeft(Vector2 dir) //Shockwave AoE for 1 second
 	{
+		GetComponent<BossAnim>().BossAttacks();
+
 		//Spawns VFX in front of last direction
 		GameObject inst = Instantiate(shockwaveAnim);
 		inst.transform.position = new Vector2(transform.position.x + dir.x, transform.position.y + dir.y);
@@ -108,8 +114,10 @@ public class BossActions : MonoBehaviour, IDamageable
 
 	void SpecialAttackRight(Vector2 dir) //Throw fist across room
 	{
+		GetComponent<BossAnim>().BossAttacks();
+
 		GameObject inst = Instantiate(fistAttack);
-		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90;
 		inst.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 		inst.transform.position = new Vector2(transform.position.x + dir.x, transform.position.y + dir.y);
 		inst.GetComponent<Rigidbody2D>().linearVelocity = dir.normalized * fistSpeed;
@@ -125,6 +133,10 @@ public class BossActions : MonoBehaviour, IDamageable
 	{
 		health -= amount;
 		if (health <= 0)
-			Destroy(gameObject);
+		{
+			//Defeat
+			GameObject.Find("Manager").GetComponent<RunStatus>().CallRestart(false);
+			gameObject.SetActive(false);
+		}
 	}
 }

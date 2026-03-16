@@ -91,12 +91,14 @@ public class MonsterAI : Character
         //Check is attack succeded
         if (randVal <= baseStats.attackChance)
         {
-            if (target.TryGetComponent(out IDamageable hitTarget))
-            {
-                hitTarget.takeDamage(power);
-            }
-            
-        }
+            //if (target.TryGetComponent(out IDamageable hitTarget)) //BUG: One shots hero
+            //{
+            //    hitTarget.takeDamage(power);
+            //}
+			HeroAI heroAI = target.transform.GetComponent<HeroAI>();
+			heroAI.takeDamage(power);
+
+		}
         //Start cooldown
         timeCooldown = baseStats.attackCooldown;
     }

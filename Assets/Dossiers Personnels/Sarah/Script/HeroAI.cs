@@ -120,14 +120,15 @@ public class HeroAI : Hero, IDamageable
         if (randVal <= baseStats.attackChance)
         {
             //Hit all monster in range
-            Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(CheckLastDirection(), lastAngle, monsterLayer);
+            Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(CheckLastDirection(), lastAngle, monsterLayer); //Check arguments, layer in place of angle
             foreach (Collider2D enemy in hitEnemies)
             {
-
-                if (enemy.TryGetComponent(out IDamageable hitTarget))
-                {
-                    hitTarget.takeDamage(baseStats.power);  // add buff or debuff
-                }
+                //if (enemy.TryGetComponent(out IDamageable hitTarget)) //BUG: One shots monster
+                //{
+                //    hitTarget.takeDamage(baseStats.power);  // add buff or debuff
+                //}
+                MonsterAI monsterAI = target.transform.GetComponent<MonsterAI>();
+                monsterAI.takeDamage(power);
             }
         }
         //Start cooldown

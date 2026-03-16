@@ -22,6 +22,10 @@ public class HeroDataManager : MonoBehaviour
     public void UpdateHeroHealh(int hero, int damage)
     {
         party[hero].currentHealt -= damage;
+
+        //End run when hero is dead
+        if (party[hero].currentHealt <= 0)
+            GetComponent<RunStatus>().CallRestart(true);
     }
 
     public int GetHealt(int hero)

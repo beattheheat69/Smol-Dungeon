@@ -119,7 +119,6 @@ public class EntityPossessed : MonoBehaviour
 		//Activate AI script
 
 		//Call DePossessing FMOD SFX
-		RuntimeManager.PlayOneShot(depossessingSFX);
 	}
 
 	private void OnDisable()
