@@ -22,11 +22,19 @@ public class HeroDataManager : MonoBehaviour
     public void UpdateHeroHealh(int hero, int damage)
     {
         party[hero].currentHealt -= damage;
+
+        //End run when hero is dead
+        if (party[hero].currentHealt <= 0)
+            GetComponent<RunStatus>().CallRestart(true);
     }
 
     public int GetHealt(int hero)
     {
         return party[hero].currentHealt;
+    }
+    public float GetDodgheChance(int hero)
+    {
+        return party[hero].dodgeChance;
     }
 
 }
@@ -35,6 +43,7 @@ public class HeroDataManager : MonoBehaviour
 public class HeroData
 {
     public int currentHealt;
+    public float dodgeChance;
     //public int currentNbPotion;
     //buffs and debuffs
 }

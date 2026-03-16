@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HeroBossAI : Hero
@@ -29,8 +30,11 @@ public class HeroBossAI : Hero
         {
             DoAttack();
         }
-        
-    }
+
+		//Cooldown timer
+		if (timeCooldown >= 0)
+			timeCooldown -= Time.deltaTime;
+	}
 
     //Enter in attack mode when colliding with target
     private void OnTriggerEnter2D(Collider2D collision)
@@ -88,7 +92,6 @@ public class HeroBossAI : Hero
         {
             IDamageable hitTarget = target.GetComponent<IDamageable>();
             hitTarget.takeDamage(baseStats.power);  // add buff or debuff
-
         }
         //Start cooldown
         timeCooldown = baseStats.attackCooldown;

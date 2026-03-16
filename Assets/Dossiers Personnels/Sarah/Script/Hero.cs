@@ -6,12 +6,11 @@ public class Hero : Character
     protected PaladinStats_SO baseStats; // Base stats of heros
     protected int index;
 
-    public new void takeDamage(int damage)
+    public override void takeDamage(int damage)
     {
-        Debug.Log("Hero got it");
         float randVal = Random.Range(1, 100);
-        //Check if hero dodge attack
-        if(randVal < baseStats.dodgeChange)
+
+        if(randVal < HeroDataManager.Instance.GetDodgheChance(index))
         {
             // deduct health
             HeroDataManager.Instance.UpdateHeroHealh(index, damage);
