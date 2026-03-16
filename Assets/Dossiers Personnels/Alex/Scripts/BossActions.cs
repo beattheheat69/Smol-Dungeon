@@ -30,6 +30,9 @@ public class BossActions : MonoBehaviour, IDamageable
 	public float cooldown = 0.25f;
 	float timeForNextAttack = 0f;
 
+	//Lifebar thingy
+	public Lifebar lifebar;
+
 	[SerializeField] SlimeStats_SO stats;
 	[SerializeField] int health;
 
@@ -42,6 +45,9 @@ public class BossActions : MonoBehaviour, IDamageable
 		specialAttackRight = playerInput.actions["SpecialRight"];
 		moveInput = playerInput.actions["Move"];
 		health = stats.health;
+
+		//Initiate the health bar
+		lifebar.SetMaxHealth(health);
 	}
 
 	private void Update()
@@ -124,6 +130,7 @@ public class BossActions : MonoBehaviour, IDamageable
 	public void takeDamage(int amount)
 	{
 		health -= amount;
+		lifebar.SetHealth(health);
 		if (health <= 0)
 			Destroy(gameObject);
 	}

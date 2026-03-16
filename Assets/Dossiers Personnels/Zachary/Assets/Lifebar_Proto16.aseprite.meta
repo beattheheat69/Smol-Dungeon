@@ -174,7 +174,7 @@ ScriptedImporter:
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
-    border: {x: 2, y: 0, z: 2, w: 0}
+    border: {x: 2, y: 2, z: 2, w: 2}
     customData: 
     rect:
       serializedVersion: 2
@@ -259,7 +259,7 @@ ScriptedImporter:
         y: 0
         width: 16
         height: 16
-      spriteId: 8b895292261e09547ac27148927def36
+      spriteId: 62ae629cacaacdc43bfdf5939218066f
     linkedCells: []
     tileCells: []
     tileSetIndex: 0

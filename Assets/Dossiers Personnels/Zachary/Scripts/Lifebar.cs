@@ -16,15 +16,10 @@ public class Lifebar : MonoBehaviour
     [Header("Color")]
     public Gradient gradient;
 
-    [Header("Animation Values")]
-    public float animSpeed = 1f;
-    bool isAnimating = false;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //Set the max value of the Slider
-        SetMaxHealth(maxHealth);
+
     }
 
     // Update is called once per frame
@@ -36,10 +31,12 @@ public class Lifebar : MonoBehaviour
         SetHealth(currentHealth);
     }
 
-    public void SetMaxHealth(float maxHealth)
+    public void SetMaxHealth(float health)
     {
+        maxHealth = health;
+        currentHealth = health;
         slider.maxValue = maxHealth;
-        slider.value = maxHealth;
+        SetHealth(maxHealth);
     }
 
     public void SetHealth(float health)
