@@ -6,7 +6,7 @@ public class Character : MonoBehaviour, IDamageable
     protected int power; //enemy urrent power
 
     //Take dammage when hit
-    public void takeDamage(int damage)
+    public virtual void takeDamage(int damage)
     {
         // deduct health
         health -= damage;
