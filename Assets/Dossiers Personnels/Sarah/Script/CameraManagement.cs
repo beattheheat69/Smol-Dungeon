@@ -24,7 +24,7 @@ public class CameraManagement : MonoBehaviour
     void LateUpdate()
     {
         //move camera towards center of room
-        transform.position = Vector3.SmoothDamp(transform.position, roomCenter, ref velocity, transitionDuration);
+        transform.position = Vector3.SmoothDamp(transform.position, roomCenter, ref velocity, transitionDuration);  //***Find way to prevent moving when not asked to, also to not touch Z because it zooms into the tiles (Vector2 instead of Vector3?)
         //if camera is not in place pause objects if in place unpause objects
         if (Vector2.Distance(transform.position, roomCenter) < 0.05f)
         {
