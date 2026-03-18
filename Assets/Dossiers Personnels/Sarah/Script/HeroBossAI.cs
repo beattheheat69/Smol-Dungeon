@@ -16,6 +16,7 @@ public class HeroBossAI : Hero
     {
         rb = GetComponent<Rigidbody2D>();
         FindTarget();
+        health = HeroDataManager.Instance.party[index].currentHealt;  // testing hero health
     }
 
     // Update is called once per frame

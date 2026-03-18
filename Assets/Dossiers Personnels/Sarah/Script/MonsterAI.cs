@@ -119,6 +119,7 @@ public class MonsterAI : Character
         {
             Vector2 pushDirect = ((Vector2)transform.position - (Vector2)target.transform.position).normalized;
             transform.position += (Vector3)pushDirect * baseStats.chargeSpeed * Time.deltaTime;
+            atTarget = true;
         }
         Correctoverlap();
     }
