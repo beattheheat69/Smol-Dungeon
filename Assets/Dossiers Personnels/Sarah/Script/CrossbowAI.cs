@@ -1,3 +1,4 @@
+using Unity.Burst.Intrinsics;
 using UnityEngine;
 
 public class CrossbowAI : MonoBehaviour
@@ -50,7 +51,17 @@ public class CrossbowAI : MonoBehaviour
             {
                 timeCooldown -= Time.deltaTime;
             }
-    }
+
+        //Rotate towards target
+        if (target != null)
+        {
+			Vector3 targetPos = target.transform.position;
+			targetPos.x -= transform.position.x;
+			targetPos.y -= transform.position.y;
+			float angle = Mathf.Atan2(targetPos.y, targetPos.x) * Mathf.Rad2Deg - 90f;
+		    transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        }
+	}
 
     //Check if target still alive
     bool CheckTargetAlive()
@@ -61,8 +72,11 @@ public class CrossbowAI : MonoBehaviour
     //Shoot an arrow towards target
     private void DoAttack()
     {
-        //Instantiate an arrow arrow 
-        GameObject arrow = Instantiate(arrowPrefab, transform.position, transform.rotation);
+		//Animation
+		GetComponent<Animator>().SetTrigger("Shoot");
+
+		//Instantiate an arrow arrow 
+		GameObject arrow = Instantiate(arrowPrefab, transform.position, transform.rotation);
         //Direction the arrow musr go
         Vector2 direction = (target.transform.position - transform.position).normalized;
         //Turn point of arrow towards target

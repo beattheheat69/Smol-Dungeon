@@ -253,7 +253,7 @@ public class HeroAI : Hero, IDamageable
         GameObject nearTarget = null; //closest monster to hero
         List<GameObject> monsters = HeroParty.Instance.GetRoom().GetList(); //Get List of monsters in the room
 
-        //***Add check if no monster list available
+        //***Add check if no monster list available? Pour l'entrance, pas de monstres alors hero va direct a ExitDoor
 
         //Check all monsters to see which is closest
         foreach (GameObject monster in monsters)

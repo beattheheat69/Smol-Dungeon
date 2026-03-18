@@ -43,6 +43,8 @@ public class MonsterAction : MonoBehaviour
 
 	void BasicAttack(Vector2 dir)
 	{
+		GetComponent<Animator>().SetTrigger("Attack");
+
 		//Adds current pos to last direction faced to get attack pos
 		attackTransform = new Vector2(transform.position.x + dir.x, transform.position.y + dir.y);
 		hits = Physics2D.CircleCastAll(attackTransform, attackRadius, Vector2.zero, 0, masksToHit); //Vector2.zero necessary to not impact attackRadius or circle

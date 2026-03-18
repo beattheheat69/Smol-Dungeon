@@ -2,7 +2,12 @@ fileFormatVersion: 2
 guid: d65339c3afaea6a4f8b136c585e06b15
 ScriptedImporter:
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Crossbow_Clip
+    second: {fileID: 7400000, guid: 5f7e6bfacc3e18e41af3556060a707e9, type: 2}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -102,7 +107,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639085175626378231
+  platformSettingsDirtyTick: 639094577504469555
   textureAssetName: 
   singleSpriteImportData:
   - name: 

@@ -48,6 +48,9 @@ public class TrapAim : MonoBehaviour
 
 	public void Shoot()
 	{
+		//Animation
+		GetComponent<Animator>().SetTrigger("Shoot");
+
 		//Cooldown
 		GameObject inst = Instantiate(bullet, gameObject.transform.position, transform.rotation);
 		inst.GetComponent<Rigidbody2D>().linearVelocity = cursorPos.normalized * bulletVelocity;

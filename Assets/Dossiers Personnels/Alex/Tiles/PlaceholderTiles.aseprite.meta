@@ -199,8 +199,8 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 18
-      y: 34
+      x: 20
+      y: 36
       width: 16
       height: 16
     spriteID: 35b11cfbc79ba6d43a22233cb940451c
@@ -220,8 +220,8 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 18
-      y: 50
+      x: 20
+      y: 52
       width: 16
       height: 16
     spriteID: efb100f9254bbb84ab5ea9ce059dd6bb
@@ -241,8 +241,8 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 18
-      y: 18
+      x: 20
+      y: 20
       width: 16
       height: 16
     spriteID: 119c2c97c61b3334ca38d6c8185e3a47
@@ -262,8 +262,8 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 34
-      y: 34
+      x: 36
+      y: 36
       width: 16
       height: 16
     spriteID: c2cff54cd7783544387adf7205420616
@@ -283,8 +283,8 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 2
-      y: 34
+      x: 4
+      y: 36
       width: 16
       height: 16
     spriteID: a9d5f1db276cabf4fa44b63175393f85
@@ -304,8 +304,8 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 2
-      y: 50
+      x: 4
+      y: 52
       width: 16
       height: 16
     spriteID: d80f1f7e01db5484dab4c3633b47e52d
@@ -325,8 +325,8 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 34
-      y: 50
+      x: 36
+      y: 52
       width: 16
       height: 16
     spriteID: ab417e49a028e444aabd18e2a4462355
@@ -346,8 +346,8 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 34
-      y: 18
+      x: 36
+      y: 20
       width: 16
       height: 16
     spriteID: d1eda1fe8e200874787fad24022bb4b0
@@ -367,8 +367,8 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 2
-      y: 18
+      x: 4
+      y: 20
       width: 16
       height: 16
     spriteID: f35e8bb129dc97240afb56c2185afd1e
@@ -388,8 +388,8 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 50
-      y: 50
+      x: 52
+      y: 52
       width: 16
       height: 16
     spriteID: 0b621daae01d070449defdd974fb45b5
@@ -409,8 +409,8 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 50
-      y: 34
+      x: 52
+      y: 36
       width: 16
       height: 16
     spriteID: 86cb49abda7b95144a17775ec687b50d
@@ -430,8 +430,8 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 50
-      y: 18
+      x: 52
+      y: 20
       width: 16
       height: 16
     spriteID: 2c4d3d74af648e748869b5f717d6f77d
@@ -451,11 +451,53 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 50
-      y: 2
+      x: 52
+      y: 4
       width: 16
       height: 16
     spriteID: e8a724b49e462344abf9ef10bbd2f185
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Tile_BossDoor
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 16
+      height: 16
+    spriteID: 18500d2e266af134192302619d25b397
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Tile_EntranceDoor
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 20
+      y: 4
+      width: 16
+      height: 16
+    spriteID: 05a4daa959c93cd49b2e6b7bacd84bf0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -503,10 +545,10 @@ ScriptedImporter:
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 2
-        y: 2
-        width: 62
-        height: 60
+        x: 0
+        y: 0
+        width: 64
+        height: 62
       spriteId: 9497a6fec46c6e44bbef0ed9fa8a7a4b
     linkedCells: []
     tileCells: []

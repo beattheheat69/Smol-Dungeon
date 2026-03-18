@@ -99,10 +99,8 @@ public class MonsterAI : Character
             if (target.TryGetComponent(out IDamageable hitTarget)) //BUG: One shots hero
             {
                 hitTarget.takeDamage(power);
+                GetComponent<Animator>().SetTrigger("Attack");
             }
-			/*HeroAI heroAI = target.transform.GetComponent<HeroAI>();
-			heroAI.takeDamage(power);*/
-
 		}
         //Start cooldown
         timeCooldown = baseStats.attackCooldown;

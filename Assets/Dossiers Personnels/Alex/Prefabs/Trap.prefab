@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 499736242688973925}
   - component: {fileID: 1852614733753871707}
   - component: {fileID: 1928831598063177559}
+  - component: {fileID: 2421416760784883578}
   m_Layer: 6
   m_Name: Trap
   m_TagString: Trap
@@ -249,6 +250,28 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!95 &2421416760784883578
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959689986000236469}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: -6125297213687386734, guid: e21eacc03e377714ebbd8e7a6cb0bb95, type: 3}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8779388744220313842
 GameObject:
   m_ObjectHideFlags: 0

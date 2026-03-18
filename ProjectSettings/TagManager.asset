@@ -12,6 +12,7 @@ TagManager:
   - Room
   - Group
   - FlavorTextBox
+  - Door
   layers:
   - Default
   - TransparentFX
@@ -24,8 +25,8 @@ TagManager:
   - Player
   - Hero
   - Tiles
-  - 
-  - 
+  - Doors
+  - Rooms
   - 
   - 
   - 
