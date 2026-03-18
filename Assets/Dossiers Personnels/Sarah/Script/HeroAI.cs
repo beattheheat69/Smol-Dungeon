@@ -43,7 +43,8 @@ public class HeroAI : Hero, IDamageable
         if (HeroDataManager.Instance != null)
         {
             base.index = HeroDataManager.Instance.party.Count;
-            HeroDataManager.Instance.party.Add(new HeroData { currentHealt = baseStats.health });       
+            HeroDataManager.Instance.party.Add(new HeroData { currentHealt = baseStats.health, dodgeChance = baseStats.dodgeChange});
+            health = HeroDataManager.Instance.party[index].currentHealt;  // testing hero health
         }
     }
 
