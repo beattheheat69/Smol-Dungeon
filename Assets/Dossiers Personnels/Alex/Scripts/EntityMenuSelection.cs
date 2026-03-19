@@ -23,6 +23,7 @@ public class EntityMenuSelection : MonoBehaviour
 		foreach (Toggle toggle in RoomButtons)
 		{
 			RoomEntityLimit roomLimit = toggle.GetComponent<RoomEntityLimit>();
+			GlobalRessources globalRessources = GetComponent<GlobalRessources>();
 
 			if (toggle.isOn)
 			{
@@ -34,19 +35,21 @@ public class EntityMenuSelection : MonoBehaviour
 				//Check aussi pour limite d'entites par room
 
 				//Check for limit per room
-				if (roomLimit.totalLimit > 0)
+				if (roomLimit.totalLimit > 0 && globalRessources.EvilPointsAmount() > 0)
 				{
 					if (entity.CompareTag("Monster") && roomLimit.monsterLimit > 0)
 					{
 						Instantiate(entity, toggle.transform).SetActive(false);
 						roomLimit.monsterLimit--;
 						roomLimit.totalLimit--;
+						globalRessources.SpendEvilPoints(1);
 					}
 					if (entity.CompareTag("Trap") && roomLimit.trapLimit > 0)
 					{
 						Instantiate(entity, toggle.transform).SetActive(false);
 						roomLimit.trapLimit--;
 						roomLimit.totalLimit--;
+						globalRessources.SpendEvilPoints(1);
 					}
 				}
 			}

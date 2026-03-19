@@ -1,9 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem.HID;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -26,18 +23,34 @@ public class PlaceTheseEntitiesInRooms : MonoBehaviour
 
         foreach (Toggle toggle in entitySelection.RoomButtons)
         {
-			foreach (Transform child in toggle.transform)
+			everyRoomEntities.Add(new EachRoomList());
+			for (int i = 0; i < toggle.gameObject.transform.childCount; i++)
 			{
-				if (child.CompareTag("Monster"))
+				if (toggle.gameObject.transform.GetChild(i).CompareTag("Monster"))
 				{
-					allRooms.Monsters.Add(child.gameObject);
+					//allRooms.Monsters.Add(child.gameObject);
+					everyRoomEntities[entitySelection.RoomButtons.IndexOf(toggle)].Monsters.Add(toggle.gameObject.transform.GetChild(i).gameObject);
 				}
-				else if (child.CompareTag("Trap"))
+				else if (toggle.gameObject.transform.GetChild(i).CompareTag("Trap"))
 				{
-					allRooms.Traps.Add(child.gameObject);
+					//allRooms.Traps.Add(child.gameObject);
+					everyRoomEntities[entitySelection.RoomButtons.IndexOf(toggle)].Traps.Add(toggle.gameObject.transform.GetChild(i).gameObject);
 				}
 			}
-			everyRoomEntities.Add(allRooms); //Bug: total is added to each room, Clear() does not fix it
+			//foreach (Transform child in toggle.transform)
+			//{
+			//	if (child.CompareTag("Monster"))
+			//	{
+			//		//allRooms.Monsters.Add(child.gameObject);
+			//		everyRoomEntities[entitySelection.RoomButtons.IndexOf(toggle)].Monsters.Add(child.gameObject);
+			//	}
+			//	else if (child.CompareTag("Trap"))
+			//	{
+			//		//allRooms.Traps.Add(child.gameObject);
+			//		everyRoomEntities[entitySelection.RoomButtons.IndexOf(toggle)].Traps.Add(child.gameObject);
+			//	}
+			//}
+			//everyRoomEntities.Add(allRooms); //Bug: total is added to each room, Clear() does not fix it
 		}
 
         StartCoroutine(GoToDungeon());
