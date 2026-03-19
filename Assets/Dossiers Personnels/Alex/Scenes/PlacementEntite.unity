@@ -3337,6 +3337,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlaceTheseEntitiesInRooms
   RoomsInDungeon: []
   WhatToSendOver: {fileID: 889329658}
+  everyRoomEntities: []
+  allRooms:
+    Monsters: []
+    Traps: []
 --- !u!114 &1334842265
 MonoBehaviour:
   m_ObjectHideFlags: 0

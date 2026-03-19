@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem.HID;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlaceTheseEntitiesInRooms : MonoBehaviour
 {
     EntityMenuSelection entitySelection;
-    public List<GameObject> RoomsInDungeon = new List<GameObject>();
     public GameObject WhatToSendOver;
+    public List<EachRoomList> everyRoomEntities = new List<EachRoomList>();
+    public EachRoomList allRooms;
 
 	private void Start()
 	{
@@ -18,30 +22,23 @@ public class PlaceTheseEntitiesInRooms : MonoBehaviour
 
 	public void ConfirmChoices()
     {
-        //Check if all lists are OK first before allowing scene transition
-        //Maybe change scene in coroutine to allow some time for loading and affecting gameobjects in lists
+        ////Check if all lists are OK first before allowing scene transition
+
         foreach (Toggle toggle in entitySelection.RoomButtons)
         {
-            RoomsInDungeon.Add(toggle.gameObject);
-        }
-
-        for (int i = 0; i < RoomsInDungeon.Count; i++)
-        {
-            GameObject inst = Instantiate(RoomsInDungeon[i], WhatToSendOver.transform);
-            foreach(Transform child in RoomsInDungeon[i].GetComponentsInChildren<Transform>())
-            {
-                if (child.CompareTag("UI"))
-                    Destroy(child); //Doesn't work, can't remove recttransform
-                else if (child.CompareTag("Monster"))
-                {
-                    //Put in monster list
-                }
-                else if (child.CompareTag("Trap"))
-                {
-                    //Put in trap list
-                }
-            }
-        }
+			foreach (Transform child in toggle.transform)
+			{
+				if (child.CompareTag("Monster"))
+				{
+					allRooms.Monsters.Add(child.gameObject);
+				}
+				else if (child.CompareTag("Trap"))
+				{
+					allRooms.Traps.Add(child.gameObject);
+				}
+			}
+			everyRoomEntities.Add(allRooms); //Bug: total is added to each room, Clear() does not fix it
+		}
 
         StartCoroutine(GoToDungeon());
     }
@@ -51,4 +48,11 @@ public class PlaceTheseEntitiesInRooms : MonoBehaviour
         yield return new WaitForSeconds(2);
         SceneManager.LoadSceneAsync("PremadeDungeonTest");
     }
+}
+
+[System.Serializable]
+public class EachRoomList
+{
+    public List<GameObject> Monsters;
+	public List<GameObject> Traps;
 }
