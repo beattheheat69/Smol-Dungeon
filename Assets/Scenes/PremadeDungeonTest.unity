@@ -13325,10 +13325,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trap
       objectReference: {fileID: 0}
-    - target: {fileID: 2421416760784883578, guid: faa507454af0e1349ba001927df98f28, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 7070fc621dd3fd741b0d1f43baa327ad, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13393,7 +13389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3179776518944460967, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.0500002
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 3179776518944460967, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
       propertyPath: m_LocalPosition.z

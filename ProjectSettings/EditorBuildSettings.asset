@@ -14,6 +14,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BossGym.unity
     guid: 27eb60e98ab02b743be1718b33458a27
+  - enabled: 1
+    path: Assets/Dossiers Personnels/Alex/Scenes/PlacementEntite.unity
+    guid: bcfa11df630990b49b004aae6a6a03e1
+  - enabled: 1
+    path: Assets/Scenes/PremadeDungeonTest.unity
+    guid: a3008e3e5937c3648b2112be78e6013b
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
