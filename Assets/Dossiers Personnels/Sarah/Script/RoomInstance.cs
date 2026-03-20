@@ -3,22 +3,34 @@ using UnityEngine;
 
 public class RoomInstance : MonoBehaviour
 {
-    [SerializeField]
-    GameObject enemyGroup; //Parent of all enemies in room
-    [SerializeField]
-    GameObject trapGroup; // Parent of all traps in room
-    private List<GameObject> monsterList = new List<GameObject>(); // List of all monster in room
-
+    List<GameObject> monsterList = new List<GameObject>(); // List of all monster in room
+    List<GameObject> trapList = new List<GameObject>();// List of all traps in room
 
     private void Awake()
     {
         if (transform.Find("CameraPoint") != null)
         {
-            //Fill list of all monsters in room
-            foreach (Transform child in enemyGroup.transform)
+            Transform enemyGroup = transform.Find("MonsterGroup");
+            if (enemyGroup != null)
             {
-                monsterList.Add(child.gameObject);
+                //Fill list of all monsters in room
+                foreach (Transform child in enemyGroup.transform)
+                {
+                    monsterList.Add(child.gameObject);
+                }
             }
+
+
+            Transform trapGroup = transform.Find("TrapGroup");
+            if (trapGroup != null)
+            {
+                //Fill list of all monsters in room
+                foreach (Transform child in trapGroup.transform)
+                {
+                    trapList.Add(child.gameObject);
+                }
+            }
+
         }
     }
 
