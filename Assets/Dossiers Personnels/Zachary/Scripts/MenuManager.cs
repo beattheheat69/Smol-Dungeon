@@ -48,7 +48,7 @@ public class MenuManager : MonoBehaviour
     public void LoadNewGame()
     {
         //Load the scene with the Dungeon Shaping Screen
-        SceneManager.LoadSceneAsync("DungeonTest");
+        SceneManager.LoadSceneAsync("PlacementEntite");
     }
 
     public void LoadResumedGame()

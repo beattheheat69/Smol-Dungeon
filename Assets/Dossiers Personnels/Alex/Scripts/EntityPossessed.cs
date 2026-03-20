@@ -65,13 +65,13 @@ public class EntityPossessed : MonoBehaviour
 			transform.GetChild(i).gameObject.SetActive(true);
 
 		//Checks if entity is monster or trap for related scripts
-		if (this.gameObject.CompareTag("Monster"))
+		if (this.gameObject.CompareTag("Monster") && playerMovement != null && monsterAction != null && monsterAI != null)
 		{
 			playerMovement.enabled = true;
 			monsterAction.enabled = true;
 			monsterAI.enabled = false;
 		}
-		else if (this.gameObject.CompareTag("Trap"))
+		else if (this.gameObject.CompareTag("Trap") && trapAim != null && crossbowAI != null)
 		{
 			trapAim.enabled = true;
 			crossbowAI.enabled = false;
@@ -102,13 +102,13 @@ public class EntityPossessed : MonoBehaviour
 			transform.GetChild(i).gameObject.SetActive(false);
 
 		//Checks if entity is monster or trap for related scripts
-		if (this.gameObject.CompareTag("Monster"))
+		if (this.gameObject.CompareTag("Monster") && playerMovement != null && monsterAction != null && monsterAI != null)
 		{
 			playerMovement.enabled = false;
 			monsterAction.enabled = false;
 			monsterAI.enabled = true;
 		}
-		else if (this.gameObject.CompareTag("Trap"))
+		else if (this.gameObject.CompareTag("Trap") && trapAim != null && crossbowAI != null)
 		{
 			trapAim.enabled = false;
 			crossbowAI.enabled = true;
