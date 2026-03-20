@@ -217,6 +217,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 7637533314289728313, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
+    - {fileID: 1530907702276524436, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
+    - {fileID: 2985202325501298879, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4852757133940975809, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
       insertIndex: -1
@@ -234,6 +236,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2548303002150605275, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
   m_PrefabInstance: {fileID: 17391323}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &17391325 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 185190084202800276, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
+  m_PrefabInstance: {fileID: 17391323}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17391324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc860adf30207446b165a0b6efa3c7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Room
 --- !u!4 &132609146 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7565457519061665581, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
@@ -491,7 +504,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1530907702276524436, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
+    - {fileID: 2985202325501298879, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7565457519061665581, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
       insertIndex: -1
@@ -522,6 +537,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GetRoomEntities
   twin: {fileID: 0}
+--- !u!114 &365113525 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 185190084202800276, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
+  m_PrefabInstance: {fileID: 365113522}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365113523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc860adf30207446b165a0b6efa3c7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Room
 --- !u!1001 &450954630
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -587,7 +613,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1530907702276524436, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
+    - {fileID: 2985202325501298879, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7565457519061665581, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
       insertIndex: -1
@@ -618,6 +646,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GetRoomEntities
   twin: {fileID: 0}
+--- !u!114 &450954633 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 185190084202800276, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
+  m_PrefabInstance: {fileID: 450954630}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450954631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc860adf30207446b165a0b6efa3c7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Room
 --- !u!4 &488852292 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1893680621149633457, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
@@ -18843,7 +18882,9 @@ PrefabInstance:
       value: -4.8999996
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1530907702276524436, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
+    - {fileID: 2985202325501298879, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7565457519061665581, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
       insertIndex: -1
@@ -18874,6 +18915,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GetRoomEntities
   twin: {fileID: 0}
+--- !u!114 &1469492569 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 185190084202800276, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
+  m_PrefabInstance: {fileID: 1469492566}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469492567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc860adf30207446b165a0b6efa3c7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Room
 --- !u!1 &1472579238
 GameObject:
   m_ObjectHideFlags: 0
@@ -19560,7 +19612,9 @@ PrefabInstance:
       value: EntranceDoor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1530907702276524436, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
+    - {fileID: 2985202325501298879, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7565457519061665581, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
       insertIndex: -1
@@ -19591,6 +19645,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GetRoomEntities
   twin: {fileID: 0}
+--- !u!114 &1757294000 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 185190084202800276, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
+  m_PrefabInstance: {fileID: 1757293997}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757293998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc860adf30207446b165a0b6efa3c7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Room
 --- !u!1 &1782724963
 GameObject:
   m_ObjectHideFlags: 0
@@ -19792,6 +19857,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1013465776625596766, guid: 7ceb67f01681b144ab8c8020c2627673, type: 3}
+      propertyPath: roomList.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013465776625596766, guid: 7ceb67f01681b144ab8c8020c2627673, type: 3}
+      propertyPath: 'roomList.Array.data[0]'
+      value: 
+      objectReference: {fileID: 4057207079643841450}
+    - target: {fileID: 1013465776625596766, guid: 7ceb67f01681b144ab8c8020c2627673, type: 3}
+      propertyPath: 'roomList.Array.data[1]'
+      value: 
+      objectReference: {fileID: 57094619736977067}
+    - target: {fileID: 1013465776625596766, guid: 7ceb67f01681b144ab8c8020c2627673, type: 3}
+      propertyPath: 'roomList.Array.data[2]'
+      value: 
+      objectReference: {fileID: 365113525}
+    - target: {fileID: 1013465776625596766, guid: 7ceb67f01681b144ab8c8020c2627673, type: 3}
+      propertyPath: 'roomList.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1469492569}
+    - target: {fileID: 1013465776625596766, guid: 7ceb67f01681b144ab8c8020c2627673, type: 3}
+      propertyPath: 'roomList.Array.data[4]'
+      value: 
+      objectReference: {fileID: 450954633}
+    - target: {fileID: 1013465776625596766, guid: 7ceb67f01681b144ab8c8020c2627673, type: 3}
+      propertyPath: 'roomList.Array.data[5]'
+      value: 
+      objectReference: {fileID: 2052560732}
+    - target: {fileID: 1013465776625596766, guid: 7ceb67f01681b144ab8c8020c2627673, type: 3}
+      propertyPath: 'roomList.Array.data[6]'
+      value: 
+      objectReference: {fileID: 1757294000}
+    - target: {fileID: 1013465776625596766, guid: 7ceb67f01681b144ab8c8020c2627673, type: 3}
+      propertyPath: 'roomList.Array.data[7]'
+      value: 
+      objectReference: {fileID: 1960667026}
+    - target: {fileID: 1013465776625596766, guid: 7ceb67f01681b144ab8c8020c2627673, type: 3}
+      propertyPath: 'roomList.Array.data[8]'
+      value: 
+      objectReference: {fileID: 17391325}
     - target: {fileID: 1699071943566998697, guid: 7ceb67f01681b144ab8c8020c2627673, type: 3}
       propertyPath: m_Name
       value: HeroParty
@@ -19910,7 +20015,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1530907702276524436, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
+    - {fileID: 2985202325501298879, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7565457519061665581, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
       insertIndex: -1
@@ -19941,6 +20048,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GetRoomEntities
   twin: {fileID: 0}
+--- !u!114 &1960667026 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 185190084202800276, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
+  m_PrefabInstance: {fileID: 1960667023}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960667024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc860adf30207446b165a0b6efa3c7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Room
 --- !u!1001 &2052560729
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20010,7 +20128,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1530907702276524436, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
+    - {fileID: 2985202325501298879, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7565457519061665581, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
       insertIndex: -1
@@ -20041,6 +20161,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GetRoomEntities
   twin: {fileID: 0}
+--- !u!114 &2052560732 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 185190084202800276, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
+  m_PrefabInstance: {fileID: 2052560729}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052560730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc860adf30207446b165a0b6efa3c7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Room
 --- !u!1 &2071373722
 GameObject:
   m_ObjectHideFlags: 0
@@ -20192,7 +20323,9 @@ PrefabInstance:
       value: -4.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1530907702276524436, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
+    - {fileID: 2985202325501298879, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7565457519061665581, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
       insertIndex: -1
@@ -20223,6 +20356,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GetRoomEntities
   twin: {fileID: 0}
+--- !u!114 &57094619736977067 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 185190084202800276, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
+  m_PrefabInstance: {fileID: 57094619736977064}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57094619736977065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc860adf30207446b165a0b6efa3c7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Room
 --- !u!1001 &4057207079643841449
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20283,6 +20427,17 @@ PrefabInstance:
       addedObject: {fileID: 2131910634}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 830c6e341b1b2514181df6ebd1014cb0, type: 3}
+--- !u!114 &4057207079643841450 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7395761518827376647, guid: 830c6e341b1b2514181df6ebd1014cb0, type: 3}
+  m_PrefabInstance: {fileID: 4057207079643841449}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc860adf30207446b165a0b6efa3c7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Room
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

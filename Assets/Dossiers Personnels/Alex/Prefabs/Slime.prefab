@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 1493795070538263396}
   - component: {fileID: 7291962622510481161}
   - component: {fileID: -7907013338416942672}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Slime
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -302,7 +302,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2051083264799343614}
   - component: {fileID: 5622742943839025467}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: PossessedAura
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -3,10 +3,6 @@ using UnityEngine;
 
 public class RoomInstance : MonoBehaviour
 {
-    [SerializeField]
-    GameObject enemyGroup; //Parent of all enemies in room
-    [SerializeField]
-    GameObject trapGroup; // Parent of all traps in room
     List<GameObject> monsterList = new List<GameObject>(); // List of all monster in room
     List<GameObject> trapList = new List<GameObject>();// List of all traps in room
 
@@ -14,6 +10,7 @@ public class RoomInstance : MonoBehaviour
     {
         if (transform.Find("CameraPoint") != null)
         {
+            Transform enemyGroup = transform.Find("MonsterGroup");
             if (enemyGroup != null)
             {
                 //Fill list of all monsters in room
@@ -23,6 +20,8 @@ public class RoomInstance : MonoBehaviour
                 }
             }
 
+
+            Transform trapGroup = transform.Find("TrapGroup");
             if (trapGroup != null)
             {
                 //Fill list of all monsters in room
