@@ -12,17 +12,17 @@ public class PlaceTheseEntitiesInRooms : MonoBehaviour
     public GameObject WhatToSendOver;
     public List<EachRoomList> everyRoomEntities = new List<EachRoomList>();
     public EachRoomList allRooms;
+	GlobalRessources globalRessources;
 
 	private void Start()
 	{
 		entitySelection = GetComponent<EntityMenuSelection>();
+		globalRessources = GetComponent<GlobalRessources>();
         DontDestroyOnLoad(WhatToSendOver);
 	}
 
 	public void ConfirmChoices()
     {
-		////Check if all lists are OK first before allowing scene transition
-
 		//foreach (GameObject toggle in entitySelection.RoomButtons)
 		//{
 		//	foreach (Transform child in toggle.transform)

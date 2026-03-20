@@ -1508,7 +1508,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Confirm
+  m_text: Spend all Evil Points to proceed
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4e023ce55066c7649a636a490e6dc58d, type: 2}
   m_sharedMaterial: {fileID: -6204973913550994659, guid: 4e023ce55066c7649a636a490e6dc58d, type: 2}
@@ -1535,7 +1535,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 52.15
+  m_fontSize: 31.4
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2379,7 +2379,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 889329659}
-  - component: {fileID: 889329660}
   m_Layer: 0
   m_Name: ThingsToSend
   m_TagString: Untagged
@@ -2402,18 +2401,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &889329660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 889329658}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 928c4b2a36be4a543baba3c10afebb93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AddEntitiesToRooms
 --- !u!1 &915107820
 GameObject:
   m_ObjectHideFlags: 0
@@ -2492,7 +2479,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 915107823}
   m_OnClick:
     m_PersistentCalls:
@@ -3383,6 +3370,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GlobalRessources
   evilPoints: 12
   evilPointsScore: {fileID: 1657543302}
+  confirmButton: {fileID: 915107822}
+  confirmButtonText: {fileID: 637088647}
 --- !u!1 &1370513256
 GameObject:
   m_ObjectHideFlags: 0
