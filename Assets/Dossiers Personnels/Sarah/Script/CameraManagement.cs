@@ -14,28 +14,22 @@ public class CameraManagement : MonoBehaviour
     void Start()
     {
         roomCenter = GameObject.Find("DungeonRoom_Entrance").transform.Find("CameraPoint").transform.position;
-        //float roomheight = GameObject.Find("RoomInstance").GetComponent<Renderer>().bounds.size.y;
-        //GetComponent<Camera>().orthographicSize = roomheight / 1.6f;
-        //GetComponent<Camera>().aspect = 1.0f;
-        isTransitionning = true;
+        isTransitionning = false;
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        Vector2 newPos = Vector2.SmoothDamp( transform.position,roomCenter,ref velocity,transitionDuration);
-        transform.position = new Vector2(newPos.x, newPos.y); // z is untouched
-        /* //move camera towards center of room
-         transform.position = Vector3.SmoothDamp(transform.position, roomCenter, ref velocity, transitionDuration);  //***Find way to prevent moving when not asked to
-         //if camera is not in place pause objects if in place unpause objects*/
-         if (Vector2.Distance(transform.position, roomCenter) < 0.05f)
-         {
-             isTransitionning = false;
-         }
-         else
-         {
-             isTransitionning = true;
-         }
+        if (isTransitionning) // only moves when changing rooms
+        {
+            //move camera towards center of room
+            Vector2 newPos = Vector2.SmoothDamp(transform.position, roomCenter, ref velocity, transitionDuration);
+            transform.position = new Vector3(newPos.x, newPos.y, -10f); // z always stays the same (tried not using with a vector2 and would set it to 0 and we would get a black screen)
+            if (Vector2.Distance(transform.position, roomCenter) < 0.05f)
+            {
+                isTransitionning = false;
+            }
+        }
     }
 
     //Gives if camera is moving
@@ -47,7 +41,8 @@ public class CameraManagement : MonoBehaviour
     public void MoveToNewRoom(Vector3 newRoomPosition)
     {
         //Put next room center point has new center point
-        roomCenter = new Vector3(newRoomPosition.x, newRoomPosition.y, transform.position.z);
+        roomCenter = new Vector3(newRoomPosition.x, newRoomPosition.y);
+        isTransitionning=true;
 
     }
 }
