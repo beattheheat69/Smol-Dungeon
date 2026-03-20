@@ -22,27 +22,6 @@ public class PlaceTheseEntitiesInRooms : MonoBehaviour
 	public void ConfirmChoices()
     {
 		////Check if all lists are OK first before allowing scene transition
-		
-		foreach (GameObject toggle in entitySelection.RoomButtons)
-		{
-			GameObject roomParent = Instantiate(new GameObject(toggle.name), WhatToSendOver.transform);
-			foreach (Transform child in toggle.transform)
-			{
-				if (child.CompareTag("Monster"))
-				{
-					GameObject monsterChild = Instantiate(child.gameObject, roomParent.transform);
-				}
-				else if (child.CompareTag("Trap"))
-				{
-					GameObject trapChild = Instantiate(child.gameObject, roomParent.transform);
-				}
-			}
-		}
-
-		foreach (Transform child in WhatToSendOver.transform)
-		{
-			everyRoomEntities.Capacity = WhatToSendOver.transform.childCount;
-		}
 
 		//foreach (GameObject toggle in entitySelection.RoomButtons)
 		//{

@@ -621,7 +621,7 @@ GameObject:
   - component: {fileID: 283796150}
   - component: {fileID: 283796149}
   m_Layer: 5
-  m_Name: Room6
+  m_Name: DungeonRoom_6
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1672,7 +1672,7 @@ GameObject:
   - component: {fileID: 692288591}
   - component: {fileID: 692288590}
   m_Layer: 5
-  m_Name: Room8
+  m_Name: DungeonRoom_8
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1993,7 +1993,7 @@ GameObject:
   - component: {fileID: 799701225}
   - component: {fileID: 799701224}
   m_Layer: 5
-  m_Name: Room4
+  m_Name: DungeonRoom_4
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2379,6 +2379,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 889329659}
+  - component: {fileID: 889329660}
   m_Layer: 0
   m_Name: ThingsToSend
   m_TagString: Untagged
@@ -2401,6 +2402,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &889329660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889329658}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 928c4b2a36be4a543baba3c10afebb93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AddEntitiesToRooms
 --- !u!1 &915107820
 GameObject:
   m_ObjectHideFlags: 0
@@ -3530,7 +3543,7 @@ GameObject:
   - component: {fileID: 1399922259}
   - component: {fileID: 1399922258}
   m_Layer: 5
-  m_Name: Room7
+  m_Name: DungeonRoom_7
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3872,7 +3885,7 @@ GameObject:
   - component: {fileID: 1449751501}
   - component: {fileID: 1449751500}
   m_Layer: 5
-  m_Name: Room1
+  m_Name: DungeonRoom_1
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4048,7 +4061,7 @@ GameObject:
   - component: {fileID: 1501869430}
   - component: {fileID: 1501869429}
   m_Layer: 5
-  m_Name: Room3
+  m_Name: DungeonRoom_3
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4636,7 +4649,7 @@ GameObject:
   - component: {fileID: 1637791160}
   - component: {fileID: 1637791159}
   m_Layer: 5
-  m_Name: Room2
+  m_Name: DungeonRoom_2
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5514,7 +5527,7 @@ GameObject:
   - component: {fileID: 1931123311}
   - component: {fileID: 1931123310}
   m_Layer: 5
-  m_Name: Room5
+  m_Name: DungeonRoom_5
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

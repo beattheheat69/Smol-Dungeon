@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 1928831598063177559}
   - component: {fileID: 2421416760784883578}
   m_Layer: 6
-  m_Name: Trap
+  m_Name: Crossbow
   m_TagString: Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
