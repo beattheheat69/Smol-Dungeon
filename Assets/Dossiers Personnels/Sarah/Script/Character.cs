@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Character : MonoBehaviour, IDamageable
 {
+    [SerializeField]//testing
     protected int health; //enemy current health
     protected int power; //enemy urrent power
 

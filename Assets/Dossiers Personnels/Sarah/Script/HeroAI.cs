@@ -43,7 +43,8 @@ public class HeroAI : Hero, IDamageable
         if (HeroDataManager.Instance != null)
         {
             base.index = HeroDataManager.Instance.party.Count;
-            HeroDataManager.Instance.party.Add(new HeroData { currentHealt = baseStats.health });       
+            HeroDataManager.Instance.party.Add(new HeroData { currentHealt = baseStats.health, dodgeChance = baseStats.dodgeChange});
+            health = HeroDataManager.Instance.party[index].currentHealt;  // testing hero health
         }
     }
 
@@ -252,6 +253,8 @@ public class HeroAI : Hero, IDamageable
         GameObject nearTarget = null; //closest monster to hero
         List<GameObject> monsters = HeroParty.Instance.GetRoom().GetList(); //Get List of monsters in the room
 
+        //***Add check if no monster list available? Pour l'entrance, pas de monstres alors hero va direct a ExitDoor
+
         //Check all monsters to see which is closest
         foreach (GameObject monster in monsters)
         {
@@ -272,20 +275,36 @@ public class HeroAI : Hero, IDamageable
     }
 
     //Move hero toward the exit door to go to next room
-    public bool MoveToDoor(Vector3 position)
+    public bool MoveToDoor(Vector2 position)
     {
-        Vector2 direction = (position - transform.position).normalized;
+
+        // Convert target to 2D
+        Vector2 target = new Vector2(position.x, position.y);
+
+        // Compute direction using rb.position (never transform.position)
+        Vector2 direction = (target - rb.position).normalized;
         direction = AvoidObstical(direction);
+
+        // Move hero
         rb.MovePosition(rb.position + direction * baseStats.chargeSpeed * Time.fixedDeltaTime);
+
         Correctoverlap();
-        //Check if hero still needs to move
-        if (Vector2.Distance(transform.position, position) > 0.05f)
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
+
+        // Arrival check using rb.position and a realistic threshold
+        return Vector2.Distance(rb.position, target) <= 0.05f;
+
+        /* Vector2 direction = (position - transform.position).normalized;
+         direction = AvoidObstical(direction);
+         rb.MovePosition(rb.position + direction * baseStats.chargeSpeed * Time.fixedDeltaTime);
+         Correctoverlap();
+         //Check if hero still needs to move
+         if (Vector2.Distance(transform.position, position) > 0.05f)
+         {
+             return false;
+         }
+         else
+         {
+             return true;
+         }*/
     }
 }

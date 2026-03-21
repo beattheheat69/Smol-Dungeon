@@ -1,18 +1,22 @@
 using System.Collections.Generic;
+using System.Linq;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class HeroParty : MonoBehaviour
 {
     public static HeroParty Instance { get; private set; }
-    
+    [SerializeField]
+    RoomInstance[] roomList;
     List<GameObject> heroList = new List<GameObject>();
-    private RoomInstance currentRoom; // RoomInstance the party is currently in
+    [SerializeField]
+    int currentRoomId; // RoomInstance the party is currently in
     //To temporarily move party to next rooms
-    private bool roomFinished; //If room party is in has monsters or not
-    private bool allAtDoor; //If all heros are at the door
-    private bool allAtDoor2; //If all heros are at the door
-    private bool allAtDoor3; //If all heros are at the door
+    bool roomFinished; //If room party is in has monsters or not
+    bool allAtDoorExit; //If all heros are at the door
+    bool allAtDoorEntrance; //If all heros are at the door
+
 
     void Awake()
     {
@@ -24,7 +28,7 @@ public class HeroParty : MonoBehaviour
         }
 
         Instance = this;
-        currentRoom = GameObject.Find("Room").GetComponent<RoomInstance>();
+        currentRoomId = 0;
     }
 
     // Gives list of heros
@@ -43,7 +47,7 @@ public class HeroParty : MonoBehaviour
     //Gives current room
     public RoomInstance GetRoom()
     {
-        return currentRoom;
+        return roomList[currentRoomId];
     }
 
     // Changes if room has monster in or not
@@ -64,67 +68,72 @@ public class HeroParty : MonoBehaviour
     {
         if (roomFinished)
         {
-            if (currentRoom.name == "Room")
+            Transform doorExit;
+            if (currentRoomId == roomList.Count() - 1)
             {
-                //move party to door
-                GameObject door = GameObject.Find("Door"); // current room door  // toNextRoom[0]
-                if (!allAtDoor)
+                doorExit= roomList[currentRoomId].transform.Find("BossDoor");
+            }
+            else 
+            {
+                doorExit = roomList[currentRoomId].transform.Find("ExitDoor");
+            }
+                
+            Transform passpointEx = doorExit.Find("DoorPoint");
+            Vector2 exitPoint = passpointEx.position;
+            
+            if (!allAtDoorExit)
+            {
+                allAtDoorExit = true;
+                foreach (GameObject hero in heroList)
                 {
-                    allAtDoor = true;
-                    // Groups hero in party together
-                    foreach (GameObject hero in heroList)
+                    float dist = Vector2.Distance(hero.GetComponent<Rigidbody2D>().position, exitPoint);
+
+                    if (dist > 0.05f)
                     {
-                        if (Vector2.Distance(hero.transform.position, door.transform.position) > 0.05f)
+                        bool result = hero.transform.GetComponent<HeroAI>().MoveToDoor(exitPoint);
+                        if (!result)
                         {
-                            bool result = hero.transform.GetComponent<HeroAI>().MoveToDoor(door.transform.position);
-                            allAtDoor = result && allAtDoor;
+                            allAtDoorExit = false;
                         }
-                    }
-                }
-                if (allAtDoor)
-                {
-                    allAtDoor2 = true;
-                    GameObject door2 = GameObject.Find("Door2"); // current room door  // toNextRoom[1]
-                    // Groups hero in party together
-                    foreach (GameObject hero in heroList)
-                    {
-                        if (Vector2.Distance(hero.transform.position, door2.transform.position + new Vector3(0.8f, 0f, 0f)) > 0.05f)
-                        {
-                            bool result2 = hero.transform.GetComponent<HeroAI>().MoveToDoor(door2.transform.position + new Vector3(0.8f, 0f, 0f));
-                            allAtDoor2 = result2 && allAtDoor;
-                        }
-                    }
-                    if (allAtDoor2)
-                    {
-                        roomFinished = false;
-                        currentRoom = GameObject.Find("Room2").GetComponent<RoomInstance>();  // toNextRoom[1].GetParent()
                     }
                 }
             }
             else
             {
-                //move party to door
-                GameObject door3 = GameObject.Find("Door3"); // current room door  // toNextRoom[0]
-                if (!allAtDoor3)
-                {
-                    allAtDoor3 = true;
-                    // Groups hero in party together
-                    foreach (GameObject hero in heroList)
-                    {
-                        if (Vector2.Distance(hero.transform.position, door3.transform.position) > 0.05f)
-                        {
-                            bool result = hero.transform.GetComponent<HeroAI>().MoveToDoor(door3.transform.position);
-                            allAtDoor3 = result && allAtDoor3;
-                        }
-                    }
-                }
-
-                // Moves party to next room
-                if (allAtDoor3)
+                if (currentRoomId == roomList.Count() - 1)
                 {
                     SceneManager.LoadSceneAsync("BossGym");
                 }
-            } 
+                else
+                {
+                    Transform doorEntrance = roomList[currentRoomId + 1].transform.Find("EntranceDoor");
+                    Transform passpointEn = doorEntrance.Find("DoorPoint");
+                    Vector2 EntrancePoint = passpointEn.position;
+
+                    allAtDoorEntrance = true;
+                    foreach (GameObject hero in heroList)
+                    {
+                        float dist = Vector2.Distance(hero.GetComponent<Rigidbody2D>().position, EntrancePoint);
+
+                        if (dist > 0.05f)
+                        {
+                            bool result = hero.transform.GetComponent<HeroAI>().MoveToDoor(EntrancePoint);
+                            if (!result)
+                            {
+                                allAtDoorEntrance = false;
+                            }
+                        }
+                    }
+                    if (allAtDoorEntrance)
+                    {
+                        allAtDoorEntrance = false;
+                        allAtDoorExit = false;
+                        roomFinished = false;
+                        currentRoomId++;
+                    }
+
+                }
+            }
         }
     }
 }

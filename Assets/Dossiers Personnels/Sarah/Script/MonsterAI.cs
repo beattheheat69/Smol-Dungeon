@@ -99,10 +99,8 @@ public class MonsterAI : Character
             if (target.TryGetComponent(out IDamageable hitTarget)) //BUG: One shots hero
             {
                 hitTarget.takeDamage(power);
+                GetComponent<Animator>().SetTrigger("Attack");
             }
-			/*HeroAI heroAI = target.transform.GetComponent<HeroAI>();
-			heroAI.takeDamage(power);*/
-
 		}
         //Start cooldown
         timeCooldown = baseStats.attackCooldown;
@@ -119,6 +117,7 @@ public class MonsterAI : Character
         {
             Vector2 pushDirect = ((Vector2)transform.position - (Vector2)target.transform.position).normalized;
             transform.position += (Vector3)pushDirect * baseStats.chargeSpeed * Time.deltaTime;
+            atTarget = true;
         }
         Correctoverlap();
     }
