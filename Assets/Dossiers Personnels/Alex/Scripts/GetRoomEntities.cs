@@ -6,7 +6,8 @@ public class GetRoomEntities : MonoBehaviour
 
 	private void Awake()
 	{
-		twin = GameObject.Find("ThingsToSend").transform.Find(transform.name).gameObject;
+		if (GameObject.Find("ThingsToSend") != null)
+			twin = GameObject.Find("ThingsToSend").transform.Find(transform.name).gameObject;
 
 		if (twin != null)
 		{
