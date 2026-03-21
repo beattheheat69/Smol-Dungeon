@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SlimeStats_SO", menuName = "Scriptable Objects/SlimeStats_SO")]
-public class SlimeStats_SO : MonsterStats_SO
+[CreateAssetMenu(fileName = "Armor_Stats_SO", menuName = "Scriptable Objects/Armor_Stats_SO")]
+public class Armor_Stats_SO : MonsterStats_SO
 {
     /*[field: SerializeField]
     public float chargeSpeed { get; private set; }
