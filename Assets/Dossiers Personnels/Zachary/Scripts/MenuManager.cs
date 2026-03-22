@@ -19,7 +19,8 @@ public class MenuManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        DontDestroyOnLoad(this);
+        //Pause est gérer par son propre script, pas besoin de garder celui-ci, il donne des errors car il trouve pas le continue button
+        //DontDestroyOnLoad(this);
     }
 
     // Update is called once per frame

@@ -142,7 +142,7 @@ public class BossActions : MonoBehaviour, IDamageable
 		if (health <= 0)
 		{
 			//Defeat
-			GameObject.Find("Manager").GetComponent<RunStatus>().CallRestart(false);
+			GameObject.Find("GameManager").GetComponent<RunStatus>().CallRestart(false);
 			gameObject.SetActive(false);
 		}
 	}
