@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class ArmorAI : MonsterAI
+public class SlimeAI : MonsterAI
 {
     [SerializeField]
-    Armor_Stats_SO baseStats; // Base stats of slime
+    SlimeStats_SO baseStats; // Base stats of slimes
     [SerializeField]
     LayerMask colliderLayer;
     CameraManagement cameraStat; // check the stat of the camera
@@ -12,10 +12,8 @@ public class ArmorAI : MonsterAI
     float timeCooldown; //Time that passes before next attack
     bool attacking = false; // monster in attack mode
     bool atTarget = false;
-    bool isActive = false;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         health = baseStats.health;
@@ -23,74 +21,54 @@ public class ArmorAI : MonsterAI
         cameraStat = Camera.main.GetComponent<CameraManagement>();
     }
 
-    // Update is called once per frame
-    void Update()
+    //Check for target, attack if possible
+    private void FixedUpdate()
     {
+        //If camera is moving do nothing
         if (cameraStat.GetTransitionning()) return;
-        if (isActive)
+        //If no target check for one
+        if (target == null)
         {
-            if (target == null)
+            FindTarget();
+        }
+
+        if (!atTarget)
+        {
+            //Move to target
+            MoveEnemy();
+        }
+
+
+        //Check if can attack
+        if (attacking && timeCooldown <= 0)
+        {
+            DoAttack();
+
+            //If target dead, find new one
+            if (!CheckTargetAlive())
             {
                 FindTarget();
-            }
-
-            if (!atTarget)
-            {
-                //Move to target
-                MoveEnemy();
-            }
-
-
-            //Check if can attack
-            if (attacking && timeCooldown <= 0)
-            {
-                DoAttack();
-
-                //If target dead, find new one
-                if (!CheckTargetAlive())
+                if (target == null)
                 {
-                    FindTarget();
-                    if (target == null)
-                    {
-                        transform.parent.gameObject.SetActive(false);
-                    }
+                    transform.parent.gameObject.SetActive(false);
                 }
             }
-
-            //attack cooldown
-            if (timeCooldown > 0)
-            {
-                timeCooldown -= Time.deltaTime;
-            }
         }
-        
+
+        //attack cooldown
+        if (timeCooldown > 0)
+        {
+            timeCooldown -= Time.deltaTime;
+        }
     }
 
     //Enter in attack mode when colliding with target
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isActive && collision.gameObject == target)
+        if (collision.gameObject == target && !attacking)
         {
-            if (collision.gameObject == target && !attacking)
-            {
-                attacking = true;
-            }
+            attacking = true;
         }
-        else if (collision.tag == "Hero") 
-        {
-            ActivateArmor();    
-            target = collision.gameObject;
-        }
-
-    }
-
-    public void ActivateArmor()
-    {
-        transform.GetComponent<CapsuleCollider2D>().enabled = false;
-        transform.GetComponent<BoxCollider2D>().enabled = true;
-        FindTarget();
-        gameObject.layer = LayerMask.NameToLayer("Monster");
-        isActive = true;
     }
 
     //Leaves attack mode when not colliding with target
@@ -109,7 +87,7 @@ public class ArmorAI : MonsterAI
         return target.activeSelf;
     }
 
-    //Does an attack with a range infront of him, according to his direction of movement
+    //Does an attack on target
     private void DoAttack()
     {
         float randVal = Random.Range(1, 100);
@@ -120,7 +98,7 @@ public class ArmorAI : MonsterAI
             if (target.TryGetComponent(out IDamageable hitTarget)) //BUG: One shots hero
             {
                 hitTarget.takeDamage(power);
-                //GetComponent<Animator>().SetTrigger("Attack");
+                GetComponent<Animator>().SetTrigger("Attack");
             }
         }
         //Start cooldown
@@ -156,6 +134,12 @@ public class ArmorAI : MonsterAI
         }
     }
 
+    //Show hero collision sphere for overlap
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, 0.5f);
+    }
 
     //Find which hero is the closest
     private void FindTarget()
@@ -180,5 +164,4 @@ public class ArmorAI : MonsterAI
         //Set the hero that is closest to enemy in global variable
         target = nearTarget;
     }
-
 }
