@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 
-public class SpikeAI : MonoBehaviour
+public class SpikeAI : TrapAI
 {
     [SerializeField]
     SpikeStats_SO baseStat; // Base stats of spike
