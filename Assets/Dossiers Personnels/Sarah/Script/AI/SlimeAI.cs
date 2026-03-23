@@ -1,7 +1,6 @@
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
-public class MonsterAI : Character
+public class SlimeAI : MonsterAI
 {
     [SerializeField]
     SlimeStats_SO baseStats; // Base stats of slimes
@@ -88,7 +87,7 @@ public class MonsterAI : Character
         return target.activeSelf;
     }
 
-    //Does an attack with a range infront of him, according to his direction of movement
+    //Does an attack on target
     private void DoAttack()
     {
         float randVal = Random.Range(1, 100);
@@ -101,7 +100,7 @@ public class MonsterAI : Character
                 hitTarget.takeDamage(power);
                 GetComponent<Animator>().SetTrigger("Attack");
             }
-		}
+        }
         //Start cooldown
         timeCooldown = baseStats.attackCooldown;
     }

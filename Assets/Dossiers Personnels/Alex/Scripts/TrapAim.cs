@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
-public class TrapAim : MonoBehaviour
+public class TrapAim : TrapAction
 {
     //Follows the mouse pointer or joystick to aim
 

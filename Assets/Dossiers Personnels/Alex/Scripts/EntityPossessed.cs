@@ -15,9 +15,9 @@ public class EntityPossessed : MonoBehaviour
 	//Local scripts references
 	PlayerMovement playerMovement;
 	MonsterAction monsterAction;
-	TrapAim trapAim;
-	CrossbowAI crossbowAI;
-	MonsterAI monsterAI;
+    TrapAction trapAction;
+    TrapAI trapAI;
+    MonsterAI monsterAI;
 
 	//FMOD events
 	public EventReference possessingSFX;
@@ -39,9 +39,9 @@ public class EntityPossessed : MonoBehaviour
 		}
 		else if (this.gameObject.CompareTag("Trap"))
 		{
-			trapAim = GetComponent<TrapAim>();
-			crossbowAI = GetComponent<CrossbowAI>();
-		}
+            trapAction = GetComponent<TrapAction>();
+            trapAI = GetComponent<TrapAI>();
+        }
 	}
 
 	void Update()
@@ -71,11 +71,11 @@ public class EntityPossessed : MonoBehaviour
 			monsterAction.enabled = true;
 			monsterAI.enabled = false;
 		}
-		else if (this.gameObject.CompareTag("Trap") && trapAim != null && crossbowAI != null)
+		else if (this.gameObject.CompareTag("Trap") && trapAction != null && trapAI != null)
 		{
-			trapAim.enabled = true;
-			crossbowAI.enabled = false;
-		}
+            trapAction.enabled = true;
+            trapAI.enabled = false;
+        }
 
 		smol.SetActive(false);
 
@@ -99,20 +99,23 @@ public class EntityPossessed : MonoBehaviour
 
 		//Deactivate all child game objects
 		for (int i = 0; i < transform.childCount; i++)
-			transform.GetChild(i).gameObject.SetActive(false);
+            if (transform.GetChild(i).tag != "Trap")
+            {
+                transform.GetChild(i).gameObject.SetActive(false);
+            }
 
-		//Checks if entity is monster or trap for related scripts
-		if (this.gameObject.CompareTag("Monster") && playerMovement != null && monsterAction != null && monsterAI != null)
+        //Checks if entity is monster or trap for related scripts
+        if (this.gameObject.CompareTag("Monster") && playerMovement != null && monsterAction != null && monsterAI != null)
 		{
 			playerMovement.enabled = false;
 			monsterAction.enabled = false;
 			monsterAI.enabled = true;
 		}
-		else if (this.gameObject.CompareTag("Trap") && trapAim != null && crossbowAI != null)
+		else if (this.gameObject.CompareTag("Trap") && trapAction != null && trapAI != null)
 		{
-			trapAim.enabled = false;
-			crossbowAI.enabled = true;
-		}
+            trapAction.enabled = false;
+            trapAI.enabled = true;
+        }
 
 		smol = null;
 
