@@ -18,7 +18,7 @@ public class MonsterAction : MonoBehaviour
 	public float cooldown = 0.5f;
 	float timeForNextAttack = 0f;
 
-	[SerializeField] SlimeStats_SO baseStats;
+	[SerializeField] MonsterStats_SO baseStats;
 
 	private void Start()
 	{
@@ -57,6 +57,7 @@ public class MonsterAction : MonoBehaviour
 			//	hitTarget.takeDamage(baseStats.power);
 			HeroAI heroAI = hit.transform.GetComponent<HeroAI>();
 			heroAI.takeDamage(baseStats.power);
+			
 		}
 	}
 

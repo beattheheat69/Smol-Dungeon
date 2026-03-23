@@ -1,7 +1,7 @@
 using Unity.Burst.Intrinsics;
 using UnityEngine;
 
-public class CrossbowAI : MonoBehaviour
+public class CrossbowAI : TrapAI
 {
     [SerializeField]
     CrossbowStats_SO baseStat; // Base stats of slimes

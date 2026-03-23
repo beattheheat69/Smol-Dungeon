@@ -16,7 +16,15 @@ public class RoomInstance : MonoBehaviour
                 //Fill list of all monsters in room
                 foreach (Transform child in enemyGroup.transform)
                 {
-                    monsterList.Add(child.gameObject);
+                    if (child.tag == "TriggerMonster")
+                    {
+                        trapList.Add(child.gameObject);
+                    }
+                    else
+                    {
+                        monsterList.Add(child.gameObject);
+                    }
+
                 }
             }
 
@@ -75,5 +83,28 @@ public class RoomInstance : MonoBehaviour
     public List<GameObject> GetList()
     {
         return monsterList;
+    }
+
+    public bool checkMonsters()
+    {
+        bool monsters = false;
+        List<GameObject> removedTraps = new List<GameObject>();
+        foreach (GameObject trap in trapList)
+        {
+            if (trap.tag == "TriggerMonster")
+            {
+                trap.GetComponent<ArmorAI>().ActivateArmor();
+                monsterList.Add(trap);
+                removedTraps.Add(trap);
+                monsters = true;
+            }
+
+        }
+
+        foreach (GameObject monster in removedTraps)
+        {
+            trapList.Remove(monster);
+        }
+        return monsters;
     }
 }

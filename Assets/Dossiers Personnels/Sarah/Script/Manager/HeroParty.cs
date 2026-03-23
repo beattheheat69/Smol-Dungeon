@@ -53,7 +53,7 @@ public class HeroParty : MonoBehaviour
     // Changes if room has monster in or not
     public void SetRoomFinised(bool status)
     {
-        roomFinished = status;
+        roomFinished = !roomList[currentRoomId].checkMonsters();
     }
 
     public void RegisterHeroAI(GameObject heroAI)

@@ -25,7 +25,7 @@ public class HeroDataManager : MonoBehaviour
 
         //End run when hero is dead
         if (party[hero].currentHealt <= 0)
-            GetComponent<RunStatus>().CallRestart(true);
+            GameObject.Find("GameManager").GetComponent<RunStatus>().CallRestart(true);
     }
 
     public int GetHealt(int hero)
