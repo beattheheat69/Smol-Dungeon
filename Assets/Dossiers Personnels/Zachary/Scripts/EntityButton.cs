@@ -24,7 +24,7 @@ public class EntityButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         //Set the text elements of the button
         nameTMP.SetText(entityName);
-        costTMP.SetText(entityCost.ToString());
+        costTMP.SetText(entityCost.ToString().PadLeft(2,'0'));
 
         //Set up the text box cursor
         //flavorTextBox = GameObject.FindWithTag("FlavorTextBox"); 
@@ -35,7 +35,7 @@ public class EntityButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void ToggleTextBox(bool state)
