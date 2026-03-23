@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public class TabGroup : MonoBehaviour
 {
     [HideInInspector]
-    public List<SmolUI.TabButton> tabButtons;
+    public List<SmolUI.TabButton> tabButtons; //The list of every button
 
-    [Header("Colors")]
+    [Header("Colors")] //The colors of every state of the tab
     [SerializeField] public Color tabHover;
     [SerializeField] public Color tabActive;
     [SerializeField] public Color tabInactive;
-    private SmolUI.TabButton selectedTab;
+    private SmolUI.TabButton selectedTab; //The currently activated tag
 
     public List<GameObject> pages = new List<GameObject>();
 
@@ -24,7 +24,7 @@ public class TabGroup : MonoBehaviour
 
     private void Start()
     {
-        //
+        //Select the default tab
         foreach (SmolUI.TabButton button in tabButtons)
         {
             if (button.startsSelected)

@@ -11,7 +11,6 @@ namespace SmolUI
     public class TabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IPointerExitHandler
     {
         public TabGroup tabGroup;
-        [HideInInspector]
         public Image background;
         public bool startsSelected;
 
