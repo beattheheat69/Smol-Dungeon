@@ -20,7 +20,7 @@ public class GlobalRessources : MonoBehaviour
         evilPointsScore.text = "Evil Points: " + evilPoints;
         if (evilPoints <= 0)
         {
-            confirmButton.interactable = true;
+            confirmButton.interactable = true; //Replace with confirm prompt, player can proceed without spending all EP
             confirmButtonText.text = "Confirm";
         }
     }

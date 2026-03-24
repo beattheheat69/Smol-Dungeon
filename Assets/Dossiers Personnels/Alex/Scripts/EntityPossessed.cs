@@ -31,7 +31,7 @@ public class EntityPossessed : MonoBehaviour
 		//Grabs references to playerinput and scripts
 		playerInput = GetComponent<PlayerInput>();
 		possessInput = playerInput.actions["Possess"];
-		if (this.gameObject.CompareTag("Monster"))
+		if (this.gameObject.CompareTag("Monster") || this.gameObject.CompareTag("TriggerMonster"))
 		{
 			playerMovement = GetComponent<PlayerMovement>();
 			monsterAction = GetComponent<MonsterAction>();
@@ -65,7 +65,7 @@ public class EntityPossessed : MonoBehaviour
 			transform.GetChild(i).gameObject.SetActive(true);
 
 		//Checks if entity is monster or trap for related scripts
-		if (this.gameObject.CompareTag("Monster") && playerMovement != null && monsterAction != null && monsterAI != null)
+		if ((this.gameObject.CompareTag("Monster") || this.gameObject.CompareTag("TriggerMonster")) && playerMovement != null && monsterAction != null && monsterAI != null)
 		{
 			playerMovement.enabled = true;
 			monsterAction.enabled = true;
@@ -105,7 +105,7 @@ public class EntityPossessed : MonoBehaviour
             }
 
         //Checks if entity is monster or trap for related scripts
-        if (this.gameObject.CompareTag("Monster") && playerMovement != null && monsterAction != null && monsterAI != null)
+        if ((this.gameObject.CompareTag("Monster") || this.gameObject.CompareTag("TriggerMonster")) && playerMovement != null && monsterAction != null && monsterAI != null)
 		{
 			playerMovement.enabled = false;
 			monsterAction.enabled = false;

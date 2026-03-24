@@ -31,8 +31,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8305927728607468691}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.61109, y: 14.22887, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -101,6 +101,12 @@ MonoBehaviour:
       Data4: 1781375296
     Path: event:/SFX/SFX_Smol/SFX_Smol_DePossessing
   monsterHealth: 0
+  monsterLayer:
+    serializedVersion: 2
+    m_Bits: 8320
+  trapLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!50 &4859007440075912959
 Rigidbody2D:
   serializedVersion: 5
