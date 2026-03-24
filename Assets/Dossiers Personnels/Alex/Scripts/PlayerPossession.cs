@@ -13,6 +13,7 @@ public class PlayerPossession : MonoBehaviour
 	//Layer masks and tags for references
 	public LayerMask entityLayer;
 	public string monsterTag;
+	public string triggerMonsterTag;
 	public string trapTag;
 
 	//For scan around and store objects in list
@@ -56,14 +57,14 @@ public class PlayerPossession : MonoBehaviour
 	private void OnTriggerEnter2D(Collider2D other)
 	{
 		//Adds to entity counter and to entity list
-		if (other.CompareTag(monsterTag) || other.CompareTag(trapTag))
+		if (other.CompareTag(monsterTag) || other.CompareTag(triggerMonsterTag) || other.CompareTag(trapTag))
 			entitiesNearMe.Add(other.gameObject);
 	}
 
 	private void OnTriggerExit2D(Collider2D other)
 	{
 		//Removes from entity counter and entity list
-		if (other.CompareTag(monsterTag) || other.CompareTag(trapTag))
+		if (other.CompareTag(monsterTag) || other.CompareTag(triggerMonsterTag) || other.CompareTag(trapTag))
 		{
 			other.GetComponent<SpriteRenderer>().color = Color.white;	//Removes highlight before removing from list
 			entitiesNearMe.Remove(other.gameObject);

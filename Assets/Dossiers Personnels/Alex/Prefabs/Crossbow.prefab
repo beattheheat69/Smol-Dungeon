@@ -82,6 +82,12 @@ MonoBehaviour:
       Data4: 1781375296
     Path: event:/SFX/SFX_Smol/SFX_Smol_DePossessing
   monsterHealth: 0
+  monsterLayer:
+    serializedVersion: 2
+    m_Bits: 8320
+  trapLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &7691709988344294560
 MonoBehaviour:
   m_ObjectHideFlags: 0

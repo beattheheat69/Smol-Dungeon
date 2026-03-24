@@ -14,6 +14,9 @@ public class EntityMenuSelection : MonoBehaviour
 	{
 		placeInRooms = GetComponent<PlaceTheseEntitiesInRooms>();
 
+		//Crée des children pour chaque rooms dans le gameobject qui sera envoyé à la prochaine scene
+		//Crée des child dans chaque rooms pour les monstres et les traps
+		//Désactive par défaut car seront activé dans les rooms
 		foreach (Toggle toggle in Map.GetComponentsInChildren<Toggle>())
 		{
 			if (toggle.interactable == true)
@@ -37,45 +40,39 @@ public class EntityMenuSelection : MonoBehaviour
 	{
 		foreach (GameObject toggle in RoomButtons)
 		{
+			//References a limite par room et au script de gestion de Evil Points
 			RoomEntityLimit roomLimit = toggle.GetComponent<RoomEntityLimit>();
 			GlobalRessources globalRessources = GetComponent<GlobalRessources>();
 
+			//Affect seulement le toggle selectionné
 			if (toggle.GetComponent<Toggle>().isOn)
 			{
-				//Place whatever entity from the button clicked into the corresponding room of this toggle button
-				//Instantiate as child of toggle then split them between Tags and make new lists for those
-				//Place in separate gameobject to transfer?
-				//Send to other script in static/dont destroy on load?
-				//Lists on monsters and traps for each room?
-				//Check aussi pour limite d'entites par room
-
-				//Instantiate it directly in whattosendover object instead of in the canvas toggle buttons
-
-				//Check for limit per room
 				if (roomLimit.totalLimit > 0 && globalRessources.EvilPointsAmount() > 0)
 				{
-					if (entity.CompareTag("Monster") && roomLimit.monsterLimit > 0)
+					if ((entity.CompareTag("Monster") || entity.CompareTag("TriggerMonster")) && roomLimit.monsterLimit > 0)
 					{
-						//Change: put it in child parent monster
+						//Cherche la parent MonsterGroup et instantiate le monstre dedans
 						foreach (Transform child in placeInRooms.WhatToSendOver.transform)
 						{
 							if (toggle.name == child.name)
 								Instantiate(entity, child.Find("MonsterGroup"));
 						}
 
+						//Diminue limite de monstres, limite de la room, et Evil Point de 1
 						roomLimit.monsterLimit--;
 						roomLimit.totalLimit--;
 						globalRessources.SpendEvilPoints(1);
 					}
 					if (entity.CompareTag("Trap") && roomLimit.trapLimit > 0)
 					{
-						//Change: put it in child parent trap
+						//Cherche le parent TrapGroup et instantiate la trap dedans
 						foreach (Transform child in placeInRooms.WhatToSendOver.transform)
 						{
 							if (toggle.name == child.name)
 								Instantiate(entity, child.Find("TrapGroup"));
 						}
 
+						//Diminue limite de traps, limite de la room, et Evil Point de 1
 						roomLimit.trapLimit--;
 						roomLimit.totalLimit--;
 						globalRessources.SpendEvilPoints(1);

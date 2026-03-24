@@ -67,6 +67,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   monsterTag: Monster
+  triggerMonsterTag: TriggerMonster
   trapTag: Trap
   scanRadius: 1
   entitiesNearMe: []
