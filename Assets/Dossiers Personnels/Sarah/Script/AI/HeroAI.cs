@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
@@ -27,8 +28,12 @@ public class HeroAI : Hero, IDamageable
     bool attacking = false; // hero in attack mode
     public Vector2 lastMoveDirection; // Direction the hero is looking for the attack
     Vector2 lastAngle; // Angle for the attack hitbox
-    float castDistance = 0.5f; //Distance of sphere cast goes
+    float castDistance = 0.8f; //Distance of sphere cast goes
+    float avoidWeight = 2.5f;
     bool atTarget = false;
+    BoxCollider2D boxCol;
+    private float sideChoiceTimer = 0f;
+    private int sideChoice = 0; // -1 = left, 1 = right, 0 = none
     HeroAnimation heroAnim;
 
 
@@ -37,6 +42,7 @@ public class HeroAI : Hero, IDamageable
         heroAnim = GetComponent<HeroAnimation>();
         rb = GetComponent<Rigidbody2D>();
         cameraStat = Camera.main.GetComponent<CameraManagement>();
+        boxCol = GetComponent<BoxCollider2D>();
         //Add hero to the party if party existes
         if (HeroParty.Instance != null)
         {
@@ -81,11 +87,12 @@ public class HeroAI : Hero, IDamageable
             {
                 DoAttack();
                 heroAnim.IsAttacking();
-                //If target dead, find new one
-                if (!CheckTargetAlive())
-                {
-                    FindTarget();
-                }
+            }
+
+            //If target dead, find new one
+            if (!CheckTargetAlive())
+            {
+                FindTarget();
             }
 
             //attack cooldown
@@ -102,6 +109,11 @@ public class HeroAI : Hero, IDamageable
         if (collision.gameObject == target && !attacking)
         {
             attacking = true;
+        }
+        else if (collision.gameObject != target && !attacking && collision.gameObject.layer == LayerMask.NameToLayer("Monster"))
+        {
+            target = collision.gameObject;
+            Debug.Log(collision.gameObject.name);
         }
     }
 
@@ -193,10 +205,11 @@ public class HeroAI : Hero, IDamageable
     private void MoveHero()
     {
         //caculate distance between hero and target with consistent speed
-        Vector2 direction = (target.transform.position - transform.position).normalized;
-        
+        Vector2 seek = ((Vector2)target.transform.position - rb.position).normalized;
+        Vector2 avoid = AvoidObstical(seek);
+
         //Chnage direction to avoid trap if needed
-        lastMoveDirection = AvoidObstical(direction);
+        lastMoveDirection = (seek + avoid * avoidWeight).normalized;
 
         // Move hero toward target
         rb.MovePosition(rb.position + lastMoveDirection * baseStats.chargeSpeed * Time.fixedDeltaTime);
@@ -204,7 +217,7 @@ public class HeroAI : Hero, IDamageable
         {
 
             Vector2 pushDirect = ((Vector2)transform.position - (Vector2)target.transform.position).normalized;
-            transform.position += (Vector3)pushDirect * baseStats.chargeSpeed * Time.deltaTime;
+            rb.MovePosition(rb.position + pushDirect * baseStats.chargeSpeed * Time.fixedDeltaTime);
             atTarget = true;
         }
         Correctoverlap();
@@ -218,32 +231,59 @@ public class HeroAI : Hero, IDamageable
             if (collidObject.gameObject != this.gameObject)
             {
                 Vector2 pushDirect = ((Vector2)transform.position - (Vector2)collidObject.transform.position).normalized;
-                transform.position += (Vector3)pushDirect * baseStats.chargeSpeed * Time.deltaTime;
+                rb.MovePosition(rb.position + pushDirect * baseStats.chargeSpeed * Time.fixedDeltaTime);
             }
         }
     }
 
-    Vector2 AvoidObstical(Vector2 moveDirection)
+    Vector2 AvoidObstical(Vector2 direction)
     {
-        RaycastHit2D hit = Physics2D.CircleCast(transform.position, 0.5f, moveDirection, castDistance, obsticleLayer);
-        if (hit.collider != null)
-        {
-            Vector2 left = Vector2.Perpendicular(moveDirection).normalized;
-            Vector2 right = -left;
-            bool leftClear = !Physics2D.CircleCast(transform.position, 0.5f, left, 0.4f, obsticleLayer);
-            bool rightClear = !Physics2D.CircleCast(transform.position, 0.5f, right, 0.4f, obsticleLayer); ;
+        if (direction == Vector2.zero)
+            return Vector2.zero;
 
-            if (leftClear)
-                return Vector2.Lerp(moveDirection, left, 0.9f).normalized;
-            else if (rightClear)
-                return Vector2.Lerp(moveDirection, right, 0.9f).normalized;
-            else
-                return -moveDirection; // dead end → back up
-        }
-        else 
+        // World collider size
+        Vector2 worldSize = new Vector2(
+            boxCol.size.x * Mathf.Abs(transform.lossyScale.x),
+            boxCol.size.y * Mathf.Abs(transform.lossyScale.y)
+        );
+
+        Vector2 worldCenter = rb.position + boxCol.offset * transform.lossyScale;
+
+        // Directions
+        Vector2 left = Vector2.Perpendicular(direction);
+        Vector2 right = -left;
+
+        // Casts
+        RaycastHit2D hitForward = Physics2D.BoxCast(worldCenter, worldSize, 0f, direction, castDistance, obsticleLayer);
+        RaycastHit2D hitLeft = Physics2D.BoxCast(worldCenter, worldSize, 0f, left, castDistance, obsticleLayer);
+        RaycastHit2D hitRight = Physics2D.BoxCast(worldCenter, worldSize, 0f, right, castDistance, obsticleLayer);
+
+        // If forward is clear → no avoidance needed
+        if (hitForward.collider == null)
         {
-            return moveDirection;
+            sideChoice = 0;
+            return Vector2.zero;
         }
+
+        // If we already chose a side, stick to it for a moment
+        if (sideChoiceTimer > 0f)
+        {
+            sideChoiceTimer -= Time.fixedDeltaTime;
+            return sideChoice == -1 ? left : right;
+        }
+
+        // Choose the best side
+        float leftDist = hitLeft.collider == null ? castDistance : hitLeft.distance;
+        float rightDist = hitRight.collider == null ? castDistance : hitRight.distance;
+
+        if (leftDist > rightDist)
+            sideChoice = -1; // go left
+        else
+            sideChoice = 1;  // go right
+
+        sideChoiceTimer = 0.3f; // commit for 0.3 seconds
+
+        return sideChoice == -1 ? left : right;
     }
 
     //Find which monster is the closest
@@ -277,34 +317,22 @@ public class HeroAI : Hero, IDamageable
     //Move hero toward the exit door to go to next room
     public bool MoveToDoor(Vector2 position)
     {
-
         // Convert target to 2D
         Vector2 target = new Vector2(position.x, position.y);
 
-        // Compute direction using rb.position (never transform.position)
-        Vector2 direction = (target - rb.position).normalized;
-        direction = AvoidObstical(direction);
+        //Find distance between target and hero
+        Vector2 seek = ((Vector2)target - rb.position).normalized;
+        //Find direction to avoid object
+        Vector2 avoid = AvoidObstical(seek);
 
-        // Move hero
-        rb.MovePosition(rb.position + direction * baseStats.chargeSpeed * Time.fixedDeltaTime);
+        lastMoveDirection = (seek + avoid * avoidWeight).normalized;
+
+        rb.MovePosition(rb.position + lastMoveDirection * baseStats.chargeSpeed * Time.fixedDeltaTime);
 
         Correctoverlap();
 
         // Arrival check using rb.position and a realistic threshold
         return Vector2.Distance(rb.position, target) <= 0.05f;
 
-        /* Vector2 direction = (position - transform.position).normalized;
-         direction = AvoidObstical(direction);
-         rb.MovePosition(rb.position + direction * baseStats.chargeSpeed * Time.fixedDeltaTime);
-         Correctoverlap();
-         //Check if hero still needs to move
-         if (Vector2.Distance(transform.position, position) > 0.05f)
-         {
-             return false;
-         }
-         else
-         {
-             return true;
-         }*/
     }
 }
