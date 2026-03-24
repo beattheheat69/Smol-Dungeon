@@ -25,14 +25,16 @@ public class HeroAI : Hero, IDamageable
     CameraManagement cameraStat; // check the stat of the camera
     float timeCooldown; //Time that passes before next attack
     bool attacking = false; // hero in attack mode
-    Vector2 lastMoveDirection; // Direction the hero is looking for the attack
+    public Vector2 lastMoveDirection; // Direction the hero is looking for the attack
     Vector2 lastAngle; // Angle for the attack hitbox
     float castDistance = 0.5f; //Distance of sphere cast goes
     bool atTarget = false;
+    HeroAnimation heroAnim;
 
 
     private void Start()
     {
+        heroAnim = GetComponent<HeroAnimation>();
         rb = GetComponent<Rigidbody2D>();
         cameraStat = Camera.main.GetComponent<CameraManagement>();
         //Add hero to the party if party existes
@@ -77,8 +79,8 @@ public class HeroAI : Hero, IDamageable
             //Check if can attack
             if (attacking && timeCooldown <= 0)
             {
-                 DoAttack();
-
+                DoAttack();
+                heroAnim.IsAttacking();
                 //If target dead, find new one
                 if (!CheckTargetAlive())
                 {
@@ -134,8 +136,6 @@ public class HeroAI : Hero, IDamageable
                 {
                     hitTarget.takeDamage(baseStats.power);  // add buff or debuff
                 }
-                /*MonsterAI monsterAI = target.transform.GetComponent<MonsterAI>();
-                monsterAI.takeDamage(power);*/
             }
         }
         //Start cooldown
@@ -143,7 +143,7 @@ public class HeroAI : Hero, IDamageable
     }
 
     //Check direction of hero movement 
-    Vector3 CheckLastDirection()
+    public Vector3 CheckLastDirection()
     {
         Vector3 direction = new Vector3();
         if (lastMoveDirection == null) return direction;
