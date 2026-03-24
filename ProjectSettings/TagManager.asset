@@ -15,6 +15,7 @@ TagManager:
   - Door
   - UI
   - TriggerMonster
+  - Sword
   layers:
   - Default
   - TransparentFX

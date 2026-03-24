@@ -2099,7 +2099,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Spend all Evil Points to proceed
+  m_text: (Debug OPT) Spend all Evil Points to proceed
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4e023ce55066c7649a636a490e6dc58d, type: 2}
   m_sharedMaterial: {fileID: -6204973913550994659, guid: 4e023ce55066c7649a636a490e6dc58d, type: 2}
@@ -2126,7 +2126,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 31.4
+  m_fontSize: 23.4
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3298,7 +3298,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 915107823}
   m_OnClick:
     m_PersistentCalls:
