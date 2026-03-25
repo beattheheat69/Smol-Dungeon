@@ -10,6 +10,12 @@ public class EntityMenuSelection : MonoBehaviour
 	public List<GameObject> Entities;
 	PlaceTheseEntitiesInRooms placeInRooms;
 
+	[Header("Prefabs Reference")]
+	public GameObject slimePrefab;
+	public GameObject armourPrefab;
+	public GameObject crossbowPrefab;
+	public GameObject spikesPrefab;
+
 	private void Start()
 	{
 		placeInRooms = GetComponent<PlaceTheseEntitiesInRooms>();
@@ -49,7 +55,7 @@ public class EntityMenuSelection : MonoBehaviour
 			{
 				if (roomLimit.totalLimit > 0 && globalRessources.EvilPointsAmount() > 0)
 				{
-					if ((entity.CompareTag("Monster") || entity.CompareTag("TriggerMonster")) && roomLimit.monsterLimit > 0)
+					if ((entity == slimePrefab || entity == armourPrefab) && roomLimit.monsterLimit > 0)
 					{
 						//Cherche la parent MonsterGroup et instantiate le monstre dedans
 						foreach (Transform child in placeInRooms.WhatToSendOver.transform)
@@ -63,7 +69,7 @@ public class EntityMenuSelection : MonoBehaviour
 						roomLimit.totalLimit--;
 						globalRessources.SpendEvilPoints(1);
 					}
-					if (entity.CompareTag("Trap") && roomLimit.trapLimit > 0)
+					if (entity == crossbowPrefab && roomLimit.trapLimit > 0)
 					{
 						//Cherche le parent TrapGroup et instantiate la trap dedans
 						foreach (Transform child in placeInRooms.WhatToSendOver.transform)
@@ -74,6 +80,21 @@ public class EntityMenuSelection : MonoBehaviour
 
 						//Diminue limite de traps, limite de la room, et Evil Point de 1
 						roomLimit.trapLimit--;
+						roomLimit.totalLimit--;
+						globalRessources.SpendEvilPoints(1);
+					}
+					if (entity == spikesPrefab && roomLimit.trapLimit > 0 && roomLimit.spikesLimit > 0)
+					{
+						//Cherche le parent TrapGroup et instantiate la trap dedans
+						foreach (Transform child in placeInRooms.WhatToSendOver.transform)
+						{
+							if (toggle.name == child.name)
+								Instantiate(entity, child.Find("TrapGroup"));
+						}
+
+						//Diminue limite de traps, limite de la room, et Evil Point de 1
+						roomLimit.trapLimit--;
+						roomLimit.spikesLimit--;
 						roomLimit.totalLimit--;
 						globalRessources.SpendEvilPoints(1);
 					}
