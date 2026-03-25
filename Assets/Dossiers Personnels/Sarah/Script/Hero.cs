@@ -46,7 +46,7 @@ public class Hero : Character
 
     IEnumerator ResetDamping()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         rb.linearDamping = 0f; // Go back to normal walking
     }
 }

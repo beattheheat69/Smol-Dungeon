@@ -73,6 +73,7 @@ public class ArmorAI : MonsterAI
             if (collision.gameObject == target && !attacking)
             {
                 attacking = true;
+                atTarget = true;
             }
         }
         else if (collision.transform.tag == "Hero") 
@@ -99,6 +100,7 @@ public class ArmorAI : MonsterAI
         {
 
             attacking = false;
+            atTarget = false;
         }
     }
 
@@ -116,10 +118,12 @@ public class ArmorAI : MonsterAI
         //Check is attack succeded
         if (randVal <= baseStats.attackChance)
         {
+            rb.linearVelocity = Vector2.zero;
             if (target.TryGetComponent(out IDamageable hitTarget)) //BUG: One shots hero
             {
                 hitTarget.takeDamage(power, transform.position, baseStats.kockbackForce);
                 //GetComponent<Animator>().SetTrigger("Attack");
+                atTarget = false;
             }
         }
         //Start cooldown

@@ -127,10 +127,10 @@ public class HeroAI : Hero
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("<color=DeepPink><b>[STATE]</b> Starting Bounce Attack</color>");
         if (collision.gameObject == target && !attacking)
         {
             attacking = true;
+            atTarget = true;
         }
         else if (collision.gameObject != target && !attacking && collision.gameObject.layer == LayerMask.NameToLayer("Monster"))
         {
@@ -144,6 +144,7 @@ public class HeroAI : Hero
         if (collision.gameObject.gameObject == target)
         {
             attacking = false;
+            atTarget = false;
         }
     }
 
@@ -158,6 +159,7 @@ public class HeroAI : Hero
     {
         float randVal = Random.Range(1, 100);
 
+        rb.linearVelocity = Vector2.zero;
         //Check is attack succeded
         if (randVal <= baseStats.attackChance)
         {
@@ -169,6 +171,7 @@ public class HeroAI : Hero
                 {
                     Debug.Log("<color=blue><b>[HIT]</b> Damage dealt by Hero!</color>");
                     hitTarget.takeDamage(baseStats.power, transform.position, baseStats.kockbackForce);  // add buff or debuff
+                    atTarget = false;
                 }
             }
         }

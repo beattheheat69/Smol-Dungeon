@@ -45,7 +45,6 @@ public class Character : MonoBehaviour, IDamageable
             StartCoroutine(ResetDamping());
             atTarget = false;
         }
-        else
 
         //Check if dead
         if (health <= 0)
@@ -60,12 +59,13 @@ public class Character : MonoBehaviour, IDamageable
     {
         return !isDead;
     }
+
     //Trigger death, deactivate character (tempo)
     protected void Die()
     {
         RoomInstance roomScript = transform.GetComponentInParent<RoomInstance>();
         roomScript.removeMonster(this.gameObject);
-        if (this.gameObject.tag == "TriggerMonster")
+        if (this.gameObject.tag == "TriggerMonster")// remove whenb living armor has animation
         {
             gameObject.SetActive(false);
 
@@ -76,7 +76,7 @@ public class Character : MonoBehaviour, IDamageable
 
     IEnumerator ResetDamping()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         rb.linearDamping = 0f; // Go back to normal walking
     }
 }

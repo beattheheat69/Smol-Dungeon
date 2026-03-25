@@ -74,6 +74,7 @@ public class SlimeAI : MonsterAI
         if (collision.gameObject == target && !attacking)
         {
             attacking = true;
+            atTarget = true;
         }
     }
 
@@ -84,6 +85,7 @@ public class SlimeAI : MonsterAI
         {
 
             attacking = false;
+            atTarget = false;
         }
     }
 
@@ -101,6 +103,7 @@ public class SlimeAI : MonsterAI
         //Check is attack succeded
         if (randVal <= baseStats.attackChance)
         {
+            rb.linearVelocity = Vector2.zero;
             Debug.Log("Attack normaly");
             if (target.TryGetComponent(out IDamageable hitTarget)) //BUG: One shots hero
             {
@@ -198,7 +201,8 @@ public class SlimeAI : MonsterAI
         rb.linearVelocity = Vector2.zero;
 
         // Deal damage if he landed near the hero
-        if (Vector2.Distance(transform.position, target.transform.position) <= 1f)
+        Debug.Log("Distance from target when bounce" + Vector2.Distance(transform.position, target.transform.position));
+        if (Vector2.Distance(transform.position, target.transform.position) <= 1.2f)
         {
             Debug.Log("<color=lime><b>[HIT]</b> Damage dealt to Hero!</color>");
             if (target.TryGetComponent(out IDamageable hitTarget))
@@ -207,7 +211,7 @@ public class SlimeAI : MonsterAI
             }
         }
 
-        atTarget = true;
+        atTarget = false;
         isJumping = false;
     }
 }
