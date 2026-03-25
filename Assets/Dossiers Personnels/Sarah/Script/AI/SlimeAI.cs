@@ -10,10 +10,9 @@ public class SlimeAI : MonsterAI
     LayerMask colliderLayer;
     CameraManagement cameraStat; // check the stat of the camera
     GameObject target = null; // current hero target
-    Rigidbody2D rb;  //Object rigidbody
+    //Rigidbody2D rb;  //Object rigidbody
     float timeCooldown; //Time that passes before next attack
     bool attacking = false; // monster in attack mode
-    bool atTarget = false;
     bool isJumping = false;
 
     private void Start()
@@ -105,7 +104,7 @@ public class SlimeAI : MonsterAI
             Debug.Log("Attack normaly");
             if (target.TryGetComponent(out IDamageable hitTarget)) //BUG: One shots hero
             {
-                hitTarget.takeDamage(power);
+                hitTarget.takeDamage(baseStats.power, transform.position, 0f);
                 animator.SetTrigger("Attack");
             }
         }
@@ -121,7 +120,7 @@ public class SlimeAI : MonsterAI
         Vector2 direction = (target.transform.position - transform.position).normalized;
         // Move hero toward target
         rb.MovePosition(rb.position + direction * baseStats.chargeSpeed * Time.fixedDeltaTime);
-        if (Vector2.Distance(transform.position, target.transform.position) <= 3f && Vector2.Distance(transform.position, target.transform.position) > 1.5f)
+        if (Vector2.Distance(transform.position, target.transform.position) <= 3f && Vector2.Distance(transform.position, target.transform.position) > 1f)
         {
             StartCoroutine(BounceAttack());
             /* Vector2 pushDirect = ((Vector2)transform.position - (Vector2)target.transform.position).normalized;
@@ -183,14 +182,14 @@ public class SlimeAI : MonsterAI
         timeCooldown = baseStats.attackCooldown;
 
         // 1. Visual Trigger
-        animator.SetTrigger("Attacking");
+        animator.SetTrigger("Attack");
 
         // 2. Get Direction
         Vector2 direction = (target.transform.position - transform.position).normalized;
 
         // 3. The "Jump" (A physical dash)
         // Use Impulse to give it immediate speed
-        rb.AddForce(direction * 10f, ForceMode2D.Impulse);
+        rb.AddForce(direction * 3f, ForceMode2D.Impulse);
 
         // 4. Wait for the duration of the dash
         yield return new WaitForSeconds(0.4f);
@@ -199,12 +198,12 @@ public class SlimeAI : MonsterAI
         rb.linearVelocity = Vector2.zero;
 
         // Deal damage if he landed near the hero
-        if (Vector2.Distance(transform.position, target.transform.position) <= 1.5f)
+        if (Vector2.Distance(transform.position, target.transform.position) <= 1f)
         {
             Debug.Log("<color=lime><b>[HIT]</b> Damage dealt to Hero!</color>");
             if (target.TryGetComponent(out IDamageable hitTarget))
             {
-                hitTarget.takeDamage(power);
+                hitTarget.takeDamage(power, transform.position, baseStats.kockbackForce);
             }
         }
 

@@ -18,13 +18,13 @@ public class Bullet : MonoBehaviour
 		if (other.CompareTag("Hero"))
 		{
 			HeroAI heroAI = other.transform.GetComponent<HeroAI>();
-			heroAI.takeDamage(damage);
-		}
+			heroAI.takeDamage(damage, transform.position, 0f); // change 0f value for knockback on hero takeDamage
+        }
 		else if (other.CompareTag("Monster"))
 		{
 			MonsterAI monsterAI = other.transform.GetComponent<MonsterAI>();
-			monsterAI.takeDamage(damage);
-		}
+			monsterAI.takeDamage(damage, transform.position, 0f); // change 0f value for knockback on hero takeDamage
+        }
 
 		if (other.tag != "Room")
 		{

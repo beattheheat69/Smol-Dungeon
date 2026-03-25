@@ -13,7 +13,7 @@ using static UnityEngine.GraphicsBuffer;
  * When no more monster in the room start moving to next room
  * All while not overlaping and avoiding traps
  */
-public class HeroAI : Hero, IDamageable
+public class HeroAI : Hero
 {
     [SerializeField]
     LayerMask monsterLayer; //Layer Mask for monsters
@@ -22,7 +22,7 @@ public class HeroAI : Hero, IDamageable
     [SerializeField]
     LayerMask obsticleLayer; //Layer for obsicale to avoid
     GameObject target = null; // Target enemy will charge
-    Rigidbody2D rb;  //Object rigidbody
+    //Rigidbody2D rb;  //Object rigidbody
     CameraManagement cameraStat; // check the stat of the camera
     float timeCooldown; //Time that passes before next attack
     bool attacking = false; // hero in attack mode
@@ -30,7 +30,6 @@ public class HeroAI : Hero, IDamageable
     Vector2 lastAngle; // Angle for the attack hitbox
     float castDistance = 0.8f; //Distance of sphere cast goes
     float avoidWeight = 2.5f;
-    bool atTarget = false;
     BoxCollider2D boxCol;
     private float sideChoiceTimer = 0f;
     private int sideChoice = 0; // -1 = left, 1 = right, 0 = none
@@ -128,6 +127,7 @@ public class HeroAI : Hero, IDamageable
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("<color=DeepPink><b>[STATE]</b> Starting Bounce Attack</color>");
         if (collision.gameObject == target && !attacking)
         {
             attacking = true;
@@ -167,7 +167,8 @@ public class HeroAI : Hero, IDamageable
             {
                 if (enemy.TryGetComponent(out IDamageable hitTarget)) //BUG: One shots monster
                 {
-                    hitTarget.takeDamage(baseStats.power);  // add buff or debuff
+                    Debug.Log("<color=blue><b>[HIT]</b> Damage dealt by Hero!</color>");
+                    hitTarget.takeDamage(baseStats.power, transform.position, baseStats.kockbackForce);  // add buff or debuff
                 }
             }
         }
@@ -234,7 +235,7 @@ public class HeroAI : Hero, IDamageable
 
         // Move hero toward target
         rb.MovePosition(rb.position + lastMoveDirection * baseStats.chargeSpeed * Time.fixedDeltaTime);
-        if (Vector2.Distance(transform.position, target.transform.position) < 1.5f)
+        if (Vector2.Distance(transform.position, target.transform.position) < 1f)
         {
           atTarget = true;
         }

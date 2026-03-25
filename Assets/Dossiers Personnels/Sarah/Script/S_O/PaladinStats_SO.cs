@@ -17,6 +17,7 @@ public class PaladinStats_SO : ScriptableObject
     public float dodgeChange { get; private set; }
     [field: SerializeField]
     public int Nbpotion { get; private set; }
-
+    [field: SerializeField]
+    public float kockbackForce { get; private set; }
     //permanent buffs (and debuffs)
 }

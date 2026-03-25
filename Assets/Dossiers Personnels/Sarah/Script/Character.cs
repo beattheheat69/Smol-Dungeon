@@ -1,5 +1,6 @@
-using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Character : MonoBehaviour, IDamageable
 {
@@ -7,22 +8,45 @@ public class Character : MonoBehaviour, IDamageable
     protected int health; //enemy current health
     protected int power; //enemy urrent power
     protected bool isDead;
+    protected bool atTarget = false;
     protected Animator animator;
+    protected Rigidbody2D rb;  //Object rigidbody
 
     void Awake()
     {
         animator = GetComponent<Animator>();
         isDead = false;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     //Take dammage when hit
-    public virtual void takeDamage(int damage)
+    public virtual void takeDamage(int damage, Vector2 attackerPosition, float knockbackStrength)
     {
-        animator.SetTrigger("Damaged");
+        if (this.gameObject.tag != "TriggerMonster") // remove if when living Armor has animation
+        {
+             animator.SetTrigger("Damaged");
+        }
+       
         
         // deduct health
         health -= damage;
-        animator.SetInteger("HP", health);
+        if (this.gameObject.tag != "TriggerMonster") // remove if when living Armor has animation
+        {
+            animator.SetInteger("HP", health);
+        }
+
+        if (this.gameObject.tag != "TriggerMonster") // Decided living Armor has no knockback, we can change that
+        {
+            rb.linearDamping = 10f;
+            //Does Kockback to character with force of attacker
+            Vector2 knockbackDir = ((Vector2)transform.position - attackerPosition).normalized;
+            // Apply the custom force from the monster
+            rb.AddForce(knockbackDir * knockbackStrength, ForceMode2D.Impulse);
+            StartCoroutine(ResetDamping());
+            atTarget = false;
+        }
+        else
+
         //Check if dead
         if (health <= 0)
         {
@@ -41,5 +65,18 @@ public class Character : MonoBehaviour, IDamageable
     {
         RoomInstance roomScript = transform.GetComponentInParent<RoomInstance>();
         roomScript.removeMonster(this.gameObject);
+        if (this.gameObject.tag == "TriggerMonster")
+        {
+            gameObject.SetActive(false);
+
+        }
+
+    }
+
+
+    IEnumerator ResetDamping()
+    {
+        yield return new WaitForSeconds(0.5f);
+        rb.linearDamping = 0f; // Go back to normal walking
     }
 }

@@ -7,7 +7,7 @@ public class HeroBossAI : Hero
     [SerializeField]
     LayerMask colliderLayer; //Layer for object not to overlaps with
     GameObject target = null; // Target enemy will charge
-    Rigidbody2D rb;  //Object rigidbody
+    //Rigidbody2D rb;  //Object rigidbody
     float timeCooldown; //Time that passes before next attack
     bool attacking = false; // hero in attack mode
 
@@ -92,7 +92,7 @@ public class HeroBossAI : Hero
         if (randVal <= baseStats.attackChance)
         {
             IDamageable hitTarget = target.GetComponent<IDamageable>();
-            hitTarget.takeDamage(baseStats.power);  // add buff or debuff
+            hitTarget.takeDamage(baseStats.power, transform.position, 0f);  // add buff or debuff
         }
         //Start cooldown
         timeCooldown = baseStats.attackCooldown;

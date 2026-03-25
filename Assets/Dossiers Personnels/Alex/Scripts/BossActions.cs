@@ -102,7 +102,7 @@ public class BossActions : MonoBehaviour, IDamageable
 		{
 			Debug.Log(hit.transform.name + " hit!");
 			HeroBossAI heroBossAI = hit.transform.GetComponent<HeroBossAI>();
-			heroBossAI.takeDamage(stats.power);
+			heroBossAI.takeDamage(stats.power, transform.position, 0f);  // The last one is the knockback force, change value if you want knockback
 			//if (heroBossAI.TryGetComponent(out IDamageable hitTarget)) //BUG: one shots the hero
 			//	hitTarget.takeDamage(stats.power);
 		}
@@ -135,7 +135,9 @@ public class BossActions : MonoBehaviour, IDamageable
 		Gizmos.DrawWireSphere(attackTransform, attackRadius);
 	}
 
-	public void takeDamage(int amount)
+
+	
+	public void takeDamage(int amount, Vector2 attackerPosition, float knockbackStrength) // attackPosition and knockbackStrenght is for getting knockback on hit, don't the the boss will so didn't implement the code for it. If neede exemple in Character and Hero script
 	{
 		health -= amount;
 		lifebar.SetHealth(health);

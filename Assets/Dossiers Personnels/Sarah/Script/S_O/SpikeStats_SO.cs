@@ -3,14 +3,16 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SpikeStats_SO", menuName = "Scriptable Objects/SpikeStats_SO")]
 public class SpikeStats_SO : ScriptableObject
 {
-    [SerializeField]
-    public float timeUp; //How long the spike stay up
-    [SerializeField]
-    public float timeDown;  // How long the spike stay down
-    [SerializeField]
-    public float startDelay; // Offset for all spikes
-    [SerializeField]
-    public int power; //damage power
-    [SerializeField]
+    [field: SerializeField]
+    public float timeUp { get; private set; } //How long the spike stay up
+    [field: SerializeField]
+    public float timeDown { get; private set; }  // How long the spike stay down
+    [field: SerializeField]
+    public float startDelay { get; private set; } // Offset for all spikes
+    [field: SerializeField]
+    public int power { get; private set; } //damage power
+    [field: SerializeField]
     public float attackCooldown; //damage cooldown
+    [field: SerializeField]
+    public float kockbackForce { get; private set; }
 }

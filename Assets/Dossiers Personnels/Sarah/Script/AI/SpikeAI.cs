@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class SpikeAI : TrapAI
 {
     [SerializeField]
-    SpikeStats_SO baseStat; // Base stats of spike
+    SpikeStats_SO baseStats; // Base stats of spike
     bool active;
     List<IDamageable> targets = new List<IDamageable>();
     float timeCooldown; //Time that passes before next attack
@@ -22,10 +22,10 @@ public class SpikeAI : TrapAI
             foreach (IDamageable character in targets)
             {
                 Debug.Log("spike attack ");
-                character.takeDamage(baseStat.power);
+                character.takeDamage(baseStats.power, transform.position, baseStats.kockbackForce);
             }
 
-            timeCooldown = baseStat.attackCooldown;
+            timeCooldown = baseStats.attackCooldown;
         }
 
         //attack cooldown
@@ -64,7 +64,7 @@ public class SpikeAI : TrapAI
             }
             active = true;
             Debug.Log(active);
-            yield return new WaitForSeconds(baseStat.timeUp);
+            yield return new WaitForSeconds(baseStats.timeUp);
 
             foreach (Transform anim in this.transform)
             {
@@ -73,7 +73,7 @@ public class SpikeAI : TrapAI
             }
             active = false;
             Debug.Log(active);
-            yield return new WaitForSeconds(baseStat.timeDown);
+            yield return new WaitForSeconds(baseStats.timeDown);
 
         }
     }

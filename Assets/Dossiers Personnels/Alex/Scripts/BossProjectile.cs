@@ -9,7 +9,7 @@ public class BossProjectile : MonoBehaviour
 		if (other.CompareTag("Hero") && other.GetComponent<HeroBossAI>() != null)
 		{
 			Debug.Log(other.transform.name + " hit by flying fist!");
-			other.GetComponent<HeroBossAI>().takeDamage(damage);
+			other.GetComponent<HeroBossAI>().takeDamage(damage, transform.position, 0f); // change 0f value for knockback on hero takeDamage
 		}
 	}
 }

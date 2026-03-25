@@ -8,10 +8,9 @@ public class ArmorAI : MonsterAI
     LayerMask colliderLayer;
     CameraManagement cameraStat; // check the stat of the camera
     GameObject target = null; // current hero target
-    Rigidbody2D rb;  //Object rigidbody
+    //Rigidbody2D rb;  //Object rigidbody
     float timeCooldown; //Time that passes before next attack
     bool attacking = false; // monster in attack mode
-    bool atTarget = false;
     bool isActive = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -119,7 +118,7 @@ public class ArmorAI : MonsterAI
         {
             if (target.TryGetComponent(out IDamageable hitTarget)) //BUG: One shots hero
             {
-                hitTarget.takeDamage(power);
+                hitTarget.takeDamage(power, transform.position, baseStats.kockbackForce);
                 //GetComponent<Animator>().SetTrigger("Attack");
             }
         }
@@ -134,7 +133,7 @@ public class ArmorAI : MonsterAI
         Vector2 direction = (target.transform.position - transform.position).normalized;
         // Move hero toward target
         rb.MovePosition(rb.position + direction * baseStats.chargeSpeed * Time.fixedDeltaTime);
-        if (Vector2.Distance(transform.position, target.transform.position) < 0.1f)
+        if (Vector2.Distance(transform.position, target.transform.position) < 1f)
         {
             /*Vector2 pushDirect = ((Vector2)transform.position - (Vector2)target.transform.position).normalized;
             transform.position += (Vector3)pushDirect * baseStats.chargeSpeed * Time.deltaTime;*/
