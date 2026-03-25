@@ -1066,6 +1066,7 @@ MonoBehaviour:
   monsterLimit: 3
   trapLimit: 3
   totalLimit: 4
+  spikesLimit: 1
 --- !u!1 &356238013
 GameObject:
   m_ObjectHideFlags: 0
@@ -2656,6 +2657,7 @@ MonoBehaviour:
   monsterLimit: 3
   trapLimit: 3
   totalLimit: 4
+  spikesLimit: 1
 --- !u!1 &702125514
 GameObject:
   m_ObjectHideFlags: 0
@@ -2977,6 +2979,7 @@ MonoBehaviour:
   monsterLimit: 3
   trapLimit: 3
   totalLimit: 4
+  spikesLimit: 1
 --- !u!1 &816218438
 GameObject:
   m_ObjectHideFlags: 0
@@ -4457,6 +4460,10 @@ MonoBehaviour:
   Map: {fileID: 356238013}
   RoomButtons: []
   Entities: []
+  slimePrefab: {fileID: 7055708888233048317, guid: bff5ebd5b1e182e4d87db51a6d66373a, type: 3}
+  armourPrefab: {fileID: 3294268645175867725, guid: 43999c73ec8fb2644a7a2068ce88e03f, type: 3}
+  crossbowPrefab: {fileID: 959689986000236469, guid: faa507454af0e1349ba001927df98f28, type: 3}
+  spikesPrefab: {fileID: 8305927728607468691, guid: 5d0530c8475c475438093ae21f610b80, type: 3}
 --- !u!114 &1334842266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4722,6 +4729,7 @@ MonoBehaviour:
   monsterLimit: 3
   trapLimit: 3
   totalLimit: 4
+  spikesLimit: 1
 --- !u!1 &1436897478
 GameObject:
   m_ObjectHideFlags: 0
@@ -4929,6 +4937,7 @@ MonoBehaviour:
   monsterLimit: 3
   trapLimit: 3
   totalLimit: 4
+  spikesLimit: 1
 --- !u!1001 &1495996657
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5184,6 +5193,7 @@ MonoBehaviour:
   monsterLimit: 3
   trapLimit: 3
   totalLimit: 4
+  spikesLimit: 1
 --- !u!1 &1600163511
 GameObject:
   m_ObjectHideFlags: 0
@@ -5756,6 +5766,7 @@ MonoBehaviour:
   monsterLimit: 3
   trapLimit: 3
   totalLimit: 4
+  spikesLimit: 1
 --- !u!1 &1638289547
 GameObject:
   m_ObjectHideFlags: 0
@@ -6740,6 +6751,7 @@ MonoBehaviour:
   monsterLimit: 3
   trapLimit: 3
   totalLimit: 4
+  spikesLimit: 1
 --- !u!1 &1980829631
 GameObject:
   m_ObjectHideFlags: 0
