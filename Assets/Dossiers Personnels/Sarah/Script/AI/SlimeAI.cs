@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class SlimeAI : MonsterAI
 {
@@ -12,6 +14,7 @@ public class SlimeAI : MonsterAI
     float timeCooldown; //Time that passes before next attack
     bool attacking = false; // monster in attack mode
     bool atTarget = false;
+    bool isJumping = false;
 
     private void Start()
     {
@@ -24,42 +27,46 @@ public class SlimeAI : MonsterAI
     //Check for target, attack if possible
     private void FixedUpdate()
     {
-        //If camera is moving do nothing
-        if (cameraStat.GetTransitionning()) return;
-        //If no target check for one
-        if (target == null)
+        if (!isDead)
         {
-            FindTarget();
-        }
-
-        if (!atTarget)
-        {
-            //Move to target
-            MoveEnemy();
-        }
-
-
-        //Check if can attack
-        if (attacking && timeCooldown <= 0)
-        {
-            DoAttack();
-
-            //If target dead, find new one
-            if (!CheckTargetAlive())
+            //If camera is moving do nothing
+            if (cameraStat.GetTransitionning()) return;
+            //If no target check for one
+            if (target == null)
             {
                 FindTarget();
-                if (target == null)
+            }
+
+            if (!atTarget)
+            {
+                //Move to target
+                MoveEnemy();
+            }
+
+
+            //Check if can attack
+            if (attacking && timeCooldown <= 0)
+            {
+                DoAttack();
+
+                //If target dead, find new one
+                if (!CheckTargetAlive())
                 {
-                    transform.parent.gameObject.SetActive(false);
+                    FindTarget();
+                    if (target == null)
+                    {
+                        transform.parent.gameObject.SetActive(false);
+                    }
                 }
+            }
+
+            //attack cooldown
+            if (timeCooldown > 0)
+            {
+                timeCooldown -= Time.deltaTime;
             }
         }
 
-        //attack cooldown
-        if (timeCooldown > 0)
-        {
-            timeCooldown -= Time.deltaTime;
-        }
     }
 
     //Enter in attack mode when colliding with target
@@ -95,10 +102,11 @@ public class SlimeAI : MonsterAI
         //Check is attack succeded
         if (randVal <= baseStats.attackChance)
         {
+            Debug.Log("Attack normaly");
             if (target.TryGetComponent(out IDamageable hitTarget)) //BUG: One shots hero
             {
                 hitTarget.takeDamage(power);
-                GetComponent<Animator>().SetTrigger("Attack");
+                animator.SetTrigger("Attack");
             }
         }
         //Start cooldown
@@ -108,14 +116,17 @@ public class SlimeAI : MonsterAI
     //Move monster towards target
     private void MoveEnemy()
     {
+        if (isJumping) return;
         //caculate distance between hero and target with consistent speed
         Vector2 direction = (target.transform.position - transform.position).normalized;
         // Move hero toward target
         rb.MovePosition(rb.position + direction * baseStats.chargeSpeed * Time.fixedDeltaTime);
-        if (Vector2.Distance(transform.position, target.transform.position) < 0.1f)
+        if (Vector2.Distance(transform.position, target.transform.position) <= 3f && Vector2.Distance(transform.position, target.transform.position) > 1.5f)
         {
-           /* Vector2 pushDirect = ((Vector2)transform.position - (Vector2)target.transform.position).normalized;
-            transform.position += (Vector3)pushDirect * baseStats.chargeSpeed * Time.deltaTime;*/
+            StartCoroutine(BounceAttack());
+            /* Vector2 pushDirect = ((Vector2)transform.position - (Vector2)target.transform.position).normalized;
+             transform.position += (Vector3)pushDirect * baseStats.chargeSpeed * Time.deltaTime;*/
+            timeCooldown = baseStats.attackCooldown;
             atTarget = true;
         }
         //Correctoverlap();
@@ -163,5 +174,41 @@ public class SlimeAI : MonsterAI
         }
         //Set the hero that is closest to enemy in global variable
         target = nearTarget;
+    }
+
+    IEnumerator BounceAttack()
+    {
+        Debug.Log("<color=cyan><b>[STATE]</b> Starting Bounce Attack</color>");
+        isJumping = true;
+        timeCooldown = baseStats.attackCooldown;
+
+        // 1. Visual Trigger
+        animator.SetTrigger("Attacking");
+
+        // 2. Get Direction
+        Vector2 direction = (target.transform.position - transform.position).normalized;
+
+        // 3. The "Jump" (A physical dash)
+        // Use Impulse to give it immediate speed
+        rb.AddForce(direction * 10f, ForceMode2D.Impulse);
+
+        // 4. Wait for the duration of the dash
+        yield return new WaitForSeconds(0.4f);
+
+        // 5. Stop the slime (optional, or let Drag handle it)
+        rb.linearVelocity = Vector2.zero;
+
+        // Deal damage if he landed near the hero
+        if (Vector2.Distance(transform.position, target.transform.position) <= 1.5f)
+        {
+            Debug.Log("<color=lime><b>[HIT]</b> Damage dealt to Hero!</color>");
+            if (target.TryGetComponent(out IDamageable hitTarget))
+            {
+                hitTarget.takeDamage(power);
+            }
+        }
+
+        atTarget = true;
+        isJumping = false;
     }
 }

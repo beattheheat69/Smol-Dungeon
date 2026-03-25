@@ -6,7 +6,7 @@ public class Hero : Character
     protected PaladinStats_SO baseStats; // Base stats of heros
     protected int index;
 
-    public override void takeDamage(int damage)
+    public override void takeDamage(int damage, Vector2 attackerPosition)
     {
         float randVal = Random.Range(1, 100);
 

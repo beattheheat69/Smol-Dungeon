@@ -150,7 +150,7 @@ public class HeroAI : Hero, IDamageable
     //Check if target still alive
     bool CheckTargetAlive()
     {
-        return target.activeSelf;
+        return target.GetComponent<Character>().IsAlive();
     }
 
     //Does an attack with a range infront of him, according to his direction of movement
@@ -234,7 +234,7 @@ public class HeroAI : Hero, IDamageable
 
         // Move hero toward target
         rb.MovePosition(rb.position + lastMoveDirection * baseStats.chargeSpeed * Time.fixedDeltaTime);
-        if (Vector2.Distance(transform.position, target.transform.position) < 0.1f)
+        if (Vector2.Distance(transform.position, target.transform.position) < 1.5f)
         {
           atTarget = true;
         }
