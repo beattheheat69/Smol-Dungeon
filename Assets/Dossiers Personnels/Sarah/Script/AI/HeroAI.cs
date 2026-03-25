@@ -51,7 +51,7 @@ public class HeroAI : Hero, IDamageable
         if (HeroDataManager.Instance != null)
         {
             base.index = HeroDataManager.Instance.party.Count;
-            HeroDataManager.Instance.party.Add(new HeroData { currentHealt = baseStats.health, dodgeChance = baseStats.dodgeChange});
+            HeroDataManager.Instance.party.Add(new HeroData { currentHealt = baseStats.health, dodgeChance = baseStats.dodgeChange });
             health = HeroDataManager.Instance.party[index].currentHealt;  // testing hero health
         }
     }
@@ -80,7 +80,7 @@ public class HeroAI : Hero, IDamageable
                 //Move to target
                 MoveHero();
             }
-  
+
 
             //Check if can attack
             if (attacking && timeCooldown <= 0)
@@ -104,7 +104,29 @@ public class HeroAI : Hero, IDamageable
     }
 
     //Enter in attack mode when colliding with target
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*  private void OnTriggerEnter2D(Collider2D collision)
+      {
+          if (collision.gameObject == target && !attacking)
+          {
+              attacking = true;
+          }
+          else if (collision.gameObject != target && !attacking && collision.gameObject.layer == LayerMask.NameToLayer("Monster"))
+          {
+              target = collision.gameObject;
+              Debug.Log(collision.gameObject.name);
+          }
+      }
+
+      //Leaves attack mode when not colliding with target
+      private void OnTriggerExit2D(Collider2D collision)
+      {
+          if (collision.gameObject.gameObject == target)
+          {
+              attacking = false;
+          }
+      }*/
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject == target && !attacking)
         {
@@ -117,8 +139,7 @@ public class HeroAI : Hero, IDamageable
         }
     }
 
-    //Leaves attack mode when not colliding with target
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.gameObject == target)
         {
@@ -141,7 +162,7 @@ public class HeroAI : Hero, IDamageable
         if (randVal <= baseStats.attackChance)
         {
             //Hit all monster in range
-            Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(CheckLastDirection(), lastAngle, 0f ,monsterLayer); //Check arguments, layer in place of angle
+            Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(CheckLastDirection(), lastAngle, 0f, monsterLayer); //Check arguments, layer in place of angle
             foreach (Collider2D enemy in hitEnemies)
             {
                 if (enemy.TryGetComponent(out IDamageable hitTarget)) //BUG: One shots monster
@@ -213,17 +234,14 @@ public class HeroAI : Hero, IDamageable
 
         // Move hero toward target
         rb.MovePosition(rb.position + lastMoveDirection * baseStats.chargeSpeed * Time.fixedDeltaTime);
-        if (Vector2.Distance(transform.position, target.transform.position) < 0.7f)
+        if (Vector2.Distance(transform.position, target.transform.position) < 0.1f)
         {
-
-            Vector2 pushDirect = ((Vector2)transform.position - (Vector2)target.transform.position).normalized;
-            rb.MovePosition(rb.position + pushDirect * baseStats.chargeSpeed * Time.fixedDeltaTime);
-            atTarget = true;
+          atTarget = true;
         }
-        Correctoverlap();
+        //Correctoverlap();
     }
 
-    private void Correctoverlap()
+  /*  private void Correctoverlap()
     {
         Collider2D[] touchingColliders = Physics2D.OverlapCircleAll(transform.position, 0.5f, colliderLayer);
         foreach (Collider2D collidObject in touchingColliders)
@@ -234,7 +252,7 @@ public class HeroAI : Hero, IDamageable
                 rb.MovePosition(rb.position + pushDirect * baseStats.chargeSpeed * Time.fixedDeltaTime);
             }
         }
-    }
+    }*/
 
     Vector2 AvoidObstical(Vector2 direction)
     {
@@ -315,7 +333,7 @@ public class HeroAI : Hero, IDamageable
     }
 
     //Move hero toward the exit door to go to next room
-    public bool MoveToDoor(Vector2 position)
+    public bool MoveToDoor(Vector2 position, bool atdoor)
     {
         // Convert target to 2D
         Vector2 target = new Vector2(position.x, position.y);
@@ -327,12 +345,20 @@ public class HeroAI : Hero, IDamageable
 
         lastMoveDirection = (seek + avoid * avoidWeight).normalized;
 
+
         rb.MovePosition(rb.position + lastMoveDirection * baseStats.chargeSpeed * Time.fixedDeltaTime);
 
-        Correctoverlap();
+
+        //Correctoverlap();
 
         // Arrival check using rb.position and a realistic threshold
         return Vector2.Distance(rb.position, target) <= 0.05f;
 
     }
+
+    public void ChangeColliderTrigger(bool atdoor)
+    {
+        transform.GetComponent<BoxCollider2D>().isTrigger = atdoor;
+    }
+
 }
