@@ -67,7 +67,7 @@ public class ArmorAI : MonsterAI
     }
 
     //Enter in attack mode when colliding with target
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (isActive && collision.gameObject == target)
         {
@@ -76,7 +76,7 @@ public class ArmorAI : MonsterAI
                 attacking = true;
             }
         }
-        else if (collision.tag == "Hero") 
+        else if (collision.transform.tag == "Hero") 
         {
             ActivateArmor();    
             target = collision.gameObject;
@@ -94,7 +94,7 @@ public class ArmorAI : MonsterAI
     }
 
     //Leaves attack mode when not colliding with target
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.gameObject == target)
         {
@@ -134,16 +134,16 @@ public class ArmorAI : MonsterAI
         Vector2 direction = (target.transform.position - transform.position).normalized;
         // Move hero toward target
         rb.MovePosition(rb.position + direction * baseStats.chargeSpeed * Time.fixedDeltaTime);
-        if (Vector2.Distance(transform.position, target.transform.position) < 0.7f)
+        if (Vector2.Distance(transform.position, target.transform.position) < 0.1f)
         {
-            Vector2 pushDirect = ((Vector2)transform.position - (Vector2)target.transform.position).normalized;
-            transform.position += (Vector3)pushDirect * baseStats.chargeSpeed * Time.deltaTime;
+            /*Vector2 pushDirect = ((Vector2)transform.position - (Vector2)target.transform.position).normalized;
+            transform.position += (Vector3)pushDirect * baseStats.chargeSpeed * Time.deltaTime;*/
             atTarget = true;
         }
-        Correctoverlap();
+        //Correctoverlap();
     }
 
-    private void Correctoverlap()
+   /* private void Correctoverlap()
     {
         Collider2D[] touchingColliders = Physics2D.OverlapCircleAll(transform.position, 0.5f, colliderLayer);
         foreach (Collider2D collidObject in touchingColliders)
@@ -154,7 +154,7 @@ public class ArmorAI : MonsterAI
                 transform.position += (Vector3)pushDirect * baseStats.chargeSpeed * Time.deltaTime;
             }
         }
-    }
+    }*/
 
 
     //Find which hero is the closest

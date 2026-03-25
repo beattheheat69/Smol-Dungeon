@@ -63,7 +63,7 @@ public class SlimeAI : MonsterAI
     }
 
     //Enter in attack mode when colliding with target
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject == target && !attacking)
         {
@@ -72,7 +72,7 @@ public class SlimeAI : MonsterAI
     }
 
     //Leaves attack mode when not colliding with target
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.gameObject == target)
         {
@@ -112,13 +112,13 @@ public class SlimeAI : MonsterAI
         Vector2 direction = (target.transform.position - transform.position).normalized;
         // Move hero toward target
         rb.MovePosition(rb.position + direction * baseStats.chargeSpeed * Time.fixedDeltaTime);
-        if (Vector2.Distance(transform.position, target.transform.position) < 0.7f)
+        if (Vector2.Distance(transform.position, target.transform.position) < 0.1f)
         {
-            Vector2 pushDirect = ((Vector2)transform.position - (Vector2)target.transform.position).normalized;
-            transform.position += (Vector3)pushDirect * baseStats.chargeSpeed * Time.deltaTime;
+           /* Vector2 pushDirect = ((Vector2)transform.position - (Vector2)target.transform.position).normalized;
+            transform.position += (Vector3)pushDirect * baseStats.chargeSpeed * Time.deltaTime;*/
             atTarget = true;
         }
-        Correctoverlap();
+        //Correctoverlap();
     }
 
     private void Correctoverlap()

@@ -90,7 +90,8 @@ public class HeroParty : MonoBehaviour
 
                     if (dist > 0.05f)
                     {
-                        bool result = hero.transform.GetComponent<HeroAI>().MoveToDoor(exitPoint);
+                        hero.transform.GetComponent<HeroAI>().ChangeColliderTrigger(true);
+                        bool result = hero.transform.GetComponent<HeroAI>().MoveToDoor(exitPoint, false);
                         if (!result)
                         {
                             allAtDoorExit = false;
@@ -117,7 +118,7 @@ public class HeroParty : MonoBehaviour
 
                         if (dist > 0.05f)
                         {
-                            bool result = hero.transform.GetComponent<HeroAI>().MoveToDoor(EntrancePoint);
+                            bool result = hero.transform.GetComponent<HeroAI>().MoveToDoor(EntrancePoint, true);
                             if (!result)
                             {
                                 allAtDoorEntrance = false;
@@ -130,8 +131,13 @@ public class HeroParty : MonoBehaviour
                         allAtDoorExit = false;
                         roomFinished = false;
                         currentRoomId++;
-                    }
+                        foreach (GameObject hero in heroList)
+                        {
 
+                            hero.transform.GetComponent<HeroAI>().ChangeColliderTrigger(false);
+
+                        }
+                    }
                 }
             }
         }
