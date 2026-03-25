@@ -6,7 +6,7 @@ public class RoomInstance : MonoBehaviour
     List<GameObject> monsterList = new List<GameObject>(); // List of all monster in room
     List<GameObject> trapList = new List<GameObject>();// List of all traps in room
 
-    private void Awake()
+    private void FillLists()
     {
         if (transform.Find("CameraPoint") != null)
         {
@@ -57,6 +57,8 @@ public class RoomInstance : MonoBehaviour
                     child.gameObject.SetActive(true);
                 }             
             }
+
+            FillLists();
         }
     }
 
