@@ -17,3 +17,4 @@ MonoBehaviour:
   <power>k__BackingField: 3
   <attackCooldown>k__BackingField: 1
   <attackChance>k__BackingField: 55
+  <kockbackForce>k__BackingField: 20

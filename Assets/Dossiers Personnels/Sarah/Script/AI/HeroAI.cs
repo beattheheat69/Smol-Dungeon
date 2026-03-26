@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEditor.Tilemaps;
@@ -13,7 +14,7 @@ using static UnityEngine.GraphicsBuffer;
  * When no more monster in the room start moving to next room
  * All while not overlaping and avoiding traps
  */
-public class HeroAI : Hero, IDamageable
+public class HeroAI : Hero
 {
     [SerializeField]
     LayerMask monsterLayer; //Layer Mask for monsters
@@ -22,15 +23,13 @@ public class HeroAI : Hero, IDamageable
     [SerializeField]
     LayerMask obsticleLayer; //Layer for obsicale to avoid
     GameObject target = null; // Target enemy will charge
-    Rigidbody2D rb;  //Object rigidbody
+    //Rigidbody2D rb;  //Object rigidbody
     CameraManagement cameraStat; // check the stat of the camera
     float timeCooldown; //Time that passes before next attack
     bool attacking = false; // hero in attack mode
-    public Vector2 lastMoveDirection; // Direction the hero is looking for the attack
     Vector2 lastAngle; // Angle for the attack hitbox
     float castDistance = 0.8f; //Distance of sphere cast goes
     float avoidWeight = 2.5f;
-    bool atTarget = false;
     BoxCollider2D boxCol;
     private float sideChoiceTimer = 0f;
     private int sideChoice = 0; // -1 = left, 1 = right, 0 = none
@@ -61,6 +60,7 @@ public class HeroAI : Hero, IDamageable
     {
         //If camera is moving do nothing
         if (cameraStat.GetTransitionning()) return;
+
         if (!HeroParty.Instance.GetRoomFinised())
         {
             //If no target check for one
@@ -103,34 +103,13 @@ public class HeroAI : Hero, IDamageable
         }
     }
 
-    //Enter in attack mode when colliding with target
-    /*  private void OnTriggerEnter2D(Collider2D collision)
-      {
-          if (collision.gameObject == target && !attacking)
-          {
-              attacking = true;
-          }
-          else if (collision.gameObject != target && !attacking && collision.gameObject.layer == LayerMask.NameToLayer("Monster"))
-          {
-              target = collision.gameObject;
-              Debug.Log(collision.gameObject.name);
-          }
-      }
-
-      //Leaves attack mode when not colliding with target
-      private void OnTriggerExit2D(Collider2D collision)
-      {
-          if (collision.gameObject.gameObject == target)
-          {
-              attacking = false;
-          }
-      }*/
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject == target && !attacking)
         {
             attacking = true;
+            atTarget = true;
+            rb.linearVelocity = Vector2.zero;
         }
         else if (collision.gameObject != target && !attacking && collision.gameObject.layer == LayerMask.NameToLayer("Monster"))
         {
@@ -144,13 +123,14 @@ public class HeroAI : Hero, IDamageable
         if (collision.gameObject.gameObject == target)
         {
             attacking = false;
+            atTarget = false;
         }
     }
 
     //Check if target still alive
     bool CheckTargetAlive()
     {
-        return target.activeSelf;
+        return target.GetComponent<Character>().IsAlive();
     }
 
     //Does an attack with a range infront of him, according to his direction of movement
@@ -158,6 +138,7 @@ public class HeroAI : Hero, IDamageable
     {
         float randVal = Random.Range(1, 100);
 
+        rb.linearVelocity = Vector2.zero;
         //Check is attack succeded
         if (randVal <= baseStats.attackChance)
         {
@@ -167,7 +148,8 @@ public class HeroAI : Hero, IDamageable
             {
                 if (enemy.TryGetComponent(out IDamageable hitTarget)) //BUG: One shots monster
                 {
-                    hitTarget.takeDamage(baseStats.power);  // add buff or debuff
+                    hitTarget.takeDamage(baseStats.power, transform.position, baseStats.kockbackForce);  // add buff or debuff
+                    atTarget = false;
                 }
             }
         }
@@ -234,7 +216,7 @@ public class HeroAI : Hero, IDamageable
 
         // Move hero toward target
         rb.MovePosition(rb.position + lastMoveDirection * baseStats.chargeSpeed * Time.fixedDeltaTime);
-        if (Vector2.Distance(transform.position, target.transform.position) < 0.1f)
+        if (Vector2.Distance(transform.position, target.transform.position) < 1f)
         {
           atTarget = true;
         }

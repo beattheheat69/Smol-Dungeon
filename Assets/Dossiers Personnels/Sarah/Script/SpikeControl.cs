@@ -57,7 +57,7 @@ public class SpikeControl : TrapAction
         foreach (IDamageable character in targets)
         {
             Debug.Log("spike attack ");
-            character.takeDamage(baseStats.power);
+            character.takeDamage(baseStats.power, transform.position, baseStats.kockbackForce);
         }
     }
 

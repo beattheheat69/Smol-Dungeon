@@ -4,7 +4,7 @@ using UnityEngine;
 public class ArrowShot : MonoBehaviour
 {
     [SerializeField]
-    CrossbowStats_SO baseStat; // Base stats of slimes
+    CrossbowStats_SO baseStats; // Base stats of slimes
 
     //If hit damageable object does damage dans gets destroyed
     private void OnTriggerEnter2D(Collider2D collision)
@@ -12,7 +12,7 @@ public class ArrowShot : MonoBehaviour
         if (collision.gameObject.GetComponent<IDamageable>() != null)
         {
             IDamageable hitObject = collision.gameObject.GetComponent<IDamageable>();
-            hitObject.takeDamage(baseStat.power);
+            hitObject.takeDamage(baseStats.power, transform.position, baseStats.kockbackForce);
 
         }
         if (collision.tag != "Room")

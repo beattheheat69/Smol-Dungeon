@@ -1,30 +1,51 @@
+using System.Collections;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Hero : Character
 {
     [SerializeField]
     protected PaladinStats_SO baseStats; // Base stats of heros
     protected int index;
+    public Vector2 lastMoveDirection; // Direction the hero is looking for the attack
 
-    public override void takeDamage(int damage)
+    //Rigidbody2D rb;  //Object rigidbody
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    public override void takeDamage(int damage, Vector2 attackerPosition, float knockbackStrength)
     {
         float randVal = Random.Range(1, 100);
 
         if (randVal > HeroDataManager.Instance.GetDodgheChance(index))
         {
-            Debug.Log("Hero got hit by : " + damage); // teste hero getting hit
+            rb.linearDamping = 10f;
+            //Debug.Log("<color=cyan><b>[pushed]</b> Hero got hit and knockback</color>");
             // deduct health
             HeroDataManager.Instance.UpdateHeroHealh(index, damage);
+                                                                    //damage animation missing 
+            //Does Kockback to character with force of attacker
+            Vector2 knockbackDir = ((Vector2)transform.position - attackerPosition).normalized;
+            rb.AddForce(knockbackDir * knockbackStrength, ForceMode2D.Impulse);
+            StartCoroutine(ResetDamping());
+            atTarget = false;
+
             health = HeroDataManager.Instance.party[index].currentHealt;  // testing hero health
         }
-        else
-        {
-            Debug.Log("hero dodge attack"); //teste hero dodging the attack
-        }
+
         //Check if dead
         if (HeroDataManager.Instance.party[index].currentHealt <= 0)
         {
             base.Die();
         }
+    }
+
+    IEnumerator ResetDamping()
+    {
+        yield return new WaitForSeconds(0.3f);
+        rb.linearDamping = 0f; // Go back to normal walking
     }
 }

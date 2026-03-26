@@ -9,4 +9,6 @@ public class CrossbowStats_SO : ScriptableObject
     public float attackCooldown { get; private set; }
     [field: SerializeField]
     public float arrowSpeed { get; private set; }
+    [field: SerializeField]
+    public float kockbackForce { get; private set; }
 }

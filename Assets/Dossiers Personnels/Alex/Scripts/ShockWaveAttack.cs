@@ -8,8 +8,8 @@ public class ShockWaveAttack : MonoBehaviour
 	{
 		if (other.CompareTag("Hero") && other.GetComponent<HeroBossAI>() != null)
 		{
-			other.GetComponent<HeroBossAI>().takeDamage(damage);
-			Debug.Log(other.transform.name + " hit by shockwave!");
+			other.GetComponent<HeroBossAI>().takeDamage(damage, transform.position, 0f); // change 0f value for knockback on hero takeDamage
+            Debug.Log(other.transform.name + " hit by shockwave!");
 		}
 	}
 }

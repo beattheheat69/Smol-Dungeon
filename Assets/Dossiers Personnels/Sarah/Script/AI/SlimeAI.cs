@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class SlimeAI : MonsterAI
 {
@@ -8,10 +10,10 @@ public class SlimeAI : MonsterAI
     LayerMask colliderLayer;
     CameraManagement cameraStat; // check the stat of the camera
     GameObject target = null; // current hero target
-    Rigidbody2D rb;  //Object rigidbody
+    //Rigidbody2D rb;  //Object rigidbody
     float timeCooldown; //Time that passes before next attack
     bool attacking = false; // monster in attack mode
-    bool atTarget = false;
+    bool isJumping = false; //Is doinf the bounce attack
 
     private void Start()
     {
@@ -24,42 +26,46 @@ public class SlimeAI : MonsterAI
     //Check for target, attack if possible
     private void FixedUpdate()
     {
-        //If camera is moving do nothing
-        if (cameraStat.GetTransitionning()) return;
-        //If no target check for one
-        if (target == null)
+        if (!isDead)
         {
-            FindTarget();
-        }
-
-        if (!atTarget)
-        {
-            //Move to target
-            MoveEnemy();
-        }
-
-
-        //Check if can attack
-        if (attacking && timeCooldown <= 0)
-        {
-            DoAttack();
-
-            //If target dead, find new one
-            if (!CheckTargetAlive())
+            //If camera is moving do nothing
+            if (cameraStat.GetTransitionning()) return;
+            //If no target check for one
+            if (target == null)
             {
                 FindTarget();
-                if (target == null)
+            }
+
+            if (!atTarget && !isStunned)
+            {
+                //Move to target
+                MoveEnemy();
+            }
+
+
+            //Check if can attack
+            if (attacking && timeCooldown <= 0)
+            {
+                DoAttack();
+
+                //If target dead, find new one
+                if (!CheckTargetAlive())
                 {
-                    transform.parent.gameObject.SetActive(false);
+                    FindTarget();
+                    if (target == null)
+                    {
+                        transform.parent.gameObject.SetActive(false);
+                    }
                 }
+            }
+
+            //attack cooldown
+            if (timeCooldown > 0)
+            {
+                timeCooldown -= Time.deltaTime;
             }
         }
 
-        //attack cooldown
-        if (timeCooldown > 0)
-        {
-            timeCooldown -= Time.deltaTime;
-        }
     }
 
     //Enter in attack mode when colliding with target
@@ -68,6 +74,8 @@ public class SlimeAI : MonsterAI
         if (collision.gameObject == target && !attacking)
         {
             attacking = true;
+            atTarget = true;
+            rb.linearVelocity = Vector2.zero;
         }
     }
 
@@ -78,6 +86,7 @@ public class SlimeAI : MonsterAI
         {
 
             attacking = false;
+            atTarget = false;
         }
     }
 
@@ -95,10 +104,12 @@ public class SlimeAI : MonsterAI
         //Check is attack succeded
         if (randVal <= baseStats.attackChance)
         {
+            rb.linearVelocity = Vector2.zero;
+            Debug.Log("Attack normaly");
             if (target.TryGetComponent(out IDamageable hitTarget)) //BUG: One shots hero
             {
-                hitTarget.takeDamage(power);
-                GetComponent<Animator>().SetTrigger("Attack");
+                hitTarget.takeDamage(baseStats.power, transform.position, 0f);
+                animator.SetTrigger("Attack");
             }
         }
         //Start cooldown
@@ -108,20 +119,23 @@ public class SlimeAI : MonsterAI
     //Move monster towards target
     private void MoveEnemy()
     {
+        if (isJumping) return;
         //caculate distance between hero and target with consistent speed
         Vector2 direction = (target.transform.position - transform.position).normalized;
         // Move hero toward target
         rb.MovePosition(rb.position + direction * baseStats.chargeSpeed * Time.fixedDeltaTime);
-        if (Vector2.Distance(transform.position, target.transform.position) < 0.1f)
+        if (Vector2.Distance(transform.position, target.transform.position) <= 3f && Vector2.Distance(transform.position, target.transform.position) > 1f)
         {
-           /* Vector2 pushDirect = ((Vector2)transform.position - (Vector2)target.transform.position).normalized;
-            transform.position += (Vector3)pushDirect * baseStats.chargeSpeed * Time.deltaTime;*/
+            StartCoroutine(BounceAttack());
+            /* Vector2 pushDirect = ((Vector2)transform.position - (Vector2)target.transform.position).normalized;
+             transform.position += (Vector3)pushDirect * baseStats.chargeSpeed * Time.deltaTime;*/
+            timeCooldown = baseStats.attackCooldown;
             atTarget = true;
         }
         //Correctoverlap();
     }
 
-    private void Correctoverlap()
+   /* private void Correctoverlap()
     {
         Collider2D[] touchingColliders = Physics2D.OverlapCircleAll(transform.position, 0.5f, colliderLayer);
         foreach (Collider2D collidObject in touchingColliders)
@@ -132,7 +146,7 @@ public class SlimeAI : MonsterAI
                 transform.position += (Vector3)pushDirect * baseStats.chargeSpeed * Time.deltaTime;
             }
         }
-    }
+    }*/
 
     //Show hero collision sphere for overlap
     void OnDrawGizmosSelected()
@@ -163,5 +177,37 @@ public class SlimeAI : MonsterAI
         }
         //Set the hero that is closest to enemy in global variable
         target = nearTarget;
+    }
+
+    IEnumerator BounceAttack()
+    {
+        isJumping = true;
+        timeCooldown = baseStats.attackCooldown;
+
+        animator.SetTrigger("Attack");
+
+        // Get Direction
+        Vector2 direction = (target.transform.position - transform.position).normalized;
+
+        // Use Impulse to give it immediate speed
+        rb.AddForce(direction * 3f, ForceMode2D.Impulse);
+
+        // Wait for the duration of the dash
+        yield return new WaitForSeconds(0.4f);
+
+        // Stop the slime for short knockback
+        rb.linearVelocity = Vector2.zero;
+
+        // Deal damage if he landed near the hero
+        if (Vector2.Distance(transform.position, target.transform.position) <= 2f)
+        {
+            if (target.TryGetComponent(out IDamageable hitTarget))
+            {
+                hitTarget.takeDamage(power, transform.position, baseStats.kockbackForce);
+            }
+        }
+
+        atTarget = false;
+        isJumping = false;
     }
 }

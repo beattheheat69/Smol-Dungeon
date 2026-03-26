@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class RoomInstance : MonoBehaviour
 {
@@ -109,4 +110,11 @@ public class RoomInstance : MonoBehaviour
         }
         return monsters;
     }
+
+
+    public void removeMonster(GameObject monster)
+    {
+        monsterList.Remove(monster);
+    }
+        
 }

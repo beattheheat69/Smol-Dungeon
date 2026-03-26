@@ -56,9 +56,9 @@ public class MonsterAction : MonoBehaviour
 			//if (heroAI.TryGetComponent(out IDamageable hitTarget)) //BUG: One shots hero
 			//	hitTarget.takeDamage(baseStats.power);
 			HeroAI heroAI = hit.transform.GetComponent<HeroAI>();
-			heroAI.takeDamage(baseStats.power);
-			
-		}
+			heroAI.takeDamage(baseStats.power, transform.position, 0f); // change 0f value for knockback on hero takeDamage
+
+        }
 	}
 
 	private void OnDrawGizmos() //Draws a circle gizmo to display basic attack shape and radius (only works when Gizmos is enabled in play mode)

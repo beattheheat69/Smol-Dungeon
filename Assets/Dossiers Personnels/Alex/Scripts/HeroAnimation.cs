@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class HeroAnimation : MonoBehaviour
 {
-    HeroAI heroAI;
+    Hero heroAI;
 	Animator heroAnim;
 	public Animator swordAnim;
 	Vector2 direction;
 
 	private void Start()
 	{
-		heroAI = GetComponent<HeroAI>();
+		heroAI = GetComponent<Hero>();
 		heroAnim = GetComponent<Animator>();
 		swordAnim = GameObject.Find("Sword").GetComponent<Animator>();
 	}
