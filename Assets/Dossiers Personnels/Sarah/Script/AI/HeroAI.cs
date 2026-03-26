@@ -27,7 +27,6 @@ public class HeroAI : Hero
     CameraManagement cameraStat; // check the stat of the camera
     float timeCooldown; //Time that passes before next attack
     bool attacking = false; // hero in attack mode
-    public Vector2 lastMoveDirection; // Direction the hero is looking for the attack
     Vector2 lastAngle; // Angle for the attack hitbox
     float castDistance = 0.8f; //Distance of sphere cast goes
     float avoidWeight = 2.5f;
