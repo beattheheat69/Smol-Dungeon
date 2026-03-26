@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7d64b79fedc8d240a142a0f91cd4ee8, type: 3}
   m_Name: SpikeStats_SO
   m_EditorClassIdentifier: Assembly-CSharp::SpikeStats_SO
-  timeUp: 2
-  timeDown: 3
-  startDelay: 1
-  power: 1
+  <timeUp>k__BackingField: 2
+  <timeDown>k__BackingField: 4
+  <startDelay>k__BackingField: 1
+  <power>k__BackingField: 1
   attackCooldown: 2
+  <kockbackForce>k__BackingField: 1

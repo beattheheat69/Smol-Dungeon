@@ -13,7 +13,7 @@ public class SlimeAI : MonsterAI
     //Rigidbody2D rb;  //Object rigidbody
     float timeCooldown; //Time that passes before next attack
     bool attacking = false; // monster in attack mode
-    bool isJumping = false;
+    bool isJumping = false; //Is doinf the bounce attack
 
     private void Start()
     {
@@ -36,7 +36,7 @@ public class SlimeAI : MonsterAI
                 FindTarget();
             }
 
-            if (!atTarget)
+            if (!atTarget && !isStunned)
             {
                 //Move to target
                 MoveEnemy();
@@ -75,6 +75,7 @@ public class SlimeAI : MonsterAI
         {
             attacking = true;
             atTarget = true;
+            rb.linearVelocity = Vector2.zero;
         }
     }
 
@@ -134,7 +135,7 @@ public class SlimeAI : MonsterAI
         //Correctoverlap();
     }
 
-    private void Correctoverlap()
+   /* private void Correctoverlap()
     {
         Collider2D[] touchingColliders = Physics2D.OverlapCircleAll(transform.position, 0.5f, colliderLayer);
         foreach (Collider2D collidObject in touchingColliders)
@@ -145,7 +146,7 @@ public class SlimeAI : MonsterAI
                 transform.position += (Vector3)pushDirect * baseStats.chargeSpeed * Time.deltaTime;
             }
         }
-    }
+    }*/
 
     //Show hero collision sphere for overlap
     void OnDrawGizmosSelected()
@@ -180,31 +181,26 @@ public class SlimeAI : MonsterAI
 
     IEnumerator BounceAttack()
     {
-        Debug.Log("<color=cyan><b>[STATE]</b> Starting Bounce Attack</color>");
         isJumping = true;
         timeCooldown = baseStats.attackCooldown;
 
-        // 1. Visual Trigger
         animator.SetTrigger("Attack");
 
-        // 2. Get Direction
+        // Get Direction
         Vector2 direction = (target.transform.position - transform.position).normalized;
 
-        // 3. The "Jump" (A physical dash)
         // Use Impulse to give it immediate speed
         rb.AddForce(direction * 3f, ForceMode2D.Impulse);
 
-        // 4. Wait for the duration of the dash
+        // Wait for the duration of the dash
         yield return new WaitForSeconds(0.4f);
 
-        // 5. Stop the slime (optional, or let Drag handle it)
+        // Stop the slime for short knockback
         rb.linearVelocity = Vector2.zero;
 
         // Deal damage if he landed near the hero
-        Debug.Log("Distance from target when bounce" + Vector2.Distance(transform.position, target.transform.position));
-        if (Vector2.Distance(transform.position, target.transform.position) <= 1.2f)
+        if (Vector2.Distance(transform.position, target.transform.position) <= 2f)
         {
-            Debug.Log("<color=lime><b>[HIT]</b> Damage dealt to Hero!</color>");
             if (target.TryGetComponent(out IDamageable hitTarget))
             {
                 hitTarget.takeDamage(power, transform.position, baseStats.kockbackForce);

@@ -74,6 +74,7 @@ public class ArmorAI : MonsterAI
             {
                 attacking = true;
                 atTarget = true;
+                rb.linearVelocity = Vector2.zero;
             }
         }
         else if (collision.transform.tag == "Hero") 

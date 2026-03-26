@@ -16,15 +16,15 @@ public class Hero : Character
 
     public override void takeDamage(int damage, Vector2 attackerPosition, float knockbackStrength)
     {
-        float randVal = 100; //Random.Range(1, 100);
+        float randVal = Random.Range(1, 100);
 
         if (randVal > HeroDataManager.Instance.GetDodgheChance(index))
         {
             rb.linearDamping = 10f;
-            Debug.Log("Hero got hit by : " + damage); // teste hero getting hit
+            //Debug.Log("<color=cyan><b>[pushed]</b> Hero got hit and knockback</color>");
             // deduct health
             HeroDataManager.Instance.UpdateHeroHealh(index, damage);
-
+                                                                    //damage animation missing 
             //Does Kockback to character with force of attacker
             Vector2 knockbackDir = ((Vector2)transform.position - attackerPosition).normalized;
             rb.AddForce(knockbackDir * knockbackStrength, ForceMode2D.Impulse);
@@ -33,10 +33,7 @@ public class Hero : Character
 
             health = HeroDataManager.Instance.party[index].currentHealt;  // testing hero health
         }
-        else
-        {
-            Debug.Log("hero dodge attack"); //teste hero dodging the attack
-        }
+
         //Check if dead
         if (HeroDataManager.Instance.party[index].currentHealt <= 0)
         {

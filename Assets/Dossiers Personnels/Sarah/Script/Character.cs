@@ -9,6 +9,7 @@ public class Character : MonoBehaviour, IDamageable
     protected int power; //enemy urrent power
     protected bool isDead;
     protected bool atTarget = false;
+    protected bool isStunned = false;
     protected Animator animator;
     protected Rigidbody2D rb;  //Object rigidbody
 
@@ -76,7 +77,11 @@ public class Character : MonoBehaviour, IDamageable
 
     IEnumerator ResetDamping()
     {
+        //isStunned = true;
+
         yield return new WaitForSeconds(0.3f);
         rb.linearDamping = 0f; // Go back to normal walking
+
+        //isStunned = false;
     }
 }

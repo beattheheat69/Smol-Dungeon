@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEditor.Tilemaps;
@@ -60,6 +61,7 @@ public class HeroAI : Hero
     {
         //If camera is moving do nothing
         if (cameraStat.GetTransitionning()) return;
+
         if (!HeroParty.Instance.GetRoomFinised())
         {
             //If no target check for one
@@ -102,35 +104,13 @@ public class HeroAI : Hero
         }
     }
 
-    //Enter in attack mode when colliding with target
-    /*  private void OnTriggerEnter2D(Collider2D collision)
-      {
-          if (collision.gameObject == target && !attacking)
-          {
-              attacking = true;
-          }
-          else if (collision.gameObject != target && !attacking && collision.gameObject.layer == LayerMask.NameToLayer("Monster"))
-          {
-              target = collision.gameObject;
-              Debug.Log(collision.gameObject.name);
-          }
-      }
-
-      //Leaves attack mode when not colliding with target
-      private void OnTriggerExit2D(Collider2D collision)
-      {
-          if (collision.gameObject.gameObject == target)
-          {
-              attacking = false;
-          }
-      }*/
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject == target && !attacking)
         {
             attacking = true;
             atTarget = true;
+            rb.linearVelocity = Vector2.zero;
         }
         else if (collision.gameObject != target && !attacking && collision.gameObject.layer == LayerMask.NameToLayer("Monster"))
         {
@@ -169,7 +149,6 @@ public class HeroAI : Hero
             {
                 if (enemy.TryGetComponent(out IDamageable hitTarget)) //BUG: One shots monster
                 {
-                    Debug.Log("<color=blue><b>[HIT]</b> Damage dealt by Hero!</color>");
                     hitTarget.takeDamage(baseStats.power, transform.position, baseStats.kockbackForce);  // add buff or debuff
                     atTarget = false;
                 }

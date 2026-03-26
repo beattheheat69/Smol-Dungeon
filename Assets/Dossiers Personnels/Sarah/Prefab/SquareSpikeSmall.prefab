@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b95956e16205edc4fb6717a8151de7c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpikeAI
-  baseStat: {fileID: 11400000, guid: ec45e877b0cd3b449b7c1132f2bb49ec, type: 2}
+  baseStats: {fileID: 11400000, guid: ec45e877b0cd3b449b7c1132f2bb49ec, type: 2}
 --- !u!114 &-1789879026715013611
 MonoBehaviour:
   m_ObjectHideFlags: 0

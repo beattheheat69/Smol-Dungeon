@@ -19,4 +19,4 @@ MonoBehaviour:
   <attackChance>k__BackingField: 65
   <dodgeChange>k__BackingField: 45
   <Nbpotion>k__BackingField: 0
-  <kockbackForce>k__BackingField: 2
+  <kockbackForce>k__BackingField: 15

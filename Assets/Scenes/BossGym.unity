@@ -1063,6 +1063,7 @@ MonoBehaviour:
   colliderLayer:
     serializedVersion: 2
     m_Bits: 128
+  lastMoveDirection: {x: 0, y: 0}
 --- !u!114 &310569699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1070,7 +1071,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 310569692}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd54ae265bce687499f872d4c8e85eb2, type: 3}
   m_Name: 
@@ -4351,7 +4352,7 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1.29, y: 2}
   m_Direction: 0
 --- !u!50 &2108187207
 Rigidbody2D:
@@ -4378,7 +4379,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &2108187208
 MonoBehaviour:
@@ -4429,6 +4430,10 @@ PrefabInstance:
     - target: {fileID: 598055207838164354, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 659304719111892621, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3179776518944460967, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
       propertyPath: m_LocalPosition.x
