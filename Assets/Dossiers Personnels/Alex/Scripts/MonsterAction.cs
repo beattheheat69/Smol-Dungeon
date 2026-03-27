@@ -30,11 +30,11 @@ public class MonsterAction : MonoBehaviour
 	private void Update()
 	{
 		//Cooldown timer
-		if (timeForNextAttack < cooldown) //Maybe individual cooldowns for each attack?
+		if (timeForNextAttack < baseStats.attackCooldown) //cooldown for each monster
 			timeForNextAttack += Time.deltaTime;
 
 		//Input and function call for basic action
-		if (basicActionInput.WasPressedThisFrame() && cooldown <= timeForNextAttack)
+		if (basicActionInput.WasPressedThisFrame() && baseStats.attackCooldown <= timeForNextAttack)
 		{
 			BasicAttack(GetComponent<PlayerMovement>().lastDir);
 			timeForNextAttack = 0;
@@ -43,7 +43,10 @@ public class MonsterAction : MonoBehaviour
 
 	void BasicAttack(Vector2 dir)
 	{
-		GetComponent<Animator>().SetTrigger("Attack");
+        if (this.gameObject.tag != "TriggerMonster") // remove if when living Armor has animation
+        {
+            GetComponent<Animator>().SetTrigger("Attack");
+        }
 
 		//Adds current pos to last direction faced to get attack pos
 		attackTransform = new Vector2(transform.position.x + dir.x, transform.position.y + dir.y);

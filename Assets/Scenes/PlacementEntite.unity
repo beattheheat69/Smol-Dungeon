@@ -4353,7 +4353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3494278648934827460, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: m_Name
-      value: EntityButton_Skeleton
+      value: EntityButton_LivingArmor
       objectReference: {fileID: 0}
     - target: {fileID: 5777676300990694717, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: m_Type
@@ -4373,7 +4373,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8991860230801663576, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: entityName
-      value: SKELETON
+      value: Living Armor
       objectReference: {fileID: 0}
     - target: {fileID: 8991860230801663576, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: flavorText

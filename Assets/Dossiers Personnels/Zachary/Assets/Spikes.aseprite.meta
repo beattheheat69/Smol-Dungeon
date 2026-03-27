@@ -2,7 +2,17 @@ fileFormatVersion: 2
 guid: 963089218a287b14f8e1d5e007b9811b
 ScriptedImporter:
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Trigger
+    second: {fileID: 7400000, guid: 222cad8879ce19848b9583a65fd6855c, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Untrigger
+    second: {fileID: 7400000, guid: d0ff4007e98e4a54ba342134973af063, type: 2}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -102,7 +112,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639084203659045043
+  platformSettingsDirtyTick: 639102141725396109
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -401,6 +411,18 @@ ScriptedImporter:
     allowsAlphaSplitting: 0
     androidETC2FallbackOverride: 0
   - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: WebGL
     overridden: 0
     ignorePlatformSupport: 0
     maxTextureSize: 16384
