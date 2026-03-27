@@ -14,8 +14,9 @@ public class TrapAim : TrapAction
 	public float bulletVelocity = 5;
 	public float cooldown = 0.5f;
 	float timeForNextAttack = 0f;
+    [SerializeField] CrossbowStats_SO baseStats;
 
-	private void Start()
+    private void Start()
 	{
 		playerInput = GetComponent<PlayerInput>();
 		aim = playerInput.actions["Aim"];
@@ -25,10 +26,10 @@ public class TrapAim : TrapAction
 	private void Update()
 	{
 		//Cooldown timer
-		if (timeForNextAttack < cooldown) //Maybe individual cooldowns for each attack?
+		if (timeForNextAttack < baseStats.attackCooldown) //Maybe individual cooldowns for each attack?
 			timeForNextAttack += Time.deltaTime;
 
-		if (basicActionInput.WasPressedThisFrame() && cooldown <= timeForNextAttack)
+		if (basicActionInput.WasPressedThisFrame() && baseStats.attackCooldown <= timeForNextAttack)
 		{
 			Shoot();
 			timeForNextAttack = 0;
@@ -53,7 +54,7 @@ public class TrapAim : TrapAction
 
 		//Cooldown
 		GameObject inst = Instantiate(bullet, gameObject.transform.position, transform.rotation);
-		inst.GetComponent<Rigidbody2D>().linearVelocity = cursorPos.normalized * bulletVelocity;
+		inst.GetComponent<Rigidbody2D>().linearVelocity = cursorPos.normalized * baseStats.arrowSpeed;
 		Destroy(inst, 2f);
 	}
 }

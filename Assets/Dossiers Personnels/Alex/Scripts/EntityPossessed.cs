@@ -46,6 +46,11 @@ public class EntityPossessed : MonoBehaviour
 
 	void Update()
 	{
+		if (this.GetComponent<Character>() != null && !this.GetComponent<Character>().IsAlive())
+		{
+            DePossessing();
+        }
+			
 		//Calls DePossessing when pressing the Possess input
 		if (possessInput.WasPressedThisFrame() && isPossessed)
 			DePossessing();

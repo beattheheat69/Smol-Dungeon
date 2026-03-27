@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: CrossbowStats_SO
   m_EditorClassIdentifier: Assembly-CSharp::CrossbowStats_SO
   <power>k__BackingField: 1
-  <attackCooldown>k__BackingField: 2
+  <attackCooldown>k__BackingField: 1
   <arrowSpeed>k__BackingField: 5
+  <kockbackForce>k__BackingField: 0

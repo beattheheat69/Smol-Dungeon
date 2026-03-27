@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using System.Collections.Generic;
 
 public class Character : MonoBehaviour, IDamageable
 {
@@ -65,18 +64,16 @@ public class Character : MonoBehaviour, IDamageable
     protected void Die()
     {
 
-        if (this.gameObject.tag != "Monster")// remove when living armor has animation
+        if (this.gameObject.tag == "TriggerMonster")// remove when living armor has animation
         {
             gameObject.SetActive(false);
-
         }
         else if(this.gameObject.tag != "Hero")
-        { 
+        {
             RoomInstance roomScript = transform.GetComponentInParent<RoomInstance>();
             roomScript.removeMonster(this.gameObject);
         }
 
-       
     }
 
 

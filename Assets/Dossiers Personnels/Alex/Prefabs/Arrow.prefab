@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
   damage: 1
+  baseStats: {fileID: 11400000, guid: 74d4f6cad9ded7341b86f7c3d736032e, type: 2}
 --- !u!212 &2854321148679369320
 SpriteRenderer:
   serializedVersion: 2

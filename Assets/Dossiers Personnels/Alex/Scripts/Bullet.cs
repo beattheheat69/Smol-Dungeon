@@ -5,7 +5,10 @@ public class Bullet : MonoBehaviour
 {
 	public int damage = 1;
 
-	private void OnTriggerEnter2D(Collider2D other)
+    [SerializeField]
+    CrossbowStats_SO baseStats;
+
+    private void OnTriggerEnter2D(Collider2D other)
 	{
 		//if (other.CompareTag("Hero") && other.GetComponent<HeroPlaceholderTest>() != null && other.GetComponent<HeroPlaceholderTest>().enabled == true)
 		//	other.GetComponent<HeroPlaceholderTest>().TakeDamage(damage);
@@ -16,17 +19,17 @@ public class Bullet : MonoBehaviour
 		//}
 
 		if (other.CompareTag("Hero"))
-		{
+        {
 			HeroAI heroAI = other.transform.GetComponent<HeroAI>();
-			heroAI.takeDamage(damage, transform.position, 0f); // change 0f value for knockback on hero takeDamage
+			heroAI.takeDamage(baseStats.power, transform.position, 0f); // change 0f value for knockback on hero takeDamage
         }
 		else if (other.CompareTag("Monster"))
 		{
 			MonsterAI monsterAI = other.transform.GetComponent<MonsterAI>();
-			monsterAI.takeDamage(damage, transform.position, 0f); // change 0f value for knockback on hero takeDamage
+			monsterAI.takeDamage(baseStats.power, transform.position, 0f); // change 0f value for knockback on hero takeDamage
         }
 
-		if (other.tag != "Room")
+        if (other.tag != "Room")
 		{
 			Destroy(gameObject);
 		}
