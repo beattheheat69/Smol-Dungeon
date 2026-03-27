@@ -19,8 +19,7 @@ public class MenuManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //Pause est gérer par son propre script, pas besoin de garder celui-ci, il donne des errors car il trouve pas le continue button
-        //DontDestroyOnLoad(this);
+        DontDestroyOnLoad(this);
     }
 
     // Update is called once per frame
@@ -34,15 +33,6 @@ public class MenuManager : MonoBehaviour
         else
         {
             continueButton.interactable = true;
-        }
-
-        //FOR DEBUG PURPOSES (Test Pause Menu)
-
-        //If the Pause button is pressed
-        if (UnityEngine.InputSystem.Keyboard.current.escapeKey.wasPressedThisFrame)
-        {
-            //Pause the game
-            PauseGame();
         }
     }
 
@@ -67,24 +57,6 @@ public class MenuManager : MonoBehaviour
         //Make the window appear
         window.gameObject.SetActive(true);
     }
-
-    public void PauseGame()
-    {
-
-        if (isGamePaused) { 
-            Time.timeScale = 1.0f; //Unfreeze the action
-            pauseWindowPrefab.gameObject.SetActive(false); //Remove the pause menu window
-            isGamePaused = false; //Set the boolean value to signal the game is unpaused
-        }
-
-        else
-        {
-            Time.timeScale = 0.0f; //Freeze the action
-            pauseWindowPrefab.gameObject.SetActive(true); //Spawn the pause menu window
-            isGamePaused = true; //Set the boolean value to signal the game is paused
-        }
-    }
-
 
     public void SetFullScreen (bool fullscreen)
     {
