@@ -75,6 +75,11 @@ public class EntityPossessed : MonoBehaviour
 		{
             trapAction.enabled = true;
             trapAI.enabled = false;
+
+			if (this.gameObject.TryGetComponent<SpikeAI>(out SpikeAI script))
+			{
+				script.SetisPossesed(true);
+			}
         }
 
 		smol.SetActive(false);
@@ -115,6 +120,11 @@ public class EntityPossessed : MonoBehaviour
 		{
             trapAction.enabled = false;
             trapAI.enabled = true;
+
+            if (this.gameObject.TryGetComponent<SpikeAI>(out SpikeAI script))
+            {
+                script.SetisPossesed(true);
+            }
         }
 
 		smol = null;

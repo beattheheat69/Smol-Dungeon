@@ -1,18 +1,24 @@
 using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.InputSystem.Controls;
 
 public class SpikeAI : TrapAI
 {
     [SerializeField]
     SpikeStats_SO baseStats; // Base stats of spike
     bool active;
+    bool isPossesed;
     List<IDamageable> targets = new List<IDamageable>();
     float timeCooldown; //Time that passes before next attack
+    Animator[] spikesAnomators;
 
     void Start()
     {
+        isPossesed = false;
+        spikesAnomators = GetComponentsInChildren<Animator>();
         StartCoroutine(TrapCycle());
+
     }
 
     private void Update()
@@ -21,7 +27,6 @@ public class SpikeAI : TrapAI
         {
             foreach (IDamageable character in targets)
             {
-                Debug.Log("spike attack ");
                 character.takeDamage(baseStats.power, transform.position, baseStats.kockbackForce);
             }
 
@@ -52,29 +57,43 @@ public class SpikeAI : TrapAI
         }
     }
 
+    public void SetisPossesed(bool state)
+    { 
+        isPossesed = state;
+    }
+
     IEnumerator TrapCycle()
     {
-        while (true)
-        {
 
-            foreach (Transform anim in this.transform)
+       
+        while (!isPossesed)
+        {
+            Debug.Log("<color=red><b>[AI]</b> Spike cycle from AI </color>");
+            //make all spike go up
+            foreach (Animator anim in spikesAnomators)
             {
-                //do animation up
+                anim.Play("SpikeUp");
 
             }
             active = true;
-            Debug.Log(active);
             yield return new WaitForSeconds(baseStats.timeUp);
 
-            foreach (Transform anim in this.transform)
+            //make all spike go down
+            foreach (Animator anim in spikesAnomators)
             {
-                //do animation down
+                anim.Play("SpikeDown");
 
             }
             active = false;
-            Debug.Log(active);
             yield return new WaitForSeconds(baseStats.timeDown);
 
+
+            //waiting mode
+            foreach (Animator anim in spikesAnomators)
+            {
+                anim.Play("Idle");
+
+            }
         }
     }
 }

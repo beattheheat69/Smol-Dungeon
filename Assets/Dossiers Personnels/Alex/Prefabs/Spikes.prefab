@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spikes
       objectReference: {fileID: 0}
+    - target: {fileID: 1160356261127867848, guid: 963089218a287b14f8e1d5e007b9811b, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4b31ca4ab439152489e357719d193d32, type: 2}
+    - target: {fileID: 3626916397498700004, guid: 963089218a287b14f8e1d5e007b9811b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4205142199757878352, guid: 963089218a287b14f8e1d5e007b9811b, type: 3}
     - target: {fileID: 3626916397498700004, guid: 963089218a287b14f8e1d5e007b9811b, type: 3}
       propertyPath: m_SortingLayer
       value: 2
