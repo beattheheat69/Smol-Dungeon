@@ -2,6 +2,7 @@ using Mono.Cecil.Cil;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class BossActions : MonoBehaviour, IDamageable
 {
@@ -34,7 +35,7 @@ public class BossActions : MonoBehaviour, IDamageable
 	//Lifebar thingy
 	public Lifebar lifebar;
 
-	[SerializeField] SlimeStats_SO stats;
+	[SerializeField] MonsterStats_SO stats;
 	[SerializeField] int health;
 
 	private void Start()
@@ -87,6 +88,9 @@ public class BossActions : MonoBehaviour, IDamageable
 			SpecialAttackRight(lastDir);
 			timeForNextAttack = 0;
 		}
+
+		//Only works when called here
+		lifebar.SetHealth(health);
 	}
 
 	void BasicAttack(Vector2 dir) //Basic punch in front of boss
@@ -139,6 +143,7 @@ public class BossActions : MonoBehaviour, IDamageable
 	
 	public void takeDamage(int amount, Vector2 attackerPosition, float knockbackStrength) // attackPosition and knockbackStrenght is for getting knockback on hit, don't the the boss will so didn't implement the code for it. If neede exemple in Character and Hero script
 	{
+		//This function does not seem to be called at all...
         health -= amount;
 		lifebar.SetHealth(health);
 		if (health <= 0)
