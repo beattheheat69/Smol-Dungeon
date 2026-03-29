@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77676da33efb2724b9b894d85a97d8e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossProjectile
-  damage: 1
+  bossStats: {fileID: 11400000, guid: 2c5136866831f0b4c81d7726c5005601, type: 2}
 --- !u!212 &7620666062686885692
 SpriteRenderer:
   serializedVersion: 2
