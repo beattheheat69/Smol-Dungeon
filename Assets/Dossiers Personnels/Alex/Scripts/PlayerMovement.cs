@@ -44,10 +44,10 @@ public class PlayerMovement : MonoBehaviour
         transform.Translate(moveDir * speed * Time.deltaTime);
 
         //Flip sprite when moving left
-        //if (lastDir.x < 0)
-        //    GetComponent<SpriteRenderer>().flipX = true;
-        //else if (lastDir.x > 0)
-        //    GetComponent<SpriteRenderer>().flipX = false;
+        if (lastDir.x < 0)
+            GetComponent<SpriteRenderer>().flipX = true;
+        else if (lastDir.x > 0)
+            GetComponent<SpriteRenderer>().flipX = false;
 
         if (Camera.main.GetComponent<CameraManagement>() != null && Camera.main.GetComponent<CameraManagement>().GetTransitionning())
         {
