@@ -1,4 +1,5 @@
 using Mono.Cecil.Cil;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -85,7 +86,7 @@ public class BossActions : MonoBehaviour, IDamageable
 		if (specialAttackRight.WasPressedThisFrame() && cooldown <= timeForNextAttack)
 		{
 			Debug.Log("Special Attack Right");
-			SpecialAttackRight(lastDir);
+			StartCoroutine(SpecialAttackRight(lastDir));
 			timeForNextAttack = 0;
 		}
 
@@ -122,10 +123,10 @@ public class BossActions : MonoBehaviour, IDamageable
 		Destroy(inst, 2f);
 	}
 
-	void SpecialAttackRight(Vector2 dir) //Throw fist across room
+	IEnumerator SpecialAttackRight(Vector2 dir) //Throw fist across room
 	{
 		StartCoroutine(GetComponent<BossAnim>().BossProjectile());
-
+		yield return new WaitForSeconds(0.25f);
 		GameObject inst = Instantiate(fistAttack);
 		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90;
 		inst.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
