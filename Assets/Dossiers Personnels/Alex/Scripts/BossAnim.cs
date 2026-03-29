@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class BossAnim : MonoBehaviour
@@ -5,6 +6,7 @@ public class BossAnim : MonoBehaviour
 	PlayerMovement playerMovement;
 	Animator anim;
 	Vector2 dir;
+	Vector2 lastDir;
 
 	private void Start()
 	{
@@ -15,18 +17,48 @@ public class BossAnim : MonoBehaviour
 	private void Update()
 	{
 		dir = playerMovement.GetDirection();
-		AnimateBoss(dir);
+
+		if (dir != Vector2.zero)
+		{
+			lastDir = dir;
+			anim.SetBool("isWalking", true);
+			AnimateBoss(dir);
+		}
+		else
+		{
+			anim.SetBool("isWalking", false);
+			AnimateBoss(lastDir);
+		}
+
 	}
 
 	void AnimateBoss(Vector2 direction)
 	{
-		anim.SetBool("isWalking", true);
-		anim.SetFloat("DirX", direction.x);
-		anim.SetFloat("DirY", direction.y);
+		anim.SetFloat("dirX", direction.x);
+		anim.SetFloat("dirY", direction.y);
 	}
 
-	public void BossAttacks()
+	public IEnumerator BossAttacks()
 	{
-		anim.SetTrigger("Attack");
+		anim.SetTrigger("BasicAttack");
+		playerMovement.enabled = false;
+		yield return new WaitForSeconds(0.5f);
+		playerMovement.enabled = true;
+	}
+
+	public IEnumerator BossProjectile()
+	{
+		anim.SetTrigger("Projectile");
+		playerMovement.enabled = false;
+		yield return new WaitForSeconds(0.5f);
+		playerMovement.enabled = true;
+	}
+
+	public IEnumerator BossShockwave()
+	{
+		anim.SetTrigger("Shockwave");
+		playerMovement.enabled = false;
+		yield return new WaitForSeconds(0.5f);
+		playerMovement.enabled = true;
 	}
 }

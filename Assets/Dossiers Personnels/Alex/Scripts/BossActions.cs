@@ -95,7 +95,7 @@ public class BossActions : MonoBehaviour, IDamageable
 
 	void BasicAttack(Vector2 dir) //Basic punch in front of boss
 	{
-		GetComponent<BossAnim>().BossAttacks();
+		StartCoroutine(GetComponent<BossAnim>().BossAttacks());
 
 		//Adds current pos to last direction faced to get attack pos
 		attackTransform = new Vector2(transform.position.x + dir.x, transform.position.y + dir.y);
@@ -114,7 +114,7 @@ public class BossActions : MonoBehaviour, IDamageable
 
 	void SpecialAttackLeft(Vector2 dir) //Shockwave AoE for 1 second
 	{
-		GetComponent<BossAnim>().BossAttacks();
+		StartCoroutine(GetComponent<BossAnim>().BossShockwave());
 
 		//Spawns VFX in front of last direction
 		GameObject inst = Instantiate(shockwaveAnim);
@@ -124,7 +124,7 @@ public class BossActions : MonoBehaviour, IDamageable
 
 	void SpecialAttackRight(Vector2 dir) //Throw fist across room
 	{
-		GetComponent<BossAnim>().BossAttacks();
+		StartCoroutine(GetComponent<BossAnim>().BossProjectile());
 
 		GameObject inst = Instantiate(fistAttack);
 		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90;

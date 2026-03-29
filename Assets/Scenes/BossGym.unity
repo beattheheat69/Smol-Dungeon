@@ -1288,22 +1288,6 @@ MonoBehaviour:
   colliderLayer:
     serializedVersion: 2
     m_Bits: 128
---- !u!114 &310569699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 310569692}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd54ae265bce687499f872d4c8e85eb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DebugHealth
-  health: 0
-  baseStats: {fileID: 0}
-  lastMoveDirection: {x: 0, y: 0}
-  hp: 0
 --- !u!1 &482447815
 GameObject:
   m_ObjectHideFlags: 0
@@ -6127,7 +6111,7 @@ SpriteRenderer:
   m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -7561401189172708721, guid: 2f8e9c339f303c74491d25eec72f219b, type: 3}
+  m_Sprite: {fileID: 9210417678588731418, guid: 1ff9db78bd59da24c99f122d5aefe92e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6255,7 +6239,7 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.29, y: 2}
+  m_Size: {x: 1.5, y: 3}
   m_Direction: 0
 --- !u!50 &2108187207
 Rigidbody2D:
@@ -6306,7 +6290,7 @@ Animator:
   m_GameObject: {fileID: 2108187200}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2ded0802f3ff6c743a69106aa0da9d9a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1e500d96961042644acb573905bad6cb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -6387,9 +6371,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 598055207838164354, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
       insertIndex: 1
       addedObject: {fileID: 310569693}
-    - targetCorrespondingSourceObject: {fileID: 598055207838164354, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
-      insertIndex: 2
-      addedObject: {fileID: 310569699}
   m_SourcePrefab: {fileID: 100100000, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
