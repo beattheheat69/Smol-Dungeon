@@ -154,10 +154,9 @@ public class BossActions : MonoBehaviour, IDamageable
 
 
 	
-	public void takeDamage(int amount, Vector2 attackerPosition, float knockbackStrength) // attackPosition and knockbackStrenght is for getting knockback on hit, don't the the boss will so didn't implement the code for it. If neede exemple in Character and Hero script
+	public void takeDamage(int damage, Vector2 attackerPosition, float knockbackStrength) // attackPosition and knockbackStrenght is for getting knockback on hit, don't the the boss will so didn't implement the code for it. If neede exemple in Character and Hero script
 	{
-		//This function does not seem to be called at all...
-        health -= amount;
+        health -= damage;
 		lifebar.SetHealth(health);
 		if (health <= 0)
 		{

@@ -51,7 +51,7 @@ public class HeroAI : Hero
         {
             base.index = HeroDataManager.Instance.party.Count;
             HeroDataManager.Instance.party.Add(new HeroData { currentHealt = baseStats.health, dodgeChance = baseStats.dodgeChange });
-            health = HeroDataManager.Instance.party[index].currentHealt;  // testing hero health
+            //health = HeroDataManager.Instance.party[index].currentHealt;  // testing hero health
         }
     }
 

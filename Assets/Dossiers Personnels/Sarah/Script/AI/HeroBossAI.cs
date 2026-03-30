@@ -1,25 +1,34 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class HeroBossAI : Hero
 {
     [SerializeField]
     LayerMask colliderLayer; //Layer for object not to overlaps with
+    [SerializeField]
+    LayerMask obsticleLayer; //Layer for obsicale to avoid
     GameObject target = null; // Target enemy will charge
     //Rigidbody2D rb;  //Object rigidbody
     float timeCooldown; //Time that passes before next attack
     bool attacking = false; // hero in attack mode
-    //public Vector2 lastMoveDirection; // Direction the hero is looking for the attack
+    Vector2 lastAngle; // Angle for the attack hitbox
+    float castDistance = 0.8f; //Distance of sphere cast goes
+    float avoidWeight = 2.5f;
+    BoxCollider2D boxCol;
+    private float sideChoiceTimer = 0f;
+    private int sideChoice = 0; // -1 = left, 1 = right, 0 = none
     HeroAnimation heroAnim;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         heroAnim = GetComponent<HeroAnimation>();
+        boxCol = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         FindTarget();
-        //health = HeroDataManager.Instance.party[index].currentHealt;  // testing hero health
+        //health = HeroDataManager.Instance.party[index].currentHealt;// testing hero health
     }
 
     // Update is called once per frame
@@ -67,31 +76,19 @@ public class HeroBossAI : Hero
     private void MoveHero()
     {
         //caculate distance between hero and target with consistent speed
-        lastMoveDirection = (target.transform.position - transform.position).normalized;
+        Vector2 seek = ((Vector2)target.transform.position - rb.position).normalized;
+        Vector2 avoid = AvoidObstical(seek);
+
+        //Chnage direction to avoid trap if needed
+        lastMoveDirection = (seek + avoid * avoidWeight).normalized;
 
         // Move hero toward target
         rb.MovePosition(rb.position + lastMoveDirection * baseStats.chargeSpeed * Time.fixedDeltaTime);
-        if (Vector2.Distance(transform.position, target.transform.position) <= 1.233f)
+        if (Vector2.Distance(transform.position, target.transform.position) < 1f)
         {
-           /* Vector2 pushDirect = ((Vector2)transform.position - (Vector2)target.transform.position).normalized;
-            transform.position += (Vector3)pushDirect * baseStats.chargeSpeed * Time.deltaTime;*/
             atTarget = true;
         }
-        //Correctoverlap();
     }
-
-   /* private void Correctoverlap()
-    {
-        Collider2D[] touchingColliders = Physics2D.OverlapCircleAll(transform.position, 0.5f, colliderLayer);
-        foreach (Collider2D collidObject in touchingColliders)
-        {
-            if (collidObject.gameObject != this.gameObject)
-            {
-                Vector2 pushDirect = ((Vector2)transform.position - (Vector2)collidObject.transform.position).normalized;
-                transform.position += (Vector3)pushDirect * baseStats.chargeSpeed * Time.deltaTime;
-            }
-        }
-    }*/
 
     private void DoAttack()
     {
@@ -106,6 +103,57 @@ public class HeroBossAI : Hero
         //Start cooldown
         timeCooldown = baseStats.attackCooldown;
     }
+
+    Vector2 AvoidObstical(Vector2 direction)
+    {
+        if (direction == Vector2.zero)
+            return Vector2.zero;
+
+        // World collider size
+        Vector2 worldSize = new Vector2(
+            boxCol.size.x * Mathf.Abs(transform.lossyScale.x),
+            boxCol.size.y * Mathf.Abs(transform.lossyScale.y)
+        );
+
+        Vector2 worldCenter = rb.position + boxCol.offset * transform.lossyScale;
+
+        // Directions
+        Vector2 left = Vector2.Perpendicular(direction);
+        Vector2 right = -left;
+
+        // Casts
+        RaycastHit2D hitForward = Physics2D.BoxCast(worldCenter, worldSize, 0f, direction, castDistance, obsticleLayer);
+        RaycastHit2D hitLeft = Physics2D.BoxCast(worldCenter, worldSize, 0f, left, castDistance, obsticleLayer);
+        RaycastHit2D hitRight = Physics2D.BoxCast(worldCenter, worldSize, 0f, right, castDistance, obsticleLayer);
+
+        // If forward is clear ? no avoidance needed
+        if (hitForward.collider == null)
+        {
+            sideChoice = 0;
+            return Vector2.zero;
+        }
+
+        // If we already chose a side, stick to it for a moment
+        if (sideChoiceTimer > 0f)
+        {
+            sideChoiceTimer -= Time.fixedDeltaTime;
+            return sideChoice == -1 ? left : right;
+        }
+
+        // Choose the best side
+        float leftDist = hitLeft.collider == null ? castDistance : hitLeft.distance;
+        float rightDist = hitRight.collider == null ? castDistance : hitRight.distance;
+
+        if (leftDist > rightDist)
+            sideChoice = -1; // go left
+        else
+            sideChoice = 1;  // go right
+
+        sideChoiceTimer = 0.3f; // commit for 0.3 seconds
+
+        return sideChoice == -1 ? left : right;
+    }
+
 
     //Find which monster is the closest
     private void FindTarget()

@@ -1,17 +1,21 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-	//Global Game Manager to handle most stuff
+    //Global Game Manager to handle most stuff
 
-	//Inputs
-	PlayerInput playerInput;
-	InputAction pauseInput;
+    //Inputs
+    PlayerInput playerInput;
+    InputAction pauseInput;
 
-	//Pause menu stuff
+    //Pause menu stuff
     bool isPaused;
     public GameObject pauseMenu;
+
+    int currentDay = 1;
+    public GameObject[] heroes; 
 
 	private void Start()
 	{
@@ -46,5 +50,47 @@ public class GameManager : MonoBehaviour
 			pauseMenu.SetActive(false);
 			Time.timeScale = 1;
 		}
+    }
+
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        ActivateHeroForDay(currentDay);
+    }
+
+    public void ActivateHeroForDay(int day)
+    {
+        // Disable all heroes
+        foreach (GameObject hero in heroes)
+            hero.SetActive(false);
+
+        // Activate the hero for this day
+        int index = day - 1;
+
+        if (index >= 0 && index < heroes.Length)
+            heroes[index].SetActive(true);
+    }
+
+    public void NextDay()
+    {
+        if (currentDay == 1)
+        {
+            SceneManager.LoadSceneAsync("PlacementEntite");
+            currentDay++;
+        }
+        else 
+        {
+            SceneManager.LoadSceneAsync("MainMenu");
+        }
     }
 }
