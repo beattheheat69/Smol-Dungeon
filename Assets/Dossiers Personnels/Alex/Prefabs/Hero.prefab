@@ -80,7 +80,7 @@ MonoBehaviour:
     m_Bits: 704
   obsticleLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 16448
 --- !u!212 &659304719111892621
 SpriteRenderer:
   serializedVersion: 2
