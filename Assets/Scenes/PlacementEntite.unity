@@ -4578,7 +4578,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3494278648934827460, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: m_Name
-      value: EntityButton_Skeleton
+      value: EntityButton_Armor
       objectReference: {fileID: 0}
     - target: {fileID: 5777676300990694717, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: m_Type
@@ -4598,12 +4598,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8991860230801663576, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: entityName
-      value: SKELETON
+      value: LIVING ARMOR
       objectReference: {fileID: 0}
     - target: {fileID: 8991860230801663576, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: flavorText
-      value: It may not have flesh, or muscles, or eyes... Actually, how does it
-        even move around?
+      value: The husk of a once great warrior, doomed to roam the rooms of the dungeon.
+        Still grumpy that its old owner bought a new set of armor.
       objectReference: {fileID: 0}
     - target: {fileID: 8991860230801663576, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: flavorTextBox
@@ -4828,7 +4828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5177,9 +5177,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1449751498}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 863150cae2f180b48bc3cc335e6fa64b, type: 3}
+  m_Script: {fileID: 11500000, guid: d4b3177c93cc39e4b94a078d5b528225, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: Assembly-CSharp::RoomIcon
+  iconObjects:
+  - {fileID: 1042838747}
+  - {fileID: 2088030910}
+  - {fileID: 918392479}
+  - {fileID: 762923339}
+  entityIcons: {fileID: 11400000, guid: a3ddf84e8cc210b45b6dc8c0aaa4246f, type: 2}
 --- !u!1001 &1495996657
 PrefabInstance:
   m_ObjectHideFlags: 0
