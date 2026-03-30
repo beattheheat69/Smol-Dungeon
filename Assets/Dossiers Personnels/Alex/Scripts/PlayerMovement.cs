@@ -9,6 +9,9 @@ public class PlayerMovement : MonoBehaviour
     PlayerInput playerInput;
     InputAction moveInput;
 
+    [SerializeField]
+    MonsterStats_SO baseStats;
+
     //Speed
     public float speed = 5f;
 
@@ -21,6 +24,11 @@ public class PlayerMovement : MonoBehaviour
         //Input references
         playerInput = GetComponent<PlayerInput>();
         moveInput = playerInput.actions["Move"];
+
+        if (baseStats != null)
+        {
+            speed = baseStats.chargeSpeed;
+        }
 	}
 
 	void Update()

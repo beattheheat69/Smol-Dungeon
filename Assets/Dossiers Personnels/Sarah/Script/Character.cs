@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using System.Collections.Generic;
 
 public class Character : MonoBehaviour, IDamageable
 {
@@ -64,12 +63,15 @@ public class Character : MonoBehaviour, IDamageable
     //Trigger death, deactivate character (tempo)
     protected void Die()
     {
-        RoomInstance roomScript = transform.GetComponentInParent<RoomInstance>();
-        roomScript.removeMonster(this.gameObject);
-        if (this.gameObject.tag == "TriggerMonster")// remove whenb living armor has animation
+
+        if (this.gameObject.tag == "TriggerMonster")// remove when living armor has animation
         {
             gameObject.SetActive(false);
-
+        }
+        else if(this.gameObject.tag != "Hero")
+        {
+            RoomInstance roomScript = transform.GetComponentInParent<RoomInstance>();
+            roomScript.removeMonster(this.gameObject);
         }
 
     }

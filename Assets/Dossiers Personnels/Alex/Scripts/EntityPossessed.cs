@@ -46,6 +46,11 @@ public class EntityPossessed : MonoBehaviour
 
 	void Update()
 	{
+		if (this.GetComponent<Character>() != null && !this.GetComponent<Character>().IsAlive())
+		{
+            DePossessing();
+        }
+			
 		//Calls DePossessing when pressing the Possess input
 		if (possessInput.WasPressedThisFrame() && isPossessed)
 			DePossessing();
@@ -75,6 +80,11 @@ public class EntityPossessed : MonoBehaviour
 		{
             trapAction.enabled = true;
             trapAI.enabled = false;
+
+			if (this.gameObject.TryGetComponent<SpikeAI>(out SpikeAI script))
+			{
+				script.SetisPossesed(true);
+			}
         }
 
 		smol.SetActive(false);
@@ -115,6 +125,11 @@ public class EntityPossessed : MonoBehaviour
 		{
             trapAction.enabled = false;
             trapAI.enabled = true;
+
+            if (this.gameObject.TryGetComponent<SpikeAI>(out SpikeAI script))
+            {
+                script.SetisPossesed(true);
+            }
         }
 
 		smol = null;
