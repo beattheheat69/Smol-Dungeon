@@ -25,8 +25,8 @@ public class GetRoomEntities : MonoBehaviour
 						//Exception for spikes trap
 						if (child2.name != "SquareSpikeSmall(Clone)")
 						{
-							float rndX = Random.Range(-7f, 7f);
-							float rndY = Random.Range(-4f, 4f);
+							float rndX = Random.Range(-6f, 6f);
+							float rndY = Random.Range(-3f, 3f);
 							child2.transform.localPosition = new Vector2(rndX, rndY);
 						}
 					}
