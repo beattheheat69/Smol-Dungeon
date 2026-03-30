@@ -86,7 +86,7 @@ public class HeroAI : Hero
             if (attacking && timeCooldown <= 0)
             {
                 DoAttack();
-                heroAnim.IsAttacking();
+                heroAnim.IsAttacking(); //Bug? Call here when walking towards next target
             }
 
             //If target dead, find new one

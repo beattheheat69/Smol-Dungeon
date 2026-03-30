@@ -1,7 +1,9 @@
 using Mono.Cecil.Cil;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class BossActions : MonoBehaviour, IDamageable
 {
@@ -34,7 +36,7 @@ public class BossActions : MonoBehaviour, IDamageable
 	//Lifebar thingy
 	public Lifebar lifebar;
 
-	[SerializeField] SlimeStats_SO stats;
+	[SerializeField] MonsterStats_SO stats;
 	[SerializeField] int health;
 
 	private void Start()
@@ -84,45 +86,60 @@ public class BossActions : MonoBehaviour, IDamageable
 		if (specialAttackRight.WasPressedThisFrame() && cooldown <= timeForNextAttack)
 		{
 			Debug.Log("Special Attack Right");
-			SpecialAttackRight(lastDir);
+			StartCoroutine(SpecialAttackRight(lastDir));
 			timeForNextAttack = 0;
 		}
+
+		//Only works when called here
+		lifebar.SetHealth(health);
 	}
 
 	void BasicAttack(Vector2 dir) //Basic punch in front of boss
 	{
-		GetComponent<BossAnim>().BossAttacks();
+		StartCoroutine(GetComponent<BossAnim>().BossAttacks());
 
-		//Adds current pos to last direction faced to get attack pos
-		attackTransform = new Vector2(transform.position.x + dir.x, transform.position.y + dir.y);
-		hits = Physics2D.CircleCastAll(attackTransform, attackRadius, Vector2.zero, 0, masksToHit); //Vector2.zero necessary to not impact attackRadius or circle
+		////Replaced by a trigger collider in BasicAttackCollider child object of Boss
+		////Adds current pos to last direction faced to get attack pos
+		//attackTransform = new Vector2(transform.position.x + dir.x, transform.position.y + dir.y);
+		//hits = Physics2D.CircleCastAll(attackTransform, attackRadius, Vector2.zero, 0, masksToHit); //Vector2.zero necessary to not impact attackRadius or circle
 
-		//Checks all colliders hit for hero
-		foreach (RaycastHit2D hit in hits)
-		{
-			Debug.Log(hit.transform.name + " hit!");
-			HeroBossAI heroBossAI = hit.transform.GetComponent<HeroBossAI>();
-			heroBossAI.takeDamage(stats.power, transform.position, 0f);  // The last one is the knockback force, change value if you want knockback
-			//if (heroBossAI.TryGetComponent(out IDamageable hitTarget)) //BUG: one shots the hero
-			//	hitTarget.takeDamage(stats.power);
-		}
+		////Checks all colliders hit for hero
+		//foreach (RaycastHit2D hit in hits)
+		//{
+		//	Debug.Log(hit.transform.name + " hit!");
+		//	HeroBossAI heroBossAI = hit.transform.GetComponent<HeroBossAI>();
+		//	heroBossAI.takeDamage(stats.power, transform.position, 0f);  // The last one is the knockback force, change value if you want knockback
+		//	//if (heroBossAI.TryGetComponent(out IDamageable hitTarget)) //BUG: one shots the hero
+		//	//	hitTarget.takeDamage(stats.power);
+		//}
 	}
 
 	void SpecialAttackLeft(Vector2 dir) //Shockwave AoE for 1 second
 	{
-		GetComponent<BossAnim>().BossAttacks();
+		StartCoroutine(GetComponent<BossAnim>().BossShockwave());
+
+		if (dir == Vector2.zero) //Default to south direction in case no move was made when scene starts
+			dir = Vector2.down;
 
 		//Spawns VFX in front of last direction
 		GameObject inst = Instantiate(shockwaveAnim);
-		inst.transform.position = new Vector2(transform.position.x + dir.x, transform.position.y + dir.y);
-		Destroy(inst, 2f);
+		if (dir != Vector2.up)
+			inst.transform.position = new Vector2(transform.position.x + dir.x, transform.position.y + dir.y - 1);
+		else
+			inst.transform.position = new Vector2(transform.position.x + dir.x, transform.position.y + dir.y);
+
+		Destroy(inst, 1f);
 	}
 
-	void SpecialAttackRight(Vector2 dir) //Throw fist across room
+	IEnumerator SpecialAttackRight(Vector2 dir) //Throw fist across room
 	{
-		GetComponent<BossAnim>().BossAttacks();
-
+		StartCoroutine(GetComponent<BossAnim>().BossProjectile());
+		yield return new WaitForSeconds(0.25f);
 		GameObject inst = Instantiate(fistAttack);
+
+		if (dir == Vector2.zero) //Default to south direction in case no move was made when scene starts
+			dir = Vector2.down;
+
 		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90;
 		inst.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 		inst.transform.position = new Vector2(transform.position.x + dir.x, transform.position.y + dir.y);
@@ -139,6 +156,7 @@ public class BossActions : MonoBehaviour, IDamageable
 	
 	public void takeDamage(int amount, Vector2 attackerPosition, float knockbackStrength) // attackPosition and knockbackStrenght is for getting knockback on hit, don't the the boss will so didn't implement the code for it. If neede exemple in Character and Hero script
 	{
+		//This function does not seem to be called at all...
         health -= amount;
 		lifebar.SetHealth(health);
 		if (health <= 0)

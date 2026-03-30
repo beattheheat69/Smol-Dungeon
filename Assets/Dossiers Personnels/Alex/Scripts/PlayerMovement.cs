@@ -57,6 +57,6 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector2 GetDirection()
     {
-        return lastDir;
+        return moveDir;
     }
 }

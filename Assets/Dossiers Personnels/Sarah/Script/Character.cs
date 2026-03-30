@@ -72,6 +72,12 @@ public class Character : MonoBehaviour, IDamageable
         {
             RoomInstance roomScript = transform.GetComponentInParent<RoomInstance>();
             roomScript.removeMonster(this.gameObject);
+            gameObject.GetComponent<CircleCollider2D>().enabled = false;
+        }
+        else if (this.gameObject.tag == "Hero")
+        {
+            gameObject.GetComponent<HeroAI>().enabled = false;
+            gameObject.GetComponent<HeroAnimation>().enabled = false;
         }
 
     }
