@@ -1,3 +1,4 @@
+using FMODUnity;
 using UnityEngine;
 
 public class HeroAnimation : MonoBehaviour
@@ -6,6 +7,8 @@ public class HeroAnimation : MonoBehaviour
 	Animator heroAnim;
 	//public Animator swordAnim;
 	Vector2 direction;
+
+	public EventReference heroAttackSFX;
 
 	private void Start()
 	{
@@ -36,6 +39,7 @@ public class HeroAnimation : MonoBehaviour
 
 	public void IsAttacking()
 	{
+		RuntimeManager.PlayOneShot(heroAttackSFX);
 		heroAnim.SetTrigger("Attack");
 		//swordAnim.SetTrigger("Slash");
 	}
