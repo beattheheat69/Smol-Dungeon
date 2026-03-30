@@ -21,6 +21,9 @@ public class PlayerPossession : MonoBehaviour
 	GameObject closestEntity;
 	public List<GameObject> entitiesNearMe = new List<GameObject>();
 
+	//Lifebar
+	[SerializeField] Lifebar lifebar;
+
 	void Start()
     {
 		//Grabs playerinput and Possess input action
