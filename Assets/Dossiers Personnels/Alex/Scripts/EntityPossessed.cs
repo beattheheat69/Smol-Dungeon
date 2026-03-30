@@ -18,6 +18,8 @@ public class EntityPossessed : MonoBehaviour
     TrapAction trapAction;
     TrapAI trapAI;
     MonsterAI monsterAI;
+	SpikeAI spikeAI;
+	SpikeControl spikeControl;
 
 	//FMOD events
 	public EventReference possessingSFX;
@@ -41,6 +43,8 @@ public class EntityPossessed : MonoBehaviour
 		{
             trapAction = GetComponent<TrapAction>();
             trapAI = GetComponent<TrapAI>();
+			spikeAI = GetComponent<SpikeAI>();
+			spikeControl = GetComponent<SpikeControl>();
         }
 	}
 
@@ -76,10 +80,18 @@ public class EntityPossessed : MonoBehaviour
 			monsterAction.enabled = true;
 			monsterAI.enabled = false;
 		}
-		else if (this.gameObject.CompareTag("Trap") && trapAction != null && trapAI != null)
+		else if (this.gameObject.CompareTag("Trap") && ((trapAction != null && trapAI != null) || (spikeControl != null && spikeAI != null)))
 		{
-            trapAction.enabled = true;
-            trapAI.enabled = false;
+			if (trapAction != null && trapAI != null)
+			{
+				trapAction.enabled = true;
+				trapAI.enabled = false;
+			}
+			else if (spikeControl != null && spikeAI != null)
+			{
+				spikeControl.enabled = true;
+				spikeAI.enabled = false;
+			}
 
 			if (this.gameObject.TryGetComponent<SpikeAI>(out SpikeAI script))
 			{
@@ -121,14 +133,22 @@ public class EntityPossessed : MonoBehaviour
 			monsterAction.enabled = false;
 			monsterAI.enabled = true;
 		}
-		else if (this.gameObject.CompareTag("Trap") && trapAction != null && trapAI != null)
+		else if (this.gameObject.CompareTag("Trap") && ((trapAction != null && trapAI != null) || (spikeControl != null && spikeAI != null)))
 		{
-            trapAction.enabled = false;
-            trapAI.enabled = true;
+			if (trapAction != null && trapAI != null)
+			{
+				trapAction.enabled = false;
+				trapAI.enabled = true;
+			}
+			else if (spikeControl != null && spikeAI != null)
+			{
+				spikeControl.enabled = false;
+				spikeAI.enabled = true;
+			}
 
-            if (this.gameObject.TryGetComponent<SpikeAI>(out SpikeAI script))
+			if (this.gameObject.TryGetComponent<SpikeAI>(out SpikeAI script))
             {
-                script.SetisPossesed(true);
+                script.SetisPossesed(false);
             }
         }
 

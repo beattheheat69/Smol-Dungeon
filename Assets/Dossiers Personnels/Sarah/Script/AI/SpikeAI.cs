@@ -11,17 +11,18 @@ public class SpikeAI : TrapAI
     bool isPossesed;
     List<IDamageable> targets = new List<IDamageable>();
     float timeCooldown; //Time that passes before next attack
-    Animator[] spikesAnomators;
+    //Animator[] spikesAnomators;
+    Animator anim;
 
     void Start()
     {
         isPossesed = false;
-        spikesAnomators = GetComponentsInChildren<Animator>();
+        //spikesAnomators = GetComponentsInChildren<Animator>();
         StartCoroutine(TrapCycle());
-
+        anim = GetComponent<Animator>();
     }
 
-    private void Update()
+	private void Update()
     {
         if (active && targets.Count > 0 && timeCooldown <= 0)
         {
@@ -60,40 +61,51 @@ public class SpikeAI : TrapAI
     public void SetisPossesed(bool state)
     { 
         isPossesed = state;
+        if (!isPossesed) //To restart TrapCycle when depossessing
+            StartCoroutine(TrapCycle()); //This causes the coroutine to be called 999+ times even at the start and even skip the timers in the coroutine...?
     }
 
     IEnumerator TrapCycle()
     {
-
-       
         while (!isPossesed)
         {
-            Debug.Log("<color=red><b>[AI]</b> Spike cycle from AI </color>");
-            //make all spike go up
-            foreach (Animator anim in spikesAnomators)
-            {
-                anim.Play("SpikeUp");
-
-            }
+			yield return new WaitForSeconds(baseStats.timeUp);
+			anim.Play("SpikeBundle_GoingUp");
             active = true;
-            yield return new WaitForSeconds(baseStats.timeUp);
-
-            //make all spike go down
-            foreach (Animator anim in spikesAnomators)
-            {
-                anim.Play("SpikeDown");
-
-            }
+			yield return new WaitForSeconds(baseStats.timeDown);
+            anim.Play("SpikeBundle_GoingDown");
             active = false;
-            yield return new WaitForSeconds(baseStats.timeDown);
+			yield return new WaitForSeconds(baseStats.attackCooldown);
+            anim.Play("SpikeBundle_Idle");
+
+            yield return null;
+			Debug.Log("<color=red><b>[AI]</b> Spike cycle from AI </color>");
+
+            ////make all spike go up
+            //foreach (Animator anim in spikesAnomators)
+            //{
+            //    anim.Play("SpikeUp");
+
+            //}
+            //active = true;
+            //yield return new WaitForSeconds(baseStats.timeUp);
+
+            ////make all spike go down
+            //foreach (Animator anim in spikesAnomators)
+            //{
+            //    anim.Play("SpikeDown");
+
+            //}
+            //active = false;
+            //yield return new WaitForSeconds(baseStats.timeDown);
 
 
-            //waiting mode
-            foreach (Animator anim in spikesAnomators)
-            {
-                anim.Play("Idle");
+            ////waiting mode
+            //foreach (Animator anim in spikesAnomators)
+            //{
+            //    anim.Play("Idle");
 
-            }
+            //}
         }
     }
 }

@@ -14,6 +14,7 @@ public class Hero : Character
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     public override void takeDamage(int damage, Vector2 attackerPosition, float knockbackStrength)
@@ -34,11 +35,14 @@ public class Hero : Character
             atTarget = false;
 
             health = HeroDataManager.Instance.party[index].currentHealt;  // testing hero health
+
+            animator.SetTrigger("Damaged");
         }
 
         //Check if dead
         if (HeroDataManager.Instance.party[index].currentHealt <= 0)
         {
+            animator.SetBool("Defeat", true);
             base.Die();
         }
     }

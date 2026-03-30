@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SpikeStats_SO
   m_EditorClassIdentifier: Assembly-CSharp::SpikeStats_SO
   <timeUp>k__BackingField: 2
-  <timeDown>k__BackingField: 4
+  <timeDown>k__BackingField: 2
   <startDelay>k__BackingField: 1
   <power>k__BackingField: 1
   attackCooldown: 2

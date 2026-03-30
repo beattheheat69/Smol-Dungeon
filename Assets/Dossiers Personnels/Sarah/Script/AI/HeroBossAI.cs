@@ -10,7 +10,7 @@ public class HeroBossAI : Hero
     //Rigidbody2D rb;  //Object rigidbody
     float timeCooldown; //Time that passes before next attack
     bool attacking = false; // hero in attack mode
-    public Vector2 lastMoveDirection; // Direction the hero is looking for the attack
+    //public Vector2 lastMoveDirection; // Direction the hero is looking for the attack
     HeroAnimation heroAnim;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

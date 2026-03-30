@@ -15,13 +15,15 @@ public class SpikeControl : TrapAction
     List<IDamageable> targets = new List<IDamageable>(); // List of damamged character
     float activationCooldown = 0f; // Timer before activation
     float attackCoolDown = 0f;  // Timmer before next attack
-    Animator[] spikesAnomators; // All child spike animator
+    //Animator[] spikesAnomators; // All child spike animator
+    Animator anim;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         isTrapRunning = false;
-        spikesAnomators = GetComponentsInChildren<Animator>();
+        //spikesAnomators = GetComponentsInChildren<Animator>();
+        anim = GetComponent<Animator>();
         active = false;
         playerInput = GetComponent<PlayerInput>();
         basicActionInput = playerInput.actions["BasicAction"];
@@ -91,34 +93,43 @@ public class SpikeControl : TrapAction
         Debug.Log("<color=cyan><b>[AI]</b> Spike cycle from control </color>");
         isTrapRunning = true;
 
-        //make all spike go up
-        foreach (Animator anim in spikesAnomators)
-        {
-            anim.Play("SpikeUp");
-
-        }
+        anim.Play("SpikeBundle_GoingUp");
         active = true;
-        Debug.Log(active);
-        yield return new WaitForSeconds(baseStats.timeUp);
-
-        //make all spike go down
-        foreach (Animator anim in spikesAnomators)
-        {
-            anim.Play("SpikeDown");
-
-        }
+		yield return new WaitForSeconds(baseStats.timeUp);
+        anim.Play("SpikeBundle_GoingDown");
         active = false;
-        Debug.Log(active);
-        yield return new WaitForSeconds(baseStats.timeDown);
+		yield return new WaitForSeconds(baseStats.timeDown);
+        anim.Play("SpikeBundle_Idle");
+        yield return null;
 
-        //waiting mode
-        foreach (Animator anim in spikesAnomators)
-        {
-            anim.Play("Idle");
+		//make all spike go up
+		//foreach (Animator anim in spikesAnomators)
+		//{
+		//    anim.Play("SpikeUp");
 
-        }
+		//}
+		//active = true;
+		//Debug.Log(active);
+		//yield return new WaitForSeconds(baseStats.timeUp);
 
-        isTrapRunning = false;
+		////make all spike go down
+		//foreach (Animator anim in spikesAnomators)
+		//{
+		//    anim.Play("SpikeDown");
+
+		//}
+		//active = false;
+		//Debug.Log(active);
+		//yield return new WaitForSeconds(baseStats.timeDown);
+
+		////waiting mode
+		//foreach (Animator anim in spikesAnomators)
+		//{
+		//    anim.Play("Idle");
+
+		//}
+
+		isTrapRunning = false;
     }
 }
 

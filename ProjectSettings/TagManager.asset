@@ -16,6 +16,7 @@ TagManager:
   - UI
   - TriggerMonster
   - Sword
+  - BossAttack
   layers:
   - Default
   - TransparentFX

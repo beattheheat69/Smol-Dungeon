@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1606042090411625547}
-  - component: {fileID: -4002547299845391499}
+  - component: {fileID: 1703850040598463542}
   - component: {fileID: 7592136544725455393}
   - component: {fileID: 3672833182514575761}
-  - component: {fileID: 2320429358595953791}
+  - component: {fileID: 1544904119277204653}
   m_Layer: 0
   m_Name: ShockWave
   m_TagString: Untagged
@@ -35,7 +35,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-4002547299845391499
+--- !u!114 &1703850040598463542
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,10 +44,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2890335129459376220}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb74cbcedd3d6b34faf3d864dd1da983, type: 3}
+  m_Script: {fileID: 11500000, guid: 77676da33efb2724b9b894d85a97d8e5, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShockWaveAttack
-  damage: 1
+  m_EditorClassIdentifier: Assembly-CSharp::BossProjectile
+  bossStats: {fileID: 11400000, guid: 2c5136866831f0b4c81d7726c5005601, type: 2}
 --- !u!212 &7592136544725455393
 SpriteRenderer:
   serializedVersion: 2
@@ -93,11 +93,11 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 1710232561
-  m_SortingLayer: 4
+  m_SortingLayerID: -1873072851
+  m_SortingLayer: 3
   m_SortingOrder: -1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 9210417678588731418, guid: a6d7fd793048281408305e0b311a7b68, type: 3}
+  m_Sprite: {fileID: 7004400711126315942, guid: 1ff9db78bd59da24c99f122d5aefe92e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -117,7 +117,7 @@ Animator:
   m_GameObject: {fileID: 2890335129459376220}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 7190881351948000945, guid: a6d7fd793048281408305e0b311a7b68, type: 3}
+  m_Controller: {fileID: 9100000, guid: 38038dea24ecdc64fbcd5e9417f02aa1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -129,8 +129,8 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!58 &2320429358595953791
-CircleCollider2D:
+--- !u!70 &1544904119277204653
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -164,4 +164,5 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.875
+  m_Size: {x: 3.0000005, y: 2}
+  m_Direction: 1
