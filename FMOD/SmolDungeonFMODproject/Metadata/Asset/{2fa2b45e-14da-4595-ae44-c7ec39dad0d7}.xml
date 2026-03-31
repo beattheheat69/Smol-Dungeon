@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="EncodableAsset" id="{2fa2b45e-14da-4595-ae44-c7ec39dad0d7}">
+		<property name="assetPath">
+			<value>SFX_Player/Smol/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{2a1339a7-a903-46a7-ae9c-c49bb521c1b7}</destination>
+		</relationship>
+	</object>
+</objects>

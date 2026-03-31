@@ -70,10 +70,13 @@ public class SpikeAI : TrapAI
         while (!isPossesed)
         {
 			yield return new WaitForSeconds(baseStats.timeUp);
+            //SFX on hold for now until figure out why coroutine is called 999+ times each time
+            //GetComponent<SoundCaster>().PlayAttackSFX();
 			anim.Play("SpikeBundle_GoingUp");
             active = true;
 			yield return new WaitForSeconds(baseStats.timeDown);
-            anim.Play("SpikeBundle_GoingDown");
+			//GetComponent<SoundCaster>().PlayAttack2SFX();
+			anim.Play("SpikeBundle_GoingDown");
             active = false;
 			yield return new WaitForSeconds(baseStats.attackCooldown);
             anim.Play("SpikeBundle_Idle");

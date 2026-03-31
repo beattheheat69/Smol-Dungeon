@@ -185,6 +185,7 @@ public class SlimeAI : MonsterAI
         timeCooldown = baseStats.attackCooldown;
 
         animator.SetTrigger("Attack");
+        GetComponent<SoundCaster>().PlayAttackSFX();
 
         // Get Direction
         Vector2 direction = (target.transform.position - transform.position).normalized;

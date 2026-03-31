@@ -56,7 +56,7 @@ MonoBehaviour:
       Data2: 1286381744
       Data3: -1641342549
       Data4: -1661621212
-    Path: event:/SFX/SFX_Hero/SFX_Hero_Attack
+    Path: event:/SFX/Hero/SFX_Hero_Attack
 --- !u!114 &2040148649046005590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,6 +81,7 @@ MonoBehaviour:
   obsticleLayer:
     serializedVersion: 2
     m_Bits: 16448
+  lifebar: {fileID: 0}
 --- !u!212 &659304719111892621
 SpriteRenderer:
   serializedVersion: 2

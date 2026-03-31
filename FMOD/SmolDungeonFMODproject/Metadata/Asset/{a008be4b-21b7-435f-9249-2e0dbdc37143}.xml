@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="EncodableAsset" id="{a008be4b-21b7-435f-9249-2e0dbdc37143}">
 		<property name="assetPath">
-			<value>SFX_Entities/SFX_Traps/SFX_Crossbow/</value>
+			<value>SFX_Entities/Traps/Crossbow/</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{2a1339a7-a903-46a7-ae9c-c49bb521c1b7}</destination>
