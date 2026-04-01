@@ -7,18 +7,18 @@ using UnityEngine.UI;
 
 public class VolumeManager : MonoBehaviour
 {
-	//Works in theory
-	//***Need to test once sfx and music are in main menu***
+	//***IMPORTANT***
+	//Slider values must be between 0 and 1 to adjust fmod bus/vca properties
 
 	[SerializeField] Slider sfxSlider;
 	[SerializeField] Slider musicSlider;
-	Bus sfxBus;
-	Bus musicBus;
+	VCA sfxBus;
+	VCA musicBus;
 
 	private void Start()
 	{
-		sfxBus = RuntimeManager.GetBus("bus:/SFX");
-		musicBus = RuntimeManager.GetBus("bus:/Music");
+		sfxBus = RuntimeManager.GetVCA("vca:/SFX");
+		musicBus = RuntimeManager.GetVCA("vca:/Music");
 	}
 
 	public void MusicVolume()

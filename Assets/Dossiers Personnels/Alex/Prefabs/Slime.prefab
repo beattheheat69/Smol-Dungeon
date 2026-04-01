@@ -77,11 +77,11 @@ MonoBehaviour:
     Path: 
   hitSFX:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -694930189
+      Data2: 1110186051
+      Data3: -1317256800
+      Data4: 897507188
+    Path: event:/SFX/Entities/Monsters/SFX_Monsters_Hit
 --- !u!114 &-8883441103201478487
 MonoBehaviour:
   m_ObjectHideFlags: 0

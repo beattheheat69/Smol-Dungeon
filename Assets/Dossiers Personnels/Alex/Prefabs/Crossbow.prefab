@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 544553393986746680}
+  - component: {fileID: 9213752561214097093}
   - component: {fileID: 815239193117413195}
   - component: {fileID: 4037266920822449901}
   - component: {fileID: 7691709988344294560}
@@ -40,6 +41,46 @@ Transform:
   - {fileID: 7687544504073579736}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9213752561214097093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959689986000236469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47fc52ca7fb212242a27c65089968379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundCaster
+  attackSFX:
+    Guid:
+      Data1: -90618222
+      Data2: 1152651680
+      Data3: -1211065674
+      Data4: -1481702482
+    Path: event:/SFX/Entities/Traps/Crossbow/SFX_Crossbow_Shoot
+  attack2SFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  attack3SFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  hitSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!114 &815239193117413195
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -66,4 +66,6 @@ public class BossAnim : MonoBehaviour
 		yield return new WaitForSeconds(0.5f);
 		playerMovement.enabled = true;
 	}
+
+	//Missing Hit anim + hit sfx call here
 }

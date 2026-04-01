@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7935076545195555462}
   - component: {fileID: 7274337340737478343}
+  - component: {fileID: 7262062579624826994}
   - component: {fileID: 2737521318091522321}
   - component: {fileID: 8716703761844955228}
   - component: {fileID: 2425224604252029632}
@@ -100,6 +101,46 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &7262062579624826994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3294268645175867725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47fc52ca7fb212242a27c65089968379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundCaster
+  attackSFX:
+    Guid:
+      Data1: -55560726
+      Data2: 1332341565
+      Data3: -1313628748
+      Data4: -1913432129
+    Path: event:/SFX/Entities/Monsters/LivingArmour/SFX_Armour_Attack
+  attack2SFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  attack3SFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  hitSFX:
+    Guid:
+      Data1: -694930189
+      Data2: 1110186051
+      Data3: -1317256800
+      Data4: 897507188
+    Path: event:/SFX/Entities/Monsters/SFX_Monsters_Hit
 --- !u!114 &2737521318091522321
 MonoBehaviour:
   m_ObjectHideFlags: 0

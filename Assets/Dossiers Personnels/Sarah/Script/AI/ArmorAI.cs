@@ -115,6 +115,7 @@ public class ArmorAI : MonsterAI
     private void DoAttack()
     {
         float randVal = Random.Range(1, 100);
+        GetComponent<SoundCaster>().PlayAttackSFX();
 
         //Check is attack succeded
         if (randVal <= baseStats.attackChance)
