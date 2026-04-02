@@ -1,3 +1,4 @@
+using FMODUnity;
 using Unity.Burst.Intrinsics;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public class CrossbowAI : TrapAI
     CameraManagement cameraStat; // check the stat of the camera
     GameObject target = null; // current hero target
     float timeCooldown; //Time that passes before next attack;
+    public EventReference crossbowShootSFX;
 
     private void Start()
     {
@@ -74,6 +76,7 @@ public class CrossbowAI : TrapAI
     {
 		//Animation
 		GetComponent<Animator>().SetTrigger("Shoot");
+        RuntimeManager.PlayOneShot(crossbowShootSFX);
 
 		//Instantiate an arrow arrow 
 		GameObject arrow = Instantiate(arrowPrefab, transform.position, transform.rotation);

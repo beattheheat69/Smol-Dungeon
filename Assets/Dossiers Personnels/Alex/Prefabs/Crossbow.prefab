@@ -54,6 +54,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CrossbowAI
   baseStat: {fileID: 11400000, guid: 74d4f6cad9ded7341b86f7c3d736032e, type: 2}
   arrowPrefab: {fileID: 6655597044890654371, guid: 7d508c6c7f9a54847a385ca71b6b98c4, type: 3}
+  crossbowShootSFX:
+    Guid:
+      Data1: -90618222
+      Data2: 1152651680
+      Data3: -1211065674
+      Data4: -1481702482
+    Path: event:/SFX/SFX_Entities/SFX_Traps/SFX_Crossbow/SFX_Crossbow_Shoot
 --- !u!114 &4037266920822449901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,6 +106,13 @@ MonoBehaviour:
   bulletVelocity: 5
   cooldown: 0.5
   baseStats: {fileID: 11400000, guid: 74d4f6cad9ded7341b86f7c3d736032e, type: 2}
+  crossbowShootSFX:
+    Guid:
+      Data1: -90618222
+      Data2: 1152651680
+      Data3: -1211065674
+      Data4: -1481702482
+    Path: event:/SFX/SFX_Entities/SFX_Traps/SFX_Crossbow/SFX_Crossbow_Shoot
 --- !u!212 &1113393098407831506
 SpriteRenderer:
   serializedVersion: 2
