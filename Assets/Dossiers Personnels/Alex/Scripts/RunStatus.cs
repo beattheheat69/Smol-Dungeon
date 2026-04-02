@@ -26,6 +26,7 @@ public class RunStatus : MonoBehaviour
 		}
 		else 
 		{
+			Destroy(HeroDataManager.Instance);
             SceneManager.LoadSceneAsync("MainMenu");
         }
 		

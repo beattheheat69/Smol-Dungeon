@@ -14,9 +14,6 @@ public class GameManager : MonoBehaviour
     bool isPaused;
     public GameObject pauseMenu;
 
-    int currentDay = 1;
-    public GameObject[] heroes; 
-
 	private void Start()
 	{
 		//Input references
@@ -50,44 +47,5 @@ public class GameManager : MonoBehaviour
 			pauseMenu.SetActive(false);
 			Time.timeScale = 1;
 		}
-    }
-
-
-    void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        ActivateHeroForDay(currentDay);
-    }
-
-    public void ActivateHeroForDay(int day)
-    {
-        // Disable all heroes
-       /* foreach (GameObject hero in heroes)
-            hero.SetActive(false);*/
-
-        // Activate the hero for this day
-        int index = day - 1;
-
-        if (index >= 0 && index < heroes.Length)
-            heroes[index].SetActive(true);
-    }
-
-    public void NextDay()
-    {
-        currentDay++;
-    }
-
-    public int GetDay()
-    {
-        return currentDay;
     }
 }

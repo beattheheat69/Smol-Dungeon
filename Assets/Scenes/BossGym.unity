@@ -418,6 +418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HeroBossAI
   health: 0
+  gm: {fileID: 1059390007}
   baseStats: {fileID: 11400000, guid: bcb7b7bbcc34c8849ad7212ff4de7e8c, type: 2}
   index: 1
   lastMoveDirection: {x: 0, y: 0}
@@ -1407,6 +1408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HeroBossAI
   health: 0
+  gm: {fileID: 1059390007}
   baseStats: {fileID: 11400000, guid: f4b175a074acf93478b0af85a4d33b3a, type: 2}
   index: 0
   lastMoveDirection: {x: 0, y: 0}

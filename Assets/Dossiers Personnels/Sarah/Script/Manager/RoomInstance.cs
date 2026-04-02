@@ -76,6 +76,7 @@ public class RoomInstance : MonoBehaviour
                 {
                     if (child.CompareTag("Group"))
                     {
+                        //stop animation, to do
                         child.gameObject.SetActive(false);
                     }
                 }

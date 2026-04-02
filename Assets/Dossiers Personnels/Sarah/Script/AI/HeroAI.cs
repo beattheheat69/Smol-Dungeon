@@ -53,6 +53,7 @@ public class HeroAI : Hero
         if (HeroDataManager.Instance != null)
         {
             HeroDataManager.Instance.party[index] = new HeroData { currentHealt = baseStats.health, dodgeChance = baseStats.dodgeChange };
+            HeroDataManager.Instance.heroes[index] = this.gameObject;
             health = HeroDataManager.Instance.party[index].currentHealt;  // testing hero health
             //lifebar.SetMaxHealth(health);
         }

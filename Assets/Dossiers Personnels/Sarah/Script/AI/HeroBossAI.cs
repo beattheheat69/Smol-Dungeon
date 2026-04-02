@@ -25,6 +25,7 @@ public class HeroBossAI : Hero
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        HeroDataManager.Instance.heroes[index] = this.gameObject;
         heroAnim = GetComponent<HeroAnimation>();
         boxCol = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();

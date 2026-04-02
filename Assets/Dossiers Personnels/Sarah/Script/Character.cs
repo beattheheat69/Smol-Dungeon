@@ -11,11 +11,9 @@ public class Character : MonoBehaviour, IDamageable
     protected bool isStunned = false;
     protected Animator animator;
     protected Rigidbody2D rb;  //Object rigidbody
-    protected GameManager gm;
 
     void Awake()
     {
-        gm = FindFirstObjectByType<GameManager>();
         animator = GetComponent<Animator>();
         isDead = false;
         rb = GetComponent<Rigidbody2D>();
@@ -80,7 +78,7 @@ public class Character : MonoBehaviour, IDamageable
         {
             gameObject.GetComponent<HeroAI>().enabled = false;
             gameObject.GetComponent<HeroAnimation>().enabled = false;
-            gm.NextDay();
+            HeroDataManager.Instance.NextDay();
         }
 
     }
