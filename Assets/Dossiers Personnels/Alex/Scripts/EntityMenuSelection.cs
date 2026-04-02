@@ -68,7 +68,12 @@ public class EntityMenuSelection : MonoBehaviour
 						roomLimit.monsterLimit--;
 						roomLimit.totalLimit--;
 						globalRessources.SpendEvilPoints(1);
-					}
+
+						if (entity == slimePrefab)
+                            toggle.GetComponent<RoomIcon>().UpdateIcon("Slime"); //Ajuster l'icône de la chambre
+						if (entity == armourPrefab)
+                            toggle.GetComponent<RoomIcon>().UpdateIcon("Armour"); //Ajuster l'icône de la chambre
+                    }
 					if (entity == crossbowPrefab && roomLimit.trapLimit > 0)
 					{
 						//Cherche le parent TrapGroup et instantiate la trap dedans
@@ -82,6 +87,8 @@ public class EntityMenuSelection : MonoBehaviour
 						roomLimit.trapLimit--;
 						roomLimit.totalLimit--;
 						globalRessources.SpendEvilPoints(1);
+
+						toggle.GetComponent<RoomIcon>().UpdateIcon("Crossbow"); //Ajuster l'icône de la chambre
 					}
 					if (entity == spikesPrefab && roomLimit.trapLimit > 0 && roomLimit.spikesLimit > 0)
 					{
@@ -97,7 +104,9 @@ public class EntityMenuSelection : MonoBehaviour
 						roomLimit.spikesLimit--;
 						roomLimit.totalLimit--;
 						globalRessources.SpendEvilPoints(1);
-					}
+
+                        toggle.GetComponent<RoomIcon>().UpdateIcon("Spike"); //Ajuster l'icône de la chambre
+                    }
 				}
 			}
 		}

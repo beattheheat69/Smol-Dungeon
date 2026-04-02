@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Lifebar : MonoBehaviour
 {
+    [Header("Children Components")]
     public Slider slider;
     public Image fill;
 
@@ -25,10 +26,7 @@ public class Lifebar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Bound the health between 0 and the max health
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-
-        SetHealth(currentHealth);
+        SetHealth(currentHealth); //Just making sure it displays the correct amount every frame
     }
 
     public void SetMaxHealth(float health)
@@ -42,6 +40,7 @@ public class Lifebar : MonoBehaviour
     public void SetHealth(float health)
     {
         //Set the value of the slider to the current health
+        currentHealth = Mathf.Clamp(health, 0, maxHealth);
         slider.value = health;
 
         //Set the color of the slider according to the remaining health

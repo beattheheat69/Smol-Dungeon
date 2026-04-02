@@ -212,7 +212,6 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
-  animSpeed: 0.2
 --- !u!1 &5732369816468497266
 GameObject:
   m_ObjectHideFlags: 0
