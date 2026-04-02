@@ -391,11 +391,42 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2040148649046005590, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 598055207838164354, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 254567410}
   m_SourcePrefab: {fileID: 100100000, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
+--- !u!1 &254567409 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 598055207838164354, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
+  m_PrefabInstance: {fileID: 254567408}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &254567410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254567409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec7fab4c656c8cb46880a9de4701c168, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HeroBossAI
+  health: 0
+  baseStats: {fileID: 11400000, guid: bcb7b7bbcc34c8849ad7212ff4de7e8c, type: 2}
+  index: 1
+  lastMoveDirection: {x: 0, y: 0}
+  colliderLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  obsticleLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &307784933
 GameObject:
   m_ObjectHideFlags: 0
@@ -1377,6 +1408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HeroBossAI
   health: 0
   baseStats: {fileID: 11400000, guid: f4b175a074acf93478b0af85a4d33b3a, type: 2}
+  index: 0
   lastMoveDirection: {x: 0, y: 0}
   colliderLayer:
     serializedVersion: 2
@@ -2059,7 +2091,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   pauseMenu: {fileID: 994602769}
-  heroes: []
+  heroes:
+  - {fileID: 310569692}
+  - {fileID: 254567409}
 --- !u!4 &1059390008
 Transform:
   m_ObjectHideFlags: 0
@@ -2116,7 +2150,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: df70fa95-8a34-4494-b137-73ab6b9c7d37
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1 &1106372606

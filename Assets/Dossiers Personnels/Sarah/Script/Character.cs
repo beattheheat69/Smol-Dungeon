@@ -11,7 +11,7 @@ public class Character : MonoBehaviour, IDamageable
     protected bool isStunned = false;
     protected Animator animator;
     protected Rigidbody2D rb;  //Object rigidbody
-    GameManager gm;
+    protected GameManager gm;
 
     void Awake()
     {
@@ -65,7 +65,7 @@ public class Character : MonoBehaviour, IDamageable
     //Trigger death, deactivate character (tempo)
     protected void Die()
     {
-
+        //stop knowback completely
         if (this.gameObject.tag == "TriggerMonster")// remove when living armor has animation
         {
             gameObject.SetActive(false);
@@ -80,7 +80,6 @@ public class Character : MonoBehaviour, IDamageable
         {
             gameObject.GetComponent<HeroAI>().enabled = false;
             gameObject.GetComponent<HeroAnimation>().enabled = false;
-
             gm.NextDay();
         }
 

@@ -71,8 +71,8 @@ public class GameManager : MonoBehaviour
     public void ActivateHeroForDay(int day)
     {
         // Disable all heroes
-        foreach (GameObject hero in heroes)
-            hero.SetActive(false);
+       /* foreach (GameObject hero in heroes)
+            hero.SetActive(false);*/
 
         // Activate the hero for this day
         int index = day - 1;
@@ -83,14 +83,11 @@ public class GameManager : MonoBehaviour
 
     public void NextDay()
     {
-        if (currentDay == 1)
-        {
-            SceneManager.LoadSceneAsync("PlacementEntite");
-            currentDay++;
-        }
-        else 
-        {
-            SceneManager.LoadSceneAsync("MainMenu");
-        }
+        currentDay++;
+    }
+
+    public int GetDay()
+    {
+        return currentDay;
     }
 }

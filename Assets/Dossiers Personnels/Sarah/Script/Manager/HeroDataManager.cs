@@ -5,7 +5,7 @@ using UnityEngine;
 public class HeroDataManager : MonoBehaviour
 {
     public static HeroDataManager Instance { get; private set; }
-    public List <HeroData> party = new List<HeroData> (); // list of heros stats data
+    public HeroData[] party = new HeroData[2]; // Array of heros stats data
 
     void Awake()
     {
@@ -19,13 +19,13 @@ public class HeroDataManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void UpdateHeroHealh(int hero, int damage)
+    public void UpdateHeroHealh(int hero, int damage, int day)
     {
         party[hero].currentHealt -= damage;
 
         //End run when hero is dead
         if (party[hero].currentHealt <= 0)
-            GameObject.Find("GameManager").GetComponent<RunStatus>().CallRestart(true);
+            GameObject.Find("GameManager").GetComponent<RunStatus>().CallRestart(true, day);
     }
 
     public int GetHealt(int hero)

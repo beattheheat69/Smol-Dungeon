@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using NUnit.Framework;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
@@ -49,9 +50,8 @@ public class HeroAI : Hero
         }
         if (HeroDataManager.Instance != null)
         {
-            base.index = HeroDataManager.Instance.party.Count;
-            HeroDataManager.Instance.party.Add(new HeroData { currentHealt = baseStats.health, dodgeChance = baseStats.dodgeChange });
-            //health = HeroDataManager.Instance.party[index].currentHealt;  // testing hero health
+            HeroDataManager.Instance.party[index] = new HeroData { currentHealt = baseStats.health, dodgeChance = baseStats.dodgeChange };
+            health = HeroDataManager.Instance.party[index].currentHealt;  // testing hero health
         }
     }
 

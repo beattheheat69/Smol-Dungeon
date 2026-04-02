@@ -16,5 +16,7 @@ public abstract class MonsterStats_SO : ScriptableObject
     public float attackChance { get; private set; }
     [field: SerializeField]
     public float kockbackForce { get; private set; }
+    [field: SerializeField]
+    public float cost { get; private set; }
 
 }

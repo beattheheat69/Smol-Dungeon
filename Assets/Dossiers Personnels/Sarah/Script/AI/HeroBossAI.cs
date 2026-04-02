@@ -21,6 +21,7 @@ public class HeroBossAI : Hero
     private int sideChoice = 0; // -1 = left, 1 = right, 0 = none
     HeroAnimation heroAnim;
 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -28,7 +29,7 @@ public class HeroBossAI : Hero
         boxCol = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         FindTarget();
-        //health = HeroDataManager.Instance.party[index].currentHealt;// testing hero health
+        health = HeroDataManager.Instance.party[index].currentHealt;
     }
 
     // Update is called once per frame
@@ -55,7 +56,7 @@ public class HeroBossAI : Hero
     {
         if (collision.gameObject == target && !attacking)
         {
-            Debug.Log(Vector2.Distance(transform.position, target.transform.position));
+            //Debug.Log(Vector2.Distance(transform.position, target.transform.position));
             attacking = true;
             atTarget = true;
             rb.linearVelocity = Vector2.zero;

@@ -23,9 +23,10 @@ public class BossActions : MonoBehaviour, IDamageable
 	//Reference to action game object for instantiate
 	public GameObject shockwaveAnim;
 	public GameObject fistAttack;
+    GameManager gm;
 
-	//Attacks stuff
-	RaycastHit2D[] hits;
+    //Attacks stuff
+    RaycastHit2D[] hits;
 	public LayerMask masksToHit;
 	public float attackRadius = 1f;
 	Vector2 attackTransform;
@@ -48,9 +49,10 @@ public class BossActions : MonoBehaviour, IDamageable
 		specialAttackRight = playerInput.actions["SpecialRight"];
 		moveInput = playerInput.actions["Move"];
 		health = stats.health;
+        gm = FindFirstObjectByType<GameManager>();
 
-		//Initiate the health bar
-		lifebar.SetMaxHealth(health);
+        //Initiate the health bar
+        lifebar.SetMaxHealth(health);
 	}
 
 	private void Update()
@@ -161,7 +163,7 @@ public class BossActions : MonoBehaviour, IDamageable
 		if (health <= 0)
 		{
 			//Defeat
-			GameObject.Find("GameManager").GetComponent<RunStatus>().CallRestart(false);
+			GameObject.Find("GameManager").GetComponent<RunStatus>().CallRestart(false, gm.GetDay());
 			gameObject.SetActive(false);
 		}
 	}
