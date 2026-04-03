@@ -43,11 +43,15 @@ public class PlayerMovement : MonoBehaviour
         //Moves object via direction, speed and time
         transform.Translate(moveDir * speed * Time.deltaTime);
 
-        //Flip sprite when moving left
-        if (lastDir.x < 0)
-            GetComponent<SpriteRenderer>().flipX = true;
-        else if (lastDir.x > 0)
-            GetComponent<SpriteRenderer>().flipX = false;
+        //Flip sprite when moving left (but not for boss)
+        if (this.gameObject.name != "Boss")
+        {
+            if (lastDir.x < 0)
+                GetComponent<SpriteRenderer>().flipX = true;
+            else if (lastDir.x > 0)
+                GetComponent<SpriteRenderer>().flipX = false;
+        }
+
 
         if (Camera.main.GetComponent<CameraManagement>() != null && Camera.main.GetComponent<CameraManagement>().GetTransitionning())
         {

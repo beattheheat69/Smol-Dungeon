@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="MixerVCA" id="{67321670-ec92-43f3-8cb0-301ad66a7d49}">
+		<property name="color">
+			<value>Purple</value>
+		</property>
+		<property name="name">
+			<value>Music</value>
+		</property>
+		<relationship name="masters">
+			<destination>{ce67cefa-259d-48bf-81ff-5b73b94d1609}</destination>
+		</relationship>
+		<relationship name="mixer">
+			<destination>{da1a434f-55fe-40c2-8b54-0dc8fc3b1196}</destination>
+		</relationship>
+	</object>
+</objects>

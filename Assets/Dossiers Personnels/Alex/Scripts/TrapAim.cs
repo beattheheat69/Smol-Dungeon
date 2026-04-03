@@ -1,3 +1,4 @@
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -16,7 +17,8 @@ public class TrapAim : TrapAction
 	float timeForNextAttack = 0f;
     [SerializeField] CrossbowStats_SO baseStats;
 
-    private void Start()
+
+	private void Start()
 	{
 		playerInput = GetComponent<PlayerInput>();
 		aim = playerInput.actions["Aim"];
@@ -51,6 +53,7 @@ public class TrapAim : TrapAction
 	{
 		//Animation
 		GetComponent<Animator>().SetTrigger("Shoot");
+		GetComponent<SoundCaster>().PlayAttackSFX();
 
 		//Cooldown
 		GameObject inst = Instantiate(bullet, gameObject.transform.position, transform.rotation);

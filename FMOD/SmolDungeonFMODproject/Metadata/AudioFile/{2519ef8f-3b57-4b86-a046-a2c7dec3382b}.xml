@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{2519ef8f-3b57-4b86-a046-a2c7dec3382b}">
+		<property name="assetPath">
+			<value>SFX_Player/Boss/SFX_Boss_BasicAttack-001.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.17225</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{2a1339a7-a903-46a7-ae9c-c49bb521c1b7}</destination>
+		</relationship>
+	</object>
+</objects>

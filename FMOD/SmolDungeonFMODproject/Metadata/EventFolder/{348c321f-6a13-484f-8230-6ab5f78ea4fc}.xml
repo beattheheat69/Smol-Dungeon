@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="EventFolder" id="{348c321f-6a13-484f-8230-6ab5f78ea4fc}">
 		<property name="name">
-			<value>SFX_Smol</value>
+			<value>Smol</value>
 		</property>
 		<relationship name="folder">
 			<destination>{1574a090-23d4-47c4-8c69-7095f06a29c8}</destination>

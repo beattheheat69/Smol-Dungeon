@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 337737462560331934}
+  - component: {fileID: 4040975813970247323}
   - component: {fileID: -8883441103201478487}
   - component: {fileID: 7690966081941423871}
   - component: {fileID: 8390803972775889440}
@@ -41,6 +42,46 @@ Transform:
   - {fileID: 2051083264799343614}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4040975813970247323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7055708888233048317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47fc52ca7fb212242a27c65089968379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundCaster
+  attackSFX:
+    Guid:
+      Data1: 260106817
+      Data2: 1305608310
+      Data3: 826457768
+      Data4: -456055291
+    Path: event:/SFX/Entities/Monsters/Slime/SFX_Slime_Attack
+  attack2SFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  attack3SFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  hitSFX:
+    Guid:
+      Data1: -694930189
+      Data2: 1110186051
+      Data3: -1317256800
+      Data4: 897507188
+    Path: event:/SFX/Entities/Monsters/SFX_Monsters_Hit
 --- !u!114 &-8883441103201478487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,14 +151,14 @@ MonoBehaviour:
       Data2: 1121596856
       Data3: -33042769
       Data4: -1085790845
-    Path: event:/SFX/SFX_Smol/SFX_Smol_Possessing
+    Path: event:/SFX/Smol/Ghost/SFX_Smol_Possessing
   depossessingSFX:
     Guid:
       Data1: -1928768311
       Data2: 1119282324
       Data3: -252503876
       Data4: 1781375296
-    Path: event:/SFX/SFX_Smol/SFX_Smol_DePossessing
+    Path: event:/SFX/Smol/Ghost/SFX_Smol_DePossessing
   monsterHealth: 0
 --- !u!212 &8363819885077017387
 SpriteRenderer:

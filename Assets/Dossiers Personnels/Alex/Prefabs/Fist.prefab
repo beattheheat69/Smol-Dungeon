@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7620666062686885692}
   - component: {fileID: 6541165766089224145}
   - component: {fileID: 7588969872262295429}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Fist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ SpriteRenderer:
   m_SortingLayer: 4
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -6944775491166459259, guid: 1ff9db78bd59da24c99f122d5aefe92e, type: 3}
+  m_Sprite: {fileID: -8639488473121392090, guid: 1ff9db78bd59da24c99f122d5aefe92e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

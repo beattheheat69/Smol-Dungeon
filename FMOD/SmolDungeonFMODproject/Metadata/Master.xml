@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.03.00">
 	<object class="MixerMaster" id="{60191f51-f9e3-45b0-91e4-298a1971c4f8}">
+		<property name="color">
+			<value>Red</value>
+		</property>
 		<property name="name">
 			<value>Master Bus</value>
 		</property>
+		<relationship name="masters">
+			<destination>{ce67cefa-259d-48bf-81ff-5b73b94d1609}</destination>
+		</relationship>
 		<relationship name="effectChain">
 			<destination>{cfc67278-f736-4367-b5fe-e41d44ba2972}</destination>
 		</relationship>

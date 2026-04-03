@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.03.00">
 	<object class="Bank" id="{18c9e83c-cbaf-4122-afc0-bddeaca13d6e}">
+		<property name="color">
+			<value>Blue</value>
+		</property>
 		<property name="name">
 			<value>SFX</value>
 		</property>

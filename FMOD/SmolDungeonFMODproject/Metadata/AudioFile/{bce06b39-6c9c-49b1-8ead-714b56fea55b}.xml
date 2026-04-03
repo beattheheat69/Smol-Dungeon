@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{bce06b39-6c9c-49b1-8ead-714b56fea55b}">
+		<property name="assetPath">
+			<value>SFX_Player/Boss/SFX_Boss_FistLaunch.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.0022291666666665</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{2a1339a7-a903-46a7-ae9c-c49bb521c1b7}</destination>
+		</relationship>
+	</object>
+</objects>

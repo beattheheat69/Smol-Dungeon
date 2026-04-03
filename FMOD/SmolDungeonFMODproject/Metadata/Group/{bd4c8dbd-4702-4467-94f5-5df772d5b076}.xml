@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.03.00">
 	<object class="MixerGroup" id="{bd4c8dbd-4702-4467-94f5-5df772d5b076}">
+		<property name="color">
+			<value>Blue</value>
+		</property>
 		<property name="name">
 			<value>SFX</value>
 		</property>
+		<relationship name="masters">
+			<destination>{d37b3e64-1a76-4a7f-ac46-0a88290d0f93}</destination>
+		</relationship>
 		<relationship name="effectChain">
 			<destination>{3904d5c3-265e-450e-9da6-e7194f1fe45f}</destination>
 		</relationship>

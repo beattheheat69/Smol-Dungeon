@@ -1,17 +1,16 @@
+using FMODUnity;
 using UnityEngine;
 
 public class HeroAnimation : MonoBehaviour
 {
     Hero heroAI;
 	Animator heroAnim;
-	//public Animator swordAnim;
 	Vector2 direction;
 
 	private void Start()
 	{
 		heroAI = GetComponent<Hero>();
 		heroAnim = GetComponent<Animator>();
-		//swordAnim = GameObject.Find("Sword").GetComponent<Animator>();
 	}
 
 	private void FixedUpdate()
@@ -29,14 +28,11 @@ public class HeroAnimation : MonoBehaviour
 
 		heroAnim.SetFloat("dirX", direction.x);
 		heroAnim.SetFloat("dirY", direction.y);
-
-		//swordAnim.SetFloat("dirX", direction.x);
-		//swordAnim.SetFloat("dirY", direction.y);
 	}
 
 	public void IsAttacking()
 	{
+		GetComponent<SoundCaster>().PlayAttackSFX();
 		heroAnim.SetTrigger("Attack");
-		//swordAnim.SetTrigger("Slash");
 	}
 }

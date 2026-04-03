@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{8e29385e-42cb-4a33-a875-63d63e065c7b}">
+		<property name="assetPath">
+			<value>SFX_Hero/SFX_Hero_Attack-006.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{2a1339a7-a903-46a7-ae9c-c49bb521c1b7}</destination>
+		</relationship>
+	</object>
+</objects>
