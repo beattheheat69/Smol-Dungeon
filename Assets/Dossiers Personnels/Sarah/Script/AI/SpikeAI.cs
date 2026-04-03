@@ -58,11 +58,16 @@ public class SpikeAI : TrapAI
         }
     }
 
-    public void SetisPossesed(bool state)
+    public void SetisPossesed(bool state) 
     { 
         isPossesed = state;
         if (!isPossesed) //To restart TrapCycle when depossessing
             StartCoroutine(TrapCycle()); //This causes the coroutine to be called 999+ times even at the start and even skip the timers in the coroutine...?
+    }
+
+    public bool GetisPossesed()
+    {
+        return isPossesed;
     }
 
     IEnumerator TrapCycle()
@@ -71,14 +76,16 @@ public class SpikeAI : TrapAI
         {
 			yield return new WaitForSeconds(baseStats.timeUp);
             //SFX on hold for now until figure out why coroutine is called 999+ times each time
-            //GetComponent<SoundCaster>().PlayAttackSFX();
+            GetComponent<SoundCaster>().PlayAttackSFX();
 			anim.Play("SpikeBundle_GoingUp");
             active = true;
-			yield return new WaitForSeconds(baseStats.timeDown);
-			//GetComponent<SoundCaster>().PlayAttack2SFX();
+            Debug.Log(active);
+            yield return new WaitForSeconds(baseStats.timeDown);
+			GetComponent<SoundCaster>().PlayAttack2SFX();
 			anim.Play("SpikeBundle_GoingDown");
             active = false;
-			yield return new WaitForSeconds(baseStats.attackCooldown);
+            Debug.Log(active);
+            yield return new WaitForSeconds(baseStats.attackCooldown);
             anim.Play("SpikeBundle_Idle");
 
             yield return null;

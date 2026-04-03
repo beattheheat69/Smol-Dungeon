@@ -146,10 +146,11 @@ public class EntityPossessed : MonoBehaviour
 				spikeAI.enabled = true;
 			}
 
-			if (this.gameObject.TryGetComponent<SpikeAI>(out SpikeAI script))
+            if (this.gameObject.TryGetComponent<SpikeAI>(out SpikeAI script) && script.GetisPossesed())
             {
                 script.SetisPossesed(false);
             }
+
         }
 
 		smol = null;
