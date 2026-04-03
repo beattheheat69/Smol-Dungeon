@@ -68,6 +68,7 @@ public class EntityMenuSelection : MonoBehaviour
 						roomLimit.monsterLimit--;
 						roomLimit.totalLimit--;
 						globalRessources.SpendEvilPoints(1);
+						//globalRessources.SpendEvilPoints(entity.GetComponent<MonsterStats_SO>().cost); //Use this one when Evil Point Cost added to SO
 
 						if (entity == slimePrefab)
                             toggle.GetComponent<RoomIcon>().UpdateIcon("Slime"); //Ajuster l'icône de la chambre
@@ -87,6 +88,7 @@ public class EntityMenuSelection : MonoBehaviour
 						roomLimit.trapLimit--;
 						roomLimit.totalLimit--;
 						globalRessources.SpendEvilPoints(1);
+						//globalRessources.SpendEvilPoints(entity.GetComponent<MonsterStats_SO>().cost); //Use this one when Evil Point Cost added to SO
 
 						toggle.GetComponent<RoomIcon>().UpdateIcon("Crossbow"); //Ajuster l'icône de la chambre
 					}
@@ -104,8 +106,9 @@ public class EntityMenuSelection : MonoBehaviour
 						roomLimit.spikesLimit--;
 						roomLimit.totalLimit--;
 						globalRessources.SpendEvilPoints(1);
+						//globalRessources.SpendEvilPoints(entity.GetComponent<MonsterStats_SO>().cost); //Use this one when Evil Point Cost added to SO
 
-                        toggle.GetComponent<RoomIcon>().UpdateIcon("Spike"); //Ajuster l'icône de la chambre
+						toggle.GetComponent<RoomIcon>().UpdateIcon("Spike"); //Ajuster l'icône de la chambre
                     }
 				}
 			}

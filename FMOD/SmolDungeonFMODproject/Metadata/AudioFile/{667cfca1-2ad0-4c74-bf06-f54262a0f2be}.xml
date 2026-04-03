@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{667cfca1-2ad0-4c74-bf06-f54262a0f2be}">
 		<property name="assetPath">
-			<value>SFX_Entities/SFX_Traps/SFX_Crossbow/SFX_Crossbow_Shoot-002.wav</value>
+			<value>SFX_Entities/Traps/Crossbow/SFX_Crossbow_Shoot-002.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>

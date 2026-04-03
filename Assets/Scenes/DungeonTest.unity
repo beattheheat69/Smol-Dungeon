@@ -492,6 +492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HeroAI
   health: 0
   baseStats: {fileID: 11400000, guid: bcb7b7bbcc34c8849ad7212ff4de7e8c, type: 2}
+  lastMoveDirection: {x: 0, y: 0}
   monsterLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -501,6 +502,7 @@ MonoBehaviour:
   obsticleLayer:
     serializedVersion: 2
     m_Bits: 64
+  lifebar: {fileID: 0}
 --- !u!114 &647466779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,6 +517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DebugHealth
   health: 0
   baseStats: {fileID: 0}
+  lastMoveDirection: {x: 0, y: 0}
   hp: 0
 --- !u!1001 &703429389
 PrefabInstance:
@@ -5843,14 +5846,14 @@ MonoBehaviour:
       Data2: 1121596856
       Data3: -33042769
       Data4: -1085790845
-    Path: event:/SFX/SFX_Smol/SFX_Smol_Possessing
+    Path: event:/SFX/Smol/Ghost/SFX_Smol_Possessing
   depossessingSFX:
     Guid:
       Data1: -1928768311
       Data2: 1119282324
       Data3: -252503876
       Data4: 1781375296
-    Path: event:/SFX/SFX_Smol/SFX_Smol_DePossessing
+    Path: event:/SFX/Smol/Ghost/SFX_Smol_DePossessing
   monsterHealth: 0
 --- !u!114 &1779016036
 MonoBehaviour:
@@ -5882,6 +5885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317ac1c27fb559f4386d6d51884fadad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  baseStats: {fileID: 0}
   speed: 5
   lastDir: {x: 0, y: 0}
 --- !u!114 &1779016038

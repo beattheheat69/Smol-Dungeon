@@ -11,12 +11,14 @@ public class Character : MonoBehaviour, IDamageable
     protected bool isStunned = false;
     protected Animator animator;
     protected Rigidbody2D rb;  //Object rigidbody
+    protected SoundCaster soundCaster; //Sound script common for all characters
 
     void Awake()
     {
         animator = GetComponent<Animator>();
         isDead = false;
         rb = GetComponent<Rigidbody2D>();
+        soundCaster = GetComponent<SoundCaster>();
     }
 
     //Take dammage when hit
@@ -52,6 +54,13 @@ public class Character : MonoBehaviour, IDamageable
             //animator.SetBool("Defeated", true);
             isDead = true;
             Die();
+        }
+
+        //Calls hit SFX
+        if (soundCaster != null)
+        {
+            Debug.Log("Playing Hit SFX");
+            soundCaster.PlayHitSFX();
         }
     }
 

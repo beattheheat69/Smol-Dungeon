@@ -7,11 +7,13 @@ public class BossAnim : MonoBehaviour
 	Animator anim;
 	Vector2 dir;
 	Vector2 lastDir;
+	SoundCaster soundCaster;
 
 	private void Start()
 	{
 		playerMovement = GetComponent<PlayerMovement>();
 		anim = GetComponent<Animator>();
+		soundCaster = GetComponent<SoundCaster>();
 	}
 
 	private void Update()
@@ -40,6 +42,7 @@ public class BossAnim : MonoBehaviour
 
 	public IEnumerator BossAttacks()
 	{
+		soundCaster.PlayAttackSFX();
 		anim.SetTrigger("BasicAttack");
 		playerMovement.enabled = false;
 		yield return new WaitForSeconds(0.5f);
@@ -48,6 +51,7 @@ public class BossAnim : MonoBehaviour
 
 	public IEnumerator BossProjectile()
 	{
+		soundCaster.PlayAttack2SFX();
 		anim.SetTrigger("Projectile");
 		playerMovement.enabled = false;
 		yield return new WaitForSeconds(0.5f);
@@ -56,9 +60,12 @@ public class BossAnim : MonoBehaviour
 
 	public IEnumerator BossShockwave()
 	{
+		soundCaster.PlayAttack3SFX();
 		anim.SetTrigger("Shockwave");
 		playerMovement.enabled = false;
 		yield return new WaitForSeconds(0.5f);
 		playerMovement.enabled = true;
 	}
+
+	//Missing Hit anim + hit sfx call here
 }
