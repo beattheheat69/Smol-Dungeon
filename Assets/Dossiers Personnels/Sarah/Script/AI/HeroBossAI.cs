@@ -84,15 +84,21 @@ public class HeroBossAI : Hero
         Vector2 seek = ((Vector2)target.transform.position - rb.position).normalized;
         Vector2 avoid = AvoidObstical(seek);
 
+        Vector2 closestPoint = target.GetComponent<Collider2D>().ClosestPoint(rb.position);
+        float heroRadius = boxCol.bounds.extents.x;
+
+        if (Vector2.Distance(rb.position, closestPoint) <= heroRadius + 0.05f)
+        {
+            atTarget = true;
+            rb.linearVelocity = Vector2.zero; // Kill any sliding momentum
+            return;
+        }
+
         //Chnage direction to avoid trap if needed
         lastMoveDirection = (seek + avoid * avoidWeight).normalized;
 
         // Move hero toward target
         rb.MovePosition(rb.position + lastMoveDirection * baseStats.chargeSpeed * Time.fixedDeltaTime);
-        if (Vector2.Distance(transform.position, target.transform.position) < 1f)
-        {
-            atTarget = true;
-        }
     }
 
     private void DoAttack()

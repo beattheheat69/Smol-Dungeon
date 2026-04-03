@@ -53,6 +53,7 @@ public class Character : MonoBehaviour, IDamageable
         {
             //animator.SetBool("Defeated", true);
             isDead = true;
+            rb.linearVelocity = Vector2.zero; // Kill any sliding momentum
             Die();
         }
 
