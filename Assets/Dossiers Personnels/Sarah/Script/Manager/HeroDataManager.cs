@@ -8,8 +8,7 @@ public class HeroDataManager : MonoBehaviour
     public static HeroDataManager Instance { get; private set; }
     public HeroData[] party = new HeroData[2]; // Array of heros stats data
     int currentDay = 1;
-    [SerializeField]
-    public GameObject[] heroes = new GameObject[2];
+
 
     void Awake()
     {
@@ -40,35 +39,6 @@ public class HeroDataManager : MonoBehaviour
     public float GetDodgheChance(int hero)
     {
         return party[hero].dodgeChance;
-    }
-
-    void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        if (scene.name != "PlacementEntite")
-        {    
-            ActivateHeroForDay(); 
-        }
-        
-    }
-
-    public void ActivateHeroForDay()
-    {
-
-        // Activate the hero for this day
-        int index = currentDay - 1;
-
-        if (index >= 0 && index < heroes.Length)
-            heroes[index].SetActive(true);
     }
 
     public void NextDay()

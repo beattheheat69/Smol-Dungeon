@@ -14138,6 +14138,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   pauseMenu: {fileID: 1593192359}
+  heroes:
+  - {fileID: 1207770790}
+  - {fileID: 1054702555}
 --- !u!4 &848588528
 Transform:
   m_ObjectHideFlags: 0
