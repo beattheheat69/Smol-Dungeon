@@ -8,7 +8,7 @@ public class Hero : Character
     protected HeroStats_SO baseStats; // Base stats of heros
     [SerializeField]
     protected int index;
-    public Vector2 lastMoveDirection; // Direction the hero is looking for the attack
+    
 
     //Rigidbody2D rb;  //Object rigidbody
 

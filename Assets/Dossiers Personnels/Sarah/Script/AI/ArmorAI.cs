@@ -13,60 +13,103 @@ public class ArmorAI : MonsterAI
     float timeCooldown; //Time that passes before next attack
     bool attacking = false; // monster in attack mode
     bool isActive = false;
-    CapsuleCollider2D capsuleCol;
+    BoxCollider2D boxCol;
+    HeroAnimation charAnim;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        charAnim = GetComponent<HeroAnimation>();
         rb = GetComponent<Rigidbody2D>();
         health = baseStats.health;
         power = baseStats.power;
-        cameraStat = Camera.main.GetComponent<CameraManagement>(); 
-        capsuleCol = GetComponent<CapsuleCollider2D>();
+        cameraStat = Camera.main.GetComponent<CameraManagement>();
+        boxCol = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (cameraStat.GetTransitionning()) return;
-        if (isActive)
+        if (!isDead)
         {
-            if (target == null)
+            if (cameraStat.GetTransitionning()) return;
+            if (isActive)
             {
-                FindTarget();
-            }
-
-            if (!atTarget)
-            {
-                //Move to target
-                MoveEnemy();
-            }
-
-
-            //Check if can attack
-            if (attacking && timeCooldown <= 0)
-            {
-                DoAttack();
-
-                //If target dead, find new one
-                if (!CheckTargetAlive())
+                if (target == null)
                 {
                     FindTarget();
-                    if (target == null)
+                }
+
+                if (!atTarget)
+                {
+                    //Move to target
+                    MoveEnemy();
+                }
+                else
+                {
+                    // Recompute distance to target
+                    Vector2 closestPoint = target.GetComponent<Collider2D>().ClosestPoint(rb.position);
+
+                    float heroRadius = boxCol.bounds.extents.x;
+                    float distanceToSurface = Vector2.Distance(rb.position, closestPoint);
+                    float stopDistance = heroRadius + 0.05f;
+
+                    // If hero is no longer close enough, resume movement
+                    if (distanceToSurface > stopDistance + 0.1f) // small buffer
                     {
-                        transform.parent.gameObject.SetActive(false);
+                        atTarget = false;
+                        attacking = false;
                     }
                 }
-            }
 
-            //attack cooldown
-            if (timeCooldown > 0)
-            {
-                timeCooldown -= Time.deltaTime;
+                //Check if can attack
+                if (attacking && timeCooldown <= 0)
+                {
+                    DoAttack();
+                    charAnim.IsAttacking(); ;
+
+                    //If target dead, find new one
+                    if (!CheckTargetAlive())
+                    {
+                        FindTarget();
+                        if (target == null)
+                        {
+                            transform.parent.gameObject.SetActive(false);
+                        }
+                    }
+                }
+
+                //attack cooldown
+                if (timeCooldown > 0)
+                {
+                    timeCooldown -= Time.deltaTime;
+                }
             }
         }
-        
+       
     }
+
+
+   /* bool CheckIfAtTarget()
+    {
+        Vector2 closestPoint = target.GetComponent<Collider2D>().ClosestPoint(rb.position);
+
+        float radius = boxCol.bounds.extents.x;
+        float distanceToSurface = Vector2.Distance(rb.position, closestPoint);
+        float stopDistance = radius + 0.05f;
+
+        if (distanceToSurface <= stopDistance)
+        {
+            atTarget = true;
+            attacking = true;
+            rb.linearVelocity = Vector2.zero;
+            return true;
+        }
+
+        atTarget = false;
+        attacking = false;
+        return false;
+    }*/
 
     //Enter in attack mode when colliding with target
     private void OnCollisionEnter2D(Collision2D collision)
@@ -75,9 +118,7 @@ public class ArmorAI : MonsterAI
         {
             if (collision.gameObject == target && !attacking)
             {
-                attacking = true;
-                atTarget = true;
-                rb.linearVelocity = Vector2.zero;
+                lastMoveDirection = ((Vector2)target.transform.position - (Vector2)rb.position).normalized;
             }
         }
         else if (collision.transform.tag == "Hero") 
@@ -102,7 +143,6 @@ public class ArmorAI : MonsterAI
     {
         if (collision.gameObject.gameObject == target)
         {
-
             attacking = false;
             atTarget = false;
         }
@@ -117,6 +157,7 @@ public class ArmorAI : MonsterAI
     //Does an attack with a range infront of him, according to his direction of movement
     private void DoAttack()
     {
+        Debug.Log("Armor attacked");
         float randVal = Random.Range(1, 100);
         GetComponent<SoundCaster>().PlayAttackSFX();
 
@@ -138,42 +179,38 @@ public class ArmorAI : MonsterAI
     //Move monster towards target
     private void MoveEnemy()
     {
-        // Check edge distance
+        //caculate distance between hero and target with consistent speed
         Vector2 closestPoint = target.GetComponent<Collider2D>().ClosestPoint(rb.position);
-        float heroRadius = capsuleCol.bounds.extents.x;
 
-        if (Vector2.Distance(rb.position, closestPoint) <= heroRadius + 0.05f)
+        float armorRadius = boxCol.bounds.extents.x;
+        float heroRadius = target.GetComponent<Collider2D>().bounds.extents.x;
+        float stopDistance = armorRadius + heroRadius + 0.05f;
+        float distanceToSurface = Vector2.Distance(rb.position, closestPoint);
+        Debug.Log("Armor distanceToSurface = " + distanceToSurface);
+        if (distanceToSurface <= stopDistance)
         {
             atTarget = true;
+            attacking = true;
             rb.linearVelocity = Vector2.zero; // Kill any sliding momentum
             return;
         }
 
-        //caculate distance between hero and target with consistent speed
-        Vector2 direction = (target.transform.position - transform.position).normalized;
-        // Move hero toward target
-        rb.MovePosition(rb.position + direction * baseStats.chargeSpeed * Time.fixedDeltaTime);
-       /* if (Vector2.Distance(transform.position, target.transform.position) < 1f)
-        {
-            /*Vector2 pushDirect = ((Vector2)transform.position - (Vector2)target.transform.position).normalized;
-            transform.position += (Vector3)pushDirect * baseStats.chargeSpeed * Time.deltaTime;*/
-            //atTarget = true;
-        //}
-        //Correctoverlap();
-    }
+        // Calculate direction from physics position
+        lastMoveDirection = ((Vector2)target.transform.position - (Vector2)rb.position).normalized;
 
-   /* private void Correctoverlap()
-    {
-        Collider2D[] touchingColliders = Physics2D.OverlapCircleAll(transform.position, 0.5f, colliderLayer);
-        foreach (Collider2D collidObject in touchingColliders)
-        {
-            if (collidObject.gameObject != this.gameObject)
-            {
-                Vector2 pushDirect = ((Vector2)transform.position - (Vector2)collidObject.transform.position).normalized;
-                transform.position += (Vector3)pushDirect * baseStats.chargeSpeed * Time.deltaTime;
-            }
-        }
-    }*/
+        // Compute movement step
+        float moveStep = baseStats.chargeSpeed * Time.fixedDeltaTime;
+
+        // Clamp movement so we never cross the boundary
+        moveStep = Mathf.Max(0f, Mathf.Min(moveStep, distanceToSurface - stopDistance));
+
+        // Move hero
+        Vector2 nextPos = rb.position + lastMoveDirection * moveStep;
+        rb.MovePosition(nextPos);
+
+        // Move hero toward target
+        //rb.MovePosition(rb.position + lastMoveDirection * baseStats.chargeSpeed * Time.fixedDeltaTime);
+    }
 
 
     //Find which hero is the closest
