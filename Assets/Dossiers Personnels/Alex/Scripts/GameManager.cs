@@ -17,11 +17,15 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public GameObject[] heroes = new GameObject[2];
 
+    public GameObject tuto;
+
     private void Start()
 	{
+        tuto.SetActive(true);
 		//Input references
 		playerInput = GetComponent<PlayerInput>();
 		pauseInput = playerInput.actions["Pause"];
+        Time.timeScale = 0f; //Starts frozen, will unfreeze when closing tutorial panel
 	}
 
 	private void Update()
