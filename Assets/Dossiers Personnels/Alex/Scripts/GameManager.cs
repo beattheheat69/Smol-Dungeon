@@ -84,4 +84,14 @@ public class GameManager : MonoBehaviour
         if (index >= 0 && index < heroes.Length)
             heroes[index].SetActive(true);
     }
+
+    public void QuitToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void StartTime()
+    {
+        Time.timeScale = 1f;
+    }
 }
