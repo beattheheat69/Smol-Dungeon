@@ -1,31 +1,35 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HeroDataManager : MonoBehaviour
 {
     public static HeroDataManager Instance { get; private set; }
-    public List <HeroData> party = new List<HeroData> (); // list of heros stats data
+    public HeroData[] party = new HeroData[2]; // Array of heros stats data
+    int currentDay = 1;
+
 
     void Awake()
     {
-        if(Instance != null && Instance != this )
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Persists across scenes
+        }
+        else
         {
             Destroy(gameObject);
-            return;
         }
-
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
-    public void UpdateHeroHealh(int hero, int damage)
+    public void UpdateHeroHealh(int hero, int damage, int day)
     {
         party[hero].currentHealt -= damage;
 
         //End run when hero is dead
         if (party[hero].currentHealt <= 0)
-            GameObject.Find("GameManager").GetComponent<RunStatus>().CallRestart(true);
+            GameObject.Find("GameManager").GetComponent<RunStatus>().CallRestart(true, day);
     }
 
     public int GetHealt(int hero)
@@ -37,6 +41,15 @@ public class HeroDataManager : MonoBehaviour
         return party[hero].dodgeChance;
     }
 
+    public void NextDay()
+    {
+        currentDay++;
+    }
+
+    public int GetDay()
+    {
+        return currentDay;
+    }
 }
 
 

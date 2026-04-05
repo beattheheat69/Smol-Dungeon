@@ -1,3 +1,4 @@
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class ArmorAI : MonsterAI
@@ -12,6 +13,7 @@ public class ArmorAI : MonsterAI
     float timeCooldown; //Time that passes before next attack
     bool attacking = false; // monster in attack mode
     bool isActive = false;
+    CapsuleCollider2D capsuleCol;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,7 +21,8 @@ public class ArmorAI : MonsterAI
         rb = GetComponent<Rigidbody2D>();
         health = baseStats.health;
         power = baseStats.power;
-        cameraStat = Camera.main.GetComponent<CameraManagement>();
+        cameraStat = Camera.main.GetComponent<CameraManagement>(); 
+        capsuleCol = GetComponent<CapsuleCollider2D>();
     }
 
     // Update is called once per frame
@@ -135,16 +138,27 @@ public class ArmorAI : MonsterAI
     //Move monster towards target
     private void MoveEnemy()
     {
+        // Check edge distance
+        Vector2 closestPoint = target.GetComponent<Collider2D>().ClosestPoint(rb.position);
+        float heroRadius = capsuleCol.bounds.extents.x;
+
+        if (Vector2.Distance(rb.position, closestPoint) <= heroRadius + 0.05f)
+        {
+            atTarget = true;
+            rb.linearVelocity = Vector2.zero; // Kill any sliding momentum
+            return;
+        }
+
         //caculate distance between hero and target with consistent speed
         Vector2 direction = (target.transform.position - transform.position).normalized;
         // Move hero toward target
         rb.MovePosition(rb.position + direction * baseStats.chargeSpeed * Time.fixedDeltaTime);
-        if (Vector2.Distance(transform.position, target.transform.position) < 1f)
+       /* if (Vector2.Distance(transform.position, target.transform.position) < 1f)
         {
             /*Vector2 pushDirect = ((Vector2)transform.position - (Vector2)target.transform.position).normalized;
             transform.position += (Vector3)pushDirect * baseStats.chargeSpeed * Time.deltaTime;*/
-            atTarget = true;
-        }
+            //atTarget = true;
+        //}
         //Correctoverlap();
     }
 

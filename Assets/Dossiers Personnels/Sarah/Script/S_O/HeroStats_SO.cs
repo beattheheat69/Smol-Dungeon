@@ -1,9 +1,8 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "MonsterStats_SO", menuName = "Scriptable Objects/MonsterStats_SO")]
-public abstract class MonsterStats_SO : ScriptableObject
+[CreateAssetMenu(fileName = "HeroStats_SO", menuName = "Scriptable Objects/HeroStats_SO")]
+public class HeroStats_SO : ScriptableObject
 {
-    //for a stat that will be all the same for all monsters
     [field: SerializeField]
     public float chargeSpeed { get; private set; }
     [field: SerializeField]
@@ -15,8 +14,11 @@ public abstract class MonsterStats_SO : ScriptableObject
     [field: SerializeField]
     public float attackChance { get; private set; }
     [field: SerializeField]
-    public float kockbackForce { get; private set; }
+    public float dodgeChange { get; private set; }
     [field: SerializeField]
-    public float cost { get; private set; }
+    public int Nbpotion { get; private set; }
+    [field: SerializeField]
+    public float kockbackForce { get; private set; }
+    //permanent buffs (and debuffs)
 
 }

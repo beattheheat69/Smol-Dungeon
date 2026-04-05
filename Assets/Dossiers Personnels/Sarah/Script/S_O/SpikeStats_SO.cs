@@ -15,4 +15,6 @@ public class SpikeStats_SO : ScriptableObject
     public float attackCooldown; //damage cooldown
     [field: SerializeField]
     public float kockbackForce { get; private set; }
+    [field: SerializeField]
+    public float cost { get; private set; }
 }

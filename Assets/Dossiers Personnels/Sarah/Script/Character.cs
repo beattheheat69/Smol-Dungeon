@@ -49,10 +49,11 @@ public class Character : MonoBehaviour, IDamageable
         }
 
         //Check if dead
-        if (health <= 0)
+        if (health <= 0 && !isDead)
         {
             //animator.SetBool("Defeated", true);
             isDead = true;
+            rb.linearVelocity = Vector2.zero; // Kill any sliding momentum
             Die();
         }
 
@@ -72,7 +73,7 @@ public class Character : MonoBehaviour, IDamageable
     //Trigger death, deactivate character (tempo)
     protected void Die()
     {
-
+        //stop knowback completely
         if (this.gameObject.tag == "TriggerMonster")// remove when living armor has animation
         {
             gameObject.SetActive(false);
@@ -85,8 +86,18 @@ public class Character : MonoBehaviour, IDamageable
         }
         else if (this.gameObject.tag == "Hero")
         {
-            gameObject.GetComponent<HeroAI>().enabled = false;
+            if (gameObject.TryGetComponent<HeroAI>(out var ai))
+            {
+                ai.enabled = false;
+            }
+            else 
+            {
+                gameObject.GetComponent<HeroBossAI>().enabled = false;
+            }
+                
             gameObject.GetComponent<HeroAnimation>().enabled = false;
+            //gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            HeroDataManager.Instance.NextDay();
         }
 
     }

@@ -5,14 +5,15 @@ using System.Collections.Generic;
 public class Hero : Character
 {
     [SerializeField]
-    protected PaladinStats_SO baseStats; // Base stats of heros
+    protected HeroStats_SO baseStats; // Base stats of heros
+    [SerializeField]
     protected int index;
     public Vector2 lastMoveDirection; // Direction the hero is looking for the attack
 
     //Rigidbody2D rb;  //Object rigidbody
 
     private void Awake()
-    {
+    {;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
@@ -26,7 +27,7 @@ public class Hero : Character
             rb.linearDamping = 10f;
             //Debug.Log("<color=cyan><b>[pushed]</b> Hero got hit and knockback</color>");
             // deduct health
-            HeroDataManager.Instance.UpdateHeroHealh(index, damage);
+            HeroDataManager.Instance.UpdateHeroHealh(index, damage, index+1);
                                                                     //damage animation missing 
             //Does Kockback to character with force of attacker
             Vector2 knockbackDir = ((Vector2)transform.position - attackerPosition).normalized;

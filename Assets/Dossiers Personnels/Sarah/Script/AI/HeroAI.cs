@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using NUnit.Framework;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
@@ -35,7 +36,7 @@ public class HeroAI : Hero
     private int sideChoice = 0; // -1 = left, 1 = right, 0 = none
     HeroAnimation heroAnim;
 
-    [SerializeField] Lifebar lifebar; //J'ai aussi ajouté une ligne de code dans Start et dans Update
+    //[SerializeField] Lifebar lifebar; //J'ai aussi ajouté une ligne de code dans Start et dans Update
 
 
     private void Start()
@@ -51,8 +52,7 @@ public class HeroAI : Hero
         }
         if (HeroDataManager.Instance != null)
         {
-            base.index = HeroDataManager.Instance.party.Count;
-            HeroDataManager.Instance.party.Add(new HeroData { currentHealt = baseStats.health, dodgeChance = baseStats.dodgeChange });
+            HeroDataManager.Instance.party[index] = new HeroData { currentHealt = baseStats.health, dodgeChance = baseStats.dodgeChange };
             health = HeroDataManager.Instance.party[index].currentHealt;  // testing hero health
             //lifebar.SetMaxHealth(health);
         }
@@ -216,15 +216,25 @@ public class HeroAI : Hero
         Vector2 seek = ((Vector2)target.transform.position - rb.position).normalized;
         Vector2 avoid = AvoidObstical(seek);
 
+        Vector2 closestPoint = target.GetComponent<Collider2D>().ClosestPoint(rb.position);
+        float heroRadius = boxCol.bounds.extents.x;
+
+        if (Vector2.Distance(rb.position, closestPoint) <= heroRadius + 0.05f)
+        {
+            atTarget = true;
+            rb.linearVelocity = Vector2.zero; // Kill any sliding momentum
+            return;
+        }
+
         //Chnage direction to avoid trap if needed
         lastMoveDirection = (seek + avoid * avoidWeight).normalized;
 
         // Move hero toward target
         rb.MovePosition(rb.position + lastMoveDirection * baseStats.chargeSpeed * Time.fixedDeltaTime);
-        if (Vector2.Distance(transform.position, target.transform.position) < 1f)
+       /* if (Vector2.Distance(transform.position, target.transform.position) < 1f)
         {
           atTarget = true;
-        }
+        }*/
         //Correctoverlap();
     }
 
@@ -260,6 +270,10 @@ public class HeroAI : Hero
 
         // Casts
         RaycastHit2D hitForward = Physics2D.BoxCast(worldCenter, worldSize, 0f, direction, castDistance, obsticleLayer);
+        /*if (hitForward.collider != null)
+        {
+            Debug.Log("Hit: " + hitForward.collider.gameObject.name + " on Layer: " + LayerMask.LayerToName(hitForward.collider.gameObject.layer));
+        }*/
         RaycastHit2D hitLeft = Physics2D.BoxCast(worldCenter, worldSize, 0f, left, castDistance, obsticleLayer);
         RaycastHit2D hitRight = Physics2D.BoxCast(worldCenter, worldSize, 0f, right, castDistance, obsticleLayer);
 
