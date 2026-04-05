@@ -18,7 +18,7 @@ public class MonsterAction : MonoBehaviour
 	public float cooldown = 0.5f;
 	float timeForNextAttack = 0f;
 
-	[SerializeField] MonsterStats_SO baseStats;
+	public MonsterStats_SO baseStats;
 
 	private void Start()
 	{

@@ -11,4 +11,44 @@ public class RoomEntityLimit : MonoBehaviour
     public int trapLimit = 3;
 	public int totalLimit = 4;
     public int spikesLimit = 1;
+
+    public int currentMonsterCount;
+    public int currentTrapCount;
+    public int currentTotalCount;
+    public int currentSpikesCount;
+
+	private void Start()
+	{
+        currentMonsterCount = monsterLimit;
+        currentTrapCount = trapLimit;
+        currentTotalCount = totalLimit;
+        currentSpikesCount = spikesLimit;
+	}
+
+    public void ClearRoom()
+    {
+		currentMonsterCount = monsterLimit;
+		currentTrapCount = trapLimit;
+		currentTotalCount = totalLimit;
+		currentSpikesCount = spikesLimit;
+	}
+
+    public void OccupyMonsterSpot()
+    {
+        currentMonsterCount--;
+        currentTotalCount--;
+    }
+
+    public void OccupyTrapSpot()
+    {
+        currentTrapCount--;
+		currentTotalCount--;
+	}
+
+    public void OccupySpikesSpot()
+    {
+        currentSpikesCount--;
+        currentTrapCount--;
+		currentTotalCount--;
+	}
 }

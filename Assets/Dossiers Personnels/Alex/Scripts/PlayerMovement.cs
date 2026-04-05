@@ -13,11 +13,12 @@ public class PlayerMovement : MonoBehaviour
     MonsterStats_SO baseStats;
 
     //Speed
-    public float speed = 5f;
+    public float speed = 1f;
 
     //Facing direction for movement and actions
     Vector2 moveDir;
     public Vector2 lastDir;
+
 
     void Start()
     {
@@ -41,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
             lastDir = moveDir;
 
         //Moves object via direction, speed and time
-        transform.Translate(moveDir * speed * Time.deltaTime);
+        transform.Translate(moveDir * speed * 3 * Time.deltaTime);
 
         //Flip sprite when moving left (but not for boss)
         if (this.gameObject.name != "Boss")

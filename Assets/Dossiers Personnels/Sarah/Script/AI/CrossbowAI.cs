@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class CrossbowAI : TrapAI
 {
-    [SerializeField]
-    CrossbowStats_SO baseStat; // Base stats of slimes
+    public CrossbowStats_SO baseStat; // Base stats of slimes
     [SerializeField]
     GameObject arrowPrefab; //Prefab for shot arrow
     CameraManagement cameraStat; // check the stat of the camera

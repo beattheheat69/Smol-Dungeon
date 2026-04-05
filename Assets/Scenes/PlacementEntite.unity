@@ -1559,6 +1559,10 @@ MonoBehaviour:
   trapLimit: 3
   totalLimit: 4
   spikesLimit: 1
+  currentMonsterCount: 0
+  currentTrapCount: 0
+  currentTotalCount: 0
+  currentSpikesCount: 0
 --- !u!1 &456258691
 GameObject:
   m_ObjectHideFlags: 0
@@ -2430,6 +2434,10 @@ MonoBehaviour:
   trapLimit: 3
   totalLimit: 4
   spikesLimit: 1
+  currentMonsterCount: 0
+  currentTrapCount: 0
+  currentTotalCount: 0
+  currentSpikesCount: 0
 --- !u!1 &632888419
 GameObject:
   m_ObjectHideFlags: 0
@@ -2991,11 +2999,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2582675673483075554, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2582675673483075554, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2582675673483075554, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3007,7 +3015,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2582675673483075554, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlaceInThisRoom
+      value: ClearRoomEntities
       objectReference: {fileID: 0}
     - target: {fileID: 2582675673483075554, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -3016,10 +3024,10 @@ PrefabInstance:
     - target: {fileID: 2582675673483075554, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 959689986000236469, guid: faa507454af0e1349ba001927df98f28, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 2582675673483075554, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2675665126676355402, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: m_Pivot.x
@@ -4458,6 +4466,10 @@ MonoBehaviour:
   trapLimit: 3
   totalLimit: 4
   spikesLimit: 1
+  currentMonsterCount: 0
+  currentTrapCount: 0
+  currentTotalCount: 0
+  currentSpikesCount: 0
 --- !u!1 &1022930528
 GameObject:
   m_ObjectHideFlags: 0
@@ -4579,6 +4591,10 @@ MonoBehaviour:
   trapLimit: 3
   totalLimit: 4
   spikesLimit: 1
+  currentMonsterCount: 0
+  currentTrapCount: 0
+  currentTotalCount: 0
+  currentSpikesCount: 0
 --- !u!1 &1042838747
 GameObject:
   m_ObjectHideFlags: 0
@@ -5080,6 +5096,10 @@ MonoBehaviour:
   trapLimit: 3
   totalLimit: 4
   spikesLimit: 1
+  currentMonsterCount: 0
+  currentTrapCount: 0
+  currentTotalCount: 0
+  currentSpikesCount: 0
 --- !u!1 &1133827446
 GameObject:
   m_ObjectHideFlags: 0
@@ -5514,7 +5534,7 @@ PrefabInstance:
       objectReference: {fileID: 1815864818471964605, guid: 718efe29157fd09439384fd84532224d, type: 3}
     - target: {fileID: 8991860230801663576, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: entityCost
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8991860230801663576, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: entityName
@@ -6023,7 +6043,7 @@ PrefabInstance:
       objectReference: {fileID: -2154773311831157884, guid: 718efe29157fd09439384fd84532224d, type: 3}
     - target: {fileID: 8991860230801663576, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: entityCost
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8991860230801663576, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: entityName
@@ -6130,7 +6150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47cdc517dd96b4d42983856a41b3abac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GlobalRessources
-  evilPoints: 12
+  evilPoints: 30
   evilPointsScore: {fileID: 1657543302}
   confirmButton: {fileID: 915107822}
   confirmButtonText: {fileID: 637088647}
@@ -6570,6 +6590,10 @@ MonoBehaviour:
   trapLimit: 3
   totalLimit: 4
   spikesLimit: 1
+  currentMonsterCount: 0
+  currentTrapCount: 0
+  currentTotalCount: 0
+  currentSpikesCount: 0
 --- !u!114 &1449751502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6786,6 +6810,10 @@ PrefabInstance:
     - target: {fileID: 3494278648934827460, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: m_Name
       value: EntityButton_RemoveOne
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494278648934827460, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8086273930335123478, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: m_Sprite
@@ -7484,6 +7512,10 @@ MonoBehaviour:
   trapLimit: 3
   totalLimit: 4
   spikesLimit: 1
+  currentMonsterCount: 0
+  currentTrapCount: 0
+  currentTotalCount: 0
+  currentSpikesCount: 0
 --- !u!1 &1638289547
 GameObject:
   m_ObjectHideFlags: 0
@@ -9412,6 +9444,10 @@ MonoBehaviour:
   trapLimit: 3
   totalLimit: 4
   spikesLimit: 1
+  currentMonsterCount: 0
+  currentTrapCount: 0
+  currentTotalCount: 0
+  currentSpikesCount: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

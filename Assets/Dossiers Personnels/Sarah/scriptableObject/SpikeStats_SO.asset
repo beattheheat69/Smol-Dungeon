@@ -15,6 +15,7 @@ MonoBehaviour:
   <timeUp>k__BackingField: 2
   <timeDown>k__BackingField: 2
   <startDelay>k__BackingField: 1
-  <power>k__BackingField: 1
+  <power>k__BackingField: 5
   attackCooldown: 2
   <kockbackForce>k__BackingField: 1
+  <cost>k__BackingField: 3

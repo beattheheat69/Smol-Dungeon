@@ -5,8 +5,7 @@ using UnityEngine.InputSystem.Controls;
 
 public class SpikeAI : TrapAI
 {
-    [SerializeField]
-    SpikeStats_SO baseStats; // Base stats of spike
+    public SpikeStats_SO baseStats; // Base stats of spike
     bool active;
     bool isPossesed;
     List<IDamageable> targets = new List<IDamageable>();

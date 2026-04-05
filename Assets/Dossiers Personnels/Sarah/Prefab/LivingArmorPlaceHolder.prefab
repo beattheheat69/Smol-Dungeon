@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   baseStats: {fileID: 11400000, guid: 8453785abb13b8d4982ac413311383fe, type: 2}
-  speed: 5
+  speed: 1
   lastDir: {x: 0, y: 0}
 --- !u!114 &2425224604252029632
 MonoBehaviour:
