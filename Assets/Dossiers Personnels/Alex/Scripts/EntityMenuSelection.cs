@@ -152,6 +152,7 @@ public class EntityMenuSelection : MonoBehaviour
 				}
 				globalRessources.GainEvilPoints(costValueInRoom);
 				roomLimit.ClearRoom();
+				toggle.GetComponent<RoomIcon>().ClearAllIcons();
 			}
 		}
 	}

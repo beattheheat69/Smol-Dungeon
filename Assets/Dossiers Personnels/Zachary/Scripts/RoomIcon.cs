@@ -63,8 +63,13 @@ public class RoomIcon : MonoBehaviour
         iconObjects[index].GetComponent<Image>().color = icon.entityColor;
     }
 
-    void RemoveIcon(EntityIcon icon, int index)
+    public void ClearAllIcons()
     {
-        iconObjects[index].GetComponent<Image>().color = Color.white;
+        foreach (GameObject iconObject in iconObjects)
+        {
+            iconObject.GetComponent<Image>().color = Color.white;
+        }
+
+        nextIconIndex = 0;
     }
 }
