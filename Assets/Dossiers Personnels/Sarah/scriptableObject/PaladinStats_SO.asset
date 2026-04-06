@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PaladinStats_SO
   m_EditorClassIdentifier: Assembly-CSharp::PaladinStats_SO
   <chargeSpeed>k__BackingField: 4
-  <health>k__BackingField: 100
+  <health>k__BackingField: 200
   <power>k__BackingField: 5
   <attackCooldown>k__BackingField: 0.5
   <attackChance>k__BackingField: 65

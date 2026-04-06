@@ -26,6 +26,7 @@ public class EntityPossessed : MonoBehaviour
 	public EventReference depossessingSFX;
 
 	[SerializeField] int monsterHealth;
+	public Lifebar monsterLifeBar;
 
 
 	void Start()
