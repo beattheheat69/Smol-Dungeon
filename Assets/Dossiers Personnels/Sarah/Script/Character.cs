@@ -12,6 +12,7 @@ public class Character : MonoBehaviour, IDamageable
     protected Animator animator;
     protected Rigidbody2D rb;  //Object rigidbody
     protected SoundCaster soundCaster; //Sound script common for all characters
+    public Vector2 lastMoveDirection; // Direction the hero is looking for the attack
 
     void Awake()
     {
@@ -24,21 +25,15 @@ public class Character : MonoBehaviour, IDamageable
     //Take dammage when hit
     public virtual void takeDamage(int damage, Vector2 attackerPosition, float knockbackStrength)
     {
-        if (this.gameObject.tag != "TriggerMonster") // remove if when living Armor has animation
-        {
-             animator.SetTrigger("Damaged");
-        }
-       
+
+        animator.SetTrigger("Damaged");
         
         // deduct health
         health -= damage;
-        if (this.gameObject.tag != "TriggerMonster") // remove if when living Armor has animation
-        {
-            animator.SetInteger("HP", health);
-        }
 
         if (this.gameObject.tag != "TriggerMonster") // Decided living Armor has no knockback, we can change that
         {
+            animator.SetInteger("HP", health);
             rb.linearDamping = 10f;
             //Does Kockback to character with force of attacker
             Vector2 knockbackDir = ((Vector2)transform.position - attackerPosition).normalized;
@@ -47,13 +42,20 @@ public class Character : MonoBehaviour, IDamageable
             StartCoroutine(ResetDamping());
             atTarget = false;
         }
+        else 
+        {
+            animator.SetTrigger("Damaged");
+        }
 
         //Check if dead
         if (health <= 0 && !isDead)
         {
-            //animator.SetBool("Defeated", true);
             isDead = true;
             rb.linearVelocity = Vector2.zero; // Kill any sliding momentum
+            if (this.gameObject.tag == "TriggerMonster")
+            {
+                animator.SetBool("Defeat", true);
+            }
             Die();
         }
 
@@ -73,16 +75,11 @@ public class Character : MonoBehaviour, IDamageable
     //Trigger death, deactivate character (tempo)
     protected void Die()
     {
-        //stop knowback completely
-        if (this.gameObject.tag == "TriggerMonster")// remove when living armor has animation
-        {
-            gameObject.SetActive(false);
-        }
-        else if(this.gameObject.tag != "Hero")
+        if(this.gameObject.tag != "Hero")
         {
             RoomInstance roomScript = transform.GetComponentInParent<RoomInstance>();
             roomScript.removeMonster(this.gameObject);
-            gameObject.GetComponent<CircleCollider2D>().enabled = false;
+            gameObject.GetComponent<Collider2D>().enabled = false;
         }
         else if (this.gameObject.tag == "Hero")
         {

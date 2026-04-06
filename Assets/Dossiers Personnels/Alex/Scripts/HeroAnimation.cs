@@ -3,19 +3,19 @@ using UnityEngine;
 
 public class HeroAnimation : MonoBehaviour
 {
-    Hero heroAI;
+    Character characterAI;
 	Animator heroAnim;
 	Vector2 direction;
 
 	private void Start()
 	{
-		heroAI = GetComponent<Hero>();
+        characterAI = GetComponent<Character>();
 		heroAnim = GetComponent<Animator>();
 	}
 
 	private void FixedUpdate()
 	{
-		direction = heroAI.lastMoveDirection; //Bug: Grabs 0 in entrance, find correct var to get movement
+		direction = characterAI.lastMoveDirection; //Bug: Grabs 0 in entrance, find correct var to get movement
 
 		if (direction != Vector2.zero)
 		{

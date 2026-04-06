@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Tilemaps;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class SlimeAI : MonsterAI
 {
@@ -68,7 +69,6 @@ public class SlimeAI : MonsterAI
                 timeCooldown -= Time.deltaTime;
             }
         }
-
     }
 
     //Enter in attack mode when colliding with target
@@ -79,6 +79,7 @@ public class SlimeAI : MonsterAI
             attacking = true;
             atTarget = true;
             rb.linearVelocity = Vector2.zero;
+            lastMoveDirection = ((Vector2)target.transform.position - (Vector2)rb.position).normalized;
         }
     }
 
@@ -124,21 +125,38 @@ public class SlimeAI : MonsterAI
     {
         if (isJumping || atTarget) return;
 
+        Vector2 closestPoint = target.GetComponent<Collider2D>().ClosestPoint(rb.position);
+
+        float slimeRadius = circleCol.radius * Mathf.Abs(transform.lossyScale.x);
+
+        float distanceToSurface = Vector2.Distance(rb.position, closestPoint);
+        float stopDistance = slimeRadius + 0.05f;
+
+        if (distanceToSurface <= stopDistance)
+        {
+            atTarget = true;
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
+        lastMoveDirection = ((Vector2)target.transform.position - (Vector2)rb.position).normalized;
+
+        float moveStep = baseStats.chargeSpeed * Time.fixedDeltaTime;
+
+        moveStep = Mathf.Min(moveStep, distanceToSurface - stopDistance);
+
+        // 8. Move slime
+        Vector2 nextPos = rb.position + lastMoveDirection * moveStep;
+        rb.MovePosition(nextPos);
+
         Vector2 currentPos = rb.position;
-        Vector2 targetPos = target.transform.position;
-
-        // 1. Calculate direction and move
-        Vector2 offset = targetPos - currentPos;
-        Vector2 direction = offset.normalized;
-        rb.MovePosition(currentPos + direction * baseStats.chargeSpeed * Time.fixedDeltaTime);
-
         // 2. Exact Circle Distance Logic
         // We find the edge of the target, then subtract the slime's actual radius.
         Collider2D targetCol = target.GetComponent<Collider2D>();
         Vector2 closestPointOnTarget = targetCol.ClosestPoint(currentPos);
 
         float distanceToTargetEdge = Vector2.Distance(currentPos, closestPointOnTarget);
-        float slimeRadius = circleCol.radius * Mathf.Abs(transform.lossyScale.x);
+        
 
         // 3. Trigger the BounceAttack
         float attackRange = 3f;
@@ -154,19 +172,6 @@ public class SlimeAI : MonsterAI
             StartCoroutine(BounceAttack());
         }
     }
-
-   /* private void Correctoverlap()
-    {
-        Collider2D[] touchingColliders = Physics2D.OverlapCircleAll(transform.position, 0.5f, colliderLayer);
-        foreach (Collider2D collidObject in touchingColliders)
-        {
-            if (collidObject.gameObject != this.gameObject)
-            {
-                Vector2 pushDirect = ((Vector2)transform.position - (Vector2)collidObject.transform.position).normalized;
-                transform.position += (Vector3)pushDirect * baseStats.chargeSpeed * Time.deltaTime;
-            }
-        }
-    }*/
 
     //Show hero collision sphere for overlap
     void OnDrawGizmosSelected()
