@@ -20,7 +20,7 @@ public class HeroBossAI : Hero
     private float sideChoiceTimer = 0f;
     private int sideChoice = 0; // -1 = left, 1 = right, 0 = none
     HeroAnimation heroAnim;
-    //[SerializeField] Lifebar lifebar; //J'ai aussi ajouté une ligne de code dans Start et dans Update
+    [SerializeField] Lifebar lifebar; //J'ai aussi ajouté une ligne de code dans Start et dans Update
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -31,15 +31,15 @@ public class HeroBossAI : Hero
         rb = GetComponent<Rigidbody2D>();
         FindTarget();
         health = HeroDataManager.Instance.party[index].currentHealt;
-       // lifebar.SetMaxHealth(health);
-    }
+		lifebar.SetMaxHealth(baseStats.health);
+	}
 
     // Update is called once per frame
     void Update()
     {
-       // lifebar.SetHealth(health);
+		lifebar.SetHealth(health);
 
-        if (target != null && !atTarget)
+		if (target != null && !atTarget)
         {
             MoveHero();
         }

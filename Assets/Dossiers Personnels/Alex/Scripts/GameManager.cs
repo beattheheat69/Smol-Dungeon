@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -17,11 +18,18 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public GameObject[] heroes = new GameObject[2];
 
+    public GameObject tuto;
+
+    //public TMP_Text evilXPText;
+
     private void Start()
 	{
+        tuto.SetActive(true);
 		//Input references
 		playerInput = GetComponent<PlayerInput>();
 		pauseInput = playerInput.actions["Pause"];
+        Time.timeScale = 0f; //Starts frozen, will unfreeze when closing tutorial panel
+        //evilXPText.text = "EvilXP = " + EvilXPCount.GetXP().ToString();
 	}
 
 	private void Update()
@@ -79,5 +87,16 @@ public class GameManager : MonoBehaviour
 
         if (index >= 0 && index < heroes.Length)
             heroes[index].SetActive(true);
+    }
+
+    public void QuitToMainMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void StartTime()
+    {
+        Time.timeScale = 1f;
     }
 }

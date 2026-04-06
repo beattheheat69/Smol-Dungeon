@@ -12,5 +12,5 @@ public class CrossbowStats_SO : ScriptableObject
     [field: SerializeField]
     public float kockbackForce { get; private set; }
     [field: SerializeField]
-    public float cost { get; private set; }
+    public int cost { get; private set; }
 }

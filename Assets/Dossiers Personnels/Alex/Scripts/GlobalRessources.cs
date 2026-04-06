@@ -29,11 +29,11 @@ public class GlobalRessources : MonoBehaviour
     {
         evilPoints += amount;
 		evilPointsScore.text = "Evil Points: " + evilPoints;
-		if (evilPoints > 0)
-		{
-			confirmButton.interactable = false;
-			confirmButtonText.text = "Spend all Evil Points to proceed";
-		}
+		//if (evilPoints > 0)
+		//{
+		//	confirmButton.interactable = false;
+		//	confirmButtonText.text = "Spend all Evil Points to proceed";
+		//}
 	}
 
     public int EvilPointsAmount()

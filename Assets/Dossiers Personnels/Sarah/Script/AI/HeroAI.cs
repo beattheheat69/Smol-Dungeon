@@ -35,8 +35,7 @@ public class HeroAI : Hero
     private float sideChoiceTimer = 0f;
     private int sideChoice = 0; // -1 = left, 1 = right, 0 = none
     HeroAnimation heroAnim;
-
-    //[SerializeField] Lifebar lifebar; //J'ai aussi ajouté une ligne de code dans Start et dans Update
+    [SerializeField] Lifebar lifebar; //J'ai aussi ajouté une ligne de code dans Start et dans Update
 
 
     private void Start()
@@ -45,6 +44,7 @@ public class HeroAI : Hero
         rb = GetComponent<Rigidbody2D>();
         cameraStat = Camera.main.GetComponent<CameraManagement>();
         boxCol = GetComponent<BoxCollider2D>();
+        lifebar.SetMaxHealth(baseStats.health);
         //Add hero to the party if party existes
         if (HeroParty.Instance != null)
         {
@@ -54,14 +54,13 @@ public class HeroAI : Hero
         {
             HeroDataManager.Instance.party[index] = new HeroData { currentHealt = baseStats.health, dodgeChance = baseStats.dodgeChange };
             health = HeroDataManager.Instance.party[index].currentHealt;  // testing hero health
-            //lifebar.SetMaxHealth(health);
         }
     }
 
     //Check for target, attack if possible, if no target is found, room is done tell party the room is finished
     private void FixedUpdate()
     {
-        //lifebar.SetHealth(health);
+        lifebar.SetHealth(health);
 
         //If camera is moving do nothing
         if (cameraStat.GetTransitionning()) return;

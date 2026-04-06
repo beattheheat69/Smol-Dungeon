@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73953ae180c8dc245ad33e8eae5fa132, type: 3}
   m_Name: BossStats
   m_EditorClassIdentifier: Assembly-CSharp::BossSO
-  <chargeSpeed>k__BackingField: 3
+  <chargeSpeed>k__BackingField: 1
   <health>k__BackingField: 50
   <power>k__BackingField: 3
   <attackCooldown>k__BackingField: 0.5
   <attackChance>k__BackingField: 100
   <kockbackForce>k__BackingField: 1
+  <cost>k__BackingField: 0

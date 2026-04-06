@@ -1,3 +1,4 @@
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.PackageManager.UI;
 using UnityEngine;
@@ -14,12 +15,13 @@ public class MenuManager : MonoBehaviour
     [Header("Pause Menu")]
     [SerializeField] Canvas pauseWindowPrefab;
     [HideInInspector] public bool isGamePaused = false;
+    public TMP_Text evilXPText;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        evilXPText.text = "EvilXP = " + EvilXPCount.GetXP().ToString();
     }
 
     // Update is called once per frame
@@ -70,7 +72,12 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    public void QuitGame()
+	public void ToggleFullscreen()
+	{
+		Screen.fullScreen = !Screen.fullScreen;
+	}
+
+	public void QuitGame()
     {
         //Bye bye!
         Application.Quit();
