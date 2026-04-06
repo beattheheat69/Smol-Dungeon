@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class ArmorAI : MonsterAI
 {
-    [SerializeField]
-    Armor_Stats_SO baseStats; // Base stats of slime
+    public Armor_Stats_SO baseStats; // Base stats of slime
     [SerializeField]
     LayerMask colliderLayer;
     CameraManagement cameraStat; // check the stat of the camera

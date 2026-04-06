@@ -27,6 +27,7 @@ public class EntityPossessed : MonoBehaviour
 
 	[SerializeField] int monsterHealth;
 	public Lifebar monsterLifeBar;
+	public int getMonsterHealth;
 
 
 	void Start()
@@ -39,6 +40,7 @@ public class EntityPossessed : MonoBehaviour
 			playerMovement = GetComponent<PlayerMovement>();
 			monsterAction = GetComponent<MonsterAction>();
 			monsterAI = GetComponent<MonsterAI>();
+			monsterLifeBar = GameObject.FindGameObjectWithTag("UI").transform.Find("SmolHealthBar").GetComponent<Lifebar>();
 		}
 		else if (this.gameObject.CompareTag("Trap"))
 		{
@@ -51,9 +53,15 @@ public class EntityPossessed : MonoBehaviour
 
 	void Update()
 	{
+		if (isPossessed)
+			monsterLifeBar.gameObject.SetActive(true);
+		if (monsterLifeBar != null)
+			monsterLifeBar.SetHealth(this.gameObject.GetComponent<Character>().GetCurrentHealth());
+
 		if (this.GetComponent<Character>() != null && !this.GetComponent<Character>().IsAlive())
 		{
-            DePossessing();
+            //DePossessing();
+			this.enabled = false;
         }
 			
 		//Calls DePossessing when pressing the Possess input
@@ -80,6 +88,11 @@ public class EntityPossessed : MonoBehaviour
 			playerMovement.enabled = true;
 			monsterAction.enabled = true;
 			monsterAI.enabled = false;
+			monsterLifeBar.gameObject.SetActive(true);
+			if (this.gameObject.CompareTag("Monster"))
+				monsterLifeBar.SetMaxHealth(GetComponent<SlimeAI>().baseStats.health);
+			else if (this.gameObject.CompareTag("TriggerMonster"))
+				monsterLifeBar.SetMaxHealth(GetComponent<ArmorAI>().baseStats.health);
 		}
 		else if (this.gameObject.CompareTag("Trap") && ((trapAction != null && trapAI != null) || (spikeControl != null && spikeAI != null)))
 		{
@@ -133,6 +146,7 @@ public class EntityPossessed : MonoBehaviour
 			playerMovement.enabled = false;
 			monsterAction.enabled = false;
 			monsterAI.enabled = true;
+			monsterLifeBar.gameObject.SetActive(false);
 		}
 		else if (this.gameObject.CompareTag("Trap") && ((trapAction != null && trapAI != null) || (spikeControl != null && spikeAI != null)))
 		{

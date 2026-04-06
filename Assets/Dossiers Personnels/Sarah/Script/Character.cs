@@ -44,7 +44,7 @@ public class Character : MonoBehaviour, IDamageable
             Vector2 knockbackDir = ((Vector2)transform.position - attackerPosition).normalized;
             // Apply the custom force from the monster
             rb.AddForce(knockbackDir * knockbackStrength, ForceMode2D.Impulse);
-            StartCoroutine(ResetDamping());
+            StartCoroutine(ResetDamping(rb));
             atTarget = false;
         }
 
@@ -103,13 +103,19 @@ public class Character : MonoBehaviour, IDamageable
     }
 
 
-    IEnumerator ResetDamping()
+    IEnumerator ResetDamping(Rigidbody2D thisRB)
     {
         //isStunned = true;
 
         yield return new WaitForSeconds(0.3f);
-        rb.linearDamping = 0f; // Go back to normal walking
+        thisRB.linearDamping = 0f; // Go back to normal walking
+        thisRB.linearVelocity = Vector2.zero;
 
         //isStunned = false;
+    }
+
+    public int GetCurrentHealth()
+    {
+        return health;
     }
 }

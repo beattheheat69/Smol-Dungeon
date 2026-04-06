@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class SlimeAI : MonsterAI
 {
-    [SerializeField]
-    SlimeStats_SO baseStats; // Base stats of slimes
+    public SlimeStats_SO baseStats; // Base stats of slimes
     [SerializeField]
     LayerMask colliderLayer;
     CameraManagement cameraStat; // check the stat of the camera
