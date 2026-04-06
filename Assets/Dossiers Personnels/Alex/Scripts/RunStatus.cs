@@ -43,5 +43,8 @@ public class RunStatus : MonoBehaviour
 			Destroy(HeroDataManager.Instance);
 			SceneManager.LoadSceneAsync("MainMenu");
 		}
+
+		//Add Evil XP here
+		EvilXPCount.GainXP(34);
 	}
 }

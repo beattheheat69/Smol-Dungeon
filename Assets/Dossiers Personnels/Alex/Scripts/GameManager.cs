@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -19,6 +20,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject tuto;
 
+    //public TMP_Text evilXPText;
+
     private void Start()
 	{
         tuto.SetActive(true);
@@ -26,6 +29,7 @@ public class GameManager : MonoBehaviour
 		playerInput = GetComponent<PlayerInput>();
 		pauseInput = playerInput.actions["Pause"];
         Time.timeScale = 0f; //Starts frozen, will unfreeze when closing tutorial panel
+        //evilXPText.text = "EvilXP = " + EvilXPCount.GetXP().ToString();
 	}
 
 	private void Update()
