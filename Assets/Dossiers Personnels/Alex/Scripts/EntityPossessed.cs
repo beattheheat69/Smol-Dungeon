@@ -53,7 +53,7 @@ public class EntityPossessed : MonoBehaviour
 
 	void Update()
 	{
-		if (isPossessed)
+		if (isPossessed && gameObject.CompareTag("Monster"))
 			monsterLifeBar.gameObject.SetActive(true);
 		if (monsterLifeBar != null)
 			monsterLifeBar.SetHealth(this.gameObject.GetComponent<Character>().GetCurrentHealth());

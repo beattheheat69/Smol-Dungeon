@@ -70,7 +70,12 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    public void QuitGame()
+	public void ToggleFullscreen()
+	{
+		Screen.fullScreen = !Screen.fullScreen;
+	}
+
+	public void QuitGame()
     {
         //Bye bye!
         Application.Quit();

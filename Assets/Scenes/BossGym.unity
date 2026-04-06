@@ -672,9 +672,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HeroBossAI
   health: 0
+  lastMoveDirection: {x: 0, y: 0}
   baseStats: {fileID: 11400000, guid: bcb7b7bbcc34c8849ad7212ff4de7e8c, type: 2}
   index: 1
-  lastMoveDirection: {x: 0, y: 0}
   colliderLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -1771,9 +1771,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HeroBossAI
   health: 0
+  lastMoveDirection: {x: 0, y: 0}
   baseStats: {fileID: 11400000, guid: f4b175a074acf93478b0af85a4d33b3a, type: 2}
   index: 0
-  lastMoveDirection: {x: 0, y: 0}
   colliderLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -4956,7 +4956,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.39999998, g: 1, b: 0.7, a: 1}
+  m_Color: {r: 0.39999998, g: 1, b: 0.7, a: 0.9019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
