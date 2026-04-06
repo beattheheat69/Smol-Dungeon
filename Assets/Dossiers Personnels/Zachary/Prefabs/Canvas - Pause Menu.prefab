@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: PAUSE
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: eab63d957b2713340bf076c8770479b6, type: 2}
-  m_sharedMaterial: {fileID: 5358075261980127260, guid: eab63d957b2713340bf076c8770479b6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
+  m_sharedMaterial: {fileID: -6602767322224921027, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -92,10 +92,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 120
+  m_fontSize: 72
   m_fontSizeBase: 120
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -259,7 +259,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: PauseGame
         m_Mode: 1
         m_Arguments:
@@ -339,8 +339,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 77517ea6b05cf6643868554b922ee3b8, type: 2}
-  m_sharedMaterial: {fileID: 6218853185846210574, guid: 77517ea6b05cf6643868554b922ee3b8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4e023ce55066c7649a636a490e6dc58d, type: 2}
+  m_sharedMaterial: {fileID: -6204973913550994659, guid: 4e023ce55066c7649a636a490e6dc58d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -364,10 +364,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 54
+  m_fontSize: 72
   m_fontSizeBase: 54
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -531,8 +531,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: ReturnToMenu
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: QuitToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -923,8 +923,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Settings
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 77517ea6b05cf6643868554b922ee3b8, type: 2}
-  m_sharedMaterial: {fileID: 6218853185846210574, guid: 77517ea6b05cf6643868554b922ee3b8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4e023ce55066c7649a636a490e6dc58d, type: 2}
+  m_sharedMaterial: {fileID: -6204973913550994659, guid: 4e023ce55066c7649a636a490e6dc58d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -948,10 +948,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
+  m_fontSize: 50
   m_fontSizeBase: 48
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -1060,8 +1060,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Resume
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 77517ea6b05cf6643868554b922ee3b8, type: 2}
-  m_sharedMaterial: {fileID: 6218853185846210574, guid: 77517ea6b05cf6643868554b922ee3b8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4e023ce55066c7649a636a490e6dc58d, type: 2}
+  m_sharedMaterial: {fileID: -6204973913550994659, guid: 4e023ce55066c7649a636a490e6dc58d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1085,10 +1085,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
+  m_fontSize: 54.5
   m_fontSizeBase: 48
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0

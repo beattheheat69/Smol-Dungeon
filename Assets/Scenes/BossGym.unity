@@ -3051,19 +3051,27 @@ PrefabInstance:
     - target: {fileID: 2163291990772014509, guid: e4bec50c82e041546a6e7ab88100ada4, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 4e023ce55066c7649a636a490e6dc58d, type: 2}
     - target: {fileID: 2163291990772014509, guid: e4bec50c82e041546a6e7ab88100ada4, type: 3}
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 2163291990772014509, guid: e4bec50c82e041546a6e7ab88100ada4, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4020798455261031623, guid: e4bec50c82e041546a6e7ab88100ada4, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 4e023ce55066c7649a636a490e6dc58d, type: 2}
     - target: {fileID: 4020798455261031623, guid: e4bec50c82e041546a6e7ab88100ada4, type: 3}
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4020798455261031623, guid: e4bec50c82e041546a6e7ab88100ada4, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5188726755809365806, guid: e4bec50c82e041546a6e7ab88100ada4, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -3147,11 +3155,15 @@ PrefabInstance:
     - target: {fileID: 5279739621000291756, guid: e4bec50c82e041546a6e7ab88100ada4, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 4e023ce55066c7649a636a490e6dc58d, type: 2}
     - target: {fileID: 5279739621000291756, guid: e4bec50c82e041546a6e7ab88100ada4, type: 3}
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 5279739621000291756, guid: e4bec50c82e041546a6e7ab88100ada4, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6386765093525699068, guid: e4bec50c82e041546a6e7ab88100ada4, type: 3}
       propertyPath: m_Name
       value: Canvas - Pause Menu
@@ -3184,14 +3196,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6867355927841301683, guid: e4bec50c82e041546a6e7ab88100ada4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1059390007}
+    - target: {fileID: 6867355927841301683, guid: e4bec50c82e041546a6e7ab88100ada4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitToMainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 8783593538369296526, guid: e4bec50c82e041546a6e7ab88100ada4, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
     - target: {fileID: 8783593538369296526, guid: e4bec50c82e041546a6e7ab88100ada4, type: 3}
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 8783593538369296526, guid: e4bec50c82e041546a6e7ab88100ada4, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
