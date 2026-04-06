@@ -84,6 +84,22 @@ public class HeroAI : Hero
                 //Move to target
                 MoveHero();
             }
+            else 
+            {
+                // Recompute distance to target
+                Vector2 closestPoint = target.GetComponent<Collider2D>().ClosestPoint(rb.position);
+
+                float heroRadius = boxCol.bounds.extents.x;
+                float distanceToSurface = Vector2.Distance(rb.position, closestPoint);
+                float stopDistance = heroRadius + 0.05f;
+
+                // If hero is no longer close enough, resume movement
+                if (distanceToSurface > stopDistance + 0.1f) // small buffer
+                {
+                    atTarget = false;
+                    attacking = false; 
+                }
+            }
 
 
             //Check if can attack
@@ -109,16 +125,26 @@ public class HeroAI : Hero
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject == target && !attacking)
+        if (collision.gameObject == target)
         {
-            attacking = true;
-            atTarget = true;
-            rb.linearVelocity = Vector2.zero;
+            lastMoveDirection = ((Vector2)target.transform.position - (Vector2)rb.position).normalized;
         }
-        else if (collision.gameObject != target && !attacking && collision.gameObject.layer == LayerMask.NameToLayer("Monster"))
+        else if (!attacking && collision.gameObject.layer == LayerMask.NameToLayer("Monster"))
         {
-            target = collision.gameObject;
-            Debug.Log(collision.gameObject.name);
+            float currentTargetDistance = Vector2.Distance(rb.position, target.transform.position);
+            float newTargetDistance = Vector2.Distance(rb.position, collision.transform.position);
+
+            float stickRadius = 1.5f;
+
+            // If hero is still close to current target, don't switch
+            if (currentTargetDistance <= stickRadius)
+                return;
+
+            // Otherwise switch only if new target is closer
+            if (newTargetDistance < currentTargetDistance)
+            {
+                target = collision.gameObject;
+            }
         }
     }
 
@@ -212,43 +238,34 @@ public class HeroAI : Hero
     private void MoveHero()
     {
         //caculate distance between hero and target with consistent speed
-        Vector2 seek = ((Vector2)target.transform.position - rb.position).normalized;
-        Vector2 avoid = AvoidObstical(seek);
-
         Vector2 closestPoint = target.GetComponent<Collider2D>().ClosestPoint(rb.position);
-        float heroRadius = boxCol.bounds.extents.x;
 
-        if (Vector2.Distance(rb.position, closestPoint) <= heroRadius + 0.05f)
+        float heroRadius = boxCol.bounds.extents.x;
+        float distanceToSurface = Vector2.Distance(rb.position, closestPoint);
+        float stopDistance = heroRadius + 0.05f;
+
+        if (distanceToSurface <= stopDistance)
         {
             atTarget = true;
+            attacking = true;
             rb.linearVelocity = Vector2.zero; // Kill any sliding momentum
             return;
         }
 
-        //Chnage direction to avoid trap if needed
-        lastMoveDirection = (seek + avoid * avoidWeight).normalized;
+        //Change direction to avoid trap if needed
+        lastMoveDirection = (((Vector2)target.transform.position - (Vector2)rb.position) + AvoidObstical(closestPoint)).normalized;
 
-        // Move hero toward target
-        rb.MovePosition(rb.position + lastMoveDirection * baseStats.chargeSpeed * Time.fixedDeltaTime);
-       /* if (Vector2.Distance(transform.position, target.transform.position) < 1f)
-        {
-          atTarget = true;
-        }*/
-        //Correctoverlap();
+        // Compute movement step
+        float moveStep = baseStats.chargeSpeed * Time.fixedDeltaTime;
+
+        // Clamp movement so we never cross the boundary
+        moveStep = Mathf.Min(moveStep, distanceToSurface - stopDistance);
+
+        // Move hero
+        Vector2 nextPos = rb.position + lastMoveDirection * moveStep;
+        rb.MovePosition(nextPos);
+
     }
-
-  /*  private void Correctoverlap()
-    {
-        Collider2D[] touchingColliders = Physics2D.OverlapCircleAll(transform.position, 0.5f, colliderLayer);
-        foreach (Collider2D collidObject in touchingColliders)
-        {
-            if (collidObject.gameObject != this.gameObject)
-            {
-                Vector2 pushDirect = ((Vector2)transform.position - (Vector2)collidObject.transform.position).normalized;
-                rb.MovePosition(rb.position + pushDirect * baseStats.chargeSpeed * Time.fixedDeltaTime);
-            }
-        }
-    }*/
 
     Vector2 AvoidObstical(Vector2 direction)
     {
