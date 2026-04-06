@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
         transform.Translate(moveDir * speed * 3 * Time.deltaTime);
 
         //Flip sprite when moving left (but not for boss)
-        if (this.gameObject.name != "Boss")
+        if (this.gameObject.name == "Smol")
         {
             if (lastDir.x < 0)
                 GetComponent<SpriteRenderer>().flipX = true;

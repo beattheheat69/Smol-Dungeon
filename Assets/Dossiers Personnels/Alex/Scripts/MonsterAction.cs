@@ -43,11 +43,8 @@ public class MonsterAction : MonoBehaviour
 
 	void BasicAttack(Vector2 dir)
 	{
-        if (this.gameObject.tag != "TriggerMonster") // remove if when living Armor has animation
-        {
-            GetComponent<Animator>().SetTrigger("Attack");
-			GetComponent<SoundCaster>().PlayAttackSFX();
-		}
+        GetComponent<Animator>().SetTrigger("Attack");
+		GetComponent<SoundCaster>().PlayAttackSFX();
 
 		//Adds current pos to last direction faced to get attack pos
 		attackTransform = new Vector2(transform.position.x + dir.x, transform.position.y + dir.y);
