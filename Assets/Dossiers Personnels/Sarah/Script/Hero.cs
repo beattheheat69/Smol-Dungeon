@@ -24,16 +24,15 @@ public class Hero : Character
 
         if (randVal > HeroDataManager.Instance.GetDodgheChance(index))
         {
-            rb.linearDamping = 10f;
+           // rb.linearDamping = 10f;
             //Debug.Log("<color=cyan><b>[pushed]</b> Hero got hit and knockback</color>");
             // deduct health
             HeroDataManager.Instance.UpdateHeroHealh(index, damage, index+1);
-                                                                    //damage animation missing 
             //Does Kockback to character with force of attacker
-            Vector2 knockbackDir = ((Vector2)transform.position - attackerPosition).normalized;
-            rb.AddForce(knockbackDir * knockbackStrength, ForceMode2D.Impulse);
-            StartCoroutine(ResetDamping());
-            atTarget = false;
+            //Vector2 knockbackDir = ((Vector2)transform.position - attackerPosition).normalized;
+            //rb.AddForce(knockbackDir * knockbackStrength, ForceMode2D.Impulse);
+           // StartCoroutine(ResetDamping());
+           //atTarget = false;
 
             health = HeroDataManager.Instance.party[index].currentHealt;  // testing hero health
 

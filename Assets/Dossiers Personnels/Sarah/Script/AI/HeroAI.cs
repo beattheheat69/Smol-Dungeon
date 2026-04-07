@@ -116,7 +116,7 @@ public class HeroAI : Hero
             }
 
             //attack cooldown
-            if (timeCooldown > 0)
+            if (timeCooldown >= 0)
             {
                 timeCooldown -= Time.deltaTime;
             }
@@ -128,6 +128,8 @@ public class HeroAI : Hero
         if (collision.gameObject == target)
         {
             lastMoveDirection = ((Vector2)target.transform.position - (Vector2)rb.position).normalized;
+            attacking = true;
+            atTarget = true;
         }
         else if (!attacking && collision.gameObject.layer == LayerMask.NameToLayer("Monster"))
         {
@@ -144,6 +146,8 @@ public class HeroAI : Hero
             if (newTargetDistance < currentTargetDistance)
             {
                 target = collision.gameObject;
+
+                //change 
             }
         }
     }
