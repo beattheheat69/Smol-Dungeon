@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7935076545195555462}
   - component: {fileID: 7274337340737478343}
-  - component: {fileID: 8335031271625264997}
   - component: {fileID: 7262062579624826994}
   - component: {fileID: 2164415935957507405}
+  - component: {fileID: 8335031271625264997}
   - component: {fileID: 2737521318091522321}
   - component: {fileID: 8716703761844955228}
   - component: {fileID: 2425224604252029632}
@@ -104,18 +104,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &8335031271625264997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3294268645175867725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b59c7e81042d9b42ae752676300aaef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MonsterAnimation
 --- !u!114 &7262062579624826994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,6 +156,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a167b23b6925a1f4984f724d26e12b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HeroAnimation
+--- !u!114 &8335031271625264997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3294268645175867725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b59c7e81042d9b42ae752676300aaef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MonsterAnimation
 --- !u!114 &2737521318091522321
 MonoBehaviour:
   m_ObjectHideFlags: 0

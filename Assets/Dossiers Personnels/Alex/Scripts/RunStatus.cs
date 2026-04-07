@@ -36,7 +36,7 @@ public class RunStatus : MonoBehaviour
 	{
 		if (win)
 		{
-			SceneManager.LoadSceneAsync("PlacementEntite");
+			SceneManager.LoadSceneAsync("PlacementEntite"); //Change to MainMenu si pas capable de fix 2nd day missing entities bug
 		}
 		else
 		{
@@ -45,6 +45,6 @@ public class RunStatus : MonoBehaviour
 		}
 
 		//Add Evil XP here
-		EvilXPCount.GainXP(34);
+		EvilXPCount.GainXP(34); //XP gain based on 100 + EP left when starting run
 	}
 }
