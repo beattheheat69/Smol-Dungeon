@@ -56,7 +56,7 @@ public class EntityMenuSelection : MonoBehaviour
 			{
 				if (roomLimit.currentTotalCount > 0 && globalRessources.EvilPointsAmount() > 0)
 				{
-					if ((entity == slimePrefab || entity == armourPrefab) && roomLimit.currentMonsterCount > 0)
+					if ((entity == slimePrefab || entity == armourPrefab) && roomLimit.currentMonsterCount > 0 && entity.GetComponent<MonsterAction>().baseStats.cost <= globalRessources.EvilPointsAmount())
 					{
 						//Cherche la parent MonsterGroup et instantiate le monstre dedans
 						foreach (Transform child in placeInRooms.WhatToSendOver.transform)
@@ -77,7 +77,7 @@ public class EntityMenuSelection : MonoBehaviour
 						if (entity == armourPrefab)
                             toggle.GetComponent<RoomIcon>().UpdateIcon("Armour"); //Ajuster l'icône de la chambre
                     }
-					if (entity == crossbowPrefab && roomLimit.currentTrapCount > 0)
+					if (entity == crossbowPrefab && roomLimit.currentTrapCount > 0 && entity.GetComponent<CrossbowAI>().baseStat.cost <= globalRessources.EvilPointsAmount())
 					{
 						//Cherche le parent TrapGroup et instantiate la trap dedans
 						foreach (Transform child in placeInRooms.WhatToSendOver.transform)
@@ -95,7 +95,7 @@ public class EntityMenuSelection : MonoBehaviour
 
 						toggle.GetComponent<RoomIcon>().UpdateIcon("Crossbow"); //Ajuster l'icône de la chambre
 					}
-					if (entity == spikesPrefab && roomLimit.currentTrapCount > 0 && roomLimit.currentSpikesCount > 0)
+					if (entity == spikesPrefab && roomLimit.currentTrapCount > 0 && roomLimit.currentSpikesCount > 0 && entity.GetComponent<SpikeAI>().baseStats.cost <= globalRessources.EvilPointsAmount())
 					{
 						//Cherche le parent TrapGroup et instantiate la trap dedans
 						foreach (Transform child in placeInRooms.WhatToSendOver.transform)

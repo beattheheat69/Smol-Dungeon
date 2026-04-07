@@ -4,32 +4,54 @@ using UnityEngine;
 public class MonsterAnimation : MonoBehaviour
 {
 	PlayerMovement playerMovement;
+	Character characterAI;
 	Animator anim;
 	Vector2 dir;
+	Vector2 dirAI;
 	Vector2 lastDir;
 
 	private void Start()
 	{
 		playerMovement = GetComponent<PlayerMovement>();
+		characterAI = GetComponent<Character>();
 		anim = GetComponent<Animator>();
 	}
 
 	private void Update()
 	{
-		dir = playerMovement.GetDirection();
-
-		if (dir != Vector2.zero)
+		if (playerMovement.enabled)
 		{
-			lastDir = dir;
-			anim.SetBool("isWalking", true);
-			AnimateWalk(dir);
+			dir = playerMovement.GetDirection();
+
+			if (dir != Vector2.zero)
+			{
+				lastDir = dir;
+				anim.SetBool("isWalking", true);
+				AnimateWalk(dir);
+			}
+			else
+			{
+				anim.SetBool("isWalking", false);
+				AnimateWalk(lastDir);
+			}
 		}
 		else
 		{
-			anim.SetBool("isWalking", false);
-			AnimateWalk(lastDir);
-		}
+			dirAI = characterAI.lastMoveDirection;
 
+			if (dirAI != Vector2.zero)
+			{
+				lastDir = dirAI;
+				anim.SetBool("isWalking", true);
+				AnimateWalk(dirAI);
+			}
+			else
+			{
+				lastDir = dirAI;
+				anim.SetBool("isWalking", false);
+				AnimateWalk(lastDir);
+			}
+		}
 	}
 
 	void AnimateWalk(Vector2 direction)
@@ -42,8 +64,8 @@ public class MonsterAnimation : MonoBehaviour
 	{
 		//soundCaster.PlayAttackSFX();
 		anim.SetTrigger("Attack");
-		playerMovement.enabled = false;
+		//playerMovement.enabled = false;
 		yield return new WaitForSeconds(0.5f);
-		playerMovement.enabled = true;
+		//playerMovement.enabled = true;
 	}
 }

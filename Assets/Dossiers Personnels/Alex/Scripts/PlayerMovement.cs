@@ -13,11 +13,12 @@ public class PlayerMovement : MonoBehaviour
     MonsterStats_SO baseStats;
 
     //Speed
-    public float speed = 1f;
+    public float speed = 3f;
 
     //Facing direction for movement and actions
     Vector2 moveDir;
     public Vector2 lastDir;
+    Rigidbody2D rb;
 
 
     void Start()
@@ -25,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
         //Input references
         playerInput = GetComponent<PlayerInput>();
         moveInput = playerInput.actions["Move"];
+        rb = GetComponent<Rigidbody2D>();
 
         if (baseStats != null)
         {
@@ -43,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
         //Moves object via direction, speed and time
         transform.Translate(moveDir * speed * 3 * Time.deltaTime);
+        //rb.linearVelocity = moveDir * speed * Time.deltaTime;
 
         //Flip sprite when moving left (but not for boss)
         if (this.gameObject.name == "Smol")

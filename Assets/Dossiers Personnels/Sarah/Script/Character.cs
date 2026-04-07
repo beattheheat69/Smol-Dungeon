@@ -34,13 +34,13 @@ public class Character : MonoBehaviour, IDamageable
         if (this.gameObject.tag != "TriggerMonster") // Decided living Armor has no knockback, we can change that
         {
             animator.SetInteger("HP", health);
-            rb.linearDamping = 10f;
+           // rb.linearDamping = 10f;
             //Does Kockback to character with force of attacker
-            Vector2 knockbackDir = ((Vector2)transform.position - attackerPosition).normalized;
+            //Vector2 knockbackDir = ((Vector2)transform.position - attackerPosition).normalized;
             // Apply the custom force from the monster
-            rb.AddForce(knockbackDir * knockbackStrength, ForceMode2D.Impulse);
-            StartCoroutine(ResetDamping(rb));
-            atTarget = false;
+            //rb.AddForce(knockbackDir * knockbackStrength, ForceMode2D.Impulse);
+            //StartCoroutine(ResetDamping(rb));
+            //atTarget = false;
         }
         else 
         {
@@ -50,7 +50,7 @@ public class Character : MonoBehaviour, IDamageable
         //Check if dead
         if (health <= 0 && !isDead)
         {
-            isDead = true;
+            //isDead = true;
             rb.linearVelocity = Vector2.zero; // Kill any sliding momentum
             if (this.gameObject.tag == "TriggerMonster")
             {
@@ -75,6 +75,7 @@ public class Character : MonoBehaviour, IDamageable
     //Trigger death, deactivate character (tempo)
     protected void Die()
     {
+        //isDead = true;
         if(this.gameObject.tag != "Hero")
         {
             RoomInstance roomScript = transform.GetComponentInParent<RoomInstance>();
@@ -94,9 +95,10 @@ public class Character : MonoBehaviour, IDamageable
                 
             gameObject.GetComponent<HeroAnimation>().enabled = false;
             //gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            HeroDataManager.Instance.NextDay();
+            if (!isDead)
+                HeroDataManager.Instance.NextDay();
         }
-
+        isDead = true;
     }
 
 
