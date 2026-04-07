@@ -47,12 +47,12 @@ public class EntityButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public void OnPointerEnter(PointerEventData eventData)
     {
         ToggleTextBox(true);
-        Debug.Log("Entered a button");
+        //Debug.Log("Entered a button");
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         ToggleTextBox(false);
-        Debug.Log("Exited a button");
+        //Debug.Log("Exited a button");
     }
 }
