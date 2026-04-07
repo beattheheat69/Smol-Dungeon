@@ -50,7 +50,7 @@ public class Character : MonoBehaviour, IDamageable
         //Check if dead
         if (health <= 0 && !isDead)
         {
-            isDead = true;
+            //isDead = true;
             rb.linearVelocity = Vector2.zero; // Kill any sliding momentum
             if (this.gameObject.tag == "TriggerMonster")
             {
@@ -75,6 +75,7 @@ public class Character : MonoBehaviour, IDamageable
     //Trigger death, deactivate character (tempo)
     protected void Die()
     {
+        //isDead = true;
         if(this.gameObject.tag != "Hero")
         {
             RoomInstance roomScript = transform.GetComponentInParent<RoomInstance>();
@@ -94,9 +95,10 @@ public class Character : MonoBehaviour, IDamageable
                 
             gameObject.GetComponent<HeroAnimation>().enabled = false;
             //gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            HeroDataManager.Instance.NextDay();
+            if (!isDead)
+                HeroDataManager.Instance.NextDay();
         }
-
+        isDead = true;
     }
 
 
