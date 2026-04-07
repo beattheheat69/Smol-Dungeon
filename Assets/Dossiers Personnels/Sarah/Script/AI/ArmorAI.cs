@@ -13,12 +13,12 @@ public class ArmorAI : MonsterAI
     bool attacking = false; // monster in attack mode
     bool isActive = false;
     BoxCollider2D boxCol;
-    HeroAnimation charAnim;
+    MonsterAnimation charAnim;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        charAnim = GetComponent<HeroAnimation>();
+        charAnim = GetComponent<MonsterAnimation>();
         rb = GetComponent<Rigidbody2D>();
         health = baseStats.health;
         power = baseStats.power;
@@ -65,7 +65,7 @@ public class ArmorAI : MonsterAI
                 if (attacking && timeCooldown <= 0)
                 {
                     DoAttack();
-                    charAnim.IsAttacking(); ;
+                    //charAnim.MonsterAttack(); ;
 
                     //If target dead, find new one
                     if (!CheckTargetAlive())
@@ -159,6 +159,7 @@ public class ArmorAI : MonsterAI
         Debug.Log("Armor attacked");
         float randVal = Random.Range(1, 100);
         GetComponent<SoundCaster>().PlayAttackSFX();
+        StartCoroutine(charAnim.MonsterAttack());
 
         //Check is attack succeded
         if (randVal <= baseStats.attackChance)

@@ -36,7 +36,7 @@ public class BossActions : MonoBehaviour, IDamageable
 	//Lifebar thingy
 	public Lifebar lifebar;
 
-	[SerializeField] MonsterStats_SO stats;
+	[SerializeField] BossSO stats;
 	[SerializeField] int health;
 
 	private void Start()
@@ -48,6 +48,7 @@ public class BossActions : MonoBehaviour, IDamageable
 		specialAttackRight = playerInput.actions["SpecialRight"];
 		moveInput = playerInput.actions["Move"];
 		health = stats.health;
+		cooldown = stats.attackCooldown;
 
 		//Initiate the health bar
 		lifebar.SetMaxHealth(health);
@@ -63,11 +64,11 @@ public class BossActions : MonoBehaviour, IDamageable
 			lastDir = moveDir;
 
 		//Cooldown timer
-		if (timeForNextAttack < cooldown) //Maybe individual cooldowns for each attack?
+		if (timeForNextAttack < (stats.attackCooldown + stats.SpecialAttack1Cooldown + stats.SpecialAttack2Cooldown)) //Maybe individual cooldowns for each attack?
 			timeForNextAttack += Time.deltaTime;
 
 		//Basic attack input & function call
-		if (basicAttack.WasPressedThisFrame() && cooldown <= timeForNextAttack)
+		if (basicAttack.WasPressedThisFrame() && stats.attackCooldown <= timeForNextAttack)
 		{
 			Debug.Log("Basic Attack");
 			BasicAttack(lastDir);
@@ -75,7 +76,7 @@ public class BossActions : MonoBehaviour, IDamageable
 		}
 
 		//Special attack 1 input & function call
-		if (specialAttackLeft.WasPressedThisFrame() && cooldown <= timeForNextAttack)
+		if (specialAttackLeft.WasPressedThisFrame() && stats.SpecialAttack1Cooldown <= timeForNextAttack)
 		{
 			Debug.Log("Special Attack Left");
 			SpecialAttackLeft(lastDir);
@@ -83,7 +84,7 @@ public class BossActions : MonoBehaviour, IDamageable
 		}
 
 		//Special attack 2 input & function call
-		if (specialAttackRight.WasPressedThisFrame() && cooldown <= timeForNextAttack)
+		if (specialAttackRight.WasPressedThisFrame() && stats.SpecialAttack2Cooldown <= timeForNextAttack)
 		{
 			Debug.Log("Special Attack Right");
 			StartCoroutine(SpecialAttackRight(lastDir));
