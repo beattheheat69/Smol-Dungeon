@@ -236,4 +236,9 @@ public class ArmorAI : MonsterAI
         target = nearTarget;
     }
 
+    public Vector2 GetDirection()
+    {
+        return lastMoveDirection;
+    }
+
 }
