@@ -4297,7 +4297,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56a118d3a6938b241a0b1f71b95a06d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  buttonGO: {fileID: 0}
 --- !u!1 &1589876369
 GameObject:
   m_ObjectHideFlags: 0
@@ -5785,7 +5784,7 @@ MonoBehaviour:
 
 
 
-    Thank you again for QA Testing!
+    Thank you again for playtesting!
 
     We
     hope you enjoyed!
