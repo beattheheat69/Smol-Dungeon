@@ -1690,22 +1690,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Quoi, tu pensais que t\u2019allais juste regarder tes monstres se battre
-    pour toi? Eh non! SMOL est un fant\xF4me apr\xE8s tout. Et qu\u2019est-ce que
-    les fant\xF4mes font? Ils poss\xE8dent les mortels! Tu peux d\xE9placer SMOL
-    avec les touches WASD en direction d\u2019un monstre que tu as plac\xE9 plus
-    t\xF4t quand les h\xE9ros sont dans le donjon. \r\n\r\nLorsqu\u2019il sera \xE0
-    proximit\xE9 d\u2019un monstre ou d\u2019un pi\xE8ge, appuie sur SPACE BAR pour
-    poss\xE9der le monstre ou le pi\xE8ge le plus proche. Attention! Tu ne peux pas
-    poss\xE9der un h\xE9ros! Ils ont encore une \xE2me apr\xE8s tout, alors pas de
-    place pour deux dans un seul corps! \r\n\r\nEn mode possession, tu peux contr\xF4ler
-    les mouvements des monstres avec les touches WASD ou, dans certains cas, l\u2019axe
-    de rotation de certains pi\xE8ges. Tu peux aussi appuyer sur LEFT CLICK pour
-    activer l\u2019action principale de l\u2019entit\xE9 poss\xE9d\xE9e, comme l\u2019attaque
-    d\u2019un slime ou l\u2019activation d\u2019une arbal\xE8te. \r\n\r\nQuand le
-    monstre que SMOL poss\xE8de est mis KO, tu reviens en mode fant\xF4me automatiquement.
-    Tu peux aussi arr\xEAter de poss\xE9der une entit\xE9 quand tu veux en appuyant
-    encore sur SPACE BAR pour revenir en mode fant\xF4me. "
+  m_text: "Oh, did you think that you were just going to watch your monsters fight
+    for you? Nope! SMOL is a ghost after all. And what do ghosts usually do? They
+    possess stuff! \r\n\r\nYou can move SMOL with the WASD keys towards a monster
+    you previously place in your dungeon. When he is next to a monster or certain
+    traps, press the SPACE BAR to possess the entity that is the closest to SMOL.
+    \r\n\r\nBut careful! You cannot possess the heroes! They still have souls after
+    all, and two souls cannot fit in a single body! \r\n\r\nWhen in possession mode,
+    you can press the WASD keys to move monsters or, in certain cases, rotate traps.
+    You can also press the left click to activate the main action of the entity being
+    possessed, like the attack of a slime or to fire a crossbow.  \r\n\r\nWhen the
+    monster SMOL possesses is killed, he turns back into a ghost. You can also stop
+    the possession whenever you want by pressing the SPACE BAR again to turn back
+    into a ghost without damaging the entity. "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
   m_sharedMaterial: {fileID: -6602767322224921027, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
@@ -1906,7 +1903,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "VICTOIRE DES H\xC9ROS\nPARTIE TERMIN\xC9E"
+  m_text: 'HERO WINS!
+
+    GAME OVER'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
   m_sharedMaterial: {fileID: -6602767322224921027, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
@@ -2348,7 +2347,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "AAAAAAAH NOOOOOON! JE ME MEURS! JE DISPARAIS! BLEEEUUUUGGHHH\u2026 "
+  m_text: "SMOL: AAAAAARGH! NOOOOOOO! I AM DYING! I AM FADING TO NOTHINGNESS! BLEEEEEUUUUUGGHHHH\u2026 "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
   m_sharedMaterial: {fileID: -6602767322224921027, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
@@ -2808,8 +2807,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Hahaha! Ces stupides aventuriers sont t\xEAtus comme des mules, ils ne
-    peuvent jamais renoncer \xE0 un peu d\u2019argent de poche! "
+  m_text: "SMOL: Hahahah! Those stupid adventurers are all pretty stubborn; they\u2019ll
+    never back down on a promise to have free money!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
   m_sharedMaterial: {fileID: -6602767322224921027, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
@@ -16901,19 +16900,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8003657813635714200, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
-      value: 0.4666667
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8003657813635714200, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0.5263158
+      value: 0.4375
       objectReference: {fileID: 0}
     - target: {fileID: 8003657813635714200, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.9375
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8003657813635714200, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.1875
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17648,7 +17647,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: VICTOIRE DU BOSS!
+  m_text: BOSS WINS!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
   m_sharedMaterial: {fileID: -6602767322224921027, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
@@ -17663,7 +17662,7 @@ MonoBehaviour:
   m_colorMode: 2
   m_fontColorGradient:
     topLeft: {r: 0, g: 0.6, b: 0.4530576, a: 1}
-    topRight: {r: 0.6, g: 0, b: 0, a: 1}
+    topRight: {r: 0, g: 0.6, b: 0.4530576, a: 1}
     bottomLeft: {r: 0, g: 0, b: 0, a: 1}
     bottomRight: {r: 0, g: 0, b: 0, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
@@ -17927,6 +17926,22 @@ PrefabInstance:
     - target: {fileID: 3179776518944460967, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003657813635714200, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003657813635714200, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.4375
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003657813635714200, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003657813635714200, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

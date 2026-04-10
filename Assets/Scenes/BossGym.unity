@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'ENTER: BASIC PUNCH / Q: SHOCKWAVE PUNCH  / E: FLYING FIST'
+  m_text: 'LMB: BASIC PUNCH / Q: SHOCKWAVE PUNCH  / E: FLYING FIST'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
   m_sharedMaterial: {fileID: -6602767322224921027, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 54.65
+  m_fontSize: 56.05
   m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -377,7 +377,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "VICTOIRE DES H\xC9ROS\nPARTIE TERMIN\xC9E"
+  m_text: 'HERO WINS!
+
+    GAME OVER'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
   m_sharedMaterial: {fileID: -6602767322224921027, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
@@ -2172,22 +2174,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Wow, on dirait que le h\xE9ros a surv\xE9cu jusqu\u2019\xE0 la derni\xE8re
-    salle! Mais aucun souci, il reste encore la derni\xE8re ligne de d\xE9fense,
-    le boss! Lorsque les h\xE9ros parviennent \xE0 atteindre la derni\xE8re salle
-    du donjon, SMOL aura l\u2019occasion d\u2019utiliser tout son pouvoir pour poss\xE9der
-    une cr\xE9ature puissante afin de tenter de chasser les h\xE9ros restants. \r\n\r\nQuand
-    le combat final commence, SMOL poss\xE8de imm\xE9diatement le boss s\xE9lectionn\xE9
-    en d\xE9but de partie et il pourra le contr\xF4ler durant le combat. Tu pourras
-    utiliser diff\xE9rentes actions pour essayer de vaincre les h\xE9ros et gagner
-    la journ\xE9e\u202F: une attaque principale et deux actions secondaires. \n\nPour
-    utiliser l\u2019action principale du boss, appuie sur LEFT CLICK, comme tu le
-    ferais avec les autres entit\xE9s du donjon. \r\nPareil pour les d\xE9placements.
-    Tu peux utiliser les touches WASD pour d\xE9placer le boss dans la salle. \r\nPour
-    utiliser les deux actions secondaires du boss, appuie sur les touches Q ou E.
-    \r\n\r\nLe combat peut se terminer de deux fa\xE7ons\u202F: Soit les h\xE9ros
-    sont vaincus et tu peux passer \xE0 la journ\xE9e suivante, soit le boss est
-    vaincu et c\u2019est partie termin\xE9e! "
+  m_text: "Wow, it looks like the heroes managed to reach the last room! But don\u2019t
+    worry, you still have an ace up your sleeve: the boss! When heroes reach the
+    last room, SMOL will be able to use his power to possess a powerful creature
+    to fend off the last of the heroes.  \r\n\r\nWhen the boss phase starts, SMOL
+    will automatically possess the boss selected at the beginning of the run and
+    can control it during the fight. You will be able to use different actions to
+    fight and defeat the heroes to win the day and survive even longer. Every boss
+    has different actions, so choose your favorite! \r\n\r\nTo use the main boss
+    action, press LEFT CLICK, just like how you control other monsters in the dungeon.
+    \r\n\r\nTo use the two secondary actions of the bosses, press the Q and E keys.
+    \r\n\r\nThe fight ends when one of two conditions is accomplished: either the
+    heroes are defeated, and you can start the second day, or the boss is defeated,
+    and it's game over! "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
   m_sharedMaterial: {fileID: -6602767322224921027, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
@@ -2456,7 +2455,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "AAAAAAAH NOOOOOON! JE ME MEURS! JE DISPARAIS! BLEEEUUUUGGHHH\u2026 "
+  m_text: "SMOL: AAAAAARGH! NOOOOOOO! I AM DYING! I AM FADING TO NOTHINGNESS! BLEEEEEUUUUUGGHHHH\u2026 "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
   m_sharedMaterial: {fileID: -6602767322224921027, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
@@ -4003,8 +4002,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Hahaha! Ces stupides aventuriers sont t\xEAtus comme des mules, ils ne
-    peuvent jamais renoncer \xE0 un peu d\u2019argent de poche! "
+  m_text: "SMOL: Hahahah! Those stupid adventurers are all pretty stubborn; they\u2019ll
+    never back down on a promise to have free money! "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
   m_sharedMaterial: {fileID: -6602767322224921027, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
@@ -9154,7 +9153,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: VICTOIRE DU BOSS!
+  m_text: BOSS WINS!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
   m_sharedMaterial: {fileID: -6602767322224921027, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
