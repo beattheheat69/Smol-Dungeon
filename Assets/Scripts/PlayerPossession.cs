@@ -76,6 +76,7 @@ public class PlayerPossession : MonoBehaviour
 
 	void Possess()	//Grabs closestEntity to enable control scripts then disable this script
 	{
-		closestEntity.GetComponent<EntityPossessed>().Possessing(this.gameObject);
+		if (closestEntity.GetComponent<EntityPossessed>().enabled == true)
+			closestEntity.GetComponent<EntityPossessed>().Possessing(this.gameObject);
 	}
 }

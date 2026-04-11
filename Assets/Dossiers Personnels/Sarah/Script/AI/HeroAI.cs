@@ -337,7 +337,7 @@ public class HeroAI : Hero
         foreach (GameObject monster in monsters)
         {
             //Check if monster is active
-            if (monster.activeSelf)
+            if (monster.activeSelf && monster.GetComponent<Character>().IsAlive())
             {
                 float distance = Vector2.Distance(transform.position, monster.transform.position);
                 if (distance < closestDist)
