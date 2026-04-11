@@ -18816,6 +18816,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7500903500289732633, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
+      propertyPath: blockSFX.Path
+      value: event:/SFX/Hero/SFX_Hero_Block
+      objectReference: {fileID: 0}
+    - target: {fileID: -7500903500289732633, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
+      propertyPath: blockSFX.Guid.Data1
+      value: 1896406456
+      objectReference: {fileID: 0}
+    - target: {fileID: -7500903500289732633, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
+      propertyPath: blockSFX.Guid.Data2
+      value: 1324276880
+      objectReference: {fileID: 0}
+    - target: {fileID: -7500903500289732633, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
+      propertyPath: blockSFX.Guid.Data3
+      value: 1575648386
+      objectReference: {fileID: 0}
+    - target: {fileID: -7500903500289732633, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
+      propertyPath: blockSFX.Guid.Data4
+      value: -1943330803
+      objectReference: {fileID: 0}
     - target: {fileID: 598055207838164354, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
       propertyPath: m_Name
       value: Paladin
@@ -21047,6 +21067,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7500903500289732633, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
+      propertyPath: blockSFX.Path
+      value: event:/SFX/Hero/SFX_Hero_Block
+      objectReference: {fileID: 0}
+    - target: {fileID: -7500903500289732633, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
+      propertyPath: blockSFX.Guid.Data1
+      value: 1896406456
+      objectReference: {fileID: 0}
+    - target: {fileID: -7500903500289732633, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
+      propertyPath: blockSFX.Guid.Data2
+      value: 1324276880
+      objectReference: {fileID: 0}
+    - target: {fileID: -7500903500289732633, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
+      propertyPath: blockSFX.Guid.Data3
+      value: 1575648386
+      objectReference: {fileID: 0}
+    - target: {fileID: -7500903500289732633, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
+      propertyPath: blockSFX.Guid.Data4
+      value: -1943330803
+      objectReference: {fileID: 0}
     - target: {fileID: 598055207838164354, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
       propertyPath: m_Name
       value: Hero
@@ -21071,6 +21111,10 @@ PrefabInstance:
       propertyPath: baseStats
       value: 
       objectReference: {fileID: 11400000, guid: f4b175a074acf93478b0af85a4d33b3a, type: 2}
+    - target: {fileID: 2040148649046005590, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
+      propertyPath: damageNumberAnim
+      value: 
+      objectReference: {fileID: 3143991510445479261, guid: 3d1a719fb7b549748a1ffd495d1234fc, type: 3}
     - target: {fileID: 3179776518944460967, guid: a79d4292eafdf194fbddd52e0664b450, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5

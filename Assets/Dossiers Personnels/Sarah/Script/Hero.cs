@@ -45,7 +45,18 @@ public class Hero : Character
             animator.SetBool("Defeat", true);
             base.Die();
         }
-    }
+
+		GetComponent<SoundCaster>().PlayHitSFX();
+
+		//Hit stop
+		//StartCoroutine(HandyFunctions.HitStop());
+
+		//Damage number anim
+		damageNumberAnim.GetComponentInChildren<TextMesh>().text = damage.ToString();
+        damageNumberAnim.GetComponentInChildren<TextMesh>().color = Color.red;
+		GameObject inst = Instantiate(damageNumberAnim, transform.position, Quaternion.identity);
+		Destroy(inst, 1.0f);
+	}
 
     IEnumerator ResetDamping()
     {

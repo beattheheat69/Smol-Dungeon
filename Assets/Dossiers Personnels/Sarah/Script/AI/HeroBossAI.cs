@@ -134,8 +134,16 @@ public class HeroBossAI : Hero
             IDamageable hitTarget = target.GetComponent<IDamageable>();
             hitTarget.takeDamage(baseStats.power, transform.position, 0f);  // add buff or debuff
         }
-        //Start cooldown
-        timeCooldown = baseStats.attackCooldown;
+		else
+		{
+			//Calls miss anim and text on enemy
+			damageNumberAnim.GetComponentInChildren<TextMesh>().text = "Miss";
+			damageNumberAnim.GetComponentInChildren<TextMesh>().color = Color.white;
+			GameObject inst = Instantiate(damageNumberAnim, target.transform.position, Quaternion.identity);
+			Destroy(inst, 1f);
+		}
+		//Start cooldown
+		timeCooldown = baseStats.attackCooldown;
     }
 
     Vector2 AvoidObstical(Vector2 direction)

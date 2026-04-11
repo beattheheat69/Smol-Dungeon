@@ -38,6 +38,8 @@ public class BossActions : MonoBehaviour, IDamageable
 	[SerializeField] BossSO stats;
 	[SerializeField] int health;
 
+	public GameObject damageNumberAnim;
+
 	private void Start()
 	{
 		//Gets all player inputs
@@ -167,5 +169,13 @@ public class BossActions : MonoBehaviour, IDamageable
 			GameObject.Find("GameManager").GetComponent<RunStatus>().CallRestart(false, HeroDataManager.Instance.GetDay());
 			gameObject.SetActive(false);
 		}
+
+		//Hit stop
+		//StartCoroutine(HandyFunctions.HitStop());
+
+		damageNumberAnim.GetComponentInChildren<TextMesh>().text = amount.ToString();
+		damageNumberAnim.GetComponentInChildren<TextMesh>().color = Color.white;
+		GameObject inst = Instantiate(damageNumberAnim, transform.position, Quaternion.identity);
+		Destroy(inst, 1.0f);
 	}
 }

@@ -182,6 +182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArmorAI
   health: 0
   lastMoveDirection: {x: 0, y: 0}
+  damageNumberAnim: {fileID: 3143991510445479261, guid: 3d1a719fb7b549748a1ffd495d1234fc, type: 3}
   baseStats: {fileID: 11400000, guid: 8453785abb13b8d4982ac413311383fe, type: 2}
   colliderLayer:
     serializedVersion: 2

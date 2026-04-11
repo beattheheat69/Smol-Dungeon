@@ -95,6 +95,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlimeAI
   health: 0
+  lastMoveDirection: {x: 0, y: 0}
+  damageNumberAnim: {fileID: 3143991510445479261, guid: 3d1a719fb7b549748a1ffd495d1234fc, type: 3}
   baseStats: {fileID: 11400000, guid: 4a3fd8e14f41d6f4abd234816b251c47, type: 2}
   colliderLayer:
     serializedVersion: 2
@@ -160,6 +162,8 @@ MonoBehaviour:
       Data4: 1781375296
     Path: event:/SFX/Smol/Ghost/SFX_Smol_DePossessing
   monsterHealth: 0
+  monsterLifeBar: {fileID: 0}
+  getMonsterHealth: 0
 --- !u!212 &8363819885077017387
 SpriteRenderer:
   serializedVersion: 2

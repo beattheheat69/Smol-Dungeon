@@ -7,8 +7,9 @@ public class SoundCaster : MonoBehaviour
 	[SerializeField] EventReference attack2SFX;
 	[SerializeField] EventReference attack3SFX;
 	[SerializeField] EventReference hitSFX;
+    [SerializeField] EventReference blockSFX;
 
-    public void PlayAttackSFX()
+	public void PlayAttackSFX()
     {
         RuntimeManager.PlayOneShot(attackSFX);
     }
@@ -27,4 +28,9 @@ public class SoundCaster : MonoBehaviour
     {
         RuntimeManager.PlayOneShot(hitSFX);
     }
+
+    public void PlayBlockSFX()
+    {
+		RuntimeManager.PlayOneShot(blockSFX);
+	}
 }
