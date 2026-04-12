@@ -29,6 +29,8 @@ public class EntityPossessed : MonoBehaviour
 	public Lifebar monsterLifeBar;
 	public int getMonsterHealth;
 
+	public GameObject possessVFX;
+
 
 	void Start()
 	{
@@ -77,6 +79,8 @@ public class EntityPossessed : MonoBehaviour
 		//Activates Smol game object at entity position and disables scripts from this entity
 		isPossessed = true;
 		smol = playerSmol;
+		GameObject instVFX = Instantiate(possessVFX, smol.transform.position, Quaternion.identity);
+		Destroy(instVFX, 1.0f);
 
 		//Sets active all child game objects
 		for (int i = 0; i < transform.childCount; i++)
@@ -127,8 +131,11 @@ public class EntityPossessed : MonoBehaviour
 		//Activates Smol game object at entity position and disables scripts from this entity
 		isPossessed = false;
 
+
 		if (smol != null)
 		{
+			GameObject instVFX = Instantiate(possessVFX, transform.position, Quaternion.identity);
+			Destroy(instVFX, 1.0f);
 			smol.SetActive(true);
 			smol.transform.position = transform.position;
 			RuntimeManager.PlayOneShot(depossessingSFX);

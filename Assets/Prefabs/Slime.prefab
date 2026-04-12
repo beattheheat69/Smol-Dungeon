@@ -82,6 +82,13 @@ MonoBehaviour:
       Data3: -1317256800
       Data4: 897507188
     Path: event:/SFX/Entities/Monsters/SFX_Monsters_Hit
+  blockSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!114 &-8883441103201478487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +171,7 @@ MonoBehaviour:
   monsterHealth: 0
   monsterLifeBar: {fileID: 0}
   getMonsterHealth: 0
+  possessVFX: {fileID: 4938746295452978964, guid: afe907a0251798b4dbb8f9ddb849697d, type: 3}
 --- !u!212 &8363819885077017387
 SpriteRenderer:
   serializedVersion: 2

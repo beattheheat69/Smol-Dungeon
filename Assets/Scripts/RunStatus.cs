@@ -7,22 +7,35 @@ public class RunStatus : MonoBehaviour
 {
 	public GameObject loseText;
 	public GameObject winText;
+	public GameObject xpText;
 	bool bossWin;
 	GameObject thingsToSend;
+	bool restarting;
 
 	private void Start()
 	{
 		thingsToSend = GameObject.Find("ThingsToSend").gameObject;
+		restarting = false;
 	}
 
 	public void CallRestart(bool win, int day)
 	{
-		bossWin = win;
-		//StartCoroutine(RestartTheGame(win, day));
-		if (win)
-			winText.SetActive(true);
-		else if (!win)
-			loseText.SetActive(true);
+		if (!restarting)
+		{
+			bossWin = win;
+			//StartCoroutine(RestartTheGame(win, day));
+			if (win)
+				winText.SetActive(true);
+			else if (!win)
+				loseText.SetActive(true);
+
+			//Add Evil XP here
+			xpText.SetActive(true);
+			EvilXPCount.GainXP(100); //XP gain based on 100 + EP left when starting run
+			StartCoroutine(GetComponent<CountingUp>().CountUp());
+		}
+
+		restarting = true;
 	}
 
 	public IEnumerator RestartTheGame(bool win, int day)
@@ -57,7 +70,5 @@ public class RunStatus : MonoBehaviour
 
 		StartCoroutine(RestartTheGame(bossWin, HeroDataManager.Instance.GetDay()));
 
-		//Add Evil XP here
-		EvilXPCount.GainXP(34); //XP gain based on 100 + EP left when starting run
 	}
 }

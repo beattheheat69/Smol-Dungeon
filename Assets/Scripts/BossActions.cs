@@ -40,6 +40,8 @@ public class BossActions : MonoBehaviour, IDamageable
 
 	public GameObject damageNumberAnim;
 
+	bool isDead;
+
 	private void Start()
 	{
 		//Gets all player inputs
@@ -53,6 +55,7 @@ public class BossActions : MonoBehaviour, IDamageable
 
 		//Initiate the health bar
 		lifebar.SetMaxHealth(health);
+		isDead = false;
 	}
 
 	private void Update()
@@ -158,24 +161,27 @@ public class BossActions : MonoBehaviour, IDamageable
 	
 	public void takeDamage(int amount, Vector2 attackerPosition, float knockbackStrength) // attackPosition and knockbackStrenght is for getting knockback on hit, don't the the boss will so didn't implement the code for it. If neede exemple in Character and Hero script
 	{
-		//This function does not seem to be called at all...
-		GetComponent<SoundCaster>().PlayHitSFX();
-		Debug.Log("Playing Boss Hit SFX");
-        health -= amount;
-		lifebar.SetHealth(health);
-		if (health <= 0)
+		if (!isDead)
 		{
-			//Defeat
-			GameObject.Find("GameManager").GetComponent<RunStatus>().CallRestart(false, HeroDataManager.Instance.GetDay());
-			gameObject.SetActive(false);
+			GetComponent<SoundCaster>().PlayHitSFX();
+			Debug.Log("Playing Boss Hit SFX");
+			health -= amount;
+			lifebar.SetHealth(health);
+			if (health <= 0)
+			{
+				//Defeat
+				GameObject.Find("GameManager").GetComponent<RunStatus>().CallRestart(false, HeroDataManager.Instance.GetDay());
+				gameObject.SetActive(false);
+				isDead = true;
+			}
+
+			//Hit stop
+			//StartCoroutine(HandyFunctions.HitStop());
+
+			damageNumberAnim.GetComponentInChildren<TextMesh>().text = amount.ToString();
+			damageNumberAnim.GetComponentInChildren<TextMesh>().color = Color.white;
+			GameObject inst = Instantiate(damageNumberAnim, transform.position, Quaternion.identity);
+			Destroy(inst, 1.0f);
 		}
-
-		//Hit stop
-		//StartCoroutine(HandyFunctions.HitStop());
-
-		damageNumberAnim.GetComponentInChildren<TextMesh>().text = amount.ToString();
-		damageNumberAnim.GetComponentInChildren<TextMesh>().color = Color.white;
-		GameObject inst = Instantiate(damageNumberAnim, transform.position, Quaternion.identity);
-		Destroy(inst, 1.0f);
 	}
 }
