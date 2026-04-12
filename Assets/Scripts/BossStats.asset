@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossSO
   <chargeSpeed>k__BackingField: 1
   <health>k__BackingField: 50
-  <power>k__BackingField: 3
+  <power>k__BackingField: 5
   <attackCooldown>k__BackingField: 0.75
   <attackChance>k__BackingField: 100
   <kockbackForce>k__BackingField: 1
   <cost>k__BackingField: 0
-  SpecialAttack1Cooldown: 2
-  SpecialAttack2Cooldown: 1.5
+  SpecialAttack1Cooldown: 1.5
+  SpecialAttack2Cooldown: 1

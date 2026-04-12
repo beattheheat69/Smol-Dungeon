@@ -8,6 +8,12 @@ public class RunStatus : MonoBehaviour
 	public GameObject loseText;
 	public GameObject winText;
 	bool bossWin;
+	GameObject thingsToSend;
+
+	private void Start()
+	{
+		thingsToSend = GameObject.Find("ThingsToSend").gameObject;
+	}
 
 	public void CallRestart(bool win, int day)
 	{
@@ -36,7 +42,9 @@ public class RunStatus : MonoBehaviour
 
 	public void CallRestartManual(bool win)
 	{
-		Destroy(GameObject.Find("ThingsToSend").gameObject);
+		if (thingsToSend != null)
+			Destroy(thingsToSend);
+
 		//if (win)
 		//{
 		//	SceneManager.LoadSceneAsync("PlacementEntite"); //Change to MainMenu si pas capable de fix 2nd day missing entities bug

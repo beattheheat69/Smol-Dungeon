@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcad3db34cc192b469e8eefe62b6d6c9, type: 3}
   m_Name: WarriorStats_SO
   m_EditorClassIdentifier: Assembly-CSharp::WarriorStats_SO
-  <chargeSpeed>k__BackingField: 2
+  <chargeSpeed>k__BackingField: 2.5
   <health>k__BackingField: 100
   <power>k__BackingField: 3
   <attackCooldown>k__BackingField: 0.5

@@ -20,9 +20,11 @@ public class GameManager : MonoBehaviour
 
     public GameObject tuto;
 
-    //public TMP_Text evilXPText;
+	GameObject thingsToSend;
 
-    private void Start()
+	//public TMP_Text evilXPText;
+
+	private void Start()
 	{
         tuto.SetActive(true);
 		//Input references
@@ -30,6 +32,7 @@ public class GameManager : MonoBehaviour
 		pauseInput = playerInput.actions["Pause"];
         Time.timeScale = 0f; //Starts frozen, will unfreeze when closing tutorial panel
         //evilXPText.text = "EvilXP = " + EvilXPCount.GetXP().ToString();
+        thingsToSend = GameObject.Find("ThingsToSend").gameObject;
 	}
 
 	private void Update()
@@ -91,7 +94,11 @@ public class GameManager : MonoBehaviour
 
     public void QuitToMainMenu()
     {
-        Time.timeScale = 1f;
+		//Remove ThingsToSend
+		if (thingsToSend != null)
+			Destroy(thingsToSend);
+
+		Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }
 
