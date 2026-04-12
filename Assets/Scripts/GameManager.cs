@@ -1,4 +1,5 @@
 using TMPro;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -20,7 +21,10 @@ public class GameManager : MonoBehaviour
 
     public GameObject tuto;
 
-	GameObject thingsToSend;
+    GameObject thingsToSend;
+
+    [SerializeField] HeroDataManager heroData;
+    public GameObject DaySplash;
 
 	//public TMP_Text evilXPText;
 
@@ -32,6 +36,7 @@ public class GameManager : MonoBehaviour
 		pauseInput = playerInput.actions["Pause"];
         Time.timeScale = 0f; //Starts frozen, will unfreeze when closing tutorial panel
         //evilXPText.text = "EvilXP = " + EvilXPCount.GetXP().ToString();
+        heroData = FindAnyObjectByType<HeroDataManager>();
         thingsToSend = GameObject.Find("ThingsToSend").gameObject;
 	}
 
@@ -105,5 +110,12 @@ public class GameManager : MonoBehaviour
     public void StartTime()
     {
         Time.timeScale = 1f;
+    }
+
+    public void ShowDay()
+    {
+        DaySplash.GetComponentInChildren<TextMesh>().text = "Day " + heroData.GetDay().ToString();
+        GameObject inst = Instantiate(DaySplash, transform.position, Quaternion.identity);
+        Destroy(inst, 3f);
     }
 }
