@@ -44,8 +44,8 @@ public class PlayerMovement : MonoBehaviour
             lastDir = moveDir;
 
         //Moves object via direction, speed and time
-        transform.Translate(moveDir * speed * 3 * Time.deltaTime);
-        //rb.linearVelocity = moveDir * speed * Time.deltaTime;
+        //transform.Translate(moveDir * speed * 3 * Time.deltaTime);
+        rb.linearVelocity = moveDir * speed;
 
         //Flip sprite when moving left (but not for boss)
         if (this.gameObject.name == "Smol")

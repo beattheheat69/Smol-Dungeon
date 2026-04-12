@@ -53,7 +53,7 @@ public class EntityPossessed : MonoBehaviour
 
 	void Update()
 	{
-		if (isPossessed && gameObject.CompareTag("Monster"))
+		if (isPossessed && (this.gameObject.CompareTag("Monster") || this.gameObject.CompareTag("TriggerMonster")))
 			monsterLifeBar.gameObject.SetActive(true);
 		if (monsterLifeBar != null)
 			monsterLifeBar.SetHealth(this.gameObject.GetComponent<Character>().GetCurrentHealth());
@@ -88,6 +88,7 @@ public class EntityPossessed : MonoBehaviour
 			playerMovement.enabled = true;
 			monsterAction.enabled = true;
 			monsterAI.enabled = false;
+			monsterLifeBar = GameObject.FindGameObjectWithTag("UI").transform.Find("SmolHealthBar").GetComponent<Lifebar>();
 			monsterLifeBar.gameObject.SetActive(true);
 			if (this.gameObject.CompareTag("Monster"))
 				monsterLifeBar.SetMaxHealth(GetComponent<SlimeAI>().baseStats.health);
@@ -146,7 +147,11 @@ public class EntityPossessed : MonoBehaviour
 			playerMovement.enabled = false;
 			monsterAction.enabled = false;
 			monsterAI.enabled = true;
-			monsterLifeBar.gameObject.SetActive(false);
+			if (monsterLifeBar != null)
+			{
+				monsterLifeBar.gameObject.SetActive(false);
+				monsterLifeBar = null;
+			}
 		}
 		else if (this.gameObject.CompareTag("Trap") && ((trapAction != null && trapAI != null) || (spikeControl != null && spikeAI != null)))
 		{
