@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="EncodableAsset" id="{be006f1f-73e0-4cd4-ad8a-633b49480d11}">
 		<property name="assetPath">
-			<value>SFX_Entities/Traps/Spikes/</value>
+			<value>SFX/SFX_Entities/Traps/Spikes/</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{2a1339a7-a903-46a7-ae9c-c49bb521c1b7}</destination>

@@ -10130,23 +10130,21 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Bon, on a fini le donjon! Mais bon\u2026 il est un peu vide, tu ne trouves
-    pas? Bah oui, les humains qui vont passer par l\xE0 n\u2019ont qu\u2019\xE0 marcher
-    en ligne droite pour trouver mon tr\xE9sor! Je suis sans d\xE9fense! \r\n\r\nMais
-    ne t\u2019en fais pas, j\u2019ai une solution! On n\u2019a qu\u2019\xE0 faire
-    apparaitre quelque pi\xE8ges et monstres pour les ralentir! Apr\xE8s avoir fini
-    d\u2019installer ton donjon, tu peux d\xE9penser tes Evil Points pour faire appara\xEEtre
-    des entit\xE9s, donc des pi\xE8ges ou des monstres, dans chacune des pi\xE8ces.
-    Attention, car chaque pi\xE8ce ne peut contenir que 4 entit\xE9s, alors il faut
-    bien calculer sa strat\xE9gie pour pouvoir retenir efficacement les h\xE9ros.
-    \r\n\r\nPour placer des entit\xE9s dans une pi\xE8ce, cliquer sur la tuile de
-    la pi\xE8ce que vous voulez modifier et ensuite, cliquer sur l\u2019entit\xE9
-    que vous voulez ajouter. Elle sera automatiquement plac\xE9e dans l\u2019espace
-    de la pi\xE8ce et vous co\xFBtera un certain nombre d\u2019Evil Points, qui seront
-    d\xE9duits de votre total. Chaque entit\xE9 a un prix diff\xE9rent, mais aussi
-    des effets diff\xE9rents. Alors planifie bien tes d\xE9fenses! \r\n\r\nLorsque
-    tu seras satisfait de ton placement, appuie sur le bouton de confirmation pour
-    commencer la journ\xE9e et faire venir les h\xE9ros dans le donjon! "
+  m_text: "Ok, done with the dungeon! But\u2026 well\u2026 it's kind of empty, don\u2019t
+    you think? I mean, look at this, humans just have to walk through the whole thing
+    in a straight line and easily steal the treasure! We need more defences! \r\n\r\nBut
+    don\u2019t worry, I have a solution; let's make some monsters and traps appear
+    to slow down the heroes! After you finish setting up the dungeon, you can spend
+    Evil Points to place entities in the different rooms, so either monsters or traps.
+    \r\n\r\nBe careful: a room can only hold up to 4 entities, so you need to plan
+    out a good strategy to fend off the heroes efficiently. \r\n\r\nTo place entities
+    in a room, click the room tile that you want to modify, and then click on the
+    entity you want to add to the room. The entity will be automatically added to
+    the selected room and will cost a certain amount of evil points. \r\n\r\nEvery
+    entity has a different price, and they also have different effects, so it's up
+    to you to plan up your defences efficiently! \r\n\r\nAfter placing your desired
+    number of entities, click \u201CConfirm\u201D to start the day, and the heroes
+    will start flowing into your dungeons! "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4e023ce55066c7649a636a490e6dc58d, type: 2}
   m_sharedMaterial: {fileID: -6204973913550994659, guid: 4e023ce55066c7649a636a490e6dc58d, type: 2}

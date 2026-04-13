@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 68228eeec5cb8474fa2c7284f02fe54e
   - enabled: 1
-    path: Assets/Scenes/DungeonTest.unity
-    guid: 17ffa9adb360ae249be893cc4ba73050
-  - enabled: 1
     path: Assets/Scenes/BossGym.unity
     guid: 27eb60e98ab02b743be1718b33458a27
   - enabled: 1

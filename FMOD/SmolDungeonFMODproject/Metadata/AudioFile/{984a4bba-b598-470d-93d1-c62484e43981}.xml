@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{984a4bba-b598-470d-93d1-c62484e43981}">
 		<property name="assetPath">
-			<value>SFX_Player/Smol/SFX_Player_DePossessing-005.wav</value>
+			<value>SFX/SFX_Player/Smol/SFX_Player_DePossessing-005.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>
