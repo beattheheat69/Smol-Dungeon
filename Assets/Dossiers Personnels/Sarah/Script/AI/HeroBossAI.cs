@@ -12,9 +12,7 @@ public class HeroBossAI : Hero
     //Rigidbody2D rb;  //Object rigidbody
     float timeCooldown; //Time that passes before next attack
     bool attacking = false; // hero in attack mode
-    Vector2 lastAngle; // Angle for the attack hitbox
     float castDistance = 0.8f; //Distance of sphere cast goes
-    float avoidWeight = 2.5f;
     BoxCollider2D boxCol;
     private float sideChoiceTimer = 0f;
     private int sideChoice = 0; // -1 = left, 1 = right, 0 = none
@@ -102,7 +100,7 @@ public class HeroBossAI : Hero
         float distanceToSurface = Vector2.Distance(rb.position, closestPoint);
         float stopDistance = heroRadius + 0.05f;
 
-        if (distanceToSurface <= stopDistance)
+        if (distanceToSurface <= stopDistance || Mathf.Approximately(distanceToSurface, stopDistance))
         {
             atTarget = true;
             attacking = true;

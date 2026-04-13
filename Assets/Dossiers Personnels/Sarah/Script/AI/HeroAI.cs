@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 using static UnityEngine.GraphicsBuffer;
@@ -83,22 +84,6 @@ public class HeroAI : Hero
                 //Move to target
                 MoveHero();
             }
-            else 
-            {
-                // Recompute distance to target
-                Vector2 closestPoint = target.GetComponent<Collider2D>().ClosestPoint(rb.position);
-
-                float heroRadius = boxCol.bounds.extents.x;
-                float distanceToSurface = Vector2.Distance(rb.position, closestPoint);
-                float stopDistance = heroRadius + 0.05f;
-
-                // If hero is no longer close enough, resume movement
-                if (distanceToSurface > stopDistance + 0.1f) // small buffer
-                {
-                    atTarget = false;
-                    attacking = false; 
-                }
-            }
 
 
             //Check if can attack
@@ -106,12 +91,13 @@ public class HeroAI : Hero
             {
                 DoAttack();
                 heroAnim.IsAttacking(); //Bug? Call here when walking towards next target
-            }
+              
+                //If target dead, find new one
+                if (!CheckTargetAlive())
+                {
+                    FindTarget();
+                }
 
-            //If target dead, find new one
-            if (!CheckTargetAlive())
-            {
-                FindTarget();
             }
 
             //attack cooldown
@@ -182,7 +168,7 @@ public class HeroAI : Hero
                 if (enemy.TryGetComponent(out IDamageable hitTarget)) //BUG: One shots monster
                 {
                     hitTarget.takeDamage(baseStats.power, transform.position, baseStats.kockbackForce);  // add buff or debuff
-                    atTarget = false;
+                    //atTarget = false;
                 }
             }
         }
@@ -194,7 +180,10 @@ public class HeroAI : Hero
     public Vector3 CheckLastDirection()
     {
         Vector3 direction = new Vector3();
-        if (lastMoveDirection == null) return direction;
+        if (lastMoveDirection == null)
+        {
+            return direction;
+        }
         if (lastMoveDirection.y > 0.05f) // going upwards
         {
             direction = transform.position + new Vector3(0, 0.5f, 0f);
@@ -247,7 +236,7 @@ public class HeroAI : Hero
         float distanceToSurface = Vector2.Distance(rb.position, closestPoint);
         float stopDistance = heroRadius + 0.05f;
 
-        if (distanceToSurface <= stopDistance)
+        if (distanceToSurface <= stopDistance || Mathf.Approximately(distanceToSurface, stopDistance))
         {
             atTarget = true;
             attacking = true;
@@ -349,6 +338,7 @@ public class HeroAI : Hero
         }
         //Set the monster that is closest hero
         atTarget = false;
+        attacking = false;
         target = nearTarget;
     }
 
