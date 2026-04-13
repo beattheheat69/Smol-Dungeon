@@ -7,7 +7,6 @@ public class ArmorAI : MonsterAI
     LayerMask colliderLayer;
     CameraManagement cameraStat; // check the stat of the camera
     GameObject target = null; // current hero target
-    //Rigidbody2D rb;  //Object rigidbody
     float timeCooldown; //Time that passes before next attack
     bool attacking = false; // monster in attack mode
     bool isActive = false;
@@ -42,22 +41,6 @@ public class ArmorAI : MonsterAI
                 {
                     //Move to target
                     MoveEnemy();
-                }
-                else
-                {
-                    // Recompute distance to target
-                    Vector2 closestPoint = target.GetComponent<Collider2D>().ClosestPoint(rb.position);
-
-                    float heroRadius = boxCol.bounds.extents.x;
-                    float distanceToSurface = Vector2.Distance(rb.position, closestPoint);
-                    float stopDistance = heroRadius + 0.05f;
-
-                    // If hero is no longer close enough, resume movement
-                    if (distanceToSurface > stopDistance + 0.1f) // small buffer
-                    {
-                        atTarget = false;
-                        attacking = false;
-                    }
                 }
 
                 //Check if can attack
@@ -155,7 +138,6 @@ public class ArmorAI : MonsterAI
     //Does an attack with a range infront of him, according to his direction of movement
     private void DoAttack()
     {
-        Debug.Log("Armor attacked");
         float randVal = Random.Range(1, 100);
         GetComponent<SoundCaster>().PlayAttackSFX();
         StartCoroutine(charAnim.MonsterAttack());
@@ -197,8 +179,7 @@ public class ArmorAI : MonsterAI
         float heroRadius = target.GetComponent<Collider2D>().bounds.extents.x;
         float stopDistance = armorRadius + heroRadius + 0.05f;
         float distanceToSurface = Vector2.Distance(rb.position, closestPoint);
-        Debug.Log("Armor distanceToSurface = " + distanceToSurface);
-        if (distanceToSurface <= stopDistance)
+        if (distanceToSurface <= stopDistance || Mathf.Approximately(distanceToSurface, stopDistance))
         {
             atTarget = true;
             attacking = true;

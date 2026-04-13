@@ -43,22 +43,6 @@ public class SlimeAI : MonsterAI
                 //Move to target
                 MoveEnemy();
             }
-            else
-            {
-                // Recompute distance to target
-                Vector2 closestPoint = target.GetComponent<Collider2D>().ClosestPoint(rb.position);
-
-                float heroRadius = circleCol.bounds.extents.x;
-                float distanceToSurface = Vector2.Distance(rb.position, closestPoint);
-                float stopDistance = heroRadius + 0.05f;
-
-                // If hero is no longer close enough, resume movement
-                if (distanceToSurface > stopDistance + 0.1f) // small buffer
-                {
-                    atTarget = false;
-                    attacking = false;
-                }
-            }
 
 
             //Check if can attack
@@ -123,7 +107,6 @@ public class SlimeAI : MonsterAI
         if (randVal <= baseStats.attackChance)
         {
             rb.linearVelocity = Vector2.zero;
-            Debug.Log("Attack normaly");
             if (target.TryGetComponent(out IDamageable hitTarget)) //BUG: One shots hero
             {
                 hitTarget.takeDamage(baseStats.power, transform.position, 0f);
@@ -158,7 +141,7 @@ public class SlimeAI : MonsterAI
         float distanceToSurface = Vector2.Distance(rb.position, closestPoint);
         float stopDistance = slimeRadius + 0.05f;
 
-        if (distanceToSurface <= stopDistance)
+        if (distanceToSurface <= stopDistance || Mathf.Approximately(distanceToSurface, stopDistance))
         {
             atTarget = true;
             attacking = true;
