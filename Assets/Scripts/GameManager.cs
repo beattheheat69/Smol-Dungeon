@@ -1,5 +1,4 @@
 using TMPro;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -114,7 +113,8 @@ public class GameManager : MonoBehaviour
 
     public void ShowDay()
     {
-        DaySplash.GetComponentInChildren<TextMesh>().text = "Day " + heroData.GetDay().ToString();
+		heroData = FindAnyObjectByType<HeroDataManager>();
+		DaySplash.GetComponentInChildren<TextMesh>().text = "Day " + heroData.GetDay().ToString();
         GameObject inst = Instantiate(DaySplash, transform.position, Quaternion.identity);
         Destroy(inst, 3f);
     }
