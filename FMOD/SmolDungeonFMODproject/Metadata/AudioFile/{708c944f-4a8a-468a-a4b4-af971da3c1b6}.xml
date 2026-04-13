@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{708c944f-4a8a-468a-a4b4-af971da3c1b6}">
 		<property name="assetPath">
-			<value>SFX_Entities/Monsters/SFX_Armour_Attack.wav</value>
+			<value>SFX/SFX_Entities/Monsters/SFX_Armour_Attack.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>

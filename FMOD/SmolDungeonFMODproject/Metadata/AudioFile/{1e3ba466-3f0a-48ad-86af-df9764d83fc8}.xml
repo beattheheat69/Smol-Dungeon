@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{1e3ba466-3f0a-48ad-86af-df9764d83fc8}">
 		<property name="assetPath">
-			<value>SFX_Player/Boss/SFX_Boss_Shockwave.wav</value>
+			<value>SFX/SFX_Player/Boss/SFX_Boss_Shockwave.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>

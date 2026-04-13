@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{2519ef8f-3b57-4b86-a046-a2c7dec3382b}">
 		<property name="assetPath">
-			<value>SFX_Player/Boss/SFX_Boss_BasicAttack-001.wav</value>
+			<value>SFX/SFX_Player/Boss/SFX_Boss_BasicAttack-001.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>

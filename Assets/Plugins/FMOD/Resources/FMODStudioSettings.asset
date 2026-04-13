@@ -407,6 +407,8 @@ MonoBehaviour:
   - Master
   Banks:
   - Master.assets
+  - MUS
+  - MUS.assets
   - SFX
   - SFX.assets
   BanksToLoad: []
