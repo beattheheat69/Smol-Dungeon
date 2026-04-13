@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7588969872262295429}
   m_Layer: 14
   m_Name: Fist
-  m_TagString: Untagged
+  m_TagString: BossAttack2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

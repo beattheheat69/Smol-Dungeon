@@ -89,6 +89,13 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
+  blockSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!114 &6686354763180683987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,6 +150,9 @@ MonoBehaviour:
       Data4: 1781375296
     Path: event:/SFX/Smol/Ghost/SFX_Smol_DePossessing
   monsterHealth: 0
+  monsterLifeBar: {fileID: 0}
+  getMonsterHealth: 0
+  possessVFX: {fileID: 4938746295452978964, guid: afe907a0251798b4dbb8f9ddb849697d, type: 3}
 --- !u!50 &4859007440075912959
 Rigidbody2D:
   serializedVersion: 5

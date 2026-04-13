@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1544904119277204653}
   m_Layer: 14
   m_Name: ShockWave
-  m_TagString: Untagged
+  m_TagString: BossAttack1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

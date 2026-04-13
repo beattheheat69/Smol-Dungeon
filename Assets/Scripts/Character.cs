@@ -13,6 +13,7 @@ public class Character : MonoBehaviour, IDamageable
     protected Rigidbody2D rb;  //Object rigidbody
     protected SoundCaster soundCaster; //Sound script common for all characters
     public Vector2 lastMoveDirection; // Direction the hero is looking for the attack
+    public GameObject damageNumberAnim;
 
     void Awake()
     {
@@ -59,12 +60,16 @@ public class Character : MonoBehaviour, IDamageable
             Die();
         }
 
-        //Calls hit SFX
-        if (soundCaster != null)
-        {
-            Debug.Log("Playing Hit SFX");
-            soundCaster.PlayHitSFX();
-        }
+        GetComponent<SoundCaster>().PlayHitSFX();
+
+        //Hit stop, felt weird, might bring it back later
+        //StartCoroutine(HandyFunctions.HitStop());
+
+        //Damage number anim
+        damageNumberAnim.GetComponentInChildren<TextMesh>().text = damage.ToString();
+		damageNumberAnim.GetComponentInChildren<TextMesh>().color = Color.white;
+		GameObject inst = Instantiate(damageNumberAnim, transform.position, Quaternion.identity);
+        Destroy(inst, 1.0f);
     }
 
     public bool IsAlive()

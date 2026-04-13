@@ -172,6 +172,18 @@ public class HeroAI : Hero
                 }
             }
         }
+        else
+        {
+			//Calls miss anim and text on enemy
+			Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(CheckLastDirection(), lastAngle, 0f, monsterLayer); //Check arguments, layer in place of angle
+			foreach (Collider2D enemy in hitEnemies)
+			{
+				damageNumberAnim.GetComponentInChildren<TextMesh>().text = "Miss";
+				damageNumberAnim.GetComponentInChildren<TextMesh>().color = UnityEngine.Color.white;
+				GameObject inst = Instantiate(damageNumberAnim, enemy.transform.position, Quaternion.identity);
+                Destroy(inst, 1f);
+			}
+		}
         //Start cooldown
         timeCooldown = baseStats.attackCooldown;
     }
@@ -326,7 +338,7 @@ public class HeroAI : Hero
         foreach (GameObject monster in monsters)
         {
             //Check if monster is active
-            if (monster.activeSelf)
+            if (monster.activeSelf && monster.GetComponent<Character>().IsAlive())
             {
                 float distance = Vector2.Distance(transform.position, monster.transform.position);
                 if (distance < closestDist)

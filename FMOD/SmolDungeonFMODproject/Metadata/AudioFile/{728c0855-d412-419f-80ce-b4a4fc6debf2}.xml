@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{728c0855-d412-419f-80ce-b4a4fc6debf2}">
 		<property name="assetPath">
-			<value>SFX_Entities/Traps/Spikes/SFX_Spikes_Activate-003.wav</value>
+			<value>SFX/SFX_Entities/Traps/Spikes/SFX_Spikes_Activate-003.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>

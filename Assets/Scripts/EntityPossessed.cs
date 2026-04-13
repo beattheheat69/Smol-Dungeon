@@ -29,6 +29,8 @@ public class EntityPossessed : MonoBehaviour
 	public Lifebar monsterLifeBar;
 	public int getMonsterHealth;
 
+	public GameObject possessVFX;
+
 
 	void Start()
 	{
@@ -53,7 +55,7 @@ public class EntityPossessed : MonoBehaviour
 
 	void Update()
 	{
-		if (isPossessed && gameObject.CompareTag("Monster"))
+		if (isPossessed && (this.gameObject.CompareTag("Monster") || this.gameObject.CompareTag("TriggerMonster")))
 			monsterLifeBar.gameObject.SetActive(true);
 		if (monsterLifeBar != null)
 			monsterLifeBar.SetHealth(this.gameObject.GetComponent<Character>().GetCurrentHealth());
@@ -77,6 +79,8 @@ public class EntityPossessed : MonoBehaviour
 		//Activates Smol game object at entity position and disables scripts from this entity
 		isPossessed = true;
 		smol = playerSmol;
+		GameObject instVFX = Instantiate(possessVFX, smol.transform.position, Quaternion.identity);
+		Destroy(instVFX, 1.0f);
 
 		//Sets active all child game objects
 		for (int i = 0; i < transform.childCount; i++)
@@ -88,6 +92,7 @@ public class EntityPossessed : MonoBehaviour
 			playerMovement.enabled = true;
 			monsterAction.enabled = true;
 			monsterAI.enabled = false;
+			monsterLifeBar = GameObject.FindGameObjectWithTag("UI").transform.Find("SmolHealthBar").GetComponent<Lifebar>();
 			monsterLifeBar.gameObject.SetActive(true);
 			if (this.gameObject.CompareTag("Monster"))
 				monsterLifeBar.SetMaxHealth(GetComponent<SlimeAI>().baseStats.health);
@@ -126,8 +131,11 @@ public class EntityPossessed : MonoBehaviour
 		//Activates Smol game object at entity position and disables scripts from this entity
 		isPossessed = false;
 
+
 		if (smol != null)
 		{
+			GameObject instVFX = Instantiate(possessVFX, transform.position, Quaternion.identity);
+			Destroy(instVFX, 1.0f);
 			smol.SetActive(true);
 			smol.transform.position = transform.position;
 			RuntimeManager.PlayOneShot(depossessingSFX);
@@ -146,7 +154,11 @@ public class EntityPossessed : MonoBehaviour
 			playerMovement.enabled = false;
 			monsterAction.enabled = false;
 			monsterAI.enabled = true;
-			monsterLifeBar.gameObject.SetActive(false);
+			if (monsterLifeBar != null)
+			{
+				monsterLifeBar.gameObject.SetActive(false);
+				monsterLifeBar = null;
+			}
 		}
 		else if (this.gameObject.CompareTag("Trap") && ((trapAction != null && trapAI != null) || (spikeControl != null && spikeAI != null)))
 		{

@@ -82,6 +82,13 @@ MonoBehaviour:
       Data3: -1317256800
       Data4: 897507188
     Path: event:/SFX/Entities/Monsters/SFX_Monsters_Hit
+  blockSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!114 &-8883441103201478487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,6 +102,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlimeAI
   health: 0
+  lastMoveDirection: {x: 0, y: 0}
+  damageNumberAnim: {fileID: 3143991510445479261, guid: 3d1a719fb7b549748a1ffd495d1234fc, type: 3}
   baseStats: {fileID: 11400000, guid: 4a3fd8e14f41d6f4abd234816b251c47, type: 2}
   colliderLayer:
     serializedVersion: 2
@@ -160,6 +169,9 @@ MonoBehaviour:
       Data4: 1781375296
     Path: event:/SFX/Smol/Ghost/SFX_Smol_DePossessing
   monsterHealth: 0
+  monsterLifeBar: {fileID: 0}
+  getMonsterHealth: 0
+  possessVFX: {fileID: 4938746295452978964, guid: afe907a0251798b4dbb8f9ddb849697d, type: 3}
 --- !u!212 &8363819885077017387
 SpriteRenderer:
   serializedVersion: 2

@@ -144,6 +144,13 @@ MonoBehaviour:
       Data3: -1317256800
       Data4: 897507188
     Path: event:/SFX/Entities/Monsters/SFX_Monsters_Hit
+  blockSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!114 &2164415935957507405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,6 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArmorAI
   health: 0
   lastMoveDirection: {x: 0, y: 0}
+  damageNumberAnim: {fileID: 3143991510445479261, guid: 3d1a719fb7b549748a1ffd495d1234fc, type: 3}
   baseStats: {fileID: 11400000, guid: 8453785abb13b8d4982ac413311383fe, type: 2}
   colliderLayer:
     serializedVersion: 2
@@ -249,6 +257,7 @@ MonoBehaviour:
   monsterHealth: 0
   monsterLifeBar: {fileID: 0}
   getMonsterHealth: 0
+  possessVFX: {fileID: 4938746295452978964, guid: afe907a0251798b4dbb8f9ddb849697d, type: 3}
 --- !u!50 &8144322826130702935
 Rigidbody2D:
   serializedVersion: 5
