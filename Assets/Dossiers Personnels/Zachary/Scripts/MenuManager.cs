@@ -11,9 +11,7 @@ public class MenuManager : MonoBehaviour
     public Button continueButton;
     [SerializeField] bool isContinueAvailable;
 
-    [Header("Pause Menu")]
-    [SerializeField] Canvas pauseWindowPrefab;
-    [HideInInspector] public bool isGamePaused = false;
+    [Header("Evil XP")
     public TMP_Text evilXPText;
 
 
@@ -57,18 +55,6 @@ public class MenuManager : MonoBehaviour
     {
         //Make the window appear
         window.gameObject.SetActive(true);
-    }
-
-    public void SetFullScreen (bool fullscreen)
-    {
-        if (fullscreen)
-        {
-            Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
-        }
-        else
-        {
-            Screen.fullScreenMode = FullScreenMode.Windowed;
-        }
     }
 
 	public void ToggleFullscreen()
