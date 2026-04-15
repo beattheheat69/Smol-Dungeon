@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Hero : Character
 {
@@ -38,7 +39,24 @@ public class Hero : Character
             health = HeroDataManager.Instance.party[index].currentHealt;  // testing hero health
 
             animator.SetTrigger("Damaged");
-        }
+
+			//Damage number anim
+			damageNumberAnim.GetComponentInChildren<TextMesh>().text = damage.ToString();
+			damageNumberAnim.GetComponentInChildren<TextMesh>().color = Color.red;
+			GameObject inst = Instantiate(damageNumberAnim, transform.position, Quaternion.identity);
+			Destroy(inst, 1.0f);
+		}
+        else
+        {
+			//Calls miss anim and text on enemy
+			damageNumberAnim.GetComponentInChildren<TextMesh>().text = "Block";
+			damageNumberAnim.GetComponentInChildren<TextMesh>().color = Color.red;
+			GameObject instan = Instantiate(damageNumberAnim, transform.position, Quaternion.identity);
+			Destroy(instan, 1f);
+			//Call target block anim and sfx
+			animator.SetTrigger("Block");
+			GetComponent<SoundCaster>().PlayBlockSFX();
+		}
 
         //Check if dead
         if (HeroDataManager.Instance.party[index].currentHealt <= 0)
@@ -51,12 +69,6 @@ public class Hero : Character
 
 		//Hit stop
 		//StartCoroutine(HandyFunctions.HitStop());
-
-		//Damage number anim
-		damageNumberAnim.GetComponentInChildren<TextMesh>().text = damage.ToString();
-        damageNumberAnim.GetComponentInChildren<TextMesh>().color = Color.red;
-		GameObject inst = Instantiate(damageNumberAnim, transform.position, Quaternion.identity);
-		Destroy(inst, 1.0f);
 	}
 
     IEnumerator ResetDamping()

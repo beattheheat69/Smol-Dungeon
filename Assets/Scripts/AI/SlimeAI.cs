@@ -119,17 +119,17 @@ public class SlimeAI : MonsterAI
                 animator.SetTrigger("Attack");
             }
         }
-		else
-		{
-			//Calls miss anim and text on enemy
-			damageNumberAnim.GetComponentInChildren<TextMesh>().text = "Block";
-			damageNumberAnim.GetComponentInChildren<TextMesh>().color = Color.red;
-			GameObject inst = Instantiate(damageNumberAnim, target.transform.position, Quaternion.identity);
-			Destroy(inst, 1f);
-            //Call target block anim and sfx
-            target.GetComponent<Animator>().SetTrigger("Block");
-			target.GetComponent<SoundCaster>().PlayBlockSFX();
-		}
+		//else
+		//{
+		//	//Calls miss anim and text on enemy
+		//	damageNumberAnim.GetComponentInChildren<TextMesh>().text = "Block";
+		//	damageNumberAnim.GetComponentInChildren<TextMesh>().color = Color.red;
+		//	GameObject inst = Instantiate(damageNumberAnim, target.transform.position, Quaternion.identity);
+		//	Destroy(inst, 1f);
+  //          //Call target block anim and sfx
+  //          target.GetComponent<Animator>().SetTrigger("Block");
+		//	target.GetComponent<SoundCaster>().PlayBlockSFX();
+		//}
 
 		//Start cooldown
 		timeCooldown = baseStats.attackCooldown;
