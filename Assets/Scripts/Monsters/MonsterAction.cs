@@ -63,7 +63,7 @@ public class MonsterAction : MonoBehaviour
 			{
 				Debug.Log(hit.transform.name + " hit!");
 				HeroAI heroAI = hit.transform.GetComponent<HeroAI>();
-				heroAI.takeDamage(baseStats.power, transform.position, 0f); // change 0f value for knockback on hero takeDamage
+				heroAI.takeDamage(baseStats.power, transform.position, baseStats.kockbackForce); // change 0f value for knockback on hero takeDamage
 			}
 		}
 			//Adds current pos to last direction faced to get attack pos
@@ -71,6 +71,8 @@ public class MonsterAction : MonoBehaviour
 
 	IEnumerator BounceAttack(Vector2 direction)
 	{
+		GetComponent<PlayerMovement>().enabled = false;
+
 		// Use Impulse to give it immediate speed
 		rb.AddForce(direction * 3f, ForceMode2D.Impulse);
 
@@ -79,5 +81,7 @@ public class MonsterAction : MonoBehaviour
 
 		// Stop the slime for short knockback
 		rb.linearVelocity = Vector2.zero;
+
+		GetComponent<PlayerMovement>().enabled = true;
 	}
 }
