@@ -1,6 +1,7 @@
 using System.Collections;
-using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
 
 public class Hero : Character
 {
@@ -24,15 +25,15 @@ public class Hero : Character
 
         if (randVal > HeroDataManager.Instance.GetDodgheChance(index))
         {
-           // rb.linearDamping = 10f;
+            rb.linearDamping = 10f;
             //Debug.Log("<color=cyan><b>[pushed]</b> Hero got hit and knockback</color>");
             // deduct health
             HeroDataManager.Instance.UpdateHeroHealh(index, damage, index+1);
             //Does Kockback to character with force of attacker
-            //Vector2 knockbackDir = ((Vector2)transform.position - attackerPosition).normalized;
-            //rb.AddForce(knockbackDir * knockbackStrength, ForceMode2D.Impulse);
-           // StartCoroutine(ResetDamping());
-           //atTarget = false;
+            Vector2 knockbackDir = ((Vector2)transform.position - attackerPosition).normalized;
+            rb.AddForce(knockbackDir * knockbackStrength, ForceMode2D.Impulse);
+            StartCoroutine(ResetDamping());
+            atTarget = false;
 
             health = HeroDataManager.Instance.party[index].currentHealt;  // testing hero health
 
@@ -60,7 +61,10 @@ public class Hero : Character
 
     IEnumerator ResetDamping()
     {
-        yield return new WaitForSeconds(0.3f);
+        isStunned = true;
+        yield return new WaitForSeconds(0.4f);
+        rb.linearVelocity = Vector2.zero;
         rb.linearDamping = 0f; // Go back to normal walking
+        isStunned = false;
     }
 }

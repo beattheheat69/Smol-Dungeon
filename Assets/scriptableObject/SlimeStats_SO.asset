@@ -15,7 +15,7 @@ MonoBehaviour:
   <chargeSpeed>k__BackingField: 2
   <health>k__BackingField: 9
   <power>k__BackingField: 1
-  <attackCooldown>k__BackingField: 0.5
+  <attackCooldown>k__BackingField: 1.5
   <attackChance>k__BackingField: 30
   <kockbackForce>k__BackingField: 15
   <cost>k__BackingField: 1

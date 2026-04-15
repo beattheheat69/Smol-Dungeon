@@ -12,6 +12,7 @@ public class ArmorAI : MonsterAI
     bool isActive = false;
     BoxCollider2D boxCol;
     MonsterAnimation charAnim;
+    bool byCheck = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,7 +30,7 @@ public class ArmorAI : MonsterAI
     {
         if (!isDead)
         {
-            if (cameraStat.GetTransitionning()) return;
+            if (cameraStat.GetTransitionning() || isStunned) return;
             if (isActive)
             {
                 if (target == null)
@@ -41,6 +42,10 @@ public class ArmorAI : MonsterAI
                 {
                     //Move to target
                     MoveEnemy();
+                }
+                else if (byCheck)
+                {
+                    CheckCollider();
                 }
 
                 //Check if can attack
@@ -100,6 +105,9 @@ public class ArmorAI : MonsterAI
             if (collision.gameObject == target && !attacking)
             {
                 lastMoveDirection = ((Vector2)target.transform.position - (Vector2)rb.position).normalized;
+                attacking = true;
+                atTarget = true;
+                rb.linearVelocity = Vector2.zero; // Kill any sliding momentum
             }
         }
         else if (collision.transform.tag == "Hero") 
@@ -204,6 +212,23 @@ public class ArmorAI : MonsterAI
         //rb.MovePosition(rb.position + lastMoveDirection * baseStats.chargeSpeed * Time.fixedDeltaTime);
     }
 
+
+    void CheckCollider()
+    {
+        Vector2 closestPoint = target.GetComponent<Collider2D>().ClosestPoint(rb.position);
+
+        float heroRadius = boxCol.bounds.extents.x;
+        float distanceToSurface = Vector2.Distance(rb.position, closestPoint);
+        float stopDistance = heroRadius + 0.06f;
+
+
+        if ((distanceToSurface > stopDistance) && !(Mathf.Approximately(distanceToSurface, stopDistance)))
+        {
+            atTarget = false;
+            attacking = false;
+            byCheck = false;
+        }
+    }
 
     //Find which hero is the closest
     private void FindTarget()
