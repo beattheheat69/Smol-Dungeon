@@ -57,8 +57,7 @@ public class MonsterAction : MonoBehaviour
 			//if (heroAI.TryGetComponent(out IDamageable hitTarget)) //BUG: One shots hero
 			//	hitTarget.takeDamage(baseStats.power);
 			HeroAI heroAI = hit.transform.GetComponent<HeroAI>();
-			heroAI.takeDamage(baseStats.power, transform.position, 0f); // change 0f value for knockback on hero takeDamage
-
+			heroAI.takeDamage(baseStats.power, transform.position, baseStats.attackCooldown); 
         }
 	}
 
