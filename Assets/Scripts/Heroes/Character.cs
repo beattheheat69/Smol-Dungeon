@@ -35,13 +35,13 @@ public class Character : MonoBehaviour, IDamageable
         if (this.gameObject.tag != "TriggerMonster") // Decided living Armor has no knockback, we can change that
         {
             animator.SetInteger("HP", health);
-           // rb.linearDamping = 10f;
+            rb.linearDamping = 10f;
             //Does Kockback to character with force of attacker
-            //Vector2 knockbackDir = ((Vector2)transform.position - attackerPosition).normalized;
+            Vector2 knockbackDir = ((Vector2)transform.position - attackerPosition).normalized;
             // Apply the custom force from the monster
-            //rb.AddForce(knockbackDir * knockbackStrength, ForceMode2D.Impulse);
-            //StartCoroutine(ResetDamping(rb));
-            //atTarget = false;
+            rb.AddForce(knockbackDir * knockbackStrength, ForceMode2D.Impulse);
+            StartCoroutine(ResetDamping());
+            atTarget = false;
         }
         else 
         {
@@ -107,15 +107,13 @@ public class Character : MonoBehaviour, IDamageable
     }
 
 
-    IEnumerator ResetDamping(Rigidbody2D thisRB)
+    IEnumerator ResetDamping()
     {
-        //isStunned = true;
-
-        yield return new WaitForSeconds(0.3f);
-        thisRB.linearDamping = 0f; // Go back to normal walking
-        thisRB.linearVelocity = Vector2.zero;
-
-        //isStunned = false;
+        isStunned = true;
+        yield return new WaitForSeconds(0.4f);
+        rb.linearVelocity = Vector2.zero;
+        rb.linearDamping = 0f; // Go back to normal walking
+        isStunned = false;
     }
 
     public int GetCurrentHealth()
