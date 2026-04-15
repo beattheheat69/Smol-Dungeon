@@ -268,7 +268,7 @@ public class HeroAI : Hero
         }
 
         //Change direction to avoid trap if needed
-        lastMoveDirection = (((Vector2)target.transform.position - (Vector2)rb.position) + AvoidObstical(closestPoint)).normalized;
+        lastMoveDirection = (((Vector2)target.transform.position - (Vector2)rb.position) + AvoidObstical(closestPoint) * 1.05f).normalized;
 
         // Compute movement step
         float moveStep = baseStats.chargeSpeed * Time.fixedDeltaTime;
@@ -299,12 +299,11 @@ public class HeroAI : Hero
         }
     }
 
-    Vector2 AvoidObstical(Vector2 direction)
+    Vector2 AvoidObstical(Vector2 desiredDir)
     {
-        if (direction == Vector2.zero)
+        if (desiredDir == Vector2.zero)
             return Vector2.zero;
 
-        // World collider size
         Vector2 worldSize = new Vector2(
             boxCol.size.x * Mathf.Abs(transform.lossyScale.x),
             boxCol.size.y * Mathf.Abs(transform.lossyScale.y)
@@ -312,45 +311,23 @@ public class HeroAI : Hero
 
         Vector2 worldCenter = rb.position + boxCol.offset * transform.lossyScale;
 
-        // Directions
-        Vector2 left = Vector2.Perpendicular(direction);
+        Vector2 left = Vector2.Perpendicular(desiredDir);
         Vector2 right = -left;
 
-        // Casts
-        RaycastHit2D hitForward = Physics2D.BoxCast(worldCenter, worldSize, 0f, direction, castDistance, obsticleLayer);
-        /*if (hitForward.collider != null)
-        {
-            Debug.Log("Hit: " + hitForward.collider.gameObject.name + " on Layer: " + LayerMask.LayerToName(hitForward.collider.gameObject.layer));
-        }*/
+        RaycastHit2D hitForward = Physics2D.BoxCast(worldCenter, worldSize, 0f, desiredDir, castDistance, obsticleLayer);
         RaycastHit2D hitLeft = Physics2D.BoxCast(worldCenter, worldSize, 0f, left, castDistance, obsticleLayer);
         RaycastHit2D hitRight = Physics2D.BoxCast(worldCenter, worldSize, 0f, right, castDistance, obsticleLayer);
 
-        // If forward is clear → no avoidance needed
+        // No obstacle ahead → no avoidance
         if (hitForward.collider == null)
-        {
-            sideChoice = 0;
             return Vector2.zero;
-        }
 
-        // If we already chose a side, stick to it for a moment
-        if (sideChoiceTimer > 0f)
-        {
-            sideChoiceTimer -= Time.fixedDeltaTime;
-            return sideChoice == -1 ? left : right;
-        }
+        float leftScore = hitLeft.collider ? hitLeft.distance : castDistance;
+        float rightScore = hitRight.collider ? hitRight.distance : castDistance;
 
-        // Choose the best side
-        float leftDist = hitLeft.collider == null ? castDistance : hitLeft.distance;
-        float rightDist = hitRight.collider == null ? castDistance : hitRight.distance;
+        Vector2 avoidance = (leftScore > rightScore ? left : right);
 
-        if (leftDist > rightDist)
-            sideChoice = -1; // go left
-        else
-            sideChoice = 1;  // go right
-
-        sideChoiceTimer = 0.3f; // commit for 0.3 seconds
-
-        return sideChoice == -1 ? left : right;
+        return avoidance.normalized;
     }
 
     //Find which monster is the closest

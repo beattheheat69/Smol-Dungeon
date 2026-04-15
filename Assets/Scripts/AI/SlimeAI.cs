@@ -107,32 +107,16 @@ public class SlimeAI : MonsterAI
     //Does an attack on target
     private void DoAttack()
     {
-        float randVal = Random.Range(1, 100);
+        rb.linearVelocity = Vector2.zero;
+        StartCoroutine(BounceAttack());
+        /* if (target.TryGetComponent(out IDamageable hitTarget)) //BUG: One shots hero
+         {
+             hitTarget.takeDamage(baseStats.power, transform.position, 0f);
+             animator.SetTrigger("Attack");
+         }
 
-        //Check is attack succeded
-        if (randVal <= baseStats.attackChance)
-        {
-            rb.linearVelocity = Vector2.zero;
-            if (target.TryGetComponent(out IDamageable hitTarget)) //BUG: One shots hero
-            {
-                hitTarget.takeDamage(baseStats.power, transform.position, 0f);
-                animator.SetTrigger("Attack");
-            }
-        }
-		//else
-		//{
-		//	//Calls miss anim and text on enemy
-		//	damageNumberAnim.GetComponentInChildren<TextMesh>().text = "Block";
-		//	damageNumberAnim.GetComponentInChildren<TextMesh>().color = Color.red;
-		//	GameObject inst = Instantiate(damageNumberAnim, target.transform.position, Quaternion.identity);
-		//	Destroy(inst, 1f);
-  //          //Call target block anim and sfx
-  //          target.GetComponent<Animator>().SetTrigger("Block");
-		//	target.GetComponent<SoundCaster>().PlayBlockSFX();
-		//}
-
-		//Start cooldown
-		timeCooldown = baseStats.attackCooldown;
+         //Start cooldown
+         timeCooldown = baseStats.attackCooldown;*/
     }
 
     //Move monster towards target
@@ -184,8 +168,9 @@ public class SlimeAI : MonsterAI
         if (skinToSkinGap <= attackRange && skinToSkinGap > 0.1f)
         {
             atTarget = true;
-            timeCooldown = baseStats.attackCooldown;
-            StartCoroutine(BounceAttack());
+            attacking = true;
+            //timeCooldown = baseStats.attackCooldown;
+            //StartCoroutine(BounceAttack());
         }
     }
 
@@ -243,7 +228,6 @@ public class SlimeAI : MonsterAI
     {
         isJumping = true;
         timeCooldown = baseStats.attackCooldown;
-
         animator.SetTrigger("Attack");
         GetComponent<SoundCaster>().PlayAttackSFX();
 

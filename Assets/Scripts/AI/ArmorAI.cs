@@ -146,33 +146,16 @@ public class ArmorAI : MonsterAI
     //Does an attack with a range infront of him, according to his direction of movement
     private void DoAttack()
     {
-        float randVal = Random.Range(1, 100);
         GetComponent<SoundCaster>().PlayAttackSFX();
         StartCoroutine(charAnim.MonsterAttack());
 
-        //Check is attack succeded
-        if (randVal <= baseStats.attackChance)
+        rb.linearVelocity = Vector2.zero;
+        if (target.TryGetComponent(out IDamageable hitTarget)) //BUG: One shots hero
         {
-            rb.linearVelocity = Vector2.zero;
-            if (target.TryGetComponent(out IDamageable hitTarget)) //BUG: One shots hero
-            {
-                hitTarget.takeDamage(power, transform.position, baseStats.kockbackForce);
-                //GetComponent<Animator>().SetTrigger("Attack");
-                atTarget = false;
-            }
+            hitTarget.takeDamage(power, transform.position, baseStats.kockbackForce);
+            //GetComponent<Animator>().SetTrigger("Attack");
+            atTarget = false;
         }
-		//else
-		//{
-		//	//Calls miss anim and text on enemy
-		//	damageNumberAnim.GetComponentInChildren<TextMesh>().text = "Block";
-		//	damageNumberAnim.GetComponentInChildren<TextMesh>().color = Color.red;
-		//	GameObject inst = Instantiate(damageNumberAnim, target.transform.position, Quaternion.identity);
-		//	Destroy(inst, 1f);
-		//	//Call target block anim and sfx
-		//	target.GetComponent<Animator>().SetTrigger("Block");
-  //          target.GetComponent<SoundCaster>().PlayBlockSFX();
-		//}
-
 		//Start cooldown
 		timeCooldown = baseStats.attackCooldown;
     }
