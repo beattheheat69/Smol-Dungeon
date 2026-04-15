@@ -168,6 +168,13 @@ MonoBehaviour:
       Data3: -252503876
       Data4: 1781375296
     Path: event:/SFX/Smol/Ghost/SFX_Smol_DePossessing
+  music:
+    Guid:
+      Data1: -374505715
+      Data2: 1147667600
+      Data3: -747000919
+      Data4: 51730810
+    Path: event:/MUS/MUS_Dungeon
   monsterHealth: 0
   monsterLifeBar: {fileID: 0}
   getMonsterHealth: 0

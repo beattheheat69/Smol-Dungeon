@@ -1,3 +1,4 @@
+using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -24,6 +25,7 @@ public class EntityPossessed : MonoBehaviour
 	//FMOD events
 	public EventReference possessingSFX;
 	public EventReference depossessingSFX;
+	public Parameters musicParameter;
 
 	[SerializeField] int monsterHealth;
 	public Lifebar monsterLifeBar;
@@ -51,6 +53,7 @@ public class EntityPossessed : MonoBehaviour
 			spikeAI = GetComponent<SpikeAI>();
 			spikeControl = GetComponent<SpikeControl>();
         }
+		musicParameter = FindAnyObjectByType<Parameters>();
 	}
 
 	void Update()
@@ -124,6 +127,7 @@ public class EntityPossessed : MonoBehaviour
 
 		//Call Possessing FMOD SFX
 		RuntimeManager.PlayOneShot(possessingSFX);
+		musicParameter.SetMax();
 	}
 
 	public void DePossessing()
@@ -139,6 +143,7 @@ public class EntityPossessed : MonoBehaviour
 			smol.SetActive(true);
 			smol.transform.position = transform.position;
 			RuntimeManager.PlayOneShot(depossessingSFX);
+			musicParameter.SetNormal();
 		}
 
 		//Deactivate all child game objects
@@ -181,10 +186,6 @@ public class EntityPossessed : MonoBehaviour
         }
 
 		smol = null;
-
-		//Activate AI script
-
-		//Call DePossessing FMOD SFX
 	}
 
 	private void OnDisable()
