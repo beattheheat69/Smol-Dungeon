@@ -64,7 +64,7 @@ public class HeroAI : Hero
         lifebar.SetHealth(health);
 
         //If camera is moving do nothing
-        if (cameraStat.GetTransitionning()) return;
+        if (cameraStat.GetTransitionning() || isStunned) return;
 
         if (!HeroParty.Instance.GetRoomFinised())
         {
@@ -121,7 +121,6 @@ public class HeroAI : Hero
     {
         if (collision.gameObject == target)
         {
-            Debug.Log("<color=blue><b>[AI]</b> Target </color>");
             lastMoveDirection = ((Vector2)target.transform.position - (Vector2)rb.position).normalized;
             attacking = true;
             atTarget = true;
@@ -261,7 +260,6 @@ public class HeroAI : Hero
 
         if (distanceToSurface <= stopDistance || Mathf.Approximately(distanceToSurface, stopDistance))
         {
-            Debug.Log("<color=red><b>[AI]</b> Movement </color>" + distanceToSurface + " et " + stopDistance);
             atTarget = true;
             attacking = true;
             byCheck = true;
@@ -292,12 +290,9 @@ public class HeroAI : Hero
         float distanceToSurface = Vector2.Distance(rb.position, closestPoint);
         float stopDistance = heroRadius + 0.06f;
 
-        Debug.Log(!(Mathf.Approximately(distanceToSurface, stopDistance)));
-        Debug.Log(distanceToSurface > stopDistance);
 
         if ((distanceToSurface > stopDistance) && !(Mathf.Approximately(distanceToSurface, stopDistance)))
         {
-            Debug.Log("Check : " + distanceToSurface + " et " + stopDistance);
             atTarget = false;
             attacking = false;
             byCheck = false;

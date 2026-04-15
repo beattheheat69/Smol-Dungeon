@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -15,6 +16,7 @@ public class SlimeAI : MonsterAI
     bool attacking = false; // monster in attack mode
     bool isJumping = false; //Is doinf the bounce attack
     CircleCollider2D circleCol;
+    bool byCheck = false;
 
     private void Start()
     {
@@ -31,17 +33,21 @@ public class SlimeAI : MonsterAI
         if (!isDead)
         {
             //If camera is moving do nothing
-            if (cameraStat.GetTransitionning()) return;
+            if (cameraStat.GetTransitionning() || isStunned) return;
             //If no target check for one
             if (target == null)
             {
                 FindTarget();
             }
 
-            if (!atTarget && !isStunned)
+            if (!atTarget)
             {
                 //Move to target
                 MoveEnemy();
+            }
+            else if (byCheck)
+            {
+                CheckCollider();
             }
 
 
@@ -145,7 +151,7 @@ public class SlimeAI : MonsterAI
         {
             atTarget = true;
             attacking = true;
-            rb.linearVelocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero; // Kill any sliding momentum
             return;
         }
 
@@ -182,6 +188,25 @@ public class SlimeAI : MonsterAI
             StartCoroutine(BounceAttack());
         }
     }
+
+    void CheckCollider()
+    {
+        Vector2 closestPoint = target.GetComponent<Collider2D>().ClosestPoint(rb.position);
+
+        float slimeRadius = circleCol.radius * Mathf.Abs(transform.lossyScale.x);
+        float distanceToSurface = Vector2.Distance(rb.position, closestPoint);
+        float stopDistance = slimeRadius + 0.06f;
+
+
+        if ((distanceToSurface > stopDistance) && !(Mathf.Approximately(distanceToSurface, stopDistance)))
+        {
+            atTarget = false;
+            attacking = false;
+            byCheck = false;
+        }
+    }
+
+
 
     //Show hero collision sphere for overlap
     void OnDrawGizmosSelected()
