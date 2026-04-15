@@ -35,6 +35,7 @@ public class HeroAI : Hero
     private float sideChoiceTimer = 0f;
     private int sideChoice = 0; // -1 = left, 1 = right, 0 = none
     HeroAnimation heroAnim;
+    bool byCheck = false;
     [SerializeField] Lifebar lifebar; //J'ai aussi ajouté une ligne de code dans Start et dans Update
 
 
@@ -77,6 +78,10 @@ public class HeroAI : Hero
                     HeroParty.Instance.SetRoomFinised(true);
                     return;
                 }
+                else 
+                {
+                    lastMoveDirection = ((Vector2)target.transform.position - (Vector2)rb.position).normalized;
+                }
             }
 
             if (!atTarget)
@@ -84,14 +89,18 @@ public class HeroAI : Hero
                 //Move to target
                 MoveHero();
             }
-
-
+            else if(byCheck)
+            {
+                CheckCollider();
+            }
+                
+           
             //Check if can attack
             if (attacking && timeCooldown <= 0)
             {
                 DoAttack();
                 heroAnim.IsAttacking(); //Bug? Call here when walking towards next target
-              
+
                 //If target dead, find new one
                 if (!CheckTargetAlive())
                 {
@@ -112,9 +121,11 @@ public class HeroAI : Hero
     {
         if (collision.gameObject == target)
         {
+            Debug.Log("<color=blue><b>[AI]</b> Target </color>");
             lastMoveDirection = ((Vector2)target.transform.position - (Vector2)rb.position).normalized;
             attacking = true;
             atTarget = true;
+            rb.linearVelocity = Vector2.zero; // Kill any sliding momentum
         }
         else if (!attacking && collision.gameObject.layer == LayerMask.NameToLayer("Monster"))
         {
@@ -250,8 +261,10 @@ public class HeroAI : Hero
 
         if (distanceToSurface <= stopDistance || Mathf.Approximately(distanceToSurface, stopDistance))
         {
+            Debug.Log("<color=red><b>[AI]</b> Movement </color>" + distanceToSurface + " et " + stopDistance);
             atTarget = true;
             attacking = true;
+            byCheck = true;
             rb.linearVelocity = Vector2.zero; // Kill any sliding momentum
             return;
         }
@@ -269,6 +282,26 @@ public class HeroAI : Hero
         Vector2 nextPos = rb.position + lastMoveDirection * moveStep;
         rb.MovePosition(nextPos);
 
+    }
+
+    void CheckCollider()
+    {
+        Vector2 closestPoint = target.GetComponent<Collider2D>().ClosestPoint(rb.position);
+
+        float heroRadius = boxCol.bounds.extents.x;
+        float distanceToSurface = Vector2.Distance(rb.position, closestPoint);
+        float stopDistance = heroRadius + 0.06f;
+
+        Debug.Log(!(Mathf.Approximately(distanceToSurface, stopDistance)));
+        Debug.Log(distanceToSurface > stopDistance);
+
+        if ((distanceToSurface > stopDistance) && !(Mathf.Approximately(distanceToSurface, stopDistance)))
+        {
+            Debug.Log("Check : " + distanceToSurface + " et " + stopDistance);
+            atTarget = false;
+            attacking = false;
+            byCheck = false;
+        }
     }
 
     Vector2 AvoidObstical(Vector2 direction)
