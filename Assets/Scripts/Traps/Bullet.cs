@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
 			HeroAI heroAI = other.transform.GetComponent<HeroAI>();
 			heroAI.takeDamage(baseStats.power, transform.position, 0f); // change 0f value for knockback on hero takeDamage
         }
-		else if (other.CompareTag("Monster"))
+		else if (other.CompareTag("Monster") || other.CompareTag("TriggerMonster"))
 		{
 			MonsterAI monsterAI = other.transform.GetComponent<MonsterAI>();
 			monsterAI.takeDamage(baseStats.power, transform.position, 0f); // change 0f value for knockback on hero takeDamage

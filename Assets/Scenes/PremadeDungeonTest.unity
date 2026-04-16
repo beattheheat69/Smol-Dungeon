@@ -2347,6 +2347,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1893680621149633457, guid: 4e4788b07cce25c4bbca191215657ca8, type: 3}
   m_PrefabInstance: {fileID: 365113522}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &548119793 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7100931584731717033, guid: 2c5a5898100620443956998b27825903, type: 3}
+  m_PrefabInstance: {fileID: 949502311}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &548119797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548119793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7535e45ad4447584693c2d303da06410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GetDay
+  heroData: {fileID: 0}
 --- !u!1 &550517152
 GameObject:
   m_ObjectHideFlags: 0
@@ -18008,6 +18026,70 @@ Transform:
   - {fileID: 1190693044}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &949502311
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1869490772519924267, guid: 2c5a5898100620443956998b27825903, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869490772519924267, guid: 2c5a5898100620443956998b27825903, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869490772519924267, guid: 2c5a5898100620443956998b27825903, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869490772519924267, guid: 2c5a5898100620443956998b27825903, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869490772519924267, guid: 2c5a5898100620443956998b27825903, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869490772519924267, guid: 2c5a5898100620443956998b27825903, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869490772519924267, guid: 2c5a5898100620443956998b27825903, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869490772519924267, guid: 2c5a5898100620443956998b27825903, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869490772519924267, guid: 2c5a5898100620443956998b27825903, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869490772519924267, guid: 2c5a5898100620443956998b27825903, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801708664397858924, guid: 2c5a5898100620443956998b27825903, type: 3}
+      propertyPath: EventPlayTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7100931584731717033, guid: 2c5a5898100620443956998b27825903, type: 3}
+      propertyPath: m_Name
+      value: WhatDaySplash
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7100931584731717033, guid: 2c5a5898100620443956998b27825903, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 548119797}
+  m_SourcePrefab: {fileID: 100100000, guid: 2c5a5898100620443956998b27825903, type: 3}
 --- !u!1001 &955546251
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18782,9 +18864,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 848588527}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ShowDay
+      - m_Target: {fileID: 403175866}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18794,9 +18876,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 403175866}
-        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
-        m_MethodName: Play
+      - m_Target: {fileID: 848588527}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ShowDay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -32557,3 +32639,4 @@ SceneRoots:
   - {fileID: 841938242}
   - {fileID: 811314201}
   - {fileID: 1651913588}
+  - {fileID: 949502311}

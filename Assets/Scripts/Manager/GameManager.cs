@@ -29,11 +29,11 @@ public class GameManager : MonoBehaviour
 
 	private void Start()
 	{
-        tuto.SetActive(true);
+        Invoke("StartSecondDay", 0.01f);
 		//Input references
 		playerInput = GetComponent<PlayerInput>();
 		pauseInput = playerInput.actions["Pause"];
-        Time.timeScale = 0f; //Starts frozen, will unfreeze when closing tutorial panel
+        //Time.timeScale = 0f; //Starts frozen, will unfreeze when closing tutorial panel
         //evilXPText.text = "EvilXP = " + EvilXPCount.GetXP().ToString();
         heroData = FindAnyObjectByType<HeroDataManager>();
         thingsToSend = GameObject.Find("ThingsToSend").gameObject;
@@ -113,9 +113,26 @@ public class GameManager : MonoBehaviour
 
     public void ShowDay()
     {
+		DaySplash.GetComponent<Animator>().StartPlayback();
+		//heroData = FindAnyObjectByType<HeroDataManager>();
+		//DaySplash.GetComponentInChildren<TextMesh>().text = "What " + heroData.GetDay().ToString();
+  //      GameObject inst = Instantiate(DaySplash, transform.position, Quaternion.identity);
+  //      Destroy(inst, 3f);
+    }
+
+    void StartSecondDay()
+    {
 		heroData = FindAnyObjectByType<HeroDataManager>();
-		DaySplash.GetComponentInChildren<TextMesh>().text = "Day " + heroData.GetDay().ToString();
-        GameObject inst = Instantiate(DaySplash, transform.position, Quaternion.identity);
-        Destroy(inst, 3f);
+		if (heroData.GetDay() == 2)
+        {
+			tuto.SetActive(false);
+            StartTime();
+		}
+        else
+        {
+            DaySplash.GetComponent<Animator>().StopPlayback();
+			tuto.SetActive(true);
+			Time.timeScale = 0f; //Starts frozen, will unfreeze when closing tutorial panel
+		}
     }
 }

@@ -18,13 +18,13 @@ public class BossProjectile : MonoBehaviour
 		else if (CompareTag("BossAttack1"))
 		{
 			damage = bossStats.SpecialAttack1Damage;
-			knockback = bossStats.kockbackForce; // add force if needed with +
+			knockback = bossStats.SpecialAttack1Knockback; // add force if needed with +
         }
 
 		else if (CompareTag("BossAttack2"))
 		{
 			damage = bossStats.SpecialAttack2Damage;
-            knockback = bossStats.kockbackForce; // add force if needed with +
+            knockback = bossStats.SpecialAttack2Knockback; // add force if needed with +
         }
 			
 	}

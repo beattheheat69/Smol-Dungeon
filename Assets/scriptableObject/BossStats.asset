@@ -23,3 +23,5 @@ MonoBehaviour:
   SpecialAttack2Cooldown: 1
   SpecialAttack1Damage: 10
   SpecialAttack2Damage: 7
+  SpecialAttack1Knockback: 30
+  SpecialAttack2Knockback: 10

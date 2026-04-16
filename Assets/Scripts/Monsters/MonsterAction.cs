@@ -72,16 +72,21 @@ public class MonsterAction : MonoBehaviour
 	IEnumerator BounceAttack(Vector2 direction)
 	{
 		GetComponent<PlayerMovement>().enabled = false;
+		rb.linearVelocity = Vector2.zero;
+
+		yield return new WaitForSeconds(0.5f);
 
 		// Use Impulse to give it immediate speed
-		rb.AddForce(direction * 3f, ForceMode2D.Impulse);
+		rb.AddForce(direction * 5f, ForceMode2D.Impulse);
 
 		// Wait for the duration of the dash
-		yield return new WaitForSeconds(0.4f);
+		yield return new WaitForSeconds(0.25f);
 
 		// Stop the slime for short knockback
 		rb.linearVelocity = Vector2.zero;
 
-		GetComponent<PlayerMovement>().enabled = true;
+
+		if (GetComponent<SlimeAI>().IsAlive())
+			GetComponent<PlayerMovement>().enabled = true;
 	}
 }

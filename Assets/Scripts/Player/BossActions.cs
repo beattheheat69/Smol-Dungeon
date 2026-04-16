@@ -74,7 +74,6 @@ public class BossActions : MonoBehaviour, IDamageable
 		//Basic attack input & function call
 		if (basicAttack.WasPressedThisFrame() && stats.attackCooldown <= timeForNextAttack)
 		{
-			Debug.Log("Basic Attack");
 			BasicAttack(lastDir);
 			timeForNextAttack = 0;
 		}
@@ -82,7 +81,6 @@ public class BossActions : MonoBehaviour, IDamageable
 		//Special attack 1 input & function call
 		if (specialAttackLeft.WasPressedThisFrame() && stats.SpecialAttack1Cooldown <= timeForNextAttack)
 		{
-			Debug.Log("Special Attack Left");
 			SpecialAttackLeft(lastDir);
 			timeForNextAttack = 0;
 		}
@@ -90,7 +88,6 @@ public class BossActions : MonoBehaviour, IDamageable
 		//Special attack 2 input & function call
 		if (specialAttackRight.WasPressedThisFrame() && stats.SpecialAttack2Cooldown <= timeForNextAttack)
 		{
-			Debug.Log("Special Attack Right");
 			StartCoroutine(SpecialAttackRight(lastDir));
 			timeForNextAttack = 0;
 		}
@@ -164,7 +161,6 @@ public class BossActions : MonoBehaviour, IDamageable
 		if (!isDead)
 		{
 			GetComponent<SoundCaster>().PlayHitSFX();
-			Debug.Log("Playing Boss Hit SFX");
 			health -= amount;
 			lifebar.SetHealth(health);
 			if (health <= 0)

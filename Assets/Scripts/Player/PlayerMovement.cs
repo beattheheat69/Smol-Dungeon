@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = moveDir * speed;
 
         //Flip sprite when moving left (but not for boss)
-        if (this.gameObject.name == "Smol")
+        if (this.gameObject.name == "Smol" || this.gameObject.name == "Slime(Clone)")
         {
             if (lastDir.x < 0)
                 GetComponent<SpriteRenderer>().flipX = true;

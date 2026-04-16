@@ -3,6 +3,7 @@ using UnityEngine;
 public class GetRoomEntities : MonoBehaviour
 {
 	public GameObject twin;
+	int crossbowCount = 0;
 
 	private void Awake()
 	{
@@ -25,12 +26,33 @@ public class GetRoomEntities : MonoBehaviour
 						//Exception for spikes trap
 						if (child2.name != "SquareSpikeSmall(Clone)")
 						{
-							float rndX = Random.Range(-6f, 6f);
-							float rndY = Random.Range(-3f, 3f);
-							child2.transform.localPosition = new Vector2(rndX, rndY);
+							//Add preset positions if crossbow
+							if (child2.name == "Crossbow(Clone)")
+							{
+								switch (crossbowCount)
+								{
+									case 0:
+										child2.transform.localPosition = new Vector2(-5, 2);
+										break;
+									case 1:
+										child2.transform.localPosition = new Vector2(5, 2);
+										break;
+									case 2:
+										child2.transform.localPosition = new Vector2(0, -2);
+										break;
+									default:
+										break;
+								}
+								crossbowCount++;
+							}
+							else
+							{
+								float rndX = Random.Range(-6f, 6f);
+								float rndY = Random.Range(-3f, 3f);
+								child2.transform.localPosition = new Vector2(rndX, rndY);
+							}
 						}
 					}
-					//Go to other script to reference groups in code instead of inspector
 				}
 			}
 		}

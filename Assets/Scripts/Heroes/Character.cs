@@ -45,7 +45,7 @@ public class Character : MonoBehaviour, IDamageable
         }
         else 
         {
-            animator.SetTrigger("Damaged");
+            //animator.SetTrigger("Damaged");
         }
 
         //Check if dead
@@ -55,9 +55,10 @@ public class Character : MonoBehaviour, IDamageable
             rb.linearVelocity = Vector2.zero; // Kill any sliding momentum
             if (this.gameObject.tag == "TriggerMonster")
             {
-                animator.SetBool("Defeat", true);
+                //animator.SetBool("Defeated", true);
             }
-            Die();
+			animator.SetBool("Defeated", true);
+			Die();
         }
 
         GetComponent<SoundCaster>().PlayHitSFX();
