@@ -17,6 +17,7 @@ public class HeroBossAI : Hero
     private float sideChoiceTimer = 0f;
     private int sideChoice = 0; // -1 = left, 1 = right, 0 = none
     HeroAnimation heroAnim;
+    bool byCheck = false;
     [SerializeField] Lifebar lifebar; //J'ai aussi ajouté une ligne de code dans Start et dans Update
 
 
@@ -40,7 +41,7 @@ public class HeroBossAI : Hero
         {
             MoveHero();
         }
-        else 
+        else if (byCheck)
         {
             // Recompute distance to target
             Vector2 closestPoint = target.GetComponent<Collider2D>().ClosestPoint(rb.position);
@@ -54,6 +55,7 @@ public class HeroBossAI : Hero
             {
                 atTarget = false;
                 attacking = false;
+                byCheck = false;
             }
         }
 
@@ -74,6 +76,7 @@ public class HeroBossAI : Hero
         if (collision.gameObject == target && !attacking)
         {
             //Debug.Log(Vector2.Distance(transform.position, target.transform.position));
+            lastMoveDirection = ((Vector2)target.transform.position - (Vector2)rb.position).normalized;
             attacking = true;
             atTarget = true;
             rb.linearVelocity = Vector2.zero;
@@ -104,6 +107,7 @@ public class HeroBossAI : Hero
         {
             atTarget = true;
             attacking = true;
+            byCheck = true;
             rb.linearVelocity = Vector2.zero; // Kill any sliding momentum
             return;
         }
