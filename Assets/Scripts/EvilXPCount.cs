@@ -1,8 +1,11 @@
+using System;
 using UnityEngine;
 
 public class EvilXPCount : MonoBehaviour
 {
-    public static int EvilXP = 0;
+    public static int EvilXP = 200;
+
+    public static bool[] upgrades = new bool[]{true,false, true, false };
 
     public static void GainXP(int amount)
     {
@@ -13,4 +16,11 @@ public class EvilXPCount : MonoBehaviour
     {
         return EvilXP;
     }
+
+    public static void SpendEXP(int amount)
+    {
+        EvilXP -= amount;
+    }
+
+    
 }
