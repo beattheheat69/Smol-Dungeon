@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EvilXPCount : MonoBehaviour
 {
-    public static int EvilXP = 200;
+    public static int EvilXP = 0;
 
     public static bool[] upgrades = new bool[]{true,false, true, false };
 

@@ -16,6 +16,8 @@ public class UpgradeButton : MonoBehaviour
     MenuManager gM;
     [SerializeField]
     GameObject costText;
+    [SerializeField]
+    GameObject check;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -29,6 +31,7 @@ public class UpgradeButton : MonoBehaviour
         else if (EvilXPCount.upgrades[id])
         {
             transform.GetComponent<UnityEngine.UI.Button>().interactable = false;
+            check.SetActive(true);
             costText.SetActive(false);
         }
     }
@@ -39,6 +42,7 @@ public class UpgradeButton : MonoBehaviour
         EvilXPCount.upgrades[id] = true;
         gM.UpdateEvilXP();
         transform.GetComponent<UnityEngine.UI.Button>().interactable = false;
+        check.SetActive(true);
         costText.SetActive(false);
     }
 
