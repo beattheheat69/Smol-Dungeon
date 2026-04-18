@@ -18,6 +18,8 @@ public class EntityButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     [SerializeField] GameObject flavorTextBox;
     [HideInInspector] TextMeshProUGUI flavorTextElement;
+    [SerializeField]
+    int id;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,6 +32,11 @@ public class EntityButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         //flavorTextBox = GameObject.FindWithTag("FlavorTextBox"); 
         flavorTextElement = flavorTextBox.GetComponentInChildren<TextMeshProUGUI>();
         flavorTextBox.SetActive(false);
+
+        if (!EvilXPCount.upgrades[id])
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
