@@ -30,10 +30,7 @@ public class HeroAI : Hero
     bool attacking = false; // hero in attack mode
     Vector2 lastAngle; // Angle for the attack hitbox
     float castDistance = 0.8f; //Distance of sphere cast goes
-    float avoidWeight = 2.5f;
     BoxCollider2D boxCol;
-    private float sideChoiceTimer = 0f;
-    private int sideChoice = 0; // -1 = left, 1 = right, 0 = none
     HeroAnimation heroAnim;
     bool byCheck = false;
     float stuckTimer = 0f;
