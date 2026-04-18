@@ -6147,6 +6147,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7866716442834030314, guid: 718efe29157fd09439384fd84532224d, type: 3}
     - target: {fileID: 8991860230801663576, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
+      propertyPath: id
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8991860230801663576, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: entityCost
       value: 2
       objectReference: {fileID: 0}
@@ -6695,6 +6699,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 9187147237796603150, guid: 718efe29157fd09439384fd84532224d, type: 3}
+    - target: {fileID: 8991860230801663576, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
+      propertyPath: id
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8991860230801663576, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: entityCost
       value: 2
@@ -9506,6 +9514,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 9190401031475261156, guid: 718efe29157fd09439384fd84532224d, type: 3}
+    - target: {fileID: 8991860230801663576, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
+      propertyPath: id
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8991860230801663576, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: flavorTextBox
       value: 
