@@ -73,7 +73,12 @@ public class SlimeAI : MonsterAI
                 timeCooldown -= Time.deltaTime;
             }
         }
-    }
+
+        if (lastMoveDirection.x < 0)
+            GetComponent<SpriteRenderer>().flipX = true;
+        else
+			GetComponent<SpriteRenderer>().flipX = false;
+	}
 
     //Enter in attack mode when colliding with target
     private void OnCollisionEnter2D(Collision2D collision)
@@ -231,8 +236,12 @@ public class SlimeAI : MonsterAI
         animator.SetTrigger("Attack");
         GetComponent<SoundCaster>().PlayAttackSFX();
 
-        // Get Direction
-        Vector2 direction = (target.transform.position - transform.position).normalized;
+        //Windup anim + delay
+		rb.linearVelocity = Vector2.zero;
+		yield return new WaitForSeconds(0.5f);
+
+		// Get Direction
+		Vector2 direction = (target.transform.position - transform.position).normalized;
 
         // Use Impulse to give it immediate speed
         rb.AddForce(direction * 3f, ForceMode2D.Impulse);
