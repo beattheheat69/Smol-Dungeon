@@ -11,7 +11,7 @@ public class MenuManager : MonoBehaviour
     public Button continueButton;
     [SerializeField] bool isContinueAvailable;
 
-    [Header("Evil XP")
+    [Header("Evil XP")]
     public TMP_Text evilXPText;
 
 
