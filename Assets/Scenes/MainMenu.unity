@@ -5951,6 +5951,9 @@ MonoBehaviour:
       - m_Target: {fileID: 1793940003}
         m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
         m_MethodName: Play
+      - m_Target: {fileID: 1793940000}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: CheckIfContinue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
