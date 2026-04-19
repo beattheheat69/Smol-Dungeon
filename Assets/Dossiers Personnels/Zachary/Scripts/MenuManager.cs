@@ -17,27 +17,14 @@ public class MenuManager : MonoBehaviour
     public TMP_Text evilXPTextPlay;
     public TMP_Text evilXPTextUpgrade;
 
+	GameObject thingsToSend;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+	// Start is called once before the first execution of Update after the MonoBehaviour is created
+	void Start()
     {
         evilXPTextPlay.text = "EvilXP = " + EvilXPCount.GetXP().ToString();
         evilXPTextUpgrade.text = "EvilXP = " + EvilXPCount.GetXP().ToString();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-        //FOR DEBUG PURPOSES (check if Continue button is greyed out)
-        if (!isContinueAvailable)
-        {
-            continueButton.interactable = false;
-        }
-        else
-        {
-            continueButton.interactable = true;
-        }
     }
 
     public void UpdateEvilXP()
@@ -60,7 +47,12 @@ public class MenuManager : MonoBehaviour
     public void ReturnToMenu()
     {
         SceneManager.LoadScene("MainMenu");
-    }
+
+		//Destroy ThingsToSend
+		thingsToSend = GameObject.Find("ThingsToSend").gameObject;
+		if (thingsToSend != null)
+			Destroy(thingsToSend);
+	}
 
     public void PopUpWindow(Canvas window)
     {
@@ -77,5 +69,18 @@ public class MenuManager : MonoBehaviour
     {
         //Bye bye!
         Application.Quit();
+    }
+
+    public void CheckIfContinue()
+    {
+        //FOR DEBUG PURPOSES (check if Continue button is greyed out)
+        if (!isContinueAvailable)
+        {
+            continueButton.interactable = false;
+        }
+        else
+        {
+            continueButton.interactable = true;
+        }
     }
 }
