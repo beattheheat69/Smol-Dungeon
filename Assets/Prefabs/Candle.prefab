@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5011977342322311314}
   - component: {fileID: 270094841454711267}
   - component: {fileID: 6926541748554814422}
+  - component: {fileID: 7518257205333158088}
   m_Layer: 0
   m_Name: Candle
   m_TagString: Untagged
@@ -153,6 +154,23 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.085112005}
   m_Size: {x: 0.48864233, y: 0.744664}
   m_Direction: 0
+--- !u!114 &7518257205333158088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6583995410196408258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcb34de0818702f4985567efd4c6645d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LightFlicker
+  _light: {fileID: 2517057675973068299}
+  _flickerIntensity: 1.5
+  _flickerSpeed: 5
+  _minFlickerTime: 0.15
+  _maxFlickerTime: 0.5
 --- !u!1 &9033972953549465760
 GameObject:
   m_ObjectHideFlags: 0
