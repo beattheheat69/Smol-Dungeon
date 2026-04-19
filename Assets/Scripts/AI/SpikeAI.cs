@@ -88,7 +88,7 @@ public class SpikeAI : TrapAI
             anim.Play("SpikeBundle_Idle");
 
             yield return null;
-			Debug.Log("<color=red><b>[AI]</b> Spike cycle from AI </color>");
+			//Debug.Log("<color=red><b>[AI]</b> Spike cycle from AI </color>");
 
             ////make all spike go up
             //foreach (Animator anim in spikesAnomators)

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -15,6 +16,7 @@ public class SlimeAI : MonsterAI
     bool attacking = false; // monster in attack mode
     bool isJumping = false; //Is doinf the bounce attack
     CircleCollider2D circleCol;
+    bool byCheck = false;
 
     private void Start()
     {
@@ -31,17 +33,21 @@ public class SlimeAI : MonsterAI
         if (!isDead)
         {
             //If camera is moving do nothing
-            if (cameraStat.GetTransitionning()) return;
+            if (cameraStat.GetTransitionning() || isStunned) return;
             //If no target check for one
             if (target == null)
             {
                 FindTarget();
             }
 
-            if (!atTarget && !isStunned)
+            if (!atTarget)
             {
                 //Move to target
                 MoveEnemy();
+            }
+            else if (byCheck)
+            {
+                CheckCollider();
             }
 
 
@@ -101,32 +107,16 @@ public class SlimeAI : MonsterAI
     //Does an attack on target
     private void DoAttack()
     {
-        float randVal = Random.Range(1, 100);
+        rb.linearVelocity = Vector2.zero;
+        StartCoroutine(BounceAttack());
+        /* if (target.TryGetComponent(out IDamageable hitTarget)) //BUG: One shots hero
+         {
+             hitTarget.takeDamage(baseStats.power, transform.position, 0f);
+             animator.SetTrigger("Attack");
+         }
 
-        //Check is attack succeded
-        if (randVal <= baseStats.attackChance)
-        {
-            rb.linearVelocity = Vector2.zero;
-            if (target.TryGetComponent(out IDamageable hitTarget)) //BUG: One shots hero
-            {
-                hitTarget.takeDamage(baseStats.power, transform.position, 0f);
-                animator.SetTrigger("Attack");
-            }
-        }
-		else
-		{
-			//Calls miss anim and text on enemy
-			damageNumberAnim.GetComponentInChildren<TextMesh>().text = "Block";
-			damageNumberAnim.GetComponentInChildren<TextMesh>().color = Color.red;
-			GameObject inst = Instantiate(damageNumberAnim, target.transform.position, Quaternion.identity);
-			Destroy(inst, 1f);
-            //Call target block anim and sfx
-            target.GetComponent<Animator>().SetTrigger("Block");
-			target.GetComponent<SoundCaster>().PlayBlockSFX();
-		}
-
-		//Start cooldown
-		timeCooldown = baseStats.attackCooldown;
+         //Start cooldown
+         timeCooldown = baseStats.attackCooldown;*/
     }
 
     //Move monster towards target
@@ -145,7 +135,7 @@ public class SlimeAI : MonsterAI
         {
             atTarget = true;
             attacking = true;
-            rb.linearVelocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero; // Kill any sliding momentum
             return;
         }
 
@@ -178,10 +168,30 @@ public class SlimeAI : MonsterAI
         if (skinToSkinGap <= attackRange && skinToSkinGap > 0.1f)
         {
             atTarget = true;
-            timeCooldown = baseStats.attackCooldown;
-            StartCoroutine(BounceAttack());
+            attacking = true;
+            //timeCooldown = baseStats.attackCooldown;
+            //StartCoroutine(BounceAttack());
         }
     }
+
+    void CheckCollider()
+    {
+        Vector2 closestPoint = target.GetComponent<Collider2D>().ClosestPoint(rb.position);
+
+        float slimeRadius = circleCol.radius * Mathf.Abs(transform.lossyScale.x);
+        float distanceToSurface = Vector2.Distance(rb.position, closestPoint);
+        float stopDistance = slimeRadius + 0.06f;
+
+
+        if ((distanceToSurface > stopDistance) && !(Mathf.Approximately(distanceToSurface, stopDistance)))
+        {
+            atTarget = false;
+            attacking = false;
+            byCheck = false;
+        }
+    }
+
+
 
     //Show hero collision sphere for overlap
     void OnDrawGizmosSelected()
@@ -218,7 +228,6 @@ public class SlimeAI : MonsterAI
     {
         isJumping = true;
         timeCooldown = baseStats.attackCooldown;
-
         animator.SetTrigger("Attack");
         GetComponent<SoundCaster>().PlayAttackSFX();
 
