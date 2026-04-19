@@ -5960,6 +5960,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1793940000}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: CheckIfContinue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1656620005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6862,13 +6874,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9e6417754dafca4abc9ea3eccfdcab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Parameters
-  musicEvent:
-    Guid:
-      Data1: 1764136186
-      Data2: 1290442587
-      Data3: -1364200826
-      Data4: -988849742
-    Path: event:/MUS/MUS_Game
   musicEmitter: {fileID: 1793940005}
 --- !u!114 &1793940005
 MonoBehaviour:
