@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6244820892923789434}
   - component: {fileID: 7254611866311900296}
+  - component: {fileID: 6755639259235138072}
   m_Layer: 0
   m_Name: FlyingLight
   m_TagString: Untagged
@@ -48,6 +49,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Orbit
   _target: {fileID: 0}
   <OrbitalSpeed>k__BackingField: 2
+--- !u!114 &6755639259235138072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2600862933423415013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcb34de0818702f4985567efd4c6645d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  _light: {fileID: 154736999910762038}
+  _flickerIntensity: 0.5
+  _minFlickerTime: 0.75
+  _maxFlickerTime: 1.5
 --- !u!1 &8132758953463596791
 GameObject:
   m_ObjectHideFlags: 0
