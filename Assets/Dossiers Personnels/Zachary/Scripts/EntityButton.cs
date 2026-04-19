@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
 using System;
+using UnityEngine.UIElements;
 
 public class EntityButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -20,6 +21,17 @@ public class EntityButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     [HideInInspector] TextMeshProUGUI flavorTextElement;
     [SerializeField]
     int id;
+
+    void OnEnable()
+    {
+        GlobalRessources.PAmountChange += CheckPoints;
+    }
+
+    void OnDisable()
+    {
+        GlobalRessources.PAmountChange -= CheckPoints;
+    }
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -43,6 +55,16 @@ public class EntityButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     void Update()
     {
 
+    }
+
+    void CheckPoints(int eveilPoint)
+    {
+        if (eveilPoint >= entityCost && entityCost > 0)
+            transform.GetComponent<UnityEngine.UI.Button>().interactable = true;
+        else if (entityCost > 0)
+            transform.GetComponent<UnityEngine.UI.Button>().interactable = false;
+
+        Debug.Log(entityCost);
     }
 
     public void ToggleTextBox(bool state)
