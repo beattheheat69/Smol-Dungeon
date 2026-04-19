@@ -11,19 +11,24 @@ public class MenuManager : MonoBehaviour
     public Button continueButton;
     [SerializeField] bool isContinueAvailable;
 
-    [Header("Evil XP")]
-    public TMP_Text evilXPText;
+    [Header("Pause Menu")]
+    [SerializeField] Canvas pauseWindowPrefab;
+    [HideInInspector] public bool isGamePaused = false;
+    public TMP_Text evilXPTextPlay;
+    public TMP_Text evilXPTextUpgrade;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        evilXPText.text = "EvilXP = " + EvilXPCount.GetXP().ToString();
+        evilXPTextPlay.text = "EvilXP = " + EvilXPCount.GetXP().ToString();
+        evilXPTextUpgrade.text = "EvilXP = " + EvilXPCount.GetXP().ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         //FOR DEBUG PURPOSES (check if Continue button is greyed out)
         if (!isContinueAvailable)
         {
@@ -33,6 +38,12 @@ public class MenuManager : MonoBehaviour
         {
             continueButton.interactable = true;
         }
+    }
+
+    public void UpdateEvilXP()
+    {
+        evilXPTextPlay.text = "EvilXP = " + EvilXPCount.GetXP().ToString();
+        evilXPTextUpgrade.text = "EvilXP = " + EvilXPCount.GetXP().ToString();
     }
 
     public void LoadNewGame()
