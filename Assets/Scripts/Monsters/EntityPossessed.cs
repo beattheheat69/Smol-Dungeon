@@ -148,10 +148,17 @@ public class EntityPossessed : MonoBehaviour
 
 		//Deactivate all child game objects
 		for (int i = 0; i < transform.childCount; i++)
+		{
             if (transform.GetChild(i).tag != "Trap")
             {
                 transform.GetChild(i).gameObject.SetActive(false);
             }
+			else
+			{
+				transform.GetChild(0).gameObject.SetActive(false);
+			}
+		}
+		
 
         //Checks if entity is monster or trap for related scripts
         if ((this.gameObject.CompareTag("Monster") || this.gameObject.CompareTag("TriggerMonster")) && playerMovement != null && monsterAction != null && monsterAI != null)

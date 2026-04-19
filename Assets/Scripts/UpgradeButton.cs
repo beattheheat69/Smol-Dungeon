@@ -38,16 +38,14 @@ public class UpgradeButton : MonoBehaviour
 
     public void BuyUpgrade()
     {
-        EvilXPCount.SpendEXP(upgradeCost);
-        EvilXPCount.upgrades[id] = true;
-        gM.UpdateEvilXP();
-        transform.GetComponent<UnityEngine.UI.Button>().interactable = false;
-        check.SetActive(true);
-        costText.SetActive(false);
+        if (EvilXPCount.GetXP() >= upgradeCost)
+        {
+            EvilXPCount.SpendEXP(upgradeCost);
+            EvilXPCount.upgrades[id] = true;
+            gM.UpdateEvilXP();
+            transform.GetComponent<UnityEngine.UI.Button>().interactable = false;
+            check.SetActive(true);
+            costText.SetActive(false);
+        }
     }
-
-    
-
-
-
 }

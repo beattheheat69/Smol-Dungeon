@@ -33,6 +33,7 @@ public class BossProjectile : MonoBehaviour
 	{
 		if (other.CompareTag("Hero") && other.GetComponent<HeroBossAI>() != null)
 		{
+			StartCoroutine(HandyFunctions.HitStop());
 			other.GetComponent<HeroBossAI>().takeDamage(damage, transform.position, knockback); // change 0f value for knockback on hero takeDamage
 		}
 	}

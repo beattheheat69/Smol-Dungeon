@@ -25,13 +25,19 @@ public class RunStatus : MonoBehaviour
 			bossWin = win;
 			//StartCoroutine(RestartTheGame(win, day));
 			if (win)
+			{
 				winText.SetActive(true);
+				EvilXPCount.GainXP(100); //XP gain based on 100 + EP left when starting run
+			}
 			else if (!win)
+			{
 				loseText.SetActive(true);
+				EvilXPCount.GainXP(50); //XP gain based on 100 + EP left when starting run
+			}
 
 			//Add Evil XP here
 			xpText.SetActive(true);
-			EvilXPCount.GainXP(100); //XP gain based on 100 + EP left when starting run
+			//EvilXPCount.GainXP(100); //XP gain based on 100 + EP left when starting run
 			StartCoroutine(GetComponent<CountingUp>().CountUp());
 		}
 

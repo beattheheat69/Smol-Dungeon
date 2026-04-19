@@ -6662,7 +6662,7 @@ MonoBehaviour:
   isContinueAvailable: 0
   pauseWindowPrefab: {fileID: 483343104564186509, guid: e4bec50c82e041546a6e7ab88100ada4, type: 3}
   isGamePaused: 0
-  evilXPTextPlay: {fileID: 0}
+  evilXPTextPlay: {fileID: 1793048383}
   evilXPTextUpgrade: {fileID: 1793048383}
 --- !u!4 &1793940001
 Transform:
