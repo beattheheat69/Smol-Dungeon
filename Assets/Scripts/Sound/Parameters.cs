@@ -40,4 +40,5 @@ public class Parameters : MonoBehaviour
 	{
 		RuntimeManager.StudioSystem.setParameterByName("LowPass", 1);
 	}
+	//test
 }
