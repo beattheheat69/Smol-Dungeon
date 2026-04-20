@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2905bedff246546409fc720ba01e9458, type: 3}
   m_Name: CrossbowStats_SO
   m_EditorClassIdentifier: Assembly-CSharp::CrossbowStats_SO
-  <power>k__BackingField: 2
+  <power>k__BackingField: 3
   <attackCooldown>k__BackingField: 1
   <arrowSpeed>k__BackingField: 7
   <kockbackForce>k__BackingField: 0
