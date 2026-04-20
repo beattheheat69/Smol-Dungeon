@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a45519c298f5a46908dd8539cbefb5, type: 3}
   m_Name: PaladinStats_SO
   m_EditorClassIdentifier: Assembly-CSharp::PaladinStats_SO
-  <chargeSpeed>k__BackingField: 4
-  <health>k__BackingField: 150
+  <chargeSpeed>k__BackingField: 3.5
+  <health>k__BackingField: 120
   <power>k__BackingField: 5
   <attackCooldown>k__BackingField: 0.5
   <attackChance>k__BackingField: 65
-  <dodgeChange>k__BackingField: 45
+  <dodgeChange>k__BackingField: 25
   <Nbpotion>k__BackingField: 1
   <kockbackForce>k__BackingField: 15
