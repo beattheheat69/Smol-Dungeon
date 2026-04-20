@@ -2077,6 +2077,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3658791084411811562, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
+      propertyPath: m_text
+      value: CROSSBOW
+      objectReference: {fileID: 0}
     - target: {fileID: 5213382362457853655, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: m_Name
       value: UpgradeCost
