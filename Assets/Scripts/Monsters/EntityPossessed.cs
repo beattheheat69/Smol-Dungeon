@@ -1,5 +1,6 @@
 using FMOD.Studio;
 using FMODUnity;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -32,6 +33,8 @@ public class EntityPossessed : MonoBehaviour
 	public int getMonsterHealth;
 
 	public GameObject possessVFX;
+	public CanvasGroup inputIconAttack;
+	public TMP_Text inputTextPossess;
 
 
 	void Start()
@@ -54,6 +57,8 @@ public class EntityPossessed : MonoBehaviour
 			spikeControl = GetComponent<SpikeControl>();
         }
 		musicParameter = FindAnyObjectByType<Parameters>();
+		inputIconAttack = GameObject.Find("Input_LMB").GetComponent<CanvasGroup>();
+		inputTextPossess = GameObject.Find("Input_Spacebar").GetComponentInChildren<TMP_Text>();
 	}
 
 	void Update()
@@ -84,6 +89,9 @@ public class EntityPossessed : MonoBehaviour
 		smol = playerSmol;
 		GameObject instVFX = Instantiate(possessVFX, smol.transform.position, Quaternion.identity);
 		Destroy(instVFX, 1.0f);
+
+		inputIconAttack.alpha = 1.0f;
+		inputTextPossess.text = "Release";
 
 		//Sets active all child game objects
 		for (int i = 0; i < transform.childCount; i++)
@@ -145,6 +153,9 @@ public class EntityPossessed : MonoBehaviour
 			RuntimeManager.PlayOneShot(depossessingSFX);
 			musicParameter.SetNormal();
 		}
+
+		inputIconAttack.alpha = 0.25f;
+		inputTextPossess.text = "Possess";
 
 		//Deactivate all child game objects
 		for (int i = 0; i < transform.childCount; i++)
