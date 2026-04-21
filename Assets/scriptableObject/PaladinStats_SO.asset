@@ -16,7 +16,7 @@ MonoBehaviour:
   <health>k__BackingField: 120
   <power>k__BackingField: 5
   <attackCooldown>k__BackingField: 0.5
-  <attackChance>k__BackingField: 65
-  <dodgeChange>k__BackingField: 25
+  <attackChance>k__BackingField: 75
+  <dodgeChange>k__BackingField: 50
   <Nbpotion>k__BackingField: 1
   <kockbackForce>k__BackingField: 15
