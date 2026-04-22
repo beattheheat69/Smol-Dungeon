@@ -1600,7 +1600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.8}
+  m_Color: {r: 0.6981132, g: 0.6948676, b: 0.24697402, a: 0.6862745}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1992,6 +1992,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1334842271}
+        m_TargetAssemblyTypeName: ToggleManager, Assembly-CSharp
+        m_MethodName: ToggleOnMenu
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 360810849}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!114 &360810850
 MonoBehaviour:
@@ -2063,7 +2075,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.8}
+  m_Color: {r: 0.6981132, g: 0.6948676, b: 0.24697402, a: 0.6862745}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3025,6 +3037,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1334842271}
+        m_TargetAssemblyTypeName: ToggleManager, Assembly-CSharp
+        m_MethodName: ToggleOnMenu
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 591432091}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4659,7 +4683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.8}
+  m_Color: {r: 0.6981132, g: 0.6948676, b: 0.24697402, a: 0.6862745}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4765,7 +4789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.8}
+  m_Color: {r: 0.6981132, g: 0.6948676, b: 0.24697402, a: 0.6862745}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5425,6 +5449,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1334842271}
+        m_TargetAssemblyTypeName: ToggleManager, Assembly-CSharp
+        m_MethodName: ToggleOnMenu
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 964458607}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!114 &964458608
 MonoBehaviour:
@@ -5799,7 +5835,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 25, y: -25}
+  m_AnchoredPosition: {x: 46.599976, y: -867.39996}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &997414696
@@ -6019,6 +6055,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1334842271}
+        m_TargetAssemblyTypeName: ToggleManager, Assembly-CSharp
+        m_MethodName: ToggleOnMenu
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1022930531}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6541,6 +6589,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1334842271}
+        m_TargetAssemblyTypeName: ToggleManager, Assembly-CSharp
+        m_MethodName: ToggleOnMenu
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1089384770}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!114 &1089384771
 MonoBehaviour:
@@ -6692,7 +6752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.8}
+  m_Color: {r: 0.6981132, g: 0.6948676, b: 0.24697402, a: 0.6862745}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7010,6 +7070,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EntityButton_Crossbow
       objectReference: {fileID: 0}
+    - target: {fileID: 3658791084411811562, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 5777676300990694717, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: m_Type
       value: 1
@@ -7034,6 +7098,10 @@ PrefabInstance:
       propertyPath: m_PixelsPerUnitMultiplier
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 6777260396386087192, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -21.598267
+      objectReference: {fileID: 0}
     - target: {fileID: 8086273930335123478, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -7048,7 +7116,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8991860230801663576, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: entityName
-      value: CROSSBOW
+      value: CROSSBOW\n(max 3 per room)
       objectReference: {fileID: 0}
     - target: {fileID: 8991860230801663576, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: flavorText
@@ -7828,6 +7896,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EntityButton_LivingArmor
       objectReference: {fileID: 0}
+    - target: {fileID: 3658791084411811562, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 5777676300990694717, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: m_Type
       value: 1
@@ -7848,6 +7920,10 @@ PrefabInstance:
       propertyPath: m_PixelsPerUnitMultiplier
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 6777260396386087192, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -21.598267
+      objectReference: {fileID: 0}
     - target: {fileID: 8086273930335123478, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -7862,7 +7938,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8991860230801663576, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: entityName
-      value: LIVING ARMOR
+      value: LIVING ARMOR\n(max 3 per room)
       objectReference: {fileID: 0}
     - target: {fileID: 8991860230801663576, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: flavorText
@@ -7902,6 +7978,7 @@ GameObject:
   - component: {fileID: 1334842268}
   - component: {fileID: 1334842269}
   - component: {fileID: 1334842270}
+  - component: {fileID: 1334842271}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -8069,6 +8146,19 @@ MonoBehaviour:
   isGamePaused: 0
   evilXPTextPlay: {fileID: 0}
   evilXPTextUpgrade: {fileID: 0}
+--- !u!114 &1334842271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334842262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c3bef547ba84b64fbf11b79c5b3b500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleManager
+  entityMenuCanvas: {fileID: 1881553559}
 --- !u!1 &1370513256
 GameObject:
   m_ObjectHideFlags: 0
@@ -8495,6 +8585,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1334842271}
+        m_TargetAssemblyTypeName: ToggleManager, Assembly-CSharp
+        m_MethodName: ToggleOnMenu
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1449751500}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -9141,7 +9243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.8}
+  m_Color: {r: 0.6981132, g: 0.6948676, b: 0.24697402, a: 0.6862745}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9406,6 +9508,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EntityButton_Slime
       objectReference: {fileID: 0}
+    - target: {fileID: 3658791084411811562, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 5777676300990694717, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: m_Type
       value: 1
@@ -9438,6 +9544,10 @@ PrefabInstance:
       propertyPath: m_PixelsPerUnitMultiplier
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 6777260396386087192, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -21.598267
+      objectReference: {fileID: 0}
     - target: {fileID: 7212605489606915623, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: cursorTextBox
       value: 
@@ -9460,7 +9570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8991860230801663576, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: entityName
-      value: SLIME
+      value: SLIME\n(max 3 per room)
       objectReference: {fileID: 0}
     - target: {fileID: 8991860230801663576, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: flavorText
@@ -9595,6 +9705,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1334842271}
+        m_TargetAssemblyTypeName: ToggleManager, Assembly-CSharp
+        m_MethodName: ToggleOnMenu
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1637678914}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -9777,7 +9899,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 466, y: 99}
+  m_AnchoredPosition: {x: 1146.3999, y: 941.3999}
   m_SizeDelta: {x: 229.22, y: 94.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1657543302
@@ -10300,7 +10422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.8}
+  m_Color: {r: 0.6981132, g: 0.6948676, b: 0.24697402, a: 0.6862745}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10828,6 +10950,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EntityButton_Spike
       objectReference: {fileID: 0}
+    - target: {fileID: 3658791084411811562, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 5777676300990694717, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -10844,6 +10970,10 @@ PrefabInstance:
       propertyPath: m_PixelsPerUnitMultiplier
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 6777260396386087192, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -21.598267
+      objectReference: {fileID: 0}
     - target: {fileID: 8086273930335123478, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -10851,6 +10981,10 @@ PrefabInstance:
     - target: {fileID: 8991860230801663576, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: id
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8991860230801663576, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
+      propertyPath: entityName
+      value: SPIKES\n(max 1 per room)
       objectReference: {fileID: 0}
     - target: {fileID: 8991860230801663576, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: flavorTextBox
@@ -10879,6 +11013,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1881553557}
   - component: {fileID: 1881553558}
+  - component: {fileID: 1881553559}
   m_Layer: 5
   m_Name: EntityMenu
   m_TagString: Untagged
@@ -10930,6 +11065,18 @@ MonoBehaviour:
   - {fileID: 1735637524}
   - {fileID: 267562911}
   - {fileID: 87598862}
+--- !u!225 &1881553559
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881553556}
+  m_Enabled: 1
+  m_Alpha: 0.2
+  m_Interactable: 0
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1899669920
 GameObject:
   m_ObjectHideFlags: 0
@@ -11354,7 +11501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.8}
+  m_Color: {r: 0.6981132, g: 0.6948676, b: 0.24697402, a: 0.6862745}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -12181,6 +12328,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1334842271}
+        m_TargetAssemblyTypeName: ToggleManager, Assembly-CSharp
+        m_MethodName: ToggleOnMenu
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2131780017}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

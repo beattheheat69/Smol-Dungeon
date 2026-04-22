@@ -152,10 +152,10 @@ public class EntityPossessed : MonoBehaviour
 			smol.transform.position = transform.position;
 			RuntimeManager.PlayOneShot(depossessingSFX);
 			musicParameter.SetNormal();
+			inputIconAttack.alpha = 0.25f;
+			inputTextPossess.text = "Possess";
 		}
 
-		inputIconAttack.alpha = 0.25f;
-		inputTextPossess.text = "Possess";
 
 		//Deactivate all child game objects
 		for (int i = 0; i < transform.childCount; i++)
