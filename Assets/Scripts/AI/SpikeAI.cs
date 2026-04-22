@@ -71,7 +71,7 @@ public class SpikeAI : TrapAI
 
     IEnumerator TrapCycle()
     {
-        while (!isPossesed)
+        while (!isPossesed && !HeroParty.Instance.GetcutScene())
         {
 			yield return new WaitForSeconds(baseStats.timeUp);
             //SFX on hold for now until figure out why coroutine is called 999+ times each time

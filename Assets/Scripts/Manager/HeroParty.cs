@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Mathematics;
@@ -14,6 +15,7 @@ public class HeroParty : MonoBehaviour
     int currentRoomId; // RoomInstance the party is currently in
     //To temporarily move party to next rooms
     bool roomFinished; //If room party is in has monsters or not
+    bool cutScene;  //If in cutscene before boss fight
     bool allAtDoorExit; //If all heros are at the door
     bool allAtDoorEntrance; //If all heros are at the door
 
@@ -44,6 +46,12 @@ public class HeroParty : MonoBehaviour
 
     }
 
+    public bool GetcutScene()
+    {
+        return cutScene;
+
+    }
+
     //Gives current room
     public RoomInstance GetRoom()
     {
@@ -66,7 +74,7 @@ public class HeroParty : MonoBehaviour
 
     public void Update()
     {
-        if (roomFinished)
+        if (roomFinished && !cutScene)
         {
             Transform doorExit;
             if (currentRoomId == roomList.Count() - 1)
@@ -103,7 +111,7 @@ public class HeroParty : MonoBehaviour
             {
                 if (currentRoomId == roomList.Count() - 1)
                 {
-                    SceneManager.LoadSceneAsync("BossGym");
+                    StartCoroutine(DoorDialog());
                 }
                 else
                 {
@@ -141,5 +149,14 @@ public class HeroParty : MonoBehaviour
                 }
             }
         }
+    }
+
+    IEnumerator DoorDialog() 
+    {
+        cutScene = true;
+        
+        yield return new WaitForSeconds(5f); //change time to match lenght of dialog
+        //put dialog
+        SceneManager.LoadSceneAsync("BossGym");
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 
 public class HeroBossAI : Hero
@@ -41,6 +42,8 @@ public class HeroBossAI : Hero
     void Update()
     {
 		lifebar.SetHealth(health);
+
+        if (isStunned) return;
 
         if (target != null && !atTarget)
         {
