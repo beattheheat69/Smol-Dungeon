@@ -22,7 +22,8 @@ public class UpgradeButton : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        costTMP.SetText(upgradeCost.ToString().PadLeft(2, '0'));
+        if (costTMP != null)
+            costTMP.SetText(upgradeCost.ToString().PadLeft(2, '0'));
 
         if (upgradeCost > EvilXPCount.GetXP())
         {
