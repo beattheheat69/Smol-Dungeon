@@ -9,7 +9,7 @@ public class HandyFunctions : MonoBehaviour
     {
         Debug.Log("Hit Stop");
         Time.timeScale = 0f;
-        yield return new WaitForSecondsRealtime(0.1f);
+        yield return new WaitForSecondsRealtime(0.05f);
         Time.timeScale = 1f;
     }
 }
