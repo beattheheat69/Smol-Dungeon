@@ -20,7 +20,7 @@ public class CrossbowAI : TrapAI
     private void FixedUpdate()
     {
         //If camera is moving do nothing
-        if (cameraStat.GetTransitionning()) return;
+        if (cameraStat.GetTransitionning() || HeroParty.Instance.GetcutScene()) return;
             //If no target check for one
             if (target == null)
             {

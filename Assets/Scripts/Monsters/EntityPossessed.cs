@@ -78,7 +78,7 @@ public class EntityPossessed : MonoBehaviour
 		if (possessInput.WasPressedThisFrame() && isPossessed)
 			DePossessing();
 
-		if (Camera.main.GetComponent<CameraManagement>().GetTransitionning())
+		if (Camera.main.GetComponent<CameraManagement>().GetTransitionning() || HeroParty.Instance.GetcutScene())
 			DePossessing();
 	}
 
