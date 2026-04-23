@@ -18,4 +18,4 @@ MonoBehaviour:
   <power>k__BackingField: 5
   attackCooldown: 2
   <kockbackForce>k__BackingField: 1
-  <cost>k__BackingField: 3
+  <cost>k__BackingField: 2
