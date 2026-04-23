@@ -8976,6 +8976,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3494278648934827460, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       insertIndex: 4
       addedObject: {fileID: 1492902866}
+    - targetCorrespondingSourceObject: {fileID: 3494278648934827460, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1492902871}
   m_SourcePrefab: {fileID: 100100000, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
 --- !u!1 &1457145291
 GameObject:
@@ -9167,7 +9170,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1492902864}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 970f8462a814dc74d874122de4be1f50, type: 3}
   m_Name: 
@@ -9183,6 +9186,19 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2675665126676355402, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
   m_PrefabInstance: {fileID: 1454874129}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1492902871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492902864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b00945793c969d4e8af9239a48957a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EntiteUpgradeMenu
+  id: 1
 --- !u!1001 &1495996657
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11393,7 +11409,7 @@ PrefabInstance:
     - target: {fileID: 8086273930335123478, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 9187147237796603150, guid: 718efe29157fd09439384fd84532224d, type: 3}
+      objectReference: {fileID: 7866716442834030314, guid: 718efe29157fd09439384fd84532224d, type: 3}
     - target: {fileID: 8086273930335123478, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: m_Color.a
       value: 1
@@ -11441,6 +11457,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3494278648934827460, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       insertIndex: 4
       addedObject: {fileID: 1817404430}
+    - targetCorrespondingSourceObject: {fileID: 3494278648934827460, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1817404431}
   m_SourcePrefab: {fileID: 100100000, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
 --- !u!224 &1817404428 stripped
 RectTransform:
@@ -11459,7 +11478,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1817404429}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 970f8462a814dc74d874122de4be1f50, type: 3}
   m_Name: 
@@ -11470,6 +11489,19 @@ MonoBehaviour:
   gM: {fileID: 0}
   costText: {fileID: 0}
   check: {fileID: 1372768957}
+--- !u!114 &1817404431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817404429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b00945793c969d4e8af9239a48957a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EntiteUpgradeMenu
+  id: 3
 --- !u!1001 &1843960862
 PrefabInstance:
   m_ObjectHideFlags: 0
