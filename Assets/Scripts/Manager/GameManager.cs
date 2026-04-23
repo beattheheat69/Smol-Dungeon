@@ -130,11 +130,11 @@ public class GameManager : MonoBehaviour
 		}
         else
         {
-            if (DaySplash != null)
-                DaySplash.GetComponent<Animator>().StopPlayback();
-			
             tuto.SetActive(true);
 			Time.timeScale = 0f; //Starts frozen, will unfreeze when closing tutorial panel
+            
+            if (DaySplash != null)
+                DaySplash.GetComponent<Animator>().StopPlayback();
 		}
     }
 }
