@@ -19,6 +19,17 @@ public class UpgradeButton : MonoBehaviour
     [SerializeField]
     GameObject check;
 
+    void OnEnable()
+    {
+        EvilXPCount.ExpAmountChange += CheckExp;
+    }
+
+    void OnDisable()
+    {
+        EvilXPCount.ExpAmountChange -= CheckExp;
+    }
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -48,5 +59,14 @@ public class UpgradeButton : MonoBehaviour
             check.SetActive(true);
             costText.SetActive(false);
         }
+    }
+
+
+    void CheckExp(int eveilPoint)
+    {
+        if (eveilPoint >= upgradeCost && upgradeCost > 0)
+            transform.GetComponent<UnityEngine.UI.Button>().interactable = true;
+        else if (upgradeCost > 0)
+            transform.GetComponent<UnityEngine.UI.Button>().interactable = false;
     }
 }

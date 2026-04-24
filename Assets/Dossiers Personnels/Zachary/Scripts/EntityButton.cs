@@ -63,8 +63,6 @@ public class EntityButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             transform.GetComponent<UnityEngine.UI.Button>().interactable = true;
         else if (entityCost > 0)
             transform.GetComponent<UnityEngine.UI.Button>().interactable = false;
-
-        Debug.Log(entityCost);
     }
 
     public void ToggleTextBox(bool state)
