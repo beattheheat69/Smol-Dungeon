@@ -18,6 +18,8 @@ public class UpgradeButton : MonoBehaviour
     GameObject costText;
     [SerializeField]
     GameObject check;
+    public bool fake;
+    public bool bought;
 
     void OnEnable()
     {
@@ -40,7 +42,7 @@ public class UpgradeButton : MonoBehaviour
         {
             transform.GetComponent<UnityEngine.UI.Button>().interactable = false;
         }
-        else if (EvilXPCount.upgrades[id])
+        else if (EvilXPCount.upgrades[id] && !fake)
         {
             transform.GetComponent<UnityEngine.UI.Button>().interactable = false;
             check.SetActive(true);
@@ -58,13 +60,14 @@ public class UpgradeButton : MonoBehaviour
             transform.GetComponent<UnityEngine.UI.Button>().interactable = false;
             check.SetActive(true);
             costText.SetActive(false);
+            bought = true;
         }
     }
 
 
     void CheckExp(int eveilPoint)
     {
-        if (eveilPoint >= upgradeCost && upgradeCost > 0)
+        if (eveilPoint >= upgradeCost && upgradeCost > 0 && !fake && !bought)
             transform.GetComponent<UnityEngine.UI.Button>().interactable = true;
         else if (upgradeCost > 0)
             transform.GetComponent<UnityEngine.UI.Button>().interactable = false;
