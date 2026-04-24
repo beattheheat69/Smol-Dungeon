@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: PaladinStats_SO
   m_EditorClassIdentifier: Assembly-CSharp::PaladinStats_SO
   <chargeSpeed>k__BackingField: 3.5
-  <health>k__BackingField: 120
+  <health>k__BackingField: 150
   <power>k__BackingField: 5
   <attackCooldown>k__BackingField: 0.5
   <attackChance>k__BackingField: 75
-  <dodgeChange>k__BackingField: 50
+  <dodgeChange>k__BackingField: 35
   <Nbpotion>k__BackingField: 1
   <kockbackForce>k__BackingField: 15
