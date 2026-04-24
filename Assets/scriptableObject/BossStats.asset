@@ -17,11 +17,11 @@ MonoBehaviour:
   <power>k__BackingField: 5
   <attackCooldown>k__BackingField: 0.75
   <attackChance>k__BackingField: 20
-  <kockbackForce>k__BackingField: 20
+  <kockbackForce>k__BackingField: 15
   <cost>k__BackingField: 0
   SpecialAttack1Cooldown: 2
   SpecialAttack2Cooldown: 1.5
   SpecialAttack1Damage: 10
   SpecialAttack2Damage: 7
-  SpecialAttack1Knockback: 30
+  SpecialAttack1Knockback: 20
   SpecialAttack2Knockback: 10

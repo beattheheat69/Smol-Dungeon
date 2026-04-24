@@ -19,6 +19,7 @@ TagManager:
   - BossAttack
   - BossAttack1
   - BossAttack2
+  - Dialog
   layers:
   - Default
   - TransparentFX
