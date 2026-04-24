@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: BossStats
   m_EditorClassIdentifier: Assembly-CSharp::BossSO
   <chargeSpeed>k__BackingField: 3
-  <health>k__BackingField: 50
-  <power>k__BackingField: 5
+  <health>k__BackingField: 75
+  <power>k__BackingField: 10
   <attackCooldown>k__BackingField: 0.75
   <attackChance>k__BackingField: 100
   <kockbackForce>k__BackingField: 20
