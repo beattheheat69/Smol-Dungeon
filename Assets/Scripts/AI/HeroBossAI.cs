@@ -42,6 +42,8 @@ public class HeroBossAI : Hero
     {
 		lifebar.SetHealth(health);
 
+        if (isStunned) return;
+
         if (target != null && !atTarget)
         {
             MoveHero();

@@ -8,8 +8,8 @@ public class GameManager : MonoBehaviour
     //Global Game Manager to handle most stuff
 
     //Inputs
-    PlayerInput playerInput;
-    InputAction pauseInput;
+    //PlayerInput playerInput;
+    //InputAction pauseInput;
 
     //Pause menu stuff
     bool isPaused;
@@ -31,8 +31,8 @@ public class GameManager : MonoBehaviour
 	{
         Invoke("StartSecondDay", 0.01f);
 		//Input references
-		playerInput = GetComponent<PlayerInput>();
-		pauseInput = playerInput.actions["Pause"];
+		//playerInput = GetComponent<PlayerInput>();
+		//pauseInput = playerInput.actions["Pause"];
         //Time.timeScale = 0f; //Starts frozen, will unfreeze when closing tutorial panel
         //evilXPText.text = "EvilXP = " + EvilXPCount.GetXP().ToString();
         heroData = FindAnyObjectByType<HeroDataManager>();
@@ -43,8 +43,8 @@ public class GameManager : MonoBehaviour
 	{
 		//Call pause function when input pressed
 		//Issue: Try to deactivate other inputs to prevent player actions while paused
-		if (pauseInput.WasPressedThisFrame())
-			PauseGame();
+		//if (pauseInput.WasPressedThisFrame())
+		//	PauseGame();
 	}
 
 	public void PauseGame()
@@ -130,11 +130,11 @@ public class GameManager : MonoBehaviour
 		}
         else
         {
-            if (DaySplash != null)
-                DaySplash.GetComponent<Animator>().StopPlayback();
-			
             tuto.SetActive(true);
 			Time.timeScale = 0f; //Starts frozen, will unfreeze when closing tutorial panel
+            
+            if (DaySplash != null)
+                DaySplash.GetComponent<Animator>().StopPlayback();
 		}
     }
 }

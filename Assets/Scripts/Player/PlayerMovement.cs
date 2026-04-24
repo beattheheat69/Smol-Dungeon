@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     //Inputs
     PlayerInput playerInput;
     InputAction moveInput;
+    InputAction pauseInput;
 
     [SerializeField]
     MonsterStats_SO baseStats;
@@ -32,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
         {
             speed = baseStats.chargeSpeed;
         }
+        pauseInput = playerInput.actions["Pause"];
 	}
 
 	void Update()
@@ -61,7 +63,10 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.position = new Vector2(Camera.main.transform.position.x, Camera.main.transform.position.y);
         }
-    }
+
+		if (pauseInput.WasPressedThisFrame())
+			FindAnyObjectByType<GameManager>().PauseGame();
+	}
 
     public Vector2 GetDirection()
     {

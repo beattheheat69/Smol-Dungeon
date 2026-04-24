@@ -30,7 +30,9 @@ public class BossActions : MonoBehaviour, IDamageable
 	Vector2 attackTransform;
 	public float fistSpeed = 1f;
 	public float cooldown = 0.25f;
-	float timeForNextAttack = 0f;
+	float timeForNextBasicAttack = 0f;
+	float timeForNextSpecialAttack1 = 0f;
+	float timeForNextSpecialAttack2 = 0f;
 
 	//Lifebar thingy
 	public Lifebar lifebar;
@@ -68,28 +70,34 @@ public class BossActions : MonoBehaviour, IDamageable
 			lastDir = moveDir;
 
 		//Cooldown timer
-		if (timeForNextAttack < (stats.attackCooldown + stats.SpecialAttack1Cooldown + stats.SpecialAttack2Cooldown)) //Maybe individual cooldowns for each attack?
-			timeForNextAttack += Time.deltaTime;
+		if (timeForNextBasicAttack < stats.attackCooldown)
+			timeForNextBasicAttack += Time.deltaTime;
+
+		if (timeForNextSpecialAttack1 < stats.SpecialAttack1Cooldown)
+			timeForNextSpecialAttack1 += Time.deltaTime;
+
+		if (timeForNextSpecialAttack2 < stats.SpecialAttack2Cooldown)
+			timeForNextSpecialAttack2 += Time.deltaTime;
 
 		//Basic attack input & function call
-		if (basicAttack.WasPressedThisFrame() && stats.attackCooldown <= timeForNextAttack)
+		if (basicAttack.WasPressedThisFrame() && stats.attackCooldown <= timeForNextBasicAttack)
 		{
 			BasicAttack(lastDir);
-			timeForNextAttack = 0;
+			timeForNextBasicAttack = 0;
 		}
 
 		//Special attack 1 input & function call
-		if (specialAttackLeft.WasPressedThisFrame() && stats.SpecialAttack1Cooldown <= timeForNextAttack)
+		if (specialAttackLeft.WasPressedThisFrame() && stats.SpecialAttack1Cooldown <= timeForNextSpecialAttack1)
 		{
 			SpecialAttackLeft(lastDir);
-			timeForNextAttack = 0;
+			timeForNextSpecialAttack1 = 0;
 		}
 
 		//Special attack 2 input & function call
-		if (specialAttackRight.WasPressedThisFrame() && stats.SpecialAttack2Cooldown <= timeForNextAttack)
+		if (specialAttackRight.WasPressedThisFrame() && stats.SpecialAttack2Cooldown <= timeForNextSpecialAttack2)
 		{
 			StartCoroutine(SpecialAttackRight(lastDir));
-			timeForNextAttack = 0;
+			timeForNextSpecialAttack2 = 0;
 		}
 
 		//Only works when called here

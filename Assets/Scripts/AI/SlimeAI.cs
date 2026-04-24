@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -33,7 +32,7 @@ public class SlimeAI : MonsterAI
         if (!isDead)
         {
             //If camera is moving do nothing
-            if (cameraStat.GetTransitionning() || isStunned) return;
+            if (cameraStat.GetTransitionning() || isStunned || HeroParty.Instance.GetcutScene()) return;
             //If no target check for one
             if (target == null)
             {

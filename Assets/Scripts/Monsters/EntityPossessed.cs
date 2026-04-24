@@ -1,7 +1,9 @@
 using FMOD.Studio;
 using FMODUnity;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
 public class EntityPossessed : MonoBehaviour
 {
@@ -32,6 +34,8 @@ public class EntityPossessed : MonoBehaviour
 	public int getMonsterHealth;
 
 	public GameObject possessVFX;
+	public CanvasGroup inputIconAttack;
+	public TMP_Text inputTextPossess;
 
 
 	void Start()
@@ -54,6 +58,8 @@ public class EntityPossessed : MonoBehaviour
 			spikeControl = GetComponent<SpikeControl>();
         }
 		musicParameter = FindAnyObjectByType<Parameters>();
+		inputIconAttack = GameObject.Find("Input_LMB").GetComponent<CanvasGroup>();
+		inputTextPossess = GameObject.Find("Input_Spacebar").GetComponentInChildren<TMP_Text>();
 	}
 
 	void Update()
@@ -73,7 +79,7 @@ public class EntityPossessed : MonoBehaviour
 		if (possessInput.WasPressedThisFrame() && isPossessed)
 			DePossessing();
 
-		if (Camera.main.GetComponent<CameraManagement>().GetTransitionning())
+		if (Camera.main.GetComponent<CameraManagement>().GetTransitionning() || HeroParty.Instance.GetcutScene())
 			DePossessing();
 	}
 
@@ -84,6 +90,10 @@ public class EntityPossessed : MonoBehaviour
 		smol = playerSmol;
 		GameObject instVFX = Instantiate(possessVFX, smol.transform.position, Quaternion.identity);
 		Destroy(instVFX, 1.0f);
+		//smol.GetComponent<PlayerInput>().enabled = false;
+
+		inputIconAttack.alpha = 1.0f;
+		inputTextPossess.text = "Release";
 
 		//Sets active all child game objects
 		for (int i = 0; i < transform.childCount; i++)
@@ -128,6 +138,9 @@ public class EntityPossessed : MonoBehaviour
 		//Call Possessing FMOD SFX
 		RuntimeManager.PlayOneShot(possessingSFX);
 		musicParameter.SetMax();
+
+		playerInput.enabled = true;
+		
 	}
 
 	public void DePossessing()
@@ -144,14 +157,26 @@ public class EntityPossessed : MonoBehaviour
 			smol.transform.position = transform.position;
 			RuntimeManager.PlayOneShot(depossessingSFX);
 			musicParameter.SetNormal();
+			inputIconAttack.alpha = 0.25f;
+			inputTextPossess.text = "Possess";
+			//smol.GetComponent<PlayerInput>().enabled = true;
+			smol.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Keyboard&Mouse", playerInput.GetDevice<Keyboard>());
 		}
+
 
 		//Deactivate all child game objects
 		for (int i = 0; i < transform.childCount; i++)
+		{
             if (transform.GetChild(i).tag != "Trap")
             {
                 transform.GetChild(i).gameObject.SetActive(false);
             }
+			else
+			{
+				transform.GetChild(0).gameObject.SetActive(false);
+			}
+		}
+		
 
         //Checks if entity is monster or trap for related scripts
         if ((this.gameObject.CompareTag("Monster") || this.gameObject.CompareTag("TriggerMonster")) && playerMovement != null && monsterAction != null && monsterAI != null)
@@ -186,6 +211,9 @@ public class EntityPossessed : MonoBehaviour
         }
 
 		smol = null;
+
+		playerInput.enabled = false;
+		
 	}
 
 	private void OnDisable()

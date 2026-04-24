@@ -23,8 +23,10 @@ public class MenuManager : MonoBehaviour
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
 	{
-		evilXPTextPlay.text = "EvilXP = " + EvilXPCount.GetXP().ToString();
-		evilXPTextUpgrade.text = "EvilXP = " + EvilXPCount.GetXP().ToString();
+		if (evilXPTextPlay != null)
+			evilXPTextPlay.text = "EvilXP = " + EvilXPCount.GetXP().ToString();
+		if (evilXPTextUpgrade != null)
+			evilXPTextUpgrade.text = "EvilXP = " + EvilXPCount.GetXP().ToString();
 	}
 
 	public void UpdateEvilXP()

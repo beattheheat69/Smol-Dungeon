@@ -19,10 +19,22 @@ public class UpgradeButton : MonoBehaviour
     [SerializeField]
     GameObject check;
 
+    void OnEnable()
+    {
+        EvilXPCount.ExpAmountChange += CheckExp;
+    }
+
+    void OnDisable()
+    {
+        EvilXPCount.ExpAmountChange -= CheckExp;
+    }
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        costTMP.SetText(upgradeCost.ToString().PadLeft(2, '0'));
+        if (costTMP != null)
+            costTMP.SetText(upgradeCost.ToString().PadLeft(2, '0'));
 
         if (upgradeCost > EvilXPCount.GetXP())
         {
@@ -38,16 +50,23 @@ public class UpgradeButton : MonoBehaviour
 
     public void BuyUpgrade()
     {
-        EvilXPCount.SpendEXP(upgradeCost);
-        EvilXPCount.upgrades[id] = true;
-        gM.UpdateEvilXP();
-        transform.GetComponent<UnityEngine.UI.Button>().interactable = false;
-        check.SetActive(true);
-        costText.SetActive(false);
+        if (EvilXPCount.GetXP() >= upgradeCost)
+        {
+            EvilXPCount.SpendEXP(upgradeCost);
+            EvilXPCount.upgrades[id] = true;
+            gM.UpdateEvilXP();
+            transform.GetComponent<UnityEngine.UI.Button>().interactable = false;
+            check.SetActive(true);
+            costText.SetActive(false);
+        }
     }
 
-    
 
-
-
+    void CheckExp(int eveilPoint)
+    {
+        if (eveilPoint >= upgradeCost && upgradeCost > 0)
+            transform.GetComponent<UnityEngine.UI.Button>().interactable = true;
+        else if (upgradeCost > 0)
+            transform.GetComponent<UnityEngine.UI.Button>().interactable = false;
+    }
 }

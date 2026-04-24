@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Mathematics;
@@ -14,8 +15,10 @@ public class HeroParty : MonoBehaviour
     int currentRoomId; // RoomInstance the party is currently in
     //To temporarily move party to next rooms
     bool roomFinished; //If room party is in has monsters or not
+    bool cutScene;  //If in cutscene before boss fight
     bool allAtDoorExit; //If all heros are at the door
     bool allAtDoorEntrance; //If all heros are at the door
+    public GameObject dialogBox;
 
 
     void Awake()
@@ -29,6 +32,7 @@ public class HeroParty : MonoBehaviour
 
         Instance = this;
         currentRoomId = 0;
+        Invoke("FindActiveDialog", 0.1f);
     }
 
     // Gives list of heros
@@ -41,6 +45,12 @@ public class HeroParty : MonoBehaviour
     public bool GetRoomFinised()
     {
         return roomFinished;
+
+    }
+
+    public bool GetcutScene()
+    {
+        return cutScene;
 
     }
 
@@ -66,7 +76,7 @@ public class HeroParty : MonoBehaviour
 
     public void Update()
     {
-        if (roomFinished)
+        if (roomFinished && !cutScene)
         {
             Transform doorExit;
             if (currentRoomId == roomList.Count() - 1)
@@ -103,7 +113,7 @@ public class HeroParty : MonoBehaviour
             {
                 if (currentRoomId == roomList.Count() - 1)
                 {
-                    SceneManager.LoadSceneAsync("BossGym");
+                    StartCoroutine(DoorDialog());
                 }
                 else
                 {
@@ -142,4 +152,20 @@ public class HeroParty : MonoBehaviour
             }
         }
     }
+
+    IEnumerator DoorDialog() 
+    {
+        cutScene = true;
+        
+        dialogBox.GetComponent<SmallDialogBubble>().StartCutscene();
+        yield return new WaitForSeconds(4f); //change time to match lenght of dialog
+        //put dialog
+
+        SceneManager.LoadSceneAsync("BossGym");
+    }
+
+    void FindActiveDialog()
+    {
+		dialogBox = GameObject.FindWithTag("Dialog");
+	}
 }
