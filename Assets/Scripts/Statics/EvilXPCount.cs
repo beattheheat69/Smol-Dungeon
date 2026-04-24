@@ -4,12 +4,14 @@ using UnityEngine;
 public class EvilXPCount : MonoBehaviour
 {
     public static int EvilXP = 0;
+    public static Action<int> ExpAmountChange;
 
     public static bool[] upgrades = new bool[]{true,false, true, false };
 
     public static void GainXP(int amount)
     {
         EvilXP += amount;
+        ExpAmountChange(EvilXP);
     }
 
     public static int GetXP()
@@ -20,6 +22,7 @@ public class EvilXPCount : MonoBehaviour
     public static void SpendEXP(int amount)
     {
         EvilXP -= amount;
+        ExpAmountChange(EvilXP);
     }
 
     
