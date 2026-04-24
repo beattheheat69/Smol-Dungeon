@@ -308,8 +308,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -482,6 +482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossProjectile
   bossStats: {fileID: 11400000, guid: 2c5136866831f0b4c81d7726c5005601, type: 2}
+  attackPos: {x: 0, y: 0}
 --- !u!114 &7119368781282470114
 MonoBehaviour:
   m_ObjectHideFlags: 0
