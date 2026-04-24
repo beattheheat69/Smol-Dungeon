@@ -18747,7 +18747,7 @@ GameObject:
   - component: {fileID: 840838043}
   m_Layer: 9
   m_Name: DialogBubble
-  m_TagString: Untagged
+  m_TagString: Dialog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19080,7 +19080,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 848588525}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
@@ -19945,7 +19945,7 @@ GameObject:
   - component: {fileID: 960454831}
   m_Layer: 9
   m_Name: DialogBubble
-  m_TagString: Untagged
+  m_TagString: Dialog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32713,6 +32713,14 @@ PrefabInstance:
       propertyPath: speed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8412614468298093237, guid: 89af2860adee6fa4ebab17ab4b67531b, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Keyboard&Mouse
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412614468298093237, guid: 89af2860adee6fa4ebab17ab4b67531b, type: 3}
+      propertyPath: m_NeverAutoSwitchControlSchemes
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8620477059961443384, guid: 89af2860adee6fa4ebab17ab4b67531b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5
@@ -33548,7 +33556,7 @@ Transform:
   m_GameObject: {fileID: 1870789162}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.33, z: 0}
+  m_LocalPosition: {x: 0, y: -1.4299985, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

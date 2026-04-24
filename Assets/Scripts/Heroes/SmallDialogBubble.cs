@@ -25,4 +25,12 @@ public class SmallDialogBubble : MonoBehaviour
 		textMesh.enabled = false;
 		this.gameObject.SetActive(false);
 	}
+
+	public void StartCutscene()
+	{
+		this.gameObject.SetActive(true);
+		randomDialog = Random.Range(0, dialog.Length);
+		text.text = dialog[randomDialog];
+		StartCoroutine(PlayDialog());
+	}
 }

@@ -18,6 +18,7 @@ public class HeroParty : MonoBehaviour
     bool cutScene;  //If in cutscene before boss fight
     bool allAtDoorExit; //If all heros are at the door
     bool allAtDoorEntrance; //If all heros are at the door
+    public GameObject dialogBox;
 
 
     void Awake()
@@ -31,6 +32,7 @@ public class HeroParty : MonoBehaviour
 
         Instance = this;
         currentRoomId = 0;
+        Invoke("FindActiveDialog", 0.1f);
     }
 
     // Gives list of heros
@@ -155,8 +157,15 @@ public class HeroParty : MonoBehaviour
     {
         cutScene = true;
         
-        yield return new WaitForSeconds(5f); //change time to match lenght of dialog
+        dialogBox.GetComponent<SmallDialogBubble>().StartCutscene();
+        yield return new WaitForSeconds(4f); //change time to match lenght of dialog
         //put dialog
+
         SceneManager.LoadSceneAsync("BossGym");
     }
+
+    void FindActiveDialog()
+    {
+		dialogBox = GameObject.FindWithTag("Dialog");
+	}
 }

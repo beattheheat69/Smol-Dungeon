@@ -3,6 +3,7 @@ using FMODUnity;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
 public class EntityPossessed : MonoBehaviour
 {
@@ -89,6 +90,7 @@ public class EntityPossessed : MonoBehaviour
 		smol = playerSmol;
 		GameObject instVFX = Instantiate(possessVFX, smol.transform.position, Quaternion.identity);
 		Destroy(instVFX, 1.0f);
+		//smol.GetComponent<PlayerInput>().enabled = false;
 
 		inputIconAttack.alpha = 1.0f;
 		inputTextPossess.text = "Release";
@@ -136,6 +138,9 @@ public class EntityPossessed : MonoBehaviour
 		//Call Possessing FMOD SFX
 		RuntimeManager.PlayOneShot(possessingSFX);
 		musicParameter.SetMax();
+
+		playerInput.enabled = true;
+		
 	}
 
 	public void DePossessing()
@@ -154,6 +159,8 @@ public class EntityPossessed : MonoBehaviour
 			musicParameter.SetNormal();
 			inputIconAttack.alpha = 0.25f;
 			inputTextPossess.text = "Possess";
+			//smol.GetComponent<PlayerInput>().enabled = true;
+			smol.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Keyboard&Mouse", playerInput.GetDevice<Keyboard>());
 		}
 
 
@@ -204,6 +211,9 @@ public class EntityPossessed : MonoBehaviour
         }
 
 		smol = null;
+
+		playerInput.enabled = false;
+		
 	}
 
 	private void OnDisable()
