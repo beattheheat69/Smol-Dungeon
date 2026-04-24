@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WarriorStats_SO
   m_EditorClassIdentifier: Assembly-CSharp::WarriorStats_SO
   <chargeSpeed>k__BackingField: 2.5
-  <health>k__BackingField: 100
+  <health>k__BackingField: 120
   <power>k__BackingField: 3
   <attackCooldown>k__BackingField: 0.5
   <attackChance>k__BackingField: 60
