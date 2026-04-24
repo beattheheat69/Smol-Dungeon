@@ -11,7 +11,6 @@ public class EvilXPCount : MonoBehaviour
     public static void GainXP(int amount)
     {
         EvilXP += amount;
-        ExpAmountChange(EvilXP);
     }
 
     public static int GetXP()
