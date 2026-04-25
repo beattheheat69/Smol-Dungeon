@@ -68,4 +68,9 @@ public class BossAnim : MonoBehaviour
 	}
 
 	//Missing Hit anim + hit sfx call here
+
+	public void BossDefeat()
+	{
+		anim.SetBool("Defeated", true);
+	}
 }

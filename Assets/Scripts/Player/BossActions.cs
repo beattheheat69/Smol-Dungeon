@@ -175,17 +175,24 @@ public class BossActions : MonoBehaviour, IDamageable
 			{
 				//Defeat
 				GameObject.Find("GameManager").GetComponent<RunStatus>().CallRestart(false, HeroDataManager.Instance.GetDay());
-				gameObject.SetActive(false);
+				//gameObject.SetActive(false);
+				GetComponent<BossAnim>().BossDefeat();
+				GetComponent<PlayerMovement>().enabled = false;
+				GetComponent<BossActions>().enabled = false;
+				GetComponent<CapsuleCollider2D>().enabled = false;
 				isDead = true;
 			}
 
 			//Hit stop
 			//StartCoroutine(HandyFunctions.HitStop());
 
-			damageNumberAnim.GetComponentInChildren<TextMesh>().text = amount.ToString();
-			damageNumberAnim.GetComponentInChildren<TextMesh>().color = Color.white;
-			GameObject inst = Instantiate(damageNumberAnim, transform.position, Quaternion.identity);
-			Destroy(inst, 1.0f);
+			if (!isDead)
+			{
+				damageNumberAnim.GetComponentInChildren<TextMesh>().text = amount.ToString();
+				damageNumberAnim.GetComponentInChildren<TextMesh>().color = Color.white;
+				GameObject inst = Instantiate(damageNumberAnim, transform.position, Quaternion.identity);
+				Destroy(inst, 1.0f);
+			}
 		}
 	}
 }
