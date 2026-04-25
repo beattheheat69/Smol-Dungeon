@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7379462227370993302
 Transform:
   m_ObjectHideFlags: 0
@@ -417,7 +417,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.93, y: 1.08}
+  m_Size: {x: 1.1075085, y: 1.286139}
   m_EdgeRadius: 0
 --- !u!70 &6190784495996721058
 CapsuleCollider2D:

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="MixerGroup" id="{724f2ee5-4821-4eb3-a189-4c43c62717bf}">
+		<property name="name">
+			<value>Music For Ducking</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{2af02e0c-dd38-44bd-be22-f14bd1e1ff99}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{a9aae0cf-f61f-4873-95a5-56f37fb5db4e}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{2e273026-1ca2-402c-a4a0-9c32fac7fbd8}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{2af02e0c-dd38-44bd-be22-f14bd1e1ff99}">
+		<relationship name="effects">
+			<destination>{77adf0f3-db53-44ad-800f-402d45d7f7f7}</destination>
+			<destination>{a50e82d7-1d47-432e-919c-99e09a9259a4}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{a9aae0cf-f61f-4873-95a5-56f37fb5db4e}" />
+	<object class="MixerBusFader" id="{77adf0f3-db53-44ad-800f-402d45d7f7f7}" />
+	<object class="Sidechain" id="{a50e82d7-1d47-432e-919c-99e09a9259a4}" />
+</objects>
