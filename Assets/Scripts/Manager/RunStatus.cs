@@ -7,6 +7,7 @@ public class RunStatus : MonoBehaviour
 {
 	public GameObject loseText;
 	public GameObject winText;
+	public GameObject winTextDay2;
 	public GameObject xpText;
 	bool bossWin;
 	GameObject thingsToSend;
@@ -26,7 +27,10 @@ public class RunStatus : MonoBehaviour
 			//StartCoroutine(RestartTheGame(win, day));
 			if (win)
 			{
-				winText.SetActive(true);
+				if (day == 1)
+					winText.SetActive(true);
+				else
+					winTextDay2.SetActive(true);
 				EvilXPCount.GainXP(100); //XP gain based on 100 + EP left when starting run
 			}
 			else if (!win)
