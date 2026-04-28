@@ -23,6 +23,8 @@ public class HeroDataManager : MonoBehaviour
         }
     }
 
+
+
     public void UpdateHeroHealh(int hero, int damage, int day)
     {
         party[hero].currentHealt -= damage;
@@ -49,6 +51,15 @@ public class HeroDataManager : MonoBehaviour
     public int GetDay()
     {
         return currentDay;
+    }
+
+
+    public void Shutdown()
+    {
+        // 1. Clear the static reference first
+        Instance = null;
+        // 2. Destroy the physical object
+        Destroy(this.gameObject);
     }
 }
 

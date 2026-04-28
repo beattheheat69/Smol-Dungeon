@@ -52,7 +52,9 @@ public class MenuManager : MonoBehaviour
 
 		//Destroy ThingsToSend
 		thingsToSend = GameObject.Find("ThingsToSend").gameObject;
-		if (thingsToSend != null)
+        if (HeroDataManager.Instance != null)
+            HeroDataManager.Instance.Shutdown();
+        if (thingsToSend != null)
 			Destroy(thingsToSend);
 	}
 
