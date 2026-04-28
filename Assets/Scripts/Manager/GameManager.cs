@@ -101,8 +101,9 @@ public class GameManager : MonoBehaviour
 		//Remove ThingsToSend
 		if (thingsToSend != null)
 			Destroy(thingsToSend);
-
-		Time.timeScale = 1f;
+        if(HeroDataManager.Instance != null)
+            HeroDataManager.Instance.Shutdown();
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }
 
