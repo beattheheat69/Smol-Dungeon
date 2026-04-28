@@ -12218,7 +12218,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3658791084411811562, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: m_text
-      value: Corssbow
+      value: Crossbow
       objectReference: {fileID: 0}
     - target: {fileID: 3658791084411811562, guid: 40cf4bc57ea37fc4ca80685d71f53227, type: 3}
       propertyPath: m_fontSize

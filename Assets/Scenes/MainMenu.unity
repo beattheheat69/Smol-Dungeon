@@ -1693,7 +1693,7 @@ GameObject:
   - component: {fileID: 203667381}
   - component: {fileID: 203667380}
   m_Layer: 5
-  m_Name: Canvas - Upgrade Screen
+  m_Name: Canvas - Upgrades Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
