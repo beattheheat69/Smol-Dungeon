@@ -426,6 +426,17 @@
                 },
                 {
                     "name": "",
+                    "id": "98d7b0e4-3447-4fd5-89ae-c1005533668f",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "d467f14e-d385-4cb6-8626-932a0473b420",
                     "path": "<Keyboard>/q",
                     "interactions": "",
