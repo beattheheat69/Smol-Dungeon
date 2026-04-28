@@ -1693,7 +1693,7 @@ GameObject:
   - component: {fileID: 203667381}
   - component: {fileID: 203667380}
   m_Layer: 5
-  m_Name: Canvas - Upgrade Screen
+  m_Name: Canvas - Upgrades Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4331,7 +4331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 970f8462a814dc74d874122de4be1f50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeButton
-  upgradeCost: 150
+  upgradeCost: 100
   id: 3
   costTMP: {fileID: 996600237}
   gM: {fileID: 1793940000}
