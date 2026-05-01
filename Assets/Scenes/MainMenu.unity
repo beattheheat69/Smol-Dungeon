@@ -9737,8 +9737,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 13.749998}
-  m_SizeDelta: {x: -200, y: -277.5}
+  m_AnchoredPosition: {x: 0, y: -7.850006}
+  m_SizeDelta: {x: -55.95, y: -277.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1943734581
 MonoBehaviour:
@@ -9760,24 +9760,27 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Alexandre Trubiano
+  m_text: 'Alexandre Trubiano - Sound Design, Programming, Art
 
-    Gregory Lagrange
+    Gregory Largange
+    - Art, Programming
 
-    Nicolas Gauthier
+    Nicolas Gauthier - Narrative Design, Level Design
 
     Sarah
-    Carreiro-Ricard
+    Carreiro-Ricard - Programming, Art
 
-    Zach Arcand
+    Zachary Arcand - Level Design, UI/UX,
+    Art
+
 
 
     Thank you for playing our game!
 
-    We
-    hope you enjoyed!
+    We hope you enjoyed!
 
-    Smol Studios, 2026.'
+    Smol
+    Studios, 2026.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
   m_sharedMaterial: {fileID: -6602767322224921027, guid: d64da69360c2c66489c9deeb5f1c79c7, type: 2}
@@ -9804,11 +9807,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60.1
-  m_fontSizeBase: 54
+  m_fontSize: 42
+  m_fontSizeBase: 42
   m_fontWeight: 400
-  m_enableAutoSizing: 1
-  m_fontSizeMin: 18
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 10
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
